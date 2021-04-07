@@ -1,0 +1,76 @@
+/* 去除所有盒子默认的内外边距以及防止盒子塌陷 */
+* {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+/* 换上背景图片 */
+.background {
+    height: 765px;
+    background-image: url(../images/big-game-pic.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* 为注册页面中间的大盒子设置背景颜色以及宽高 */
+.register {
+    width: 600px;
+    height: 575px;
+    background-color: rgba(193, 140, 98, .7);
+    margin: 0 auto;
+    margin-top: 10px;
+}
+/* 为离大盒子最近的小盒子设置宽高 */
+.regist-form {
+    width: 460px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+/* 将里面的li盒子布局好 */
+.background .register .regist-form ul li {
+    list-style: none;
+    height: 57px;
+    margin-top: 20px;
+    background-color: transparent ;
+}
+/* 给定户名输入框和密码框样式 */
+.background .register .regist-form ul li input { 
+    width: 460px;
+    height: 54px;
+    margin: 0 auto;
+    font: 400 16px/54px "microsoft yahei";
+    color: #fff;
+    text-indent: 1em;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+}
+/* 文本框和密码框隐藏样式 */
+input::-webkit-input-placeholder {
+    color: rgb(95, 77, 77);
+}
+/* 让光标定到文本框和密码框上时去除边框以及加粗底框 */
+.background .register .regist-form ul li input:focus {
+    border-bottom: 3px solid #fff;
+    outline: none;
+}
+/* 给表示登录的盒子设置宽高以及颜色等 */
+.background .register .regist-form ul li .sixth {  
+    border-radius: 27px;
+    background-color:rgba(226, 138, 66, 0.9);
+    border: none;
+}
+.background .register .regist-form ul .last {
+    margin-top: 40px;
+}
+/* 给盒子添加阴影以及颜色 */
+.background .register .regist-form ul li .sixth:hover {
+    background-color: orange;
+    box-shadow: 0px 8px 8px  rgba(10, 16, 2, 0.12);
+    margin-top: 4px;
+}
+/* 鼠标放上去出现可点击标志 */
+input[type="submit"] {
+    cursor: pointer;
+}

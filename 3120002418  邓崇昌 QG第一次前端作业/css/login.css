@@ -1,0 +1,124 @@
+/* 去除所有盒子默认的内外边距以及防止盒子塌陷 */
+        * {
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+        /* 换上背景图片 */
+        .background {
+            height: 765px;
+            background-image: url(../images/big-game-pic.jpg);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+/* 为注册页面中间的大盒子设置背景颜色以及宽高 */
+        .login {
+            width: 512px;
+            height: 480px;
+            background-color: rgba(193, 140, 98, .7);
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+/* 为离大盒子最近的小盒子设置宽高 */
+        .log-form {
+            width: 418px;
+            height: 480px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+/* 将里面的li盒子布局好 */
+        .background .login .log-form ul li {
+            height: 60px;
+            margin-top: 25px;
+            /* background-color: orange; */
+        }
+/* 给定户名输入框和密码框样式 */
+        .background .login .log-form .first,
+        .background .login .log-form .second {
+            margin: 0 auto;
+            width: 417px;
+            height: 57px;
+            font: 400 16px/57px "microsoft yahei";
+            color: #fff;
+            text-indent: 1em;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #fff;
+        }
+/* 文本框和密码框隐藏样式 */
+        input::-webkit-input-placeholder {
+            color: rgb(202, 198, 198);
+            font-size: 16px;
+        }
+/* 让光标定到文本框和密码框上时去除边框以及加粗底框 */
+        .background .login .log-form ul li .first:focus,
+        .background .login .log-form ul li .second:focus {
+            border-bottom: 3px solid #fff;
+            outline: none;
+        }
+/* 给文字设置颜色和大小 */
+        .text1,
+        .text2 a {
+            display: inline-block;
+            height: 57px;
+            color: white;
+            font: 400 16px/57px "microsoft yahei";
+        }
+
+/* 让复选框和文字对其 */
+        .checkbox {
+            vertical-align: middle;
+            zoom: 150%;
+        }
+/* 给text2中的标签单独加上浮动以及颜色样式 */
+        .text2 a {
+            float: right;
+            text-decoration: none;
+        }
+/* 让鼠标在文字链接上时文字变色 */
+        .text2 a:hover {
+            color: tomato;
+        }
+/* 给表示登录的盒子设置宽高以及颜色等 */
+        .third {
+            width: 417px;
+            height: 57px;
+            font: 400 20px/57px "microsoft yahei";
+            color: white;
+            border-radius: 29px;
+            background-color: rgba(193, 140, 98, .9);
+            border: none;
+        }
+/* 给盒子添加阴影以及颜色 */
+        .third:hover {
+            background-color: orange;
+            box-shadow: 0px 8px 8px  rgba(10, 16, 2, 0.12);
+            margin-top: 4px;
+        }
+/* 去除登录按钮的边框、鼠标放上去出现可点击标志 */
+        input[type="submit"] {
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+/* 给最后一个盒子设置宽高大小 */
+        .background .login ul li .text3 {
+            display: inline-block;
+            width: 417px;
+            height: 57px;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            margin: 0 auto;
+        }
+/* 给文字链接色设置宽高颜色 */
+        .text3 a {
+            color: white;
+            font: 700 18px/57px "microsoft yahei";
+            text-decoration: none;
+        }
+/* 让鼠标经过文字时变色 */
+        .text3 a:hover {
+            color: tomato;
+        }
