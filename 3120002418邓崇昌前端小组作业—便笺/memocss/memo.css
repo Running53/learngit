@@ -1,0 +1,224 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html{
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: black;
+    background-image: url(../memoimages/bgc.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+._head {
+    /* flex: 30%; */
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(125, 47, 207);
+}
+.line {
+    flex: 3%;
+    width: 100%;
+    background: -webkit-linear-gradient(left,#6906a7,rgb(75, 16, 129));
+}
+.operation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 40%;
+    width: 98%;
+}
+.operation .meanmenuface{
+    position: relative;
+}
+.operation div a:nth-child(2) {
+    margin-right: 5px;
+}
+.operation div a {
+    padding-top: 5px;
+    display: inline-block;
+}
+.operation div .delete{
+    position: absolute;
+    top: 25px;
+    right: 34px;
+    display: none;
+}
+.operation div a:hover {
+    background-color: tomato;
+}
+.headtext {
+    width: 98%;
+    font:700 25px/25px 'microsoft yaehi';
+}
+.headtext span {
+    display: block;
+    /* width: 26px; */
+    margin-top: -6px;
+    height: 26px;
+}
+.search {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex: 40%;
+    width: 98%;
+}
+.search .find {
+    flex: 1;
+    outline: none;
+    font-size: 14px;
+    color: #999;
+    padding-left: 0.7em;
+    width: 100%;
+    height: 25px;
+    border: 1px solid #ededed;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, .4);
+}
+.search .find_img {
+    flex: 1;
+    align-self: center;
+    width: 27px;  
+    height: 27px;
+    position: absolute;
+    top:3.5px;
+    right:4px ;
+    margin-top: -1px;
+    background: url(../memoimages/search.png) no-repeat top right;
+    background-attachment: scroll;
+    background-size: 25px auto;
+}
+.search .find_img:hover {
+    background-color: tomato;
+    cursor: pointer;
+}
+.search .abolish {
+    flex: 1;
+    align-self: center;
+    width: 27px;  
+    height: 27px;
+    position: absolute;
+    top:3.5px;
+    right:30px ;
+    background: url(../memoimages/abolish.png) no-repeat top right;
+    background-attachment: scroll;
+    background-size: 25px auto;
+    display: none;
+}
+.search .abolish:hover{
+    background-color: tomato;
+    cursor: pointer;
+}
+._body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+._body ._body_text {
+    position: absolute;
+    width: 100%;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 180px; 
+    z-index: 1;
+    display: none;
+}
+.text {
+    outline: none;
+    border-radius: 5px;
+    font: 700 14px 'microsoft yahei';
+    width: 100%;
+    background: -webkit-linear-gradient(left,#9927db,#c69cf5);
+    border: 1px solid blueviolet;
+}
+._body ._body_text .finish{
+    display: inline-block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    bottom: 0px;
+    right: 8px;
+    z-index: 2;
+}
+._body ._body_text .cancel{
+    display: inline-block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    bottom: 0px;
+    right: 40px;
+    z-index: 2;
+}
+._body ._body_text a:hover{
+    background-color: rgba(97, 96, 96,.5);
+}   
+ul {
+    flex: 1;
+    list-style: none;
+    /* height: 800px; */
+    background: -webkit-linear-gradient(top,rgb(152, 2, 252),rgb(111, 45, 128));
+}
+ul li {
+    position: relative;
+    font-size: 18px;
+    border-radius:10px;
+    margin:4px 4px;
+    background-color: rgb(193, 169, 240);
+}
+ul li:hover{
+    background-color: rgb(241, 154, 205);
+}
+a{
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+ul li .time{
+    position: absolute;
+    top:2px;
+    right: 4px;
+}
+ul li .time:hover {
+    background-color: tomato;
+}
+.select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    border: 0;
+    z-index: 3;
+    background-color: rgb(193, 169, 240);
+    display: none;
+}
+.select .delete,.medify {
+    list-style: none;
+    border-radius: 0px;
+    background-color: rgb(228, 97, 189);
+    margin:0px;
+} 
+.select li:hover{
+    cursor: pointer;
+    background-color: tomato;
+}
+.str{
+    background-color: yellow;
+}
