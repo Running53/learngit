@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?tomleg');
+    src:  url('../fonts/icomoon.eot?tomleg#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?tomleg') format('truetype'),
+      url('../fonts/icomoon.woff?tomleg') format('woff'),
+      url('../fonts/icomoon.svg?tomleg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+.w {
+    width: 1100px;
+    margin: 0 auto;
+}
+.m {
+  width: 984px;
+  margin: 0 auto;
+}
+.header {
+  height: 70px;
+  background-color: #242424;
+}
+.header_m {
+  height: 70px;
+}
+.log {
+  display: block;
+  float: left;
+  width: 177px;
+  height: 70px;
+}
+.log_text {
+  font-size: 24px;
+  color: rgb(214, 212, 212);
+  line-height: 70px;
+  padding-left: 50px;
+}
+.header_m ul li {
+  float: left;
+  position: relative;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+}
+.header_m ul li:nth-child(1),.header_m ul li:nth-child(2) {
+  width: 94px;
+}
+.header_m ul li:nth-child(3),.header_m ul li:nth-child(4) {
+  width: 66px;
+}
+.header_m ul li:nth-child(5) {
+  width: 80px;
+}
+.header_m ul li:last-child {
+  width: 108px;
+}
+.header_m ul li:last-child .hot {
+  position: absolute;
+  top: 21px;
+  left: 96px;
+  width: 28px;
+  height: 19px;
+  background: url(../images/topbar.png) no-repeat -190px 0;
+}
+.header_m ul li a {
+  display: block;
+  height: 70px;
+  font-size: 14px;
+  color: #ccc;
+}
+.header_m ul li a:hover {
+  color: #fff;
+  background-color: #000;
+}
+.triangle {
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 64px;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 7px;
+  background: url(../images/topbar.png) no-repeat -226px 0;
+}
+.find {
+  float: left;
+  position: relative;
+  width: 158px;
+  height: 70px;
+  margin-left: 75px;
+}
+.search {
+  height: 32px;
+  margin-top: 19px;
+  border-radius: 32px;
+  margin-left: 10px;
+  text-indent: 2em;
+}
+.find::before {
+  content: '\e986';
+  font-family: 'icomoon';
+  position: absolute;
+  top: 23px;
+  left: 19px; 
+  font-size: 16px;
+  cursor: pointer;
+}
+.creater {
+  float: left;
+  width: 100px;  
+  height: 70px;   
+}
+.creater a {
+  display: block;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  color: #ccc;
+  /* background-color: blueviolet; */
+  margin-top: 19px;
+  margin-left: 20px;
+  border-radius: 32px;
+  border:1px solid #4F4F4F
+}
+.creater a:hover {
+  color:#fff;
+  border: 1px solid #fff;
+}
+.region {
+  float: right;
+  width: 50px;
+  height: 70px;
+  line-height: 70px;
+  margin: 0px 15px;
+  text-align: center;
+}
+.region a {
+  font-size: 14px;
+  color: #787878;
+}
+.region a:hover {
+  text-decoration: underline;
+}
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 173px;
+  border-top: 1px solid #d3d3d3;
+}
+.footer_left {
+  float: left;
+  width: 520px;
+  height: 115px;
+}
+.footer .m p {
+  margin-top: 10px;
+}
+.footer .m p a {
+  color: #999;
+}
+.footer .m p a:hover {
+  text-decoration: underline;
+}
+.footer .m p span {
+  padding: 0px 10px;
+}
+.footer .m p:last-child a:last-child {
+  position: relative;
+  margin-left: 30px;
+}
+.footer .m p:last-child a:last-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -25px ;
+  width: 20px;
+  height: 20px;
+  background: url(../images/police.png) no-repeat;
+}
+.footer_right {
+  float: left;
+  width: 420px;
+  height: 70px;
+  margin: 40px 20px;
+}
+.footer_right [class^=footer_img] {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.footer_right .footer_img{
+  background: url(../images/footer.png) no-repeat -60px -452.5px;
+  background-size: 110px 552px;
+}
+.footer_right .footer_img1{
+  background: url(../images/footer.png) no-repeat -63px -97px;
+  background-size: 110px 552px;
+}
+.footer_right .footer_img2{
+  background: url(../images/footer.png) no-repeat 0px 5px;
+  background-size: 110px 552px;
+}
+.footer_right .footer_img3{
+  background: url(../images/footer.png) no-repeat -60px -45px;
+  background-size: 110px 552px;
+}
+.footer_right .footer_img4{
+  background: url(../images/footer.png) no-repeat 0px -96px;
+  background-size: 110px 552px;
+ }
+.footer_right li{
+  float: left;
+  width: 80px;
+  height: 70px;
+  padding: 0px 10px;
+  text-align: center;
+}
+.footer_right li div span {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
