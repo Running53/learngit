@@ -63,10 +63,15 @@ window.addEventListener('load',function() {
                     nextsong.setAttribute('id',result.id)
                     lastsong.setAttribute('id',result.id)
                     add.children[0].setAttribute('id',result.id)
-                    if(result.id > 10) {
-                        result.id = 10
+                    if(result.id > 10 && result.id %10 != 0 ) {
+                        id = result.id%10;
+                    }else if(result.id %10 == 0) {
+                        id = result.id/10;
                     }
-                    play_img.children[0].src = '/images/img'+result.id+'.jpg'
+                    else {
+                        id = result.id
+                    }
+                    play_img.children[0].src = '/images/img'+id+'.jpg'
                     audio.setAttribute('src',"/mp3/" + result.singer + ' - ' + result.song + ".mp3")
                     audio.load()
                     process_button.style.left = 0 + 'px'
@@ -93,10 +98,15 @@ window.addEventListener('load',function() {
                     nextsong.setAttribute('id',result.id)
                     lastsong.setAttribute('id',result.id)
                     add.children[0].setAttribute('id',result.id)
-                    if(result.id > 10) {
-                        result.id = 10
+                    if(result.id > 10 && result.id %10 != 0 ) {
+                        id = result.id%10;
+                    }else if(result.id %10 == 0) {
+                        id = result.id/10;
                     }
-                    play_img.children[0].src = '/images/img'+result.id+'.jpg'
+                    else {
+                        id = result.id
+                    }
+                    play_img.children[0].src = '/images/img'+id+'.jpg'
                     audio.setAttribute('src',"/mp3/" + result.singer + ' - ' + result.song + ".mp3")
                     audio.load()
                     process_button.style.left = 0 + 'px'
@@ -123,9 +133,12 @@ window.addEventListener('load',function() {
                     str = str.replace(reg,"");
                     str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                     music_play_list.innerHTML = str ;
-                    if(result.playshowsong.id > 10) {
-                        id = 10;
-                    }else {
+                    if(result.playshowsong.id > 10 && result.playshowsong.id %10 != 0 ) {
+                        id = result.playshowsong.id%10;
+                    }else if(result.playshowsong.id %10 == 0) {
+                        id = result.playshowsong.id/10;
+                    }
+                    else {
                         id = result.playshowsong.id
                     }
                     var src = "/images/img" + id + ".jpg";
@@ -196,9 +209,12 @@ window.addEventListener('load',function() {
                     str = str.replace(reg,"");
                     str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                     music_play_list.innerHTML = str ;
-                    if(result.playshowsong.id > 10) {
-                        id = 10
-                    }else {
+                    if(result.playshowsong.id > 10 && result.playshowsong.id %10 != 0 ) {
+                        id = result.playshowsong.id%10;
+                    }else if(result.playshowsong.id %10 == 0) {
+                        id = result.playshowsong.id/10;
+                    }
+                    else {
                         id = result.playshowsong.id
                     }
                     var src = "/images/img" + id + ".jpg";

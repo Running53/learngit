@@ -1,0 +1,44 @@
+<%- include('header.html')  -%>
+<script src="/js/public.js"></script>
+<div class="person_nav w">
+    <%- include('navs.html')  -%>
+    <div class="right_nav">
+            <div class="headtitle">上传歌单</div>
+            <div class="songlist_main">
+                <form>
+                <span>歌单标题：</span>
+                <textarea name="songlist_content" id="songlist_content" cols="30" rows="10"></textarea>
+                <p class="uploadlist_tip">一首歌单只能有一个标题</p>                
+                <button type="button" class="upload_title">上传标题</button>
+                </form>
+                <form action="/upload_img" method='POST' enctype="multipart/form-data">
+                    <p class="upload_img_tips">可以为你的歌单上传一张图片充当封面</p>
+                    <input type="file" name="upload_img" id="upload_img">
+                    <button class="submit">上传图片</button>
+                </form>
+                <p class="uploadlist_tip">可选择单个音乐文件上传至歌单中</p>
+                <form action="/admin/uploadlist" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="upload" class="multiple_upload" id="list_tips">
+                    <button type="submit" id="list_button">上传歌单</button>
+                </form>
+            </div>
+    </div>
+</div>
+<script>
+    var upload_title = document.querySelector('.upload_title')
+    var songlist_content = document.getElementById('songlist_content')
+    upload_title.addEventListener('click',function() {
+        this.setAttribute('disabled',true)
+        ajax({
+            url: '/admin/listcontent',
+            data: {
+                songlist_content: songlist_content.value
+            },
+            success: function() {
+                alert('歌单标题上传成功')
+            }
+            
+        })
+    })
+</script>
+<%- include('footer.html')  -%>

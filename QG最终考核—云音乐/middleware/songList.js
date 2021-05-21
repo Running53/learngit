@@ -8,6 +8,9 @@ module.exports = {
         if(id === 0){
             id = 8;
         }
+        if(req.params.id > 16) {
+            id = req.params.id
+        }
         SongList.getSongListById(id).then(results =>{
              req.songlist = results
              next()

@@ -6,6 +6,7 @@ const session = require('cookie-session')
 const multer = require('multer')
 const PlayList = require('./middleware/playlist')
 const Modify = require('./middleware/modify')
+const getnumofrecommend = require('./middleware/getnumofrecommend')
 const path = require('path')
 const fs = require('fs')
 
@@ -15,6 +16,13 @@ const app = express()
 // 上传配置,需要在静态资源之前给它配置好
 const upload = multer({
     dest:'./static/mp3',        //上传文件的存储目录
+    limits: {
+        fileSize: 1024 * 1024 *20   //单个文件大小控制在20M以内
+    }
+})
+// 上传配置,需要在静态资源之前给它配置好
+const upload_img = multer({
+    dest:'./static/images',        //上传文件的存储目录
     limits: {
         fileSize: 1024 * 1024 *20   //单个文件大小控制在20M以内
     }
@@ -46,7 +54,6 @@ app.use((req,res,next)=> {
     next()
 })
 
-
 //利用正则表达式简写代码
 app.use(/\/(index)?/,require('./router/index'))
 // 调用分类歌曲子应用
@@ -68,6 +75,7 @@ app.use('/admin/?*',require('./middleware/auth').allowToAddmin)//这样就可以
 // 上传操作
 app.post('/admin/*',upload.single('upload'),(req,res,next)=>{
     let {file} = req //如果上传成功之后，在req里面自动封装一个file对象
+    console.log(file);
     if(file) { //上传后的文件是不带后缀名的，我们需要对它进行重命名
         let extname = path.extname(file.originalname)   //file.originalname==>获取文件原来的文件名
         fs.renameSync(file.path,'static\\mp3\\'+ file.originalname)
@@ -76,7 +84,18 @@ app.post('/admin/*',upload.single('upload'),(req,res,next)=>{
     }
     next()
 })
-// 这里的upload为file里的name值
+// 上传图片操作
+app.post('/upload_img',[upload_img.single('upload_img'),getnumofrecommend.getnumofrecommend],(req,res,next)=>{
+    let {file} = req //如果上传成功之后，在req里面自动封装一个file对象
+    console.log(file);
+    if(file) { //上传后的文件是不带后缀名的，我们需要对它进行重命名
+        fs.renameSync(file.path,'static\\images\\'+ 'song'+ req.numofrecommend +'.jpg')
+        req.uploadUrl = '/images/' + file.originalname
+        res.send('歌单封面图片已上传成功！请返回上传歌单歌曲！')
+    }
+    next()
+})
+// 这的upload为file里的name值
 
 // 将歌曲存放到播放列表和历史记录子应用
 app.use('/savetolist',require('./router/savetolist'))
@@ -100,6 +119,8 @@ app.use('/delete',require('./router/delete'))
 app.use('/collectplaylist',require('./router/collectplaylist'))
 // 调用个人中心首页
 app.use('/admin',require('./router/admin/index'))
+// 上传自定义歌单中的歌曲子应用
+// app.use('/uploadlist',require('./router/admin/index'))
 
 // 退出功能实现
 app.get('/user/logout',[PlayList.PlayList,Modify.getmodify_information],(req,res) => {

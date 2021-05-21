@@ -248,3 +248,55 @@ label{
     color:rgb(112, 110, 110);
     margin-top: 4px;
 }
+.person_nav .right_nav .headtitle {
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    background-color: rgb(26, 230, 219);
+}
+.person_nav .right_nav .songlist_main {
+    height: 600px;
+    background-color: burlywood;
+}
+.person_nav .right_nav .songlist_main span:nth-child(1) {
+    position: relative;
+    top: -47px;
+    left: 165px;
+    color: rgb(44, 174, 179);
+    font-size: 24px;
+}
+.person_nav .right_nav .songlist_main textarea {
+    width: 500px;
+    height: 100px;
+    margin-left: 160px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 15px;
+}
+.person_nav .right_nav .uploadlist_tip {
+    font-size: 18px;
+    color: chocolate;
+    text-align: center;
+    margin-top: 5px;
+}
+.upload_img_tips {
+    font-size: 16px;
+    color: chocolate;
+    margin-left: 332px;
+    margin-top: 25px;
+    margin-bottom: -40px;
+ } 
+ #upload_img {
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 354px;
+}  
+#list_tips {
+    margin-left: 352px;
+}
+#list_button {
+    margin-right: 300px;
+}

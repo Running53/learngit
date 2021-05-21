@@ -103,7 +103,7 @@ window.addEventListener('load',function() {
                 str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                 music_play_list.innerHTML = str ;
                 if(result.playshowsong.id > 10) {
-                    result.playshowsong.id = 10;
+                    result.playshowsong.id = result.playshowsong.id%10;
                 }
                 var src = "/images/img" + result.playshowsong.id + ".jpg";
                 play_img.children[0].src = src;

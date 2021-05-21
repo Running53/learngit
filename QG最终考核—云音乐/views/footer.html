@@ -26,7 +26,11 @@
                     <a href="javascript:;" class="nextsong" title="下一首" id='<%= playlists[0].id %>'></a>
                 </div>    
                 <% if (playlists[0].id > 10) { %>
-                <a href="javascript:;" class="play_img"><img src="/images/img10.jpg" alt=""></a>
+                     <% if (playlists[0].id % 10 == 0) { %>
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id/10 %>.jpg" alt=""></a>
+                     <% } else { %> 
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id%10 %>.jpg" alt=""></a>
+                    <% } %>
                 <% } else { %> 
                 <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id %>.jpg" alt=""></a>
                 <% } %>

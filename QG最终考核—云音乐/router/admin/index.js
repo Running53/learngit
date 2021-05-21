@@ -7,6 +7,7 @@ const Modify = require('../../middleware/modify')
 const SongSpecies = require('../../middleware/songSpecies')
 const AddSongToList = require('../../middleware/addsongtolist')
 const UploadMusic = require('../../middleware/UploadMusic')
+const SavetoList = require('../../middleware/savetolist')
 
 indexApp.get('/person',[PlayList.PlayList,PlayList.getcollectlist,PlayList.getcollectsonglist,PlayList.gethistorylist,GetLoginTime.getlogintime,Modify.getmodify_information,UploadMusic.getnumofmyload],(req,res)=>{
     res.render('personal',{playlists:req.playlists,collectsongs:req.collectsongs,collectlists:req.collectlists,lastlogintime:req.lastlogintime,history_songs:req.history_songs,user:req.user,modify_informations:req.modify_informations,counts:req.counts})
@@ -29,12 +30,18 @@ indexApp.get('/upload',[PlayList.PlayList,PlayList.gethistorylist,Modify.getmodi
 indexApp.get('/UploadMusic',UploadMusic.updateoperation,(req,res)=>{
     res.send(req.query.songspecies)
 })
-indexApp.post('/upload_music',[PlayList.PlayList,PlayList.gethistorylist,Modify.getmodify_information,SongSpecies.getSongSpecies,AddSongToList.addsongtolist],(req,res)=>{
-    // res.send(req.uploadUrl.split(' ')[0].split('/mp3/')[1])
-
-    // res.render('uploadmusic',{playlists:req.playlists,history_songs:req.history_songs,user:req.user,modify_informations:req.modify_informations,songSpecies:req.songSpecies})
+indexApp.get('/make',[PlayList.PlayList,Modify.getmodify_information,SongSpecies.getSongSpecies],(req,res)=>{
+    res.render('make',{playlists:req.playlists,user:req.user,modify_informations:req.modify_informations,songSpecies:req.songSpecies})
+})
+indexApp.get('/listcontent',[SavetoList.addcontenttolist],(req,res)=>{
+    res.send(req.query.songlist_content)
 })
 
+indexApp.post('/upload_music',[PlayList.PlayList,PlayList.gethistorylist,Modify.getmodify_information,SongSpecies.getSongSpecies,AddSongToList.addsongtolist],(req,res)=>{
+})
+indexApp.post('/uploadlist',SavetoList.addsongstolist,(req,res)=>{
+res.send('本歌曲已成功上传至歌单！可点击返回键还可继续往歌单中上传歌曲！')
+})
 
 
 module.exports = indexApp
