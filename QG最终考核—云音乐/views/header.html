@@ -9,24 +9,34 @@
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
-    <script src="/js/index.js"></script>
+    <link rel="stylesheet" href="/css/catagory.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/songlist.css">
+    <script src="/js/music_operation.js"></script>
+    <script src="/js/ajax.js"></script>
+    <!-- <script src="/js/index.js"></script>
     <script src="/js/animate.js"></script>
     <script src="/js/playershow.js"></script>
     <script src="/js/music_list.js"></script>
     <script src="/js/ajax.js"></script>
+    <script src="/js/catagory.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/register.js"></script>
+    <script src="/js/songlist.js"></script> -->
 </head>
 <body>
     <!-- 头部begin -->
 <div class="header">
     <div class="header_m w">
-       <a href="index.html" class="log"><img src="" alt=""><span class="log_text">QG云音乐</span></a>
+       <a href="/index" class="log"><div class="QG"></div><span class="log_text">QG云音乐</span></a>
         <ul class="header_nav">
             <li>
                 <a href="javascript:;">发现音乐</a>
                 <div class="triangle"></div>
             </li>
             <li>
-                <a href="javascript:;">我的音乐</a>
+                <a href="/admin/mymusic">我的音乐</a>
                 <div class="triangle"></div>
             </li>
             <li>
@@ -49,9 +59,35 @@
         </ul>
         <div class="find">
             <input type="text" placeholder="音乐/视频/电台/用户" class="search">
+            <div class="search_btn"></div>
+            <ul class="list_group" id='list_box'>             
+            </ul>
         </div>
         <div class="creater"><a href="javascript:;">创作者中心</a></div> 
-        <div class="region"><a href="javascript:;">登录</a></div>
+        <% if (!user) { %>
+            <div class="region"><a href="/login">登录</a></div>
+        <% } else { %>
+            <div class="user">
+                <a href="javascript:;"><%= user.username %></a>
+                <ul class="person">
+                    <li><a href="/admin" class="personal">个人中心</a></li>
+                    <li><a href="/user/logout" class="exit">退出</a></li>
+                </ul>
+            </div>
+            <script>
+                  var person = document.querySelector('.person')
+                    var user = document.querySelector('.user')
+                    var flag=0;
+                    user.addEventListener('click',function() {
+                        flag++;
+                        if(flag%2==1) {
+                        person.style.display = 'block';           
+                        }else {
+                        person.style.display = 'none';           
+                        }
+                    })
+            </script>
+        <% } %>    
     </div>
 </div>
     <!-- 头部end -->

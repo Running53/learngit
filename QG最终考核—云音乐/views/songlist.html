@@ -1,0 +1,90 @@
+<%- include('header.html')  -%>
+<script src="/js/music_list.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/songlist.js"></script>
+<script src="/js/playershow.js"></script>
+<audio></audio>
+<!-- nav区域begin -->
+<div class="nav">
+    <ul class="w">
+        <li>
+            <a href="javascript:;"><span >推荐</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><span>排行榜</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><span>歌单</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><span>主播电台</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><span>歌手</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><span>新碟上架</span></a>
+        </li>
+    </ul>
+</div>
+<!-- nav区域end -->
+    <div class="songlist m">
+       <div class="mid">
+        <div class="songlist_information">
+             <% songList.forEach((songlists,index) => { %> 
+                <% if(index===0) { %>
+                    <div class="songlist_img"><img src="/images/song<%= songlists.ids %>.jpg" alt=""></div>
+                    <div class="songlist_main">
+                        <h1><%= songlists.content %></h1>
+                        <p class="creat_time"><%= songlists.time.toLocaleString() %>创建</p>
+                        <p class="play_time">播放量：<%= songlists.playnumber %></p>
+                        <p class="hot">热度：<%= songlists.hot %></p>
+                        <p class="tag">标签:</p>
+                        <% } %>
+                        <div class="tags"><a href="/category/list/<%= songlists.categoryid %>"><%= songlists.tags %></a></div>                 
+                
+                <% }) %>     
+                <div class="operation">
+                    <div class="play_all" title="播放全部并添加至播放列表">播放</div>
+                    <div class="collection" title="添加至收藏歌单"></div>
+                </div>             
+            </div>
+        </div>
+        <div class="song_information">
+            <h1>歌曲列表</h1>
+            <div><span class="song_number"><%= time %></span>首歌曲</div>
+            <ul class=".songlist_songs">
+                <li class="songs_title">
+                    <div class="song_title">歌曲名称</div>
+                    <div class="song_singer">歌手</div>
+                    <div class="song_from">专辑</div>
+                </li>
+                <% songList.forEach(songlist => { %>
+
+                <li class="songs_title" id="<%= songlist.id %>">
+                    <div class="song_title"><%= songlist.song %></div>
+                    <div class="song_singer"><%= songlist.singer %></div>
+                    <div class="song_from"><%= songlist.album %></div>
+                    <h4 class="oper">
+                        <a href="javascript:;" title="播放歌曲"></a>
+                        <a href="javascript:;" title="添加至播放列表"></a>
+                        <a href="javascript:;" title="收藏"></a>
+                    </h4>  
+                </li>
+                <% }) %>   
+            </ul>
+        </div>
+       </div>
+    </div>
+<!-- <% songList.forEach(songlist => { %>
+    <p><%= songlist.tags %></p>
+    <p><%= songlist.content %></p>
+    <p><%= songlist.playnumber %></p>
+    <p><%= songlist.id %></p>
+    <p><%= songlist.song %></p>
+    <p><%= songlist.singer %></p>
+    <p><%= songlist.album %></p>
+    <p><%= songlist.hot %></p>
+    <p><%= songlist.time.toLocaleString() %></p>
+<% }) %>       -->
+<%- include('footer.html')  -%>

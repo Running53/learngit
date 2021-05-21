@@ -1,3 +1,79 @@
+     <!-- 固定播放器窗口begin -->
+     <audio></audio> 
+     <div class="player">
+        <div class="m">     
+            <% if (!playlists[0]) { %>
+                <div class="play_button">
+                    <a href="javascript:;" class="lastsong" title="上一首"></a>
+                    <a href="javascript:;" class="to_play" title="播放/暂停"></a>
+                    <a href="javascript:;" class="nextsong" title="下一首"></a>
+                </div>  
+                <a href="javascript:;" class="play_img"><img alt=""></a>
+                <div class="sing_information">
+                    <div class="singer_word">
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                    </div>                             
+            <%} else { %> 
+                <script>
+                    var audio=document.querySelector('audio')
+                    audio.setAttribute('src',"/mp3/<%= playlists[0].singer %> - <%= playlists[0].song %>.mp3")
+                    audio.load()
+                </script>
+                 <div class="play_button">
+                    <a href="javascript:;" class="lastsong" title="上一首" id='<%= playlists[0].id %>'></a>
+                    <a href="javascript:;" class="to_play" title="播放/暂停"></a>
+                    <a href="javascript:;" class="nextsong" title="下一首" id='<%= playlists[0].id %>'></a>
+                </div>    
+                <% if (playlists[0].id > 10) { %>
+                <a href="javascript:;" class="play_img"><img src="/images/img10.jpg" alt=""></a>
+                <% } else { %> 
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id %>.jpg" alt=""></a>
+                <% } %>
+            <div class="sing_information">
+                <div class="singer_word">
+                    <a href="javascript:;"><%= playlists[0].singer %></a>
+                    <a href="javascript:;"><%= playlists[0].song %></a>
+                </div>                                       
+                <% } %>
+                <div class="progress">
+                    <div>
+                    <div class="cur"></div>
+                    <span class="process_button"></span>
+                    </div>
+                </div>
+                <span class="music_time"><em>00:00</em><em>/00:00</em></span>
+            </div>
+            <div class="icons">
+                <div class="add">
+                    <a href="javascript:;" title="收藏"></a>
+                    <a href="javascript:;" title="转发"></a>
+                </div>
+                <div class="music_list">
+                    <a class="voice" href="javascript:;" title="音量"></a>
+                    <a class="play_way" href="javascript:;" title="单曲循环"></a>
+                    <a class="list" href="javascript:;" title="播放列表"></a>
+                    <div class="play_list">
+                        <div class="play_list_top">
+                            <h4>播放列表(<span>0</span>)</h4>
+                            <span class="close"></span>
+                            <a href="javascript:;" class="clear"><span class="clear_btn"></span>清除</a>
+                            <a href="javascript:;" class="collection_all"><span></span>收藏全部</a>                           
+                        </div>
+                        <div class="play_list_main">
+                            <div class="song_title"><span>歌曲</span><span>歌手</span></div>
+                            <ul class="music_play_list">  
+                            <% playlists.forEach(playlist => { %>
+                                <li><a href="javascript:;"><%= playlist.song %></a><a href="javascript:;"><%= playlist.singer %></a><a href="javascript" title="播放"></a><span title="收藏单曲"></span><span title="删除"></span></li>
+                            <% }) %>   
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 固定播放器窗口end -->
     <!-- 底部begin -->
     <div class="footer">
         <div class="m">

@@ -1,0 +1,34 @@
+// 用户登录模型
+module.exports = class User extends require ('./model') {
+    /**
+    *用户登录
+    * @param {string} username 账号
+    * @param {string} password 密码
+    */
+   static login(username,password) {
+       return new Promise((resolve,reject)=>{
+           let sql = 'select username,password from user where username= ? and password =?'
+            this.query(sql,[username,password]).then(results=> {
+                resolve(results[0])
+            }).catch(err => {
+                reject(err) 
+            })
+        })
+   }
+   /**
+    *用户注册
+    * @param {string} username 账号
+    * @param {string} password 密码
+    */
+   static register(username,password) {
+    return new Promise((resolve,reject)=>{
+        let sql = 'insert into user(username,password) values(?,?)'
+         this.query(sql,[username,password]).then(results=> {
+             resolve(results)
+         }).catch(err => {
+             reject(err) 
+         })
+     })
+}
+
+}

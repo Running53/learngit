@@ -1,4 +1,10 @@
 <%- include('header.html')  -%>
+<script src="/js/index.js"></script>
+<script src="/js/animate.js"></script>
+<script src="/js/playershow.js"></script>
+<script src="/js/music_list.js"></script>
+<script src="/js/search.js"></script>
+<!-- <script src="/js/songlist.js"></script> -->
 <!-- nav区域begin -->
     <div class="nav">
         <ul class="w">
@@ -28,36 +34,11 @@
         <div class="banner_main m">
             <div class="banner_img">
                 <ul>
+                    <% playershowlist.forEach(playershowlists => { %>
                     <li>
-                        <a href="javascript:;" class="蜡笔小心 - MOM"><img src="images/pic1.jpg" alt=""></a>
+                        <a id='<%= playershowlists.id %>' href="javascript:;" class="<%=playershowlists.singer%> - <%=playershowlists.song%>"><img src="/images/pic<%= playershowlists.id %>.jpg" alt="" ></a>
                     </li>
-                    <li>
-                        <a href="javascript:;" class="SLANDER,Dylan Matthew - Love Is Gone"><img src="images/pic2.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="一支榴莲 - 海底"><img src="images/pic3.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="沈以诚 - 形容"><img src="images/pic4.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="Todd Li - 小宇"><img src="images/pic5.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="张信哲 - 爱就一个字"><img src="images/pic6.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="魏语诺 - 侧脸"><img src="images/pic7.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="Lost Frequencies,Janieck - Reality"><img src="images/pic8.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="蜡笔小心 - MOM"><img src="images/pic9.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="Kafe.Hu - 经济舱 (Live)"><img src="images/pic10.jpg" alt=""></a>
-                    </li>
+           <% }) %>
                 </ul>      
                 <audio></audio> 
             </div>
@@ -76,15 +57,15 @@
         <ul class="recommend_nav">
             <li><a href="javascript:;">热门推荐</a></li>
             <% songSpecies.forEach(species => { %>
-                <li><a href="javascript:;"><%= species.songSpecies %></a></li>
+                <li><a href="/category/list/<%= species.id %>"><%= species.songSpecies %></a></li>
                 <% }) %>  
             <li><a href="javascript:;">更多</a></li>
         </ul>
         <ul class="songList">
             <% hots.forEach(hot => { %>
                 <li>
-                    <a href="javascript:;">
-                        <img src='images/song1.jpg'+ <%= hot.id %> + '.jpg' alt="">
+                    <a href="/songlist/<%= hot.ids %>">
+                        <img src='images/song<%= hot.ids %>.jpg' alt="">
                         <div class="mask"></div>
                         <div class="mask_bottom">
                             <span class="listen_icon"></span>
@@ -92,7 +73,7 @@
                             <a class="play_icon"></a>
                         </div>
                     </a>           
-                    <a href="javascript:;" class="text"><%= hot.content %></a>
+                    <a href="/songlist/<%= hot.ids %>" class="text"><%= hot.content %></a>
                 </li>
            <% }) %>
             
@@ -153,16 +134,16 @@
   <div class="recommend m">
     <ul class="recommend_nav">
         <li><a href="javascript:;">最新歌单</a></li>
-        <% songSpecies.forEach(species => { %>
-        <li><a href="javascript:;"><%= species.songSpecies %></a></li>
+        <% newSongSpecies.forEach(news => { %>
+        <li><a href="/category/list/<%= news.id %>"><%= news.songSpecies %></a></li>
         <% }) %>   
         <li><a href="javascript:;">更多</a></li>
     </ul>
     <ul class="songList">
         <% news.forEach(hot => { %>
             <li>
-                <a href="javascript:;">
-                    <img src='images/song2.jpg'+ <%= hot.id %> + '.jpg' alt="">
+                <a href="/songlist/<%= hot.ids %>">
+                    <img src='images/song<%= hot.ids %>.jpg' alt="">
                     <div class="mask"></div>
                     <div class="mask_bottom">
                         <span class="listen_icon"></span>
@@ -170,7 +151,7 @@
                         <a class="play_icon"></a>
                     </div>
                 </a>           
-                <a href="javascript:;" class="text"><%= hot.content %></a>
+                <a href="/songlist/<%= hot.ids %>" class="text"><%= hot.content %></a>
             </li>
        <% }) %>      
     </ul>
@@ -225,59 +206,5 @@
         </ul>
     </div>
 </div>
-    <!-- 固定播放器窗口begin -->
-    <div class="player">
-        <div class="m">
-            <div class="play_button">
-                <a href="javascript:;" class="lastsong" title="上一首"></a>
-                <a href="javascript:;" class="to_play" title="播放/暂停"></a>
-                <a href="javascript:;" class="nextsong" title="下一首"></a>
-            </div>     
-            <a href="javascript:;" class="play_img"><img src="images/jiaomaiqi.jpg" alt=""></a>
-            <div class="sing_information">
-                <div class="singer_word">
-                    <a href="javascript:;">Kafe.Hu</a>
-                    <a href="javascript:;">经济舱</a>
-                </div>
-                <div class="progress">
-                    <div>
-                    <div class="cur"></div>
-                    <span class="process_button"></span>
-                    </div>
-                </div>
-                <span class="music_time"><em>00:00</em><em>/00:00</em></span>
-            </div>
-            <div class="icons">
-                <div class="add">
-                    <a href="javascript:;" title="收藏"></a>
-                    <a href="javascript:;" title="转发"></a>
-                </div>
-                <div class="music_list">
-                    <a class="voice" href="javascript:;" title="音量"></a>
-                    <a class="play_way" href="javascript:;" title="单曲循环"></a>
-                    <a class="list" href="javascript:;" title="播放列表"></a>
-                    <div class="play_list">
-                        <div class="play_list_top">
-                            <h4>播放列表(<span>0</span>)</h4>
-                            <span class="close"></span>
-                            <a href="javascript:;" class="clear"><span></span>清除</a>
-                            <a href="javascript:;" class="collection_all"><span></span>收藏全部</a>                           
-                        </div>
-                        <div class="play_list_main">
-                            <ul class="music_play_list">
-                                <li>
-                                    <a href="javascript:;">歌曲名称</a><a href="javascript:;">歌手</a><a href="javascript">时间</a><span title="收藏单曲"></span><span title="删除"></span>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">歌曲名称</a><a href="javascript:;">歌手</a><a href="javascript">时间</a><span title="收藏单曲"></span><span title="删除"></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 固定播放器窗口end -->
 
     <%- include('footer.html')  -%>

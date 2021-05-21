@@ -1,0 +1,30 @@
+   <%- include('header.html')  -%>
+   <script src="/js/music_list.js"></script>
+   <script src="/js/catagory.js"></script>
+   <script src="/js/search.js"></script>
+   <script src="/js/playershow.js"></script>
+   <audio></audio>
+   <div class="catagory_box m">
+       <div class="catagory_name">
+            <span>搜索结果：(搜索词：<%= keyword %>)</span>
+       </div>
+        <ol class="catagory_songs">
+        <% songs.forEach((song,index) => { %>
+            <li>
+                <span><%= index+1 %></span>
+                <div href="javascript:;" class="catagory_list">
+                    <a class="catagory_song"><%= song.song.substring(0,15) %></songs.song></a>
+                    <span class="catagory_songer"><%= song.album.substring(0,15) %></span>
+                    <span class="catagory_songer"><%= song.singer.substring(0,20) %></span>
+                    <div class="oper">
+                        <a href="javascript:;" title="播放歌曲" id='<%= song.id %>'></a>
+                        <a href="javascript:;" title="添加至播放列表"></a>
+                        <a href="javascript:;" title="收藏"></a>
+                    </div>  
+                </div>
+            </li>
+       <% }) %>      
+        </ol>
+   </div>
+
+   <%- include('footer.html')  -%>

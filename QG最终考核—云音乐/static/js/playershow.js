@@ -5,18 +5,33 @@ window.addEventListener('load',function() {
     var list=document.querySelector('.list');
     var add=document.querySelector('.add');
     var voice=document.querySelector('.voice');
-    var clicktime=0;
-        to_play.addEventListener('click',function() {
-        // audio.load();
-        audio.oncanplay = function () {
-            duration=audio.duration;
-        }
-        clicktime++;
-        if(clicktime%2===1){   
+    var audio=document.querySelector('audio');
+    var bar = document.querySelector('.progress');
+    var cur = document.querySelector('.cur');
+    var process_button = document.querySelector('.process_button');
+    var music_time = document.querySelector('.music_time');
+    process_button.timer = null;
+    var duration=0;
+    to_play.addEventListener('click',function() {
+        if(audio.paused){   
             this.style.backgroundPosition='0 -166px';
-            audio.play();
-            move(process_button,bar.offsetWidth);
-            minutes();
+            if(audio.src){
+                audio.oncanplay = function () {
+                    duration=audio.duration;
+                    minutes();
+                    minute();
+                    move(process_button,bar.offsetWidth); 
+                }
+                audio.play();
+                to_play.click()
+                to_play.click()
+                minutes();
+                minute();
+                duration = audio.duration
+                move(process_button,bar.offsetWidth);
+            }else {
+                    duration = 0
+                  }
         }else {
             this.style.backgroundPosition='0 -205px';
             audio.pause();
@@ -54,38 +69,6 @@ window.addEventListener('load',function() {
         this.style.backgroundPosition='-2px -248px';
     })
 
-    var duration=0;
-    var audio=document.querySelector('audio');
-    audio.setAttribute('src',"../mp3/Kafe.Hu - 经济舱 (Live).mp3");
-    audio.load();//重新加载防止duration为NaN
-    audio.oncanplay = function () {
-            duration=audio.duration;
-    }
-    var banner_img=document.querySelector('.banner_img');
-    var rotating=banner_img.querySelectorAll('a');
-    var singer_word=this.document.querySelector('.singer_word');
-    for(var i=0;i<rotating.length;i++){
-        // audio.load();//重新加载防止duration为NaN        
-        rotating[i].addEventListener('click',function() {
-            audio.src="../mp3/"+this.className +".mp3";
-            audio.load();//重新加载防止duration为NaN  
-            audio.oncanplay = function () {
-                duration=audio.duration;
-                minutes();
-            }
-            process_button.style.left=0+'px';
-            cur.style.width=0+'px'; 
-            singer_word.children[0].innerHTML=this.className.split(' - ')[0];          
-            singer_word.children[1].innerHTML=this.className.split(' - ')[1];          
-            if(clicktime%2!==1)
-            {
-                to_play.click();           
-            }else {
-            audio.play();
-            move(process_button,bar.offsetWidth);
-            }
-        })
-    }
     function minutes(){
         var minutes=parseInt(duration/60);
         var seconds=parseInt(duration%60);
@@ -93,18 +76,28 @@ window.addEventListener('load',function() {
         seconds=seconds<10?'0'+seconds:seconds;
         music_time.children[1].innerHTML='/'+minutes+':'+seconds;
     }
-   
-    var bar=document.querySelector('.progress');//整个播放条
+    function minute(){
+    var minute=parseInt(audio.currentTime/60);
+    var second=parseInt(audio.currentTime%60)+1;
+    minute=minute<10?'0'+minute:minute;
+    second=second<10?'0'+second:second;
+    if(second===60){
+        second=0;
+    }
+    music_time.children[0].innerHTML=minute+':'+second;
+    }   
+
+    // var bar=document.querySelector('.progress');//整个播放条
     var sing_information=document.querySelector('.sing_information');
-    var cur=document.querySelector('.cur');//红色播放条
-    var process_button=document.querySelector('.process_button')//进度按钮
+    // var cur=document.querySelector('.cur');//红色播放条
+    // var process_button=document.querySelector('.process_button')//进度按钮
     var options={};
     options.isdrag=false;
     bar.addEventListener('mousedown',function(e) {
         e.stopPropagation();
         options.isdrag=true; 
         button_move(e);
-        document.addEventListener('mousemove',fn); 
+        document.addEventListener('mousemove',fn);        
     })
 
     function fn(e) {
@@ -113,10 +106,21 @@ window.addEventListener('load',function() {
         }
     }
     document.addEventListener('mouseup',function() {
+        console.log(1);
         if(options.isdrag){
             options.isdrag=false;
-            audio.currentTime=parseInt((options.X/bar.offsetWidth)*duration);
+            audio.currentTime=(options.X/bar.offsetWidth)*duration;
             document.removeEventListener('mousemove',fn);   //解除document的绑定事件  
+        }    
+        if(audio.src) {
+            var minute=parseInt(audio.currentTime/60);
+            var second=parseInt(audio.currentTime%60)+1;
+            minute=minute<10?'0'+minute:minute;
+            second=second<10?'0'+second:second;
+            if(second===60){
+                second='00';
+            }
+            music_time.children[0].innerHTML=minute+':'+second;
         }    
     })
     button_move=function(e) {
@@ -128,8 +132,8 @@ window.addEventListener('load',function() {
         }else if(options.X<0) {
             options.X=0;
         }
-            process_button.style.left=options.X-11+'px';
-            cur.style.width=options.X+7+'px';    
+            process_button.style.left=options.X-15+'px';
+            cur.style.width=options.X+3+'px';    
     }
    
     var music_time=document.querySelector('.music_time');
@@ -140,40 +144,39 @@ window.addEventListener('load',function() {
             // 步长值写到定时器的里面
             // 把我们步长值改为整数 不要出现小数的问题
             // var step = Math.ceil((target - obj.offsetLeft) / 10);
-            var step =bar.offsetWidth/duration;
+            var step =Math.floor((target-process_button.offsetWidth)/duration);
             var minutes=0;
             var seconds=0;
             var minute=0;
             var second=0;
             step = step > 0 ? Math.ceil(step) : Math.floor(step);
-            // console.log(duration);
-            // console.log(audio.currentTime);
-            // console.log(audio.currentTime);
-            // console.log(audio.duration);
-            if (audio.currentTime>audio.duration-1) {
+            if (audio.currentTime >= audio.duration-1) {
                 // 停止动画 本质是停止定时器
                 clearInterval(obj.timer);
                 process_button.style.left=0+'px';
                 cur.style.width=0+'px';
-                to_play.click();
-                to_play.click();
-                // 回调函数写到定时器结束里面
+                console.log(music_time.children[0]);
+                music_time.children[0].innerHTML= '00:00' ;
+                audio.currentTime = 0
+                  // 回调函数写到定时器结束里面
                 if (callback) {
                     // 调用函数
                     callback();
                 }
                 callback && callback();
+                return;           
             }
             // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
             obj.style.left = obj.offsetLeft + step + 'px';
             cur.style.width=obj.offsetLeft+10+'px';
             var minute=parseInt(audio.currentTime/60);
             var second=parseInt(audio.currentTime%60)+1;
-            minute=minute<10?'0'+minute:minute;
             second=second<10?'0'+second:second;
             if(second===60){
-                second=0;
+                second = '00';
+                minute = minute+1
             }
+            minute=minute<10?'0'+minute:minute;
             music_time.children[0].innerHTML=minute+':'+second;
         }, 1000);
     }

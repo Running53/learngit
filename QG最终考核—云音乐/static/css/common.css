@@ -21,14 +21,25 @@
   height: 70px;
   background-color: #242424;
 }
+
 .header_m {
   height: 70px;
 }
 .log {
   display: block;
+  position: relative;
   float: left;
   width: 177px;
   height: 70px;
+}
+.QG {
+  position: absolute;
+  top: 6px;
+  left: -9px;
+  width: 60px;
+  height: 60px;
+  background: url(../images/QG.png) no-repeat ;
+  background-size: 100%;
 }
 .log_text {
   font-size: 24px;
@@ -97,13 +108,43 @@
   margin-left: 10px;
   text-indent: 2em;
 }
-.find::before {
-  content: '\e986';
-  font-family: 'icomoon';
+.find .list_group {
   position: absolute;
-  top: 23px;
-  left: 19px; 
-  font-size: 16px;
+  display: none;
+  top: 52px;
+  left: 8px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #ccc;
+  z-index: 3;
+  overflow: hidden;
+}
+.find .list_group .list_group_item {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.find .list_group .list_group_item:hover {
+  background-color: #999;
+}
+.find .list_group .list_group_item span:nth-child(1) {
+  float: left;
+  margin-left:2px ;
+  margin-bottom: 1px;
+}
+.find .list_group .list_group_item span:nth-child(2) {
+  float: right;
+  margin-right: 2px;
+}
+.find .search_btn {
+  position: absolute;
+  top: 20px;
+  left: 7px;
+  width: 30px;
+  height: 30px;
+  background: url(../images/topbar.png) no-repeat 0px -99px;
   cursor: pointer;
 }
 .creater {
@@ -127,7 +168,8 @@
   color:#fff;
   border: 1px solid #fff;
 }
-.region {
+.region,.user {
+  position: relative;
   float: right;
   width: 50px;
   height: 70px;
@@ -135,12 +177,40 @@
   margin: 0px 15px;
   text-align: center;
 }
-.region a {
+.region a,.user a {
   font-size: 14px;
   color: #787878;
 }
-.region a:hover {
+.user >a::after {
+  content: '\e91e';
+  font-family: 'icomoon';
+}
+.region a:hover,.user a:hover {
   text-decoration: underline;
+}
+.user .person {
+  position: absolute;
+  display: none;
+  top: 45px;
+  left: 0px;
+  width: 80px;
+  background-color: brown;
+  z-index: 2;
+}
+.user .person li {
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.user .person li .exit,.user .person li .personal {
+  width: 80px;
+  height: 40px;
+  background-color: #333;
+}
+.user .person li a:hover {
+  background-color: #222;
+  text-decoration: none;
 }
 .footer {
   position: absolute;

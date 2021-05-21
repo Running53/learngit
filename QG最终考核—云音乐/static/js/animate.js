@@ -26,17 +26,19 @@ window.addEventListener('load', function () {
     }
     circle.children[0].className='current';
     var li=circle.querySelectorAll('li');
-    for(var i=0;i<li.length;i++) {
+    for(let i=0;i<li.length;i++) {
         li[i].addEventListener('click',function() {
             for(var i=0;i<li.length;i++){
                 li[i].className='';
             }
             this.className='current';
             var index=this.getAttribute('index');
-            animate(ul,-index*focuswidth);
+            num = this.getAttribute('index')
+            cnt = this.getAttribute('index')
+            animate(ul,-index*focuswidth);  
         })
     }
-    var num=0;
+    let num=0;
     var cnt=0;
     var flag=true;
     next.addEventListener('click',function() {
@@ -116,7 +118,6 @@ function animate(obj, target, callback) {
             callback && callback();
         }
         // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
-        obj.style.left = obj.offsetLeft + step + 'px';
-        
+        obj.style.left = obj.offsetLeft + step + 'px';       
     }, 15);
 }

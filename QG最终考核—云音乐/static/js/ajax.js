@@ -27,7 +27,7 @@ function ajax(options) {
     params = params.substring(0, params.length - 1);
     //判断请求方式  假设是get请求方式的话  在请求地址后面加上请求参数
     if (defaults.type == 'get') {
-        defaults.url = defaults.url + '?' + params;
+        defaults.url = defaults.url + '/?' + params;
     }
     //配置ajax对象  把请求方式和请求地址赋给open函数
     xhr.open(defaults.type, defaults.url);
@@ -60,8 +60,11 @@ function ajax(options) {
 
         var contentType = xhr.getResponseHeader('Content-Type');
         var responseText = xhr.responseText;
-        if (contentType.includes('application/json')) {
-            // console.log('包含');
+        // if (contentType.includes('application/json')) {
+        //     // console.log('包含');
+        //     responseText = JSON.parse(responseText)
+        // }
+        if(/application\/json/.test(contentType)){
             responseText = JSON.parse(responseText)
         }
         if (xhr.status == 200) {
@@ -74,15 +77,6 @@ function ajax(options) {
         }
     }
 }
-ajax({
-    type: 'post',
-    //请求地址
-    url: 'http://localhost:3000/responseData',
-    success: function(data) {
-        console.log('这里是success函数');
-        console.log(data);
-    },
-});
 /* 请求参数要考虑的问题
     1.请求参数位置的问题
     将请求参数传递到ajax函数内部  在函数内部根据请求方式的不同将请求参数放置在不同的位置
