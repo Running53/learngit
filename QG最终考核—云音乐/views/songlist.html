@@ -46,7 +46,7 @@
                 <% }) %>     
                 <div class="operation">
                     <div class="play_all" title="播放全部并添加至播放列表">播放</div>
-                    <div class="collection" title="添加至收藏歌单"></div>
+                    <div class="collections" title="添加至收藏歌单"></div>
                 </div>             
             </div>
         </div>
@@ -66,9 +66,9 @@
                     <div class="song_singer"><%= songlist.singer %></div>
                     <div class="song_from"><%= songlist.album %></div>
                     <h4 class="oper">
-                        <a href="javascript:;" title="播放歌曲"></a>
-                        <a href="javascript:;" title="添加至播放列表"></a>
-                        <a href="javascript:;" title="收藏"></a>
+                        <a href="javascript:;" title="播放歌曲" class="play" id="<%= songlist.id %>"></a>
+                        <a href="javascript:;" title="添加至播放列表" class="addtolist" id="<%= songlist.id %>"></a>
+                        <a href="javascript:;" title="收藏" class="collection" id="<%= songlist.id %>"></a>
                     </h4>  
                 </li>
                 <% }) %>   
@@ -76,15 +76,5 @@
         </div>
        </div>
     </div>
-<!-- <% songList.forEach(songlist => { %>
-    <p><%= songlist.tags %></p>
-    <p><%= songlist.content %></p>
-    <p><%= songlist.playnumber %></p>
-    <p><%= songlist.id %></p>
-    <p><%= songlist.song %></p>
-    <p><%= songlist.singer %></p>
-    <p><%= songlist.album %></p>
-    <p><%= songlist.hot %></p>
-    <p><%= songlist.time.toLocaleString() %></p>
-<% }) %>       -->
+
 <%- include('footer.html')  -%>

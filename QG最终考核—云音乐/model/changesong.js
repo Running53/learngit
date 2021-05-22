@@ -6,7 +6,7 @@ module.exports = class ChangeSong extends require ('./model') {
     */
    static searchthissongs(id) {
        return new Promise((resolve,reject)=>{
-           let sql = 'select id,song,singer,time from playlist where id = ?'
+           let sql = 'select id,song,singer,time from playlist where id = ? order by time desc'
             this.query(sql,id).then(results=> {
                 resolve(results[0])
             }).catch(err => {
@@ -34,7 +34,7 @@ module.exports = class ChangeSong extends require ('./model') {
     */
     static searchlastsongs(time) {
         return new Promise((resolve,reject)=>{
-            let sql = 'select id,song,singer,time from playlist where time > ? limit 1'
+            let sql = 'select id,song,singer,time from playlist where time > ? order by time limit 1'
              this.query(sql,time).then(results=> {
                  resolve(results[0])
              }).catch(err => {

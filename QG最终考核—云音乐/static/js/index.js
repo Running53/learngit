@@ -12,6 +12,8 @@ window.addEventListener('load',function() {
     var play_img = document.querySelector('.play_img')
     var nextsong = document.querySelector('.nextsong')
     var lastsong = document.querySelector('.lastsong')
+    var collection = document.querySelectorAll('.collection')
+    var play_list_number = document.querySelector('.play_list_number')
     var clicktime = 0;
     var duration = 0;
     header_a[0].style.backgroundColor='#000';
@@ -96,9 +98,9 @@ window.addEventListener('load',function() {
             },
             success: function (result) {
                 var str = music_play_list.innerHTML;
-                var reg = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript" title="播放"></a><span title="收藏单曲"></span><span title="删除"></span></li>';
+                var reg = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>';
                 str = str.replace(reg,"");
-                str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript" title="播放">'+'</a><span title="收藏单曲"></span><span title="删除"></span></li>' + str;
+                str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                 music_play_list.innerHTML = str ;
                 if(result.playshowsong.id > 10) {
                     result.playshowsong.id = 10;
@@ -107,6 +109,7 @@ window.addEventListener('load',function() {
                 play_img.children[0].src = src;
                 nextsong.setAttribute('id',result.playshowsong.id)
                 lastsong.setAttribute('id',result.playshowsong.id)
+                collection[0].setAttribute('id',result.playshowsong.id)
             }
         })
       })

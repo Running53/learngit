@@ -82,7 +82,9 @@ window.addEventListener('load',function() {
     minute=minute<10?'0'+minute:minute;
     second=second<10?'0'+second:second;
     if(second===60){
-        second=0;
+        second='00';
+        minute = parseInt(audio.currentTime/60) +1 
+        minute=minute<10?'0'+minute:minute;
     }
     music_time.children[0].innerHTML=minute+':'+second;
     }   
@@ -106,10 +108,13 @@ window.addEventListener('load',function() {
         }
     }
     document.addEventListener('mouseup',function() {
-        console.log(1);
         if(options.isdrag){
             options.isdrag=false;
+            let duration = audio.duration
             audio.currentTime=(options.X/bar.offsetWidth)*duration;
+            if(audio.paused) {
+                to_play.click()
+            }
             document.removeEventListener('mousemove',fn);   //解除document的绑定事件  
         }    
         if(audio.src) {
@@ -155,7 +160,6 @@ window.addEventListener('load',function() {
                 clearInterval(obj.timer);
                 process_button.style.left=0+'px';
                 cur.style.width=0+'px';
-                console.log(music_time.children[0]);
                 music_time.children[0].innerHTML= '00:00' ;
                 audio.currentTime = 0
                   // 回调函数写到定时器结束里面

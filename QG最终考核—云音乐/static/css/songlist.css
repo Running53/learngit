@@ -81,7 +81,7 @@ height: 31px;
     border-bottom-left-radius: 10px;
     cursor: pointer;
 }
-.songlist .mid .songlist_information .songlist_main .collection {
+.songlist .mid .songlist_information .songlist_main .collections {
     float: right;
     width: 31px;
     height: 31px;
@@ -91,7 +91,7 @@ height: 31px;
     border-bottom-right-radius: 10px;
     cursor: pointer;
 }
-.songlist .mid .songlist_information .songlist_main .play_all .collection {
+.songlist .mid .songlist_information .songlist_main .play_all .collections {
     float: right;
     width: 31px;
     height: 31px;

@@ -55,6 +55,12 @@ app.use('/addsongs',require('./router/addsongs'))
 app.use('/nextsong',require('./router/nextsong'))
 // 切换到上一首歌曲子应用
 app.use('/lastsong',require('./router/lastsong'))
+// 收藏歌曲子应用
+app.use('/collection',require('./router/collection'))
+// 点击按钮添加单曲到播放列表子应用
+app.use('/prepare',require('./router/prepare'))
+// 点击按钮将歌单添加至我的收藏歌单子应用
+app.use('/collectall',require('./router/collectall'))
 // 退出功能实现
 app.get('/user/logout',[PlayList.PlayList],(req,res) => {
     req.session.user = null 

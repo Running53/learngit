@@ -42,11 +42,15 @@
                     <span class="process_button"></span>
                     </div>
                 </div>
-                <span class="music_time"><em>00:00</em><em>/00:00</em></span>
+                    <span class="music_time" ><em>00:00</em><em>/00:00</em></span>
             </div>
             <div class="icons">
                 <div class="add">
-                    <a href="javascript:;" title="收藏"></a>
+                <% if(playlists[0]) { %>
+                    <a href="javascript:;" title="收藏" class="collection" id="<%= playlists[0].id%>"></a>
+                    <% } else { %> 
+                    <a href="javascript:;" title="收藏" class="collection"></a>
+                    <% } %>
                     <a href="javascript:;" title="转发"></a>
                 </div>
                 <div class="music_list">
@@ -55,7 +59,7 @@
                     <a class="list" href="javascript:;" title="播放列表"></a>
                     <div class="play_list">
                         <div class="play_list_top">
-                            <h4>播放列表(<span>0</span>)</h4>
+                            <h4>播放列表<span class="play_list_number"></span></h4>
                             <span class="close"></span>
                             <a href="javascript:;" class="clear"><span class="clear_btn"></span>清除</a>
                             <a href="javascript:;" class="collection_all"><span></span>收藏全部</a>                           
@@ -64,7 +68,7 @@
                             <div class="song_title"><span>歌曲</span><span>歌手</span></div>
                             <ul class="music_play_list">  
                             <% playlists.forEach(playlist => { %>
-                                <li><a href="javascript:;"><%= playlist.song %></a><a href="javascript:;"><%= playlist.singer %></a><a href="javascript" title="播放"></a><span title="收藏单曲"></span><span title="删除"></span></li>
+                                <li><a href="javascript:;"><%= playlist.song %></a><a href="javascript:;"><%= playlist.singer %></a><a href="javascript:;" title="播放" class="play" id="<%= playlist.id %>"></a><span title="收藏单曲" class="collection" id="<%= playlist.id %>"></span><span title="删除" class="delete" id="<%= playlist.id %>"></span></li>
                             <% }) %>   
                             </ul>
                         </div>
