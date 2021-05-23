@@ -1,0 +1,35 @@
+<%- include('header.html')  -%>
+<div class="person_nav w">
+    <div class="left_nav">
+        <ul class="personal_door">
+            <li class="person_center"><a href="/admin/person">个人中心</a></li>
+            <li class="person_center"><a href="/admin/song">收藏歌曲</a></li>
+            <li class="person_center"><a href="/admin/list">收藏歌单</a></li>
+            <li class="person_center"><a href="/admin/history">播放历史</a></li>
+            <li class="person_center"><a href="/admin/upload">上传音乐</a></li>
+            <li class="person_center"><a href="/admin/make">制作歌单</a></li>
+        </ul>
+    </div>
+    <div class="right_nav">
+        <h1 class="title">我的收藏歌单列表</h1>
+        <ul class="songList">
+            <% collectlists.forEach(collectlist => { %>                 
+                <li>
+                    <a href="/songlist/<%= collectlist.ids %>">
+                        <img src='/images/song<%= collectlist.ids %>.jpg' alt="">
+                        <div class="mask"></div>
+                        <div class="mask_bottom">
+                            <span class="listen_icon"></span>
+                            <span class="play_numbers"><%= collectlist.playnumber %></span>
+                            <a class="play_icon"></a>
+                        </div>
+                    </a>           
+                    <a href="/songlist/<%= collectlist.ids %>" class="text"><%= collectlist.content %></a>
+                </li>
+                <% }) %>   
+
+               
+        </ul>
+    </div>
+</div>
+<%- include('footer.html')  -%>

@@ -1,3 +1,4 @@
+
 window.addEventListener('load',function(){ 
     var lis = document.querySelectorAll('.songs_title');
     var oper = document.querySelectorAll('.oper');
@@ -11,6 +12,8 @@ window.addEventListener('load',function(){
     var collection = document.querySelectorAll('.collection')
     var audio = document.querySelector('audio')
     var collections = document.querySelector('.collections')
+    var songlist_songs = document.querySelector('.songlist_songs')
+    console.log(songlist_songs);
     for(let i=1;i<lis.length;i++) {
         lis[i].addEventListener('mousemove',function() {
            oper[i-1].style.display='block';
@@ -52,13 +55,16 @@ window.addEventListener('load',function(){
             success: function(results) {
                 console.log(results);
                 var str = '';
-                var src = music_play_list.innerHTML;
+                var src = '';
                 for(var i=results.listsongs.length-1;i >= 0;i--) { 
-                    str = '<li><a href="javascript:;">'+results.listsongs[i].song+'</a><a href="javascript:;">'+results.listsongs[i].singer+'</a><a href="javascript" title="播放" class="play" id="'+results.listsongs[i].id+'"></a><span title="收藏单曲" class="collection" id="'+results.listsongs[i].id+'"></span><span title="删除" class="delete" id="'+results.listsongs[i].id+'"></span></li>';
+                    str = '<li><a href="javascript:;">'+results.listsongs[i].song+'</a><a href="javascript:;">'+results.listsongs[i].singer+'</a><a href="javascript:;" title="播放" class="play" id="'+results.listsongs[i].id+'"></a><span title="收藏单曲" class="collection" id="'+results.listsongs[i].id+'"></span><span title="删除" class="delete" id="'+results.listsongs[i].id+'"></span></li>';
                     src = str + src;
                     if(i == 0) {
                         singer_word.children[0].innerHTML = results.listsongs[0].singer;
                         singer_word.children[1].innerHTML = results.listsongs[0].song;
+                        nextsong.setAttribute('id', results.listsongs[0].id)
+                        lastsong.setAttribute('id', results.listsongs[0].id)
+                        collection[collection.length-1].setAttribute('id', results.listsongs[0].id)
                         if(results.listsongs[0].id >= 10) {
                             results.listsongs[0].id = 10;
                         }
@@ -68,9 +74,7 @@ window.addEventListener('load',function(){
                         audio.setAttribute('src',"/mp3/" + results.listsongs[0].singer + ' - ' + results.listsongs[0].song + ".mp3")
                         audio.load()
                         to_play.click()
-                        nextsong.setAttribute('id', results.listsongs[0].id)
-                        lastsong.setAttribute('id', results.listsongs[0].id)
-                        collection[collection.length-1].setAttribute('id', results.listsongs[0].id)
+   
                     }
                 }          
                 music_play_list.innerHTML = src;   
@@ -86,8 +90,8 @@ window.addEventListener('load',function(){
             },
             success: function() {
                 alert('该歌单已成功添加至收藏歌单当中!')
-            }
+            }          
         })
     })
-    
+
 }) 

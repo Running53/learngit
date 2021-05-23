@@ -37,11 +37,7 @@ module.exports = class PlayerShowList extends require('./model') {
    static deletesong(id) {
     return new Promise((resolve,reject)=>{
         let sql = 'delete from playlist where id = ? limit 1'
-         this.query(sql,id).then(results=> {
-             
-         }).catch(err => {
-             reject(err) 
-         })
+         this.query(sql,id)
      })
     }
       // 点击轮播图查找歌曲模型

@@ -32,4 +32,17 @@ module.exports = class CollectSongs extends require ('./model') {
             })
         })
    }
+   /**
+    *查找正在播放列表里所有的歌曲信息
+    */
+    static searchplaylist() {
+        return new Promise((resolve,reject)=>{
+            let sql = 'select * from playlist'
+             this.query(sql).then(results=> {
+                 resolve(results)
+             }).catch(err => {
+                 reject(err) 
+             })
+         })
+        }
 }

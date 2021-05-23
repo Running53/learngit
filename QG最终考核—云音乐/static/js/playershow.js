@@ -10,12 +10,15 @@ window.addEventListener('load',function() {
     var cur = document.querySelector('.cur');
     var process_button = document.querySelector('.process_button');
     var music_time = document.querySelector('.music_time');
+    var music_play_list = document.querySelector('.music_play_list')
+    var deletes = document.querySelectorAll('.delete')
     process_button.timer = null;
     var duration=0;
     to_play.addEventListener('click',function() {
         if(audio.paused){   
             this.style.backgroundPosition='0 -166px';
-            if(audio.src){
+            if(audio.src != ''){
+                move(process_button,bar.offsetWidth); 
                 audio.oncanplay = function () {
                     duration=audio.duration;
                     minutes();
@@ -28,7 +31,6 @@ window.addEventListener('load',function() {
                 minutes();
                 minute();
                 duration = audio.duration
-                move(process_button,bar.offsetWidth);
             }else {
                     duration = 0
                   }
@@ -138,7 +140,7 @@ window.addEventListener('load',function() {
             options.X=0;
         }
             process_button.style.left=options.X-15+'px';
-            cur.style.width=options.X+3+'px';    
+            cur.style.width=options.X+3+'px';         
     }
    
     var music_time=document.querySelector('.music_time');
@@ -171,8 +173,10 @@ window.addEventListener('load',function() {
                 return;           
             }
             // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
-            obj.style.left = obj.offsetLeft + step + 'px';
-            cur.style.width=obj.offsetLeft+10+'px';
+            if(duration) {
+                obj.style.left = obj.offsetLeft + step + 'px';
+                cur.style.width=obj.offsetLeft+10+'px';
+            }       
             var minute=parseInt(audio.currentTime/60);
             var second=parseInt(audio.currentTime%60)+1;
             second=second<10?'0'+second:second;
@@ -181,7 +185,16 @@ window.addEventListener('load',function() {
                 minute = minute+1
             }
             minute=minute<10?'0'+minute:minute;
-            music_time.children[0].innerHTML=minute+':'+second;
+            if(duration) {
+                music_time.children[0].innerHTML=minute+':'+second;
+            }else {
+                music_time.children[0].innerHTML='00:00/';
+            }
         }, 1000);
     }
+    music_play_list.addEventListener('click',function(e) {
+        if(e.target.className == 'delete') {
+            clearInterval(process_button.timer)
+        }
+    })
 })

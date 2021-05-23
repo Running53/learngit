@@ -15,7 +15,7 @@ window.addEventListener('load',function() {
     var add = document.querySelector('.add')
     var play = document.querySelectorAll('.play')
     var addtolist = document.querySelectorAll('.addtolist')
-    
+    var collection_all = document.querySelector('.collection_all')
     for(var i=0;i<collection.length;i++) {
         collection[i].addEventListener('click',function() {
             let id = this.getAttribute('id');
@@ -87,7 +87,6 @@ window.addEventListener('load',function() {
                 id: id
             },
             success: function(result) {
-                console.log(result);
                 if(result) {//存在下一首歌曲才执行操作
                     singer_word.children[0].innerHTML = result.singer
                     singer_word.children[1].innerHTML = result.song
@@ -125,9 +124,11 @@ window.addEventListener('load',function() {
                     str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                     music_play_list.innerHTML = str ;
                     if(result.playshowsong.id > 10) {
-                        result.playshowsong.id = 10;
+                        id = 10;
+                    }else {
+                        id = result.playshowsong.id
                     }
-                    var src = "/images/img" + result.playshowsong.id + ".jpg";
+                    var src = "/images/img" + id + ".jpg";
                     audio.setAttribute('src',"/mp3/" + result.playshowsong.singer + ' - ' + result.playshowsong.song + ".mp3")
                     audio.load()
                     to_play.click()
@@ -152,6 +153,33 @@ window.addEventListener('load',function() {
                     alert('歌曲已成功添加至您的收藏歌曲中！')
                 }
             })
+        }else if(e.target.className == 'delete') {
+            let id = e.target.getAttribute('id')
+            ajax({
+                url: '/delete',
+                data: {
+                    id: id
+                },
+                success: function(result) {
+                    console.log(result);
+                    var str = music_play_list.innerHTML;
+                    console.log(str);
+                    var reg = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>';
+                    str = str.replace(reg,"");
+                    music_play_list.innerHTML = str ;
+                    if(result.playshowsong.id == add.children[0].getAttribute('id')) {
+                        audio.setAttribute('src','')
+                        singer_word.children[0].innerHTML = ''
+                        singer_word.children[1].innerHTML = ''
+                        play_img.children[0].setAttribute('src','')
+                        audio.currentTime = 0
+                        process_button.style.left = 0 + 'px'
+                        cur.style.width = 0 + 'px'
+                        music_time.children[0].innerHTML = '00:00/'
+                        music_time.children[1].innerHTML = '00:00'
+                    }
+                }
+            })
         }
     })
     for (var i=0;i<play.length;i++) {
@@ -169,9 +197,11 @@ window.addEventListener('load',function() {
                     str = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>' + str;
                     music_play_list.innerHTML = str ;
                     if(result.playshowsong.id > 10) {
-                        result.playshowsong.id = 10;
+                        id = 10
+                    }else {
+                        id = result.playshowsong.id
                     }
-                    var src = "/images/img" + result.playshowsong.id + ".jpg";
+                    var src = "/images/img" + id + ".jpg";
                     audio.setAttribute('src',"/mp3/" + result.playshowsong.singer + ' - ' + result.playshowsong.song + ".mp3")
                     audio.load()
                     to_play.click()
@@ -206,4 +236,16 @@ window.addEventListener('load',function() {
             })
         })
     }
+    collection_all.addEventListener('click',function() {
+        if(music_play_list.innerHTML !== '') {
+            ajax({
+                url: '/collectplaylist',
+                success: function() {
+                    alert('播放列表中的所有歌曲已经全部为您添加到收藏歌曲中！')
+                }
+            })
+        }else {
+            alert('您的播放列表中还没有歌曲！')
+        }
+    })
 })

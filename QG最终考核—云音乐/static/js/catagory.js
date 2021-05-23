@@ -30,5 +30,5 @@ window.addEventListener('load',function(){
             this.style.background='url(/images/play_button.png) no-repeat -297px -268px'
         })
    }
-
+   
 }) 

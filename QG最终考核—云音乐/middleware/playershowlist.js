@@ -27,10 +27,10 @@ module.exports = {
             second=second < 10 ? ('0' + second) : second;
             let time = y + '-' + m + '-' + d+' '+h+':'+minute+':'+second  //获取到当前时间     
             playershowlist.getplayshowsong(id).then(results =>{
+            playershowlist.deletesong(results.id)
+            playershowlist.addsongtohistorylist(results.id,results.song,results.singer,time)
             req.playshowsong = results
-            playershowlist.deletesong(req.playshowsong.id)
-            playershowlist.addsongtoplaylist(req.playshowsong.id,req.playshowsong.song,req.playshowsong.singer,time)
-            playershowlist.addsongtohistorylist(req.playshowsong.id,req.playshowsong.song,req.playshowsong.singer,time)
+            playershowlist.addsongtoplaylist(results.id,results.song,results.singer,time)
             next()
        }).catch(function(err) {
            next(err)

@@ -4,8 +4,8 @@ const CollectionMusic = require('../middleware/collection')
 
 const CollectionMusicApp = express()
 
-CollectionMusicApp.get('/?',CollectionMusic.addcollectionsong,(req,res)=>{
-res.send()
+CollectionMusicApp.get('/',CollectionMusic.addcollectionsong,(req,res)=>{
+    res.send()
 })
 
 module.exports = CollectionMusicApp

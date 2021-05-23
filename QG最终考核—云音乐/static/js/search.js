@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
             list_box.style.display = 'block';
         }
     })
+
+    let timer = null;
     search.addEventListener('input', function () {
         // 获取用户输入的内容
         var keyword = this.value;
@@ -22,13 +24,12 @@ window.addEventListener('load', function () {
             // 阻止程序向下执行
             return;
         }
-        var timer = null;
         //  向服务器端发送请求
         // 向服务器端索取和用户输入关键字相关的内容
+        //    清除上一次的定时器
+        clearTimeout(timer);
         // 开启定时器，让请求延时发送
         timer = setTimeout(function () {
-            //    清除上一次的定时器
-            clearTimeout(timer);
             ajax({
                 url: '/search',
                 data: {

@@ -1,10 +1,12 @@
 // 添加歌单到播放列表子应用
 const AddSongs = require('../model/addsongs')
 const playershowlist = require('../model/playershowlist')
+const ClearPlayList = require('../model/clearplaylist')
 
 module.exports = {
     // 添加歌单到播放列表操作
     searchsongs: (req,res,next) =>{
+        ClearPlayList.clearPlayList()
         let id = req.query.id      
         if(id>8) {
             id = id%8

@@ -1,5 +1,6 @@
 // 添加歌单到播放列表子应用
 const CollectAll = require('../model/collectall')
+const ClearPlayList = require('../model/clearplaylist')
 
 module.exports = {
     // 添加歌单到播放列表操作

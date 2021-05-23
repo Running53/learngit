@@ -1,0 +1,155 @@
+.person_nav {
+    height: 800px;
+    background-color: rgb(240, 234, 234) ;
+}
+.left_nav {
+    float: left;
+    width: 200px;
+    height: 800px;
+    background-color: rgb(240, 165, 143);
+}
+.left_nav .personal_door {
+    width: 100%;
+    background-color: rgb(139, 134, 130);
+}
+.left_nav .personal_door a {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    background-color: rgb(240, 151, 78);
+    border-bottom: 2px solid #666;
+}
+.left_nav .personal_door a:hover {
+    background-color: rgb(238, 119, 8);
+}
+.right_nav {
+    float: right;
+    width: 880px;
+    height: 800px;
+    background-color: rgb(209, 214, 204);
+}
+.right_nav .last_time {
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    background-color: rgb(87, 90, 87);   
+}
+.right_nav .last_time .login_time {
+    color: rgb(248, 192, 9);
+}
+.right_nav .number {
+    height: 100px;
+    /* background-color: darkgoldenrod; */
+}
+.right_nav .number li {
+    float: left;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    /* background-color: darkseagreen; */
+    margin: 0 10px;
+}
+.right_nav .number li .number_source {
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 20px;
+    background-color: darkturquoise;
+}
+.right_nav .number li .the_number {
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    color: floralwhite;
+    background-color: rgb(136, 131, 138);
+}
+.right_nav .personal_information {
+    height: 600px;
+    /* background-color: fuchsia; */
+    margin-top: 20px;
+}
+.right_nav .mycollectmusic {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: rgb(250, 248, 236);
+}
+.right_nav .mycollectmusic h1 {
+    height: 60px;
+    text-align: center; 
+    line-height: 60px;
+    color: #fff;
+    background-color: rgba(68, 241, 213, 0.966);   
+}
+.right_nav .mycollectmusic ul {
+    height: 580px;
+    overflow: auto;
+    background-color: rgb(194, 189, 191);
+}
+.right_nav .mycollectmusic ul li,.right_nav .mycollectmusic .song_head {
+    width: 704px;
+    height: 40px;
+    /* background-color: khaki; */
+}
+.right_nav .mycollectmusic ul li div,.right_nav .mycollectmusic .song_head div {
+    float: left;
+    width: 33.33%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.right_nav .mycollectmusic .show_music:hover {
+    background-color: rgb(207, 205, 205);
+}
+.right_nav .mycollectmusic ul li {
+    position: relative;
+}
+.right_nav .mycollectmusic ul li .oper {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    display: none;
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    
+    transform: translateX(-50%);
+}
+.right_nav .mycollectmusic ul li .oper a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 10px 2px 0px 2px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(1) {
+    background: url(/images/play_button.png) no-repeat -267px -268px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(2) {
+    background: url(/images/add.png) no-repeat 1px -698px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(3) {
+    background: url(/images/play_button.png) no-repeat -297px -268px ;
+}
+.right_nav .songList {
+    width: 880px;
+    height: 800px;
+    padding-left: 90px;
+}
+.right_nav .songList li {
+    margin-bottom: -30px; 
+}
+.right_nav .title {
+    width: 880px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: turquoise;
+}

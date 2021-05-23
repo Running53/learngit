@@ -10,5 +10,30 @@ module.exports = {
         }).catch(function(err) {
             next(err)
         })
+    },
+    getcollectsonglist: (req,res,next) =>{
+        PlayList.getcollectsonglist().then(results =>{
+             req.collectsongs = results
+             next()
+        }).catch(function(err) {
+            next(err)
+        })
+    },
+    getcollectlist: (req,res,next) =>{
+        PlayList.getcollectlist().then(results =>{
+             req.collectlists = results
+             next()
+        }).catch(function(err) {
+            next(err)
+        })
+    },
+    gethistorylist: (req,res,next) =>{
+        PlayList.gethistorylist().then(results =>{
+             req.history_songs = results
+             next()
+        }).catch(function(err) {
+            next(err)
+        })
     }
+    
 }

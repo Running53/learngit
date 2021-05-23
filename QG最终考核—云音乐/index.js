@@ -61,6 +61,12 @@ app.use('/collection',require('./router/collection'))
 app.use('/prepare',require('./router/prepare'))
 // 点击按钮将歌单添加至我的收藏歌单子应用
 app.use('/collectall',require('./router/collectall'))
+// 点击删除按钮将歌曲从播放列表中删除的子应用
+app.use('/delete',require('./router/delete'))
+// 点击收藏按钮将播放列表中的所有歌曲添加到我的收藏子应用
+app.use('/collectplaylist',require('./router/collectplaylist'))
+// 调用个人中心首页
+app.use('/admin',require('./router/admin/index'))
 // 退出功能实现
 app.get('/user/logout',[PlayList.PlayList],(req,res) => {
     req.session.user = null 

@@ -97,6 +97,7 @@ window.addEventListener('load',function() {
                 id: this.id 
             },
             success: function (result) {
+                console.log(result);
                 var str = music_play_list.innerHTML;
                 var reg = '<li><a href="javascript:;">'+result.playshowsong.song+'</a><a href="javascript:;">'+result.playshowsong.singer+'</a><a href="javascript:;" title="播放" class="play" id="'+result.playshowsong.id+'"></a><span title="收藏单曲" class="collection" id="'+result.playshowsong.id+'"></span><span title="删除" class="delete" id="'+result.playshowsong.id+'"></span></li>';
                 str = str.replace(reg,"");

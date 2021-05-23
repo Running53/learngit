@@ -1,0 +1,37 @@
+<%- include('header.html')  -%>
+<script src="/js/personal_play.js"></script>
+
+<div class="person_nav w">
+    <div class="left_nav">
+        <ul class="personal_door">
+            <li class="person_center"><a href="/admin/person">个人中心</a></li>
+            <li class="person_center"><a href="/admin/song">收藏歌曲</a></li>
+            <li class="person_center"><a href="/admin/list">收藏歌单</a></li>
+            <li class="person_center"><a href="/admin/history">播放历史</a></li>
+            <li class="person_center"><a href="/admin/upload">上传音乐</a></li>
+            <li class="person_center"><a href="/admin/make">制作歌单</a></li>
+        </ul>
+    </div>
+    <div class="right_nav">
+            <div class="mycollectmusic">
+                <h1>我的播放历史列表</h1>
+                <h4 class="song_head"><div>歌手</div><div>歌曲</div><div>播放时间</div></h4>
+                <ul>
+                <% history_songs.forEach(history_song => { %>                 
+                    <li class="show_music">
+                        <div class="song_name"><%= history_song.song %></div>
+                        <div class="singer_name"><%= history_song.singer %></div>
+                        <div class="time_name"><%= history_song.time.toLocaleString() %></div>
+                        <h4 class="oper">
+                            <a href="javascript:;" title="播放歌曲" class="play" id="<%= history_song.id %>"></a>
+                            <a href="javascript:;" title="添加至播放列表" class="addtolist" id="<%= history_song.id %>"></a>
+                            <a href="javascript:;" title="添加至我的收藏列表" class="collection" id="<%= history_song.id %>"></a>
+                        </h4>  
+                    </li>
+                <% }) %>   
+            
+                </ul>
+            </div>
+    </div>
+</div>
+<%- include('footer.html')  -%>

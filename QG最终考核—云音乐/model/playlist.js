@@ -14,5 +14,35 @@ module.exports = class GetPlayList extends require('./model') {
             })
         })
    }
+   static getcollectsonglist() {
+    return new Promise((resolve,reject)=>{
+        let sql = 'select id,song,singer,time from collectmusic order by time desc'
+         this.query(sql).then(results=> {
+             resolve(results)
+         }).catch(err => {
+             reject(err) 
+         })
+     })
+    }
+    static getcollectlist() {
+        return new Promise((resolve,reject)=>{
+            let sql = 'select ids,playnumber,content,hot,time from collectlist order by time desc'
+             this.query(sql).then(results=> {
+                 resolve(results)
+             }).catch(err => {
+                 reject(err) 
+             })
+         })
+        }
+        static gethistorylist() {
+            return new Promise((resolve,reject)=>{
+                let sql = 'select id,song,singer,time from historylist order by time desc'
+                 this.query(sql).then(results=> {
+                     resolve(results)
+                 }).catch(err => {
+                     reject(err) 
+                 })
+             })
+            }
 
 }
