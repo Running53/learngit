@@ -3,11 +3,22 @@ const express=require('express')
 
 // 引入session
 const session = require('cookie-session')
+const multer = require('multer')
 const PlayList = require('./middleware/playlist')
-
+const Modify = require('./middleware/modify')
+const path = require('path')
+const fs = require('fs')
 
 // 创建主应用，相当于创建了一个web服务器
 const app = express()
+
+// 上传配置,需要在静态资源之前给它配置好
+const upload = multer({
+    dest:'./static/mp3',        //上传文件的存储目录
+    limits: {
+        fileSize: 1024 * 1024 *20   //单个文件大小控制在20M以内
+    }
+})
 
 // 模板引擎的设置
 app.set('view engine','html')
@@ -29,6 +40,13 @@ app.use(session({
     maxAge: 1000 * 60 *30//session的有效期为30分钟
 }))
 
+// session延期,防止用户操作过程中需要重新登录
+app.use((req,res,next)=> {
+    req.session.nowInMinutes = Math.floor(Date.now() /60e3)
+    next()
+})
+
+
 //利用正则表达式简写代码
 app.use(/\/(index)?/,require('./router/index'))
 // 调用分类歌曲子应用
@@ -44,7 +62,22 @@ app.use('/songlist',require('./router/songlist'))
 // 调用查找注册时有无重复的用户名子应用
 app.use('/searchusername',require('./router/searchusername'))
 // 调用个人中心的权限验证子应用
+//这样就可以给个人中心的所有模块都加上个人验证
 app.use('/admin/?*',require('./middleware/auth').allowToAddmin)//这样就可以给个人中心的所有模块都加上个人验证
+
+// 上传操作
+app.post('/admin/*',upload.single('upload'),(req,res,next)=>{
+    let {file} = req //如果上传成功之后，在req里面自动封装一个file对象
+    if(file) { //上传后的文件是不带后缀名的，我们需要对它进行重命名
+        let extname = path.extname(file.originalname)   //file.originalname==>获取文件原来的文件名
+        fs.renameSync(file.path,'static\\mp3\\'+ file.originalname)
+        req.uploadUrl = '/mp3/' + file.originalname
+        require('./router/admin/index')
+    }
+    next()
+})
+// 这里的upload为file里的name值
+
 // 将歌曲存放到播放列表和历史记录子应用
 app.use('/savetolist',require('./router/savetolist'))
 // 清空播放列表子应用
@@ -67,10 +100,11 @@ app.use('/delete',require('./router/delete'))
 app.use('/collectplaylist',require('./router/collectplaylist'))
 // 调用个人中心首页
 app.use('/admin',require('./router/admin/index'))
+
 // 退出功能实现
-app.get('/user/logout',[PlayList.PlayList],(req,res) => {
+app.get('/user/logout',[PlayList.PlayList,Modify.getmodify_information],(req,res) => {
     req.session.user = null 
-    res.render('login',{msg:'退出成功',user:0,playlists:req.playlists})
+    res.render('login',{msg:'退出成功',user:0,playlists:req.playlists,modify_informations:req.modify_informations})
 })
 
 // 监听服务器端口

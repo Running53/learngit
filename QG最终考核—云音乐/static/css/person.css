@@ -153,3 +153,98 @@
     text-align: center;
     background-color: turquoise;
 }
+.right_nav .personal_information {
+    height: 600px;
+    background-color: cadetblue;
+}
+.right_nav .personal_information h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    background-color: chartreuse;
+}
+.right_nav .personal_information form {
+    width: 560px;
+    height: 600px;
+    font-size: 20px;
+    float: right;
+    margin: 60px auto;
+}
+.right_nav .personal_information form div span {
+    margin-left: 17px;
+}
+.right_nav .personal_information form label {
+    margin-bottom: 20px;
+}
+.right_nav .personal_information form input {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+}
+.right_nav .personal_information form textarea {
+    font-size: 16px;
+    border-radius: 10px;
+}
+label{
+    display: inline-block;
+    min-width: 85px;/*或者 width: 100px;*/
+}
+.right_nav .personal_information form .subscription_label {
+    position: relative;
+    top: -24px;
+}
+.right_nav .personal_information select {
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.right_nav .personal_information .save {
+    width: 100px;
+    height: 50px;
+    background-color: #00a1d6;
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 75px;
+    border-radius: 40px;
+}
+.right_nav .personal_information .save:hover {
+    background-color: rgb(0, 255, 255);
+    cursor: pointer;
+}
+.right_nav .select_species{
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    display: inline-block;
+    margin: 100px 0px 20px 0px;
+}
+.right_nav  #file-input {
+    margin-left: 353px;
+    width: 400px;
+    font-size: 20px;
+    display: block;
+}
+.right_nav .classify {
+    color: #fff;
+    font-size: 16px;
+    margin-left: 273px;
+}
+.person_nav .right_nav form button {
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    color: #fff;
+    margin: 30px 0px 0px 385px;
+    background-color: rgb(253, 142, 68);
+}
+.person_nav .right_nav form button:hover {
+    background-color: rgb(245, 101, 6);
+}
+.person_nav .right_nav .tip {
+    font-size: 14px;
+    text-align: center;
+    color:rgb(112, 110, 110);
+    margin-top: 4px;
+}

@@ -21,7 +21,6 @@ function ajax(options) {
         params += i + '=' + defaults.data[i] + '&';
     }
 
-
     // console.log(params);
     //将参数最后面的&符截取掉  
     params = params.substring(0, params.length - 1);

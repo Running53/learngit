@@ -8,11 +8,12 @@ const songSpecies = require('../middleware/songSpecies')
 const auth = require('../middleware/auth')
 const playershowlist = require('../middleware/playershowlist')
 const PlayList = require('../middleware/playlist')
+const Modify = require('../middleware/modify')
 
 indexApp.use(auth.getUser)
 
 //加载首页页面
-indexApp.get('/',[recommend.getHot,recommend.getSongList,songSpecies.getSongSpecies,songSpecies.getNewSongSpecies,auth.getUser,playershowlist.getPlayerShowList,PlayList.PlayList],(req,res)=> {  
-    res.render('index',{hots:req.hots,news:req.news,songSpecies:req.songSpecies,newSongSpecies:req.newSongSpecies,user:req.user,playershowlist:req.playershowlist,playlists:req.playlists})
+indexApp.get('/',[recommend.getHot,recommend.getSongList,songSpecies.getSongSpecies,songSpecies.getNewSongSpecies,auth.getUser,playershowlist.getPlayerShowList,PlayList.PlayList,Modify.getmodify_information],(req,res)=> {  
+    res.render('index',{hots:req.hots,news:req.news,songSpecies:req.songSpecies,newSongSpecies:req.newSongSpecies,user:req.user,playershowlist:req.playershowlist,playlists:req.playlists,modify_informations:req.modify_informations})
 })
 module.exports =indexApp 

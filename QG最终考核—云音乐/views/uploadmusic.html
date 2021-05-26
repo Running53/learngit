@@ -1,0 +1,42 @@
+
+<%- include('header.html')  -%>
+<script src="/js/public.js"></script>
+<div class="person_nav w">
+    <%- include('navs.html')  -%>
+    <div class="right_nav">
+        <span class="classify">音乐分类：</span><select name="select_species" id="select_species" class="select_species">
+            <option value="">请选择您上传音乐的类型</option>
+            <% songSpecies.forEach(songSpecies => { %> 
+            <option value="<%= songSpecies.songSpecies %>" id='<%= songSpecies.id %>'><%= songSpecies.songSpecies %></option>
+            <% }) %>       
+        </select>
+        <form action="/admin/upload_music" method="post" enctype="multipart/form-data">
+            <input type="file" id="file-input" name="upload">
+            <button type="submit" value="上传">上传</button>
+        </form>
+        <p class="tip">上传文件后请等待浏览器提示信息后方可退出,否则容易导致上传音乐失败</p>
+    </div>   
+</div>
+<script>
+    var button = document.querySelector('button')
+    var select_species = document.getElementById('select_species')
+    button.addEventListener('click',function() {
+        var index=select_species.selectedIndex
+        var songspecies = select_species.children[index].text
+        setTimeout(function() {
+            ajax({
+            url: '/admin/UploadMusic',
+            data: {
+                songspecies: songspecies
+            },
+            success: function() {
+
+                alert('歌曲已成功上传至音乐库中！')
+            }
+             })
+        },2000)
+        
+
+    })
+</script>
+<%- include('footer.html')  -%>

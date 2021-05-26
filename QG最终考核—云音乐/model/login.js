@@ -15,6 +15,20 @@ module.exports = class User extends require ('./model') {
             })
         })
    }
+    /**
+    *记录用户登录时间
+    * @param {string} time 登录时的时间
+    */
+   static logintime(time) {
+    return new Promise((resolve,reject)=>{
+        let sql = 'insert into logintime values(?)'
+         this.query(sql,time).then(results=> {
+             resolve(results)
+         }).catch(err => {
+             reject(err) 
+         })
+     })
+}
    /**
     *用户注册
     * @param {string} username 账号

@@ -73,7 +73,11 @@
             <div class="region"><a href="/login">登录</a></div>
         <% } else { %>
             <div class="user">
-                <a href="javascript:;"><%= user.username %></a>
+                <% if (modify_informations) { %>
+                 <a href="javascript:;"><%= modify_informations.uname %></a>   
+                 <% } else { %>
+                 <a href="javascript:;"><%= user.username %></a>
+                 <% } %>    
                 <ul class="person">
                     <li><a href="/admin/person" class="personal">个人中心</a></li>
                     <li><a href="/user/logout" class="exit">退出</a></li>

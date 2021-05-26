@@ -1,40 +1,51 @@
 <%- include('header.html')  -%>
-<!-- left_nav区域begin -->
-<div class="person_nav w">
-<div class="left_nav">
-    <ul class="personal_door">
-        <li class="person_center"><a href="/admin/person">个人中心</a></li>
-        <li class="person_center"><a href="/admin/song">收藏歌曲</a></li>
-        <li class="person_center"><a href="/admin/list">收藏歌单</a></li>
-        <li class="person_center"><a href="/admin/history">播放历史</a></li>
-        <li class="person_center"><a href="/admin/upload">上传音乐</a></li>
-        <li class="person_center"><a href="/admin/make">制作歌单</a></li>
-    </ul>
-</div>
-<div class="right_nav">
-        <div class="last_time">上次登录时间为：<span class="login_time">2021-5-23 21:56:10</span></div>
+<script src="/js/public.js"></script>
+<script src="/js/personal_information.js"></script>
+<div class="person_nav w"> 
+    <%- include('navs.html')  -%>
+
+ <div class="right_nav">
+        <div class="last_time">上次登录时间为：<span class="login_time"><%= lastlogintime.toLocaleString() %></span></div>
             <ul class="number">
                 <li class="song_number">
                     <div class="number_source">收藏歌曲数量</div>
-                    <div class="the_number">15</div>
+                    <div class="the_number"><%= collectsongs.length %></div>
                 </li>
                 <li class="list_number">
                     <div class="number_source">收藏歌单数量</div>
-                    <div class="the_number">20</div>
+                    <div class="the_number"><%= collectlists.length %></div>
                 </li>
                 <li class="uploadmusic_number">
                     <div class="number_source">上传音乐数量</div>
-                    <div class="the_number">13</div>
+                    <div class="the_number"><%= counts %></div>
                 </li>
                 <li class="mylist_number">
                     <div class="number_source">播放历史数量</div>
-                    <div class="the_number">152</div>
+                    <div class="the_number"><%= history_songs.length %></div>
                 </li>
             </ul>
-            <div class="personal_information">
-
+             <div class="personal_information">
+                <h2>个人信息</h2>
+                <form action="">
+                    <% if(!modify_informations) { %>
+                    <label for="uname">昵称：</label><input type="text" id='uname' value=''><br>
+                    <div>账号：<span> <%= user.username %></span></div></br>
+                    <label for="sex">性别：</label><select name="sex" id="sex"><option value="请选择您的性别">请选择您的性别</option><option value="男">男</option><option value="女">女</option></select></br>
+                    <label for="subscription" class="subscription_label">个性签名:</label><textarea name="subscription" class="subscription" cols="30" rows="3"></textarea></textarea></br>
+                    <label for="birthday">生日：</label><input type="text" class="birthday" value=''></br>
+                    <% }else { %>
+                     <label for="uname">昵称：</label><input type="text" id='uname' value='<%= modify_informations.uname %>'><br>
+                    <div>账号：<span><%= user.username %></span></div></br>
+                    <label for="sex">性别：</label><select name="sex" id="sex"><option value=""><%= modify_informations.sex %></option><option value="男">男</option><option value="女">女</option></select></br>
+                    <label for="subscription" class="subscription_label">个性签名:</label><textarea name="subscription" class="subscription" cols="30" rows="3"><%= modify_informations.subscription %></textarea></textarea></br>
+                    <label for="birthday">生日：</label><input type="text" class="birthday" value='<%= modify_informations.birthday %>'></br>
+                    <% } %>
+                    <input type="button" value="保存" class="save"> 
+                </form>
             </div>
-</div>
+         </div> 
 </div>
 <!-- left_nav区域end -->
+
+
 <%- include('footer.html')  -%>

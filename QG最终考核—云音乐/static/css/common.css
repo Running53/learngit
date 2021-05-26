@@ -179,6 +179,7 @@
 }
 .region a,.user a {
   font-size: 14px;
+  white-space: nowrap;
   color: #787878;
 }
 .user >a::after {

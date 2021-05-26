@@ -69,7 +69,6 @@ window.addEventListener('load',function() {
             to_play.click();           
           }
           audio.setAttribute('src',"/mp3/"+this.className +".mp3")
-        //   audio.src="/mp3/"+this.className +".mp3";
           audio.load();//重新加载防止duration为NaN  
           audio.oncanplay = function () {
               duration=audio.duration;
