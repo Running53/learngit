@@ -4,6 +4,9 @@ window.addEventListener('load',function() {
     var subscription = document.querySelector('.subscription')
     var sex = document.getElementById('sex')
     var birthday = document.querySelector('.birthday')
+    var user = document.querySelector('.user')
+    var form = document.querySelector('form')
+    var login_time = document.querySelectorAll('.login_time')
     submit.addEventListener('click',function() {
         var index=sex.selectedIndex
         var sexy =sex.children[index].text
@@ -26,6 +29,26 @@ window.addEventListener('load',function() {
                     birthday: birthday.value
                 },
                 success: function(result) {
+                    if(uname.value == ''){
+                        var username = form.querySelector('span')
+                        user.children[0].innerHTML = username.innerHTML
+                    }else {
+                        user.children[0].innerHTML = uname.value
+                    }
+                    let date = new Date()
+                    var y = date.getFullYear();
+                    let m = date.getMonth() + 1;
+                    m = m < 10 ? ('0' + m) : m;
+                    let d = date.getDate();
+                    d = d < 10 ? ('0' + d) : d;
+                    let h = date.getHours();
+                    h=h < 10 ? ('0' + h) : h;
+                    let minute = date.getMinutes();
+                    minute = minute < 10 ? ('0' + minute) : minute;
+                    let second=date.getSeconds();
+                    second=second < 10 ? ('0' + second) : second;
+                    let time = y + '-' + m + '-' + d+' '+h+':'+minute+':'+second  //获取到当前时间
+                    login_time[1].innerHTML = time.toLocaleLowerCase()
                     alert('您的个人信息已成功更新！')
                 }
             })

@@ -1,0 +1,27 @@
+<%- include('header.html')  -%>
+<div class="person_nav w">
+
+<%- include('navs.html')  -%>
+
+<div class="classify_main">
+    <div class="classify_species"><span>请输入您自定义的歌曲分类名称：</span><input type="text" class="classify_information"></div>
+    <button>提交</button>
+</div>
+</div>
+<script>
+    var btn = document.querySelector('button')
+    var input = document.querySelector('.classify_information')
+    btn.addEventListener('click',function() {
+        ajax({
+            url: '/admin/classify_species',
+            data: {
+                classifyName: input.value
+            },
+            success: function(results) {
+                input.value = ''
+                alert('您的自定义分类' + results + '已成功添加至歌曲分类中！')
+            }
+        })
+    })
+</script>
+<%- include('footer.html')  -%>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/songlist.css">
     <link rel="stylesheet" href="/css/person.css">
+    <link rel="stylesheet" href="/css/more.css">
     <script src="/js/ajax.js"></script>
     <script src="/js/music_operation.js"></script>
     <script src="/js/playershow.js"></script>
@@ -73,7 +74,7 @@
             <div class="region"><a href="/login">登录</a></div>
         <% } else { %>
             <div class="user">
-                <% if (modify_informations) { %>
+                <% if (modify_informations&&modify_informations.uname) { %>
                  <a href="javascript:;"><%= modify_informations.uname %></a>   
                  <% } else { %>
                  <a href="javascript:;"><%= user.username %></a>

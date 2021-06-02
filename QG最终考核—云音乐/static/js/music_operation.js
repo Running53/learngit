@@ -36,12 +36,12 @@ window.addEventListener('load',function() {
             success: function(result) {
                 list.click()//相当于使用手动点击播放列表按钮把播放列表框隐藏
                 music_play_list.innerHTML = ''
-                audio.src = ''
+                audio.setAttribute('src','')
+                console.log(audio.src);
                 play_img.children[0].src = ''
                 singer_word.children[0].innerHTML = ''
                 singer_word.children[1].innerHTML = ''
                 cur.style.width = 0 + 'px'
-                console.log(cur);
                 process_button.style.left = 0 + 'px'
                 to_play.click()
                 music_time.children[0].innerHTML = '00:00/'
@@ -65,7 +65,7 @@ window.addEventListener('load',function() {
                     add.children[0].setAttribute('id',result.id)
                     if(result.id > 10 && result.id %10 != 0 ) {
                         id = result.id%10;
-                    }else if(result.id %10 == 0) {
+                    }else if(result.id %10 == 0&&result.id !=10) {
                         id = result.id/10;
                     }
                     else {
@@ -77,6 +77,7 @@ window.addEventListener('load',function() {
                     process_button.style.left = 0 + 'px'
                     cur.style.width = 0 + 'px'
                     audio.currentTime = 0
+                    music_time.children[0].innerHTML = '00:00'
                     to_play.click()
                 } else {
                     alert('当前歌曲已是播放列表最后一首歌曲！')
@@ -100,7 +101,7 @@ window.addEventListener('load',function() {
                     add.children[0].setAttribute('id',result.id)
                     if(result.id > 10 && result.id %10 != 0 ) {
                         id = result.id%10;
-                    }else if(result.id %10 == 0) {
+                    }else if(result.id %10 == 0&&result.id !=10) {
                         id = result.id/10;
                     }
                     else {
@@ -112,6 +113,7 @@ window.addEventListener('load',function() {
                     process_button.style.left = 0 + 'px'
                     cur.style.width = 0 + 'px'
                     audio.currentTime = 0
+                    music_time.children[0].innerHTML = '00:00'
                     to_play.click()
                 } else {
                     alert('当前歌曲已是播放列表最前一首歌曲！')
@@ -135,7 +137,7 @@ window.addEventListener('load',function() {
                     music_play_list.innerHTML = str ;
                     if(result.playshowsong.id > 10 && result.playshowsong.id %10 != 0 ) {
                         id = result.playshowsong.id%10;
-                    }else if(result.playshowsong.id %10 == 0) {
+                    }else if(result.playshowsong.id %10 == 0&&result.playshowsong.id !=10) {
                         id = result.playshowsong.id/10;
                     }
                     else {
@@ -211,7 +213,7 @@ window.addEventListener('load',function() {
                     music_play_list.innerHTML = str ;
                     if(result.playshowsong.id > 10 && result.playshowsong.id %10 != 0 ) {
                         id = result.playshowsong.id%10;
-                    }else if(result.playshowsong.id %10 == 0) {
+                    }else if(result.playshowsong.id %10 == 0&&result.playshowsong.id !=10) {
                         id = result.playshowsong.id/10;
                     }
                     else {

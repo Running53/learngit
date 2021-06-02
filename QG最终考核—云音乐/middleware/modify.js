@@ -9,15 +9,22 @@ module.exports = {
         let subscription = req.body.subscription
         let sex = req.body.sex
         let birthday = req.body.birthday
+        let username = req.user.username
         let lastmodifytime = GetNowTime.getnowtime()
-        Modify.savemodify(uname,subscription,sex,birthday,lastmodifytime).then(results =>{
+        Modify.savemodify(uname,subscription,sex,birthday,lastmodifytime,username).then(results =>{
             next()
        }).catch(function(err) {
            next(err)
        })
     },
     getmodify_information: (req,res,next) => {
-        Modify.getmodify_information().then(results =>{
+        let username = ''
+        if(req.user) {
+            username = req.user.username
+        }else {
+            username = 'a'
+        }
+        Modify.getmodify_information(username).then(results =>{
             req.modify_informations = results
             next()
        }).catch(function(err) {

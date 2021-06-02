@@ -21,8 +21,7 @@ module.exports = class AddSongsToList extends require ('./model') {
     *添加歌曲到我的上传总歌曲表myload中
     *@params {string} song 歌曲名称
     *@params {string} singer 歌手名称
-    *@params {integer} categoryid 歌曲所属种类的编号
-    *@params {string} tags 歌曲的标签
+    *@params {string} time 时间
     */
     static addsongtomyload(song,singer,time) {
         return new Promise((resolve,reject)=>{

@@ -11,7 +11,8 @@ const songlistApp = express()
 songlistApp.use(auth.getUser)
 
 songlistApp.get('/:id',[auth.getUser,songList.getSongListById,PlayList.PlayList,Modify.getmodify_information],(req,res)=>{
-    res.render('songlist',{user:req.user,songList:req.songlist,time:req.songlist.length,playlists:req.playlists,modify_informations:req.modify_informations})
+    let {playlists,user,modify_informations,songlist} = req
+    res.render('songlist',{user:user,songList:songlist,time:req.songlist.length,playlists:playlists,modify_informations:modify_informations})
 })
 
 module.exports = songlistApp

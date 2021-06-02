@@ -57,7 +57,7 @@
             <% songSpecies.forEach(species => { %>
                 <li><a href="/category/list/<%= species.id %>"><%= species.songSpecies %></a></li>
                 <% }) %>  
-            <li><a href="javascript:;">更多</a></li>
+            <li><a href="/more">更多</a></li>
         </ul>
         <ul class="songList">
             <% hots.forEach(hot => { %>
@@ -67,7 +67,11 @@
                         <div class="mask"></div>
                         <div class="mask_bottom">
                             <span class="listen_icon"></span>
+                            <% if (hot.playnumber >=100000) { %>
+                            <span class="play_numbers"><%= parseInt(hot.playnumber/10000) %>万</span>
+                            <% } else { %>
                             <span class="play_numbers"><%= hot.playnumber %></span>
+                            <% } %>    
                             <a class="play_icon"></a>
                         </div>
                     </a>           
@@ -135,7 +139,7 @@
         <% newSongSpecies.forEach(news => { %>
         <li><a href="/category/list/<%= news.id %>"><%= news.songSpecies %></a></li>
         <% }) %>   
-        <li><a href="javascript:;">更多</a></li>
+        <li><a href="/more">更多</a></li>
     </ul>
     <ul class="songList">
         <% news.forEach(hot => { %>
@@ -145,7 +149,11 @@
                     <div class="mask"></div>
                     <div class="mask_bottom">
                         <span class="listen_icon"></span>
-                        <span class="play_numbers"><%= hot.playnumber %></span>
+                        <% if (hot.playnumber >=100000) { %>
+                            <span class="play_numbers"><%= parseInt(hot.playnumber/10000) %>万</span>
+                            <% } else { %>
+                            <span class="play_numbers"><%= hot.playnumber %></span>
+                            <% } %>  
                         <a class="play_icon"></a>
                     </div>
                 </a>           

@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
         });
         }       
     })
-    pre.addEventListener('click',function() {
+    pre.addEventListener('click',function(e) {
         if(flag===true){
             if(num===0){
                 num=ul.children.length-1;
@@ -86,6 +86,7 @@ window.addEventListener('load', function () {
     })
     var timer=null;
     function change() {
+        clearInterval(timer)
         timer=setInterval(function(){
         for (var i = 0; i < li.length; i++) {
             li[i].className = '';

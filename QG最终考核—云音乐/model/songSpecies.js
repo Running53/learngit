@@ -18,6 +18,23 @@ static getSongSpecies(sum){
        })
    })
 }
+  /**
+    *获取所有歌曲种类
+    */
+// 获取热门音乐种类
+static getallSongSpecies(){
+    return new Promise((resolve,reject) => {
+        let sql = 'select id,songSpecies from species order by hot desc'
+        this.query(sql).then(results =>{
+            //then调用的是resolve方法
+            resolve(results)
+        }).catch(err => {
+            //catch调用的是reject的方法
+            console.log(`获取所有歌曲种类推荐失败: ${err.message}`);
+            reject(err)
+        })
+    })
+ }
  /**
     *获取最新歌单种类
     * @param {integer} num 条目数
@@ -25,7 +42,7 @@ static getSongSpecies(sum){
 // 获取最新歌单种类
 static getNewSongSpecies(sum){
     return new Promise((resolve,reject) => {
-        let sql = 'select id,songSpecies from species order by new desc limit ?'
+        let sql = 'select id,songSpecies from species order by time desc limit ?'
         this.query(sql,sum).then(results =>{
             //then调用的是resolve方法
             resolve(results)

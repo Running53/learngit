@@ -11,6 +11,14 @@ module.exports = {
             next(err)
         })
     },
+    getallSongSpecies: (req,res,next) =>{
+        SongSpecies.getallSongSpecies().then(results =>{
+             req.allsongSpecies = results
+             next()
+        }).catch(function(err) {
+            next(err)
+        })
+    },
     // 获取最新音乐种类
     getNewSongSpecies: (req,res,next) =>{
         SongSpecies.getNewSongSpecies(5).then(results =>{

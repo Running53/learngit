@@ -1,0 +1,64 @@
+.more_main {
+    width: 800px;
+    height: 500px;
+    background-color: burlywood;
+    margin: 0 auto;
+    padding: 50px;
+}
+.more_main .species {
+    height: 400px;
+    overflow-y: auto;
+    background-color: chartreuse;
+}
+.more_main .species li {
+    float: left;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    color: #666;
+    text-align: center;
+    line-height: 50px;
+    background-color: chocolate;
+    margin: 20px;
+}
+.more_main .species li a {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+}
+.more_main .species li a:hover {
+    color: #fff;
+    background-color: rgb(247, 106, 6);
+}
+.classify_main {
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: cornflowerblue;
+    overflow: hidden;
+}
+.classify_main .classify_species {
+    width: 500px;
+    height: 50px;  
+    line-height: 50px;
+    font-size: 18px;
+    color: cornflowerblue;
+    background-color: rgb(209, 178, 178);
+    margin: 40px auto;
+}
+.classify_main .classify_species input {
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+}
+.classify_main button {
+    display: block;
+    width: 100px;
+    height: 50px;   
+    color: crimson;
+    font-size: 18px;
+    margin: 0 auto;
+}
+.classify_main button:hover {
+    background-color: rgb(230, 169, 181);
+}

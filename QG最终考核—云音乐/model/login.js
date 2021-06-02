@@ -44,5 +44,19 @@ module.exports = class User extends require ('./model') {
          })
      })
 }
+/**
+    *将用户注册的账号保存到个人信息里面
+    * @param {string} username 账号
+    */
+    static saveusername(lastmodifytime,username) {
+        return new Promise((resolve,reject)=>{
+            let sql = 'insert into personal_information(lastmodifytime,username) values(?,?)'
+             this.query(sql,[lastmodifytime,username]).then(results=> {
+                 resolve(results)
+             }).catch(err => {
+                 reject(err) 
+             })
+         })
+    }
 
 }

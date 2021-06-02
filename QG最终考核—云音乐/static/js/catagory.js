@@ -9,6 +9,9 @@ window.addEventListener('load',function(){
         lis[i].addEventListener('mouseout',function() {
             oper[i].style.display='none';
          })
+         oper[i].addEventListener('mousemove',function() {
+            this.style.display='block';
+         })
     }
    for(var i=0;i<oper.length;i++) {
         oper[i].children[0].addEventListener('mouseover',function() {

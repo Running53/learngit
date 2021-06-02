@@ -1,3 +1,8 @@
+:root {
+    --nav-bg-color: #C20C0C;
+    --nav-text-color: #fff;
+    --Slideshow-circle-color: #C20C0C;
+}
 html {
     position: relative;
     min-height: 100%;
@@ -7,7 +12,7 @@ body {
 }
 .nav {
     height: 35px;
-    background-color: #C20C0C;
+    background-color: var(--nav-bg-color);
 }
 .nav .w {
     height: 35px;
@@ -35,7 +40,7 @@ body {
     height: 20px;
     padding: 0 13px;
     margin-top: 7px;
-    color: #fff;
+    color: var(--nav-text-color);
     line-height: 20px;
     border-radius: 20px;
 }
@@ -123,7 +128,6 @@ body {
     float: left;
     width: 10px;
     height: 10px;
-    /*background-color: #fff;*/
     border: 2px solid rgba(255, 255, 255, 0.5);
     margin: 0 3px;
     border-radius: 50%;
@@ -131,7 +135,7 @@ body {
     cursor: pointer;
 }
 .current {
-    background-color: #C20C0C;
+    background-color: var(--Slideshow-circle-color);
 }
 .recommend {
     position: relative;
@@ -175,6 +179,10 @@ body {
     height: 16px;
     padding:0 10px ;
     border-right: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 .recommend .recommend_nav li:nth-child(n+2) a:hover {
     text-decoration: underline;

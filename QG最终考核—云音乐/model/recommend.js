@@ -6,7 +6,7 @@ module.exports = class Recommend extends require ('./model') {
          */
     static getHot(num) {
         return new Promise((resolve,reject) => {
-            let sql = 'select ids,playnumber,content from recommend where hot = 1 limit ?'
+            let sql = 'select ids,playnumber,content from recommend order by hot desc limit ?'
             this.query(sql,num).then(results =>{
                 //then调用的是resolve方法
                 resolve(results)

@@ -63,7 +63,6 @@ window.addEventListener('load',function() {
   var rotating=banner_img.querySelectorAll('a');
   var singer_word=document.querySelector('.singer_word');
   for(var i=0;i<rotating.length;i++){
-      // audio.load();//重新加载防止duration为NaN        
       rotating[i].addEventListener('click',function() {
           if(!audio.paused) {
             to_play.click();           
@@ -72,14 +71,14 @@ window.addEventListener('load',function() {
           audio.load();//重新加载防止duration为NaN  
           audio.oncanplay = function () {
               duration=audio.duration;
-              console.log(audio.duration);
               minutes();
           }
           audio.currentTime = 0;
           process_button.style.left=0+'px';
           cur.style.width=0+'px'; 
           singer_word.children[0].innerHTML=this.className.split(' - ')[0];          
-          singer_word.children[1].innerHTML=this.className.split(' - ')[1];          
+          singer_word.children[1].innerHTML=this.className.split(' - ')[1];   
+          music_time.children[0].innerHTML = '00:00'       
           if(audio.pause)
           {
           to_play.click();        
@@ -121,5 +120,6 @@ window.addEventListener('load',function() {
         seconds=seconds<10?'0'+seconds:seconds;
         music_time.children[1].innerHTML='/'+minutes+':'+seconds;
     }
+    
 })
     

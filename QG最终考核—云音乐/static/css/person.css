@@ -31,6 +31,7 @@
     width: 880px;
     height: 800px;
     background-color: rgb(209, 214, 204);
+    overflow: hidden;
 }
 .right_nav .last_time {
     height: 60px;
@@ -67,11 +68,6 @@
     font-size: 30px;
     color: floralwhite;
     background-color: rgb(136, 131, 138);
-}
-.right_nav .personal_information {
-    height: 600px;
-    /* background-color: fuchsia; */
-    margin-top: 20px;
 }
 .right_nav .mycollectmusic {
     width: 80%;
@@ -154,8 +150,9 @@
     background-color: turquoise;
 }
 .right_nav .personal_information {
-    height: 600px;
+    height: 620px;
     background-color: cadetblue;
+    margin-top: 20px;
 }
 .right_nav .personal_information h2 {
     height: 40px;

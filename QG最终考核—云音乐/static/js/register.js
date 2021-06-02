@@ -14,6 +14,7 @@ window.addEventListener('load',function() {
             success: function (result) {
                 console.log(result);
                 if(result!='') {
+                submit.disabled = true;
                 username_false.style.display = 'block';
                 }
             }
@@ -33,13 +34,17 @@ window.addEventListener('load',function() {
         password_false.style.display='none'
     })
     password[1].addEventListener('blur',function(){
-        this.className='username'; 
-        if(this.value != ''){
-            submit.disabled = false;
-        }       
-        if(this.value != password[0].value&&this.value !== '') {
-            password_false.style.display='block'
+        this.className='username';   
+        if(this.value != password[0].value&&this.value != '') {
             submit.disabled = true;
+            password_false.style.display='block'
+        }  
+    })
+    password[1].addEventListener('input',function() {
+        if(this.value != password[0].value) {
+            submit.disabled = true;
+        }else {
+            submit.disabled = false;
         }
     })
 })

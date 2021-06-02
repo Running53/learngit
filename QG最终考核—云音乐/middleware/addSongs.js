@@ -2,15 +2,14 @@
 const AddSongs = require('../model/addsongs')
 const playershowlist = require('../model/playershowlist')
 const ClearPlayList = require('../model/clearplaylist')
+const CollectAll = require('../model/collectall')
+const SongList = require('../model/songlist')
 
 module.exports = {
     // 添加歌单到播放列表操作
     searchsongs: (req,res,next) =>{
         ClearPlayList.clearPlayList()
         let id = req.query.id      
-        if(id>8) {
-            id = id%8
-        }
         let date = new Date()
         let y = date.getFullYear();
         let m = date.getMonth() + 1;
@@ -37,6 +36,12 @@ module.exports = {
                 let time = y + '-' + m + '-' + d+' '+h+':'+minute+':'+second  //获取到当前时间
                 playershowlist.addsongtoplaylist(results[i].id,results[i].song,results[i].singer,time)  
             }
+            CollectAll.searchlist(id).then(result =>{
+                SongList.increaseplaynumber(result.playnumber + 1,id)
+                    next()
+                }).catch(function(err) {
+                    next(err)
+                })
             next()
         }).catch(function(err) {
             next(err)

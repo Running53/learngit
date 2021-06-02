@@ -12,7 +12,7 @@ module.exports = {
         })
     },
     getcollectsonglist: (req,res,next) =>{
-        PlayList.getcollectsonglist().then(results =>{
+        PlayList.getcollectsonglist().then(results =>{          
              req.collectsongs = results
              next()
         }).catch(function(err) {

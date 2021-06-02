@@ -9,7 +9,8 @@ const loginApp = express()
 
 // 登录页面加载
 loginApp.get('/',[PlayList.PlayList,Modify.getmodify_information],(req,res)=> {
-    res.render('login',{msg:'',user:0,playlists:req.playlists,modify_informations:req.modify_informations})
+    let {playlists,modify_informations} = req
+    res.render('login',{msg:'',user:0,playlists:playlists,modify_informations:modify_informations})
 }) 
 
 loginApp.post('/',[PlayList.PlayList],(req,res,next) => {

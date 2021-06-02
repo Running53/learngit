@@ -26,7 +26,7 @@ module.exports = class GetPlayList extends require('./model') {
     }
     static getcollectlist() {
         return new Promise((resolve,reject)=>{
-            let sql = 'select ids,playnumber,content,hot,time from collectlist order by time desc'
+            let sql = 'select a.ids,a.time,b.playnumber,b.content from collectlist a,recommend b where a.ids = b.ids order by time desc'
              this.query(sql).then(results=> {
                  resolve(results)
              }).catch(err => {

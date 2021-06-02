@@ -26,23 +26,32 @@
             </ul>
              <div class="personal_information">
                 <h2>个人信息</h2>
+                <div class="last_time">上次个人信息修改时间为(若未修改过则为注册账号时的时间)：<span class="login_time"><%= modify_informations.lastmodifytime.toLocaleString() %></span></div>
                 <form action="">
-                    <% if(!modify_informations) { %>
+                    <!-- <% if(!modify_informations) { %>
                     <label for="uname">昵称：</label><input type="text" id='uname' value=''><br>
                     <div>账号：<span> <%= user.username %></span></div></br>
                     <label for="sex">性别：</label><select name="sex" id="sex"><option value="请选择您的性别">请选择您的性别</option><option value="男">男</option><option value="女">女</option></select></br>
                     <label for="subscription" class="subscription_label">个性签名:</label><textarea name="subscription" class="subscription" cols="30" rows="3"></textarea></textarea></br>
                     <label for="birthday">生日：</label><input type="text" class="birthday" value=''></br>
-                    <% }else { %>
-                     <label for="uname">昵称：</label><input type="text" id='uname' value='<%= modify_informations.uname %>'><br>
+                    <% }else { %> -->
+                    <label for="uname">昵称：</label><input type="text" id='uname' value='<%= modify_informations.uname %>'><br>
                     <div>账号：<span><%= user.username %></span></div></br>
-                    <label for="sex">性别：</label><select name="sex" id="sex"><option value=""><%= modify_informations.sex %></option><option value="男">男</option><option value="女">女</option></select></br>
+                        <% if(modify_informations.sex == '男') { %>
+                    <label for="sex">性别：</label><select name="sex" id="sex"><option value="男">男</option><option value="女">女</option></select></br>
+                        <% }else if(modify_informations.sex == '女') { %>
+                    <label for="sex">性别：</label><select name="sex" id="sex"><option value="女">女</option><option value="男">男</option></select></br>
+                        <% }else { %>
+                    <label for="sex">性别：</label><select name="sex" id="sex"><option value="请选择您的性别">请选择您的性别</option><option value="男">男</option><option value="女">女</option></select></br>
+                        <% } %>
                     <label for="subscription" class="subscription_label">个性签名:</label><textarea name="subscription" class="subscription" cols="30" rows="3"><%= modify_informations.subscription %></textarea></textarea></br>
                     <label for="birthday">生日：</label><input type="text" class="birthday" value='<%= modify_informations.birthday %>'></br>
-                    <% } %>
+                    <!-- <% } %> -->
                     <input type="button" value="保存" class="save"> 
                 </form>
+                
             </div>
+            
          </div> 
 </div>
 <!-- left_nav区域end -->

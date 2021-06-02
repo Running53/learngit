@@ -14,7 +14,11 @@
                         <div class="mask"></div>
                         <div class="mask_bottom">
                             <span class="listen_icon"></span>
+                            <% if (collectlist.playnumber >= 100000) { %>
+                            <span class="play_numbers"><%=  parseInt(collectlist.playnumber/10000) %>万</span>
+                            <%} else { %> 
                             <span class="play_numbers"><%= collectlist.playnumber %></span>
+                            <% } %>
                             <a class="play_icon"></a>
                         </div>
                     </a>           

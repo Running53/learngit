@@ -12,7 +12,8 @@ searchApp.get('/',[category.getSongByKeyword],(req,res)=>{
     res.send(req.songs)
 })
 searchApp.get('/!',[category.getSongByKeyword,auth.getUser,PlayList.PlayList,Modify.getmodify_information],(req,res)=>{
-    res.render('search',{songs:req.songs,user:req.user,keyword:req.query.keyword,playlists:req.playlists,modify_informations:req.modify_informations})
+    let {playlists,user,modify_informations,songs,} = req
+    res.render('search',{songs:songs,user:user,keyword:req.query.keyword,playlists:playlists,modify_informations:modify_informations})
 })
 
 module.exports = searchApp

@@ -35,12 +35,22 @@
                     <div class="songlist_main">
                         <h1><%= songlists.content %></h1>
                         <p class="creat_time"><%= songlists.time.toLocaleString() %>创建</p>
+                        <% if(songlists.playnumber >= 100000) { %>
+                        <p class="play_time">播放量：<%= parseInt(songlists.playnumber/10000) %>万</p>
+                        <% }else{ %>
                         <p class="play_time">播放量：<%= songlists.playnumber %></p>
+                        <% } %> 
                         <p class="hot">热度：<%= songlists.hot %></p>
                         <p class="tag">标签:</p>
-                        <% } %>
                         <div class="tags"><a href="/category/list/<%= songlists.categoryid %>"><%= songlists.tags %></a></div>                 
-                
+                        <% }else{ %>
+                        <% for(let i = 0; i < index; i++){%> 
+                                <% if(songList[i].tags == songlists.tags) { %>
+                                <% }else{ %>
+                                    <div class="tags"><a href="/category/list/<%= songlists.categoryid %>"><%= songlists.tags %></a></div>                 
+                                <% } %>
+                        <% } %> 
+                        <% } %>
                 <% }) %>     
                 <div class="operation">
                     <div class="play_all" title="播放全部并添加至播放列表">播放</div>

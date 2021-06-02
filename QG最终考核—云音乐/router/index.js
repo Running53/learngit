@@ -14,6 +14,7 @@ indexApp.use(auth.getUser)
 
 //加载首页页面
 indexApp.get('/',[recommend.getHot,recommend.getSongList,songSpecies.getSongSpecies,songSpecies.getNewSongSpecies,auth.getUser,playershowlist.getPlayerShowList,PlayList.PlayList,Modify.getmodify_information],(req,res)=> {  
-    res.render('index',{hots:req.hots,news:req.news,songSpecies:req.songSpecies,newSongSpecies:req.newSongSpecies,user:req.user,playershowlist:req.playershowlist,playlists:req.playlists,modify_informations:req.modify_informations})
+    let {playlists,user,modify_informations,songSpecies,hots,newSongSpecies,playershowlist,news} = req
+    res.render('index',{hots:hots,news:news,songSpecies:songSpecies,newSongSpecies:newSongSpecies,user:user,playershowlist:playershowlist,playlists:playlists,modify_informations:modify_informations})
 })
 module.exports =indexApp 

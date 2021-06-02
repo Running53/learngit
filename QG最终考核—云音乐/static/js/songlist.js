@@ -13,7 +13,7 @@ window.addEventListener('load',function(){
     var audio = document.querySelector('audio')
     var collections = document.querySelector('.collections')
     var songlist_songs = document.querySelector('.songlist_songs')
-    console.log(songlist_songs);
+    var play_time = document.querySelector('.play_time')
     for(let i=1;i<lis.length;i++) {
         lis[i].addEventListener('mousemove',function() {
            oper[i-1].style.display='block';
@@ -42,7 +42,7 @@ window.addEventListener('load',function(){
             this.style.background='url(/images/play_button.png) no-repeat -297px -268px'
         })
    }
-
+   
     play_all.addEventListener('click',function() {
         var str = window.location.pathname;
         var index =str.lastIndexOf("\/");
@@ -54,6 +54,9 @@ window.addEventListener('load',function(){
             },
             success: function(results) {
                 console.log(results);
+                if(play_time.innerHTML[play_time.innerHTML.length-1] != '万') {
+                    play_time.innerHTML = '播放量：' + (parseInt(play_time.innerHTML.split('：')[1]) + 1)
+                }
                 var str = '';
                 var src = '';
                 for(var i=results.listsongs.length-1;i >= 0;i--) { 

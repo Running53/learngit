@@ -4,15 +4,12 @@ const SongList = require('../model/songlist')
 module.exports = {
     // 获取歌单歌曲内容
     getSongListById: (req,res,next) =>{
-        let id = (req.params.id)%8;
-        if(id === 0){
-            id = 8;
-        }
-        if(req.params.id > 16) {
-            id = req.params.id
-        }
+
+        let id = (req.params.id)
+
         SongList.getSongListById(id).then(results =>{
              req.songlist = results
+             SongList.increasenumber(results[0].hot + 1,results[0].ids)
              next()
         }).catch(function(err) {
             next(err)

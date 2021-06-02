@@ -66,6 +66,8 @@ app.use('/login',require('./router/login'))
 app.use('/register',require('./router/register'))
 // 调用歌单子应用
 app.use('/songlist',require('./router/songlist'))
+// 调用查看所有分类子应用
+app.use('/more',require('./router/more'))
 // 调用查找注册时有无重复的用户名子应用
 app.use('/searchusername',require('./router/searchusername'))
 // 调用个人中心的权限验证子应用
@@ -75,7 +77,6 @@ app.use('/admin/?*',require('./middleware/auth').allowToAddmin)//这样就可以
 // 上传操作
 app.post('/admin/*',upload.single('upload'),(req,res,next)=>{
     let {file} = req //如果上传成功之后，在req里面自动封装一个file对象
-    console.log(file);
     if(file) { //上传后的文件是不带后缀名的，我们需要对它进行重命名
         let extname = path.extname(file.originalname)   //file.originalname==>获取文件原来的文件名
         fs.renameSync(file.path,'static\\mp3\\'+ file.originalname)
@@ -87,7 +88,6 @@ app.post('/admin/*',upload.single('upload'),(req,res,next)=>{
 // 上传图片操作
 app.post('/upload_img',[upload_img.single('upload_img'),getnumofrecommend.getnumofrecommend],(req,res,next)=>{
     let {file} = req //如果上传成功之后，在req里面自动封装一个file对象
-    console.log(file);
     if(file) { //上传后的文件是不带后缀名的，我们需要对它进行重命名
         fs.renameSync(file.path,'static\\images\\'+ 'song'+ req.numofrecommend +'.jpg')
         req.uploadUrl = '/images/' + file.originalname
@@ -119,13 +119,12 @@ app.use('/delete',require('./router/delete'))
 app.use('/collectplaylist',require('./router/collectplaylist'))
 // 调用个人中心首页
 app.use('/admin',require('./router/admin/index'))
-// 上传自定义歌单中的歌曲子应用
-// app.use('/uploadlist',require('./router/admin/index'))
 
 // 退出功能实现
 app.get('/user/logout',[PlayList.PlayList,Modify.getmodify_information],(req,res) => {
     req.session.user = null 
-    res.render('login',{msg:'退出成功',user:0,playlists:req.playlists,modify_informations:req.modify_informations})
+    let {playlists,modify_informations} = req
+    res.render('login',{msg:'退出成功',user:0,playlists:playlists,modify_informations:modify_informations})
 })
 
 // 监听服务器端口

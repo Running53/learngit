@@ -9,11 +9,11 @@ module.exports = {
         let id = req.query.id      
         ChangeSong.searchthissongs(id).then(results =>{
             ChangeSong.searchnextsongs(results.time).then(result =>{
+                res.send(result)
                 if(result) {
                     let time = GetNowTime.getnowtime()
                     playershowlist.addsongtohistorylist(result.id,result.song,result.singer,time)
                 }
-                res.send(result)
                 next()
             }).catch(function(err) {
                 next(err)
