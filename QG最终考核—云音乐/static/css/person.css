@@ -134,6 +134,9 @@
 .right_nav .mycollectmusic ul li .oper a:nth-child(3) {
     background: url(/images/play_button.png) no-repeat -297px -268px ;
 }
+.right_nav .mycollectmusic ul li .oper .delete_collect_song {
+    background: url(/images/collection.png) no-repeat -51px 1px !important;
+}
 .right_nav .songList {
     width: 880px;
     height: 800px;
@@ -296,4 +299,23 @@ label{
 }
 #list_button {
     margin-right: 300px;
+}
+.person_nav .right_nav .collect_time {
+    font-size: 14px;
+    color: brown;
+}
+.person_nav .right_nav .delete_list {
+    display: block;
+    font-size: 16px;
+    color: rgb(231, 116, 7);
+}
+.person_nav .right_nav .delete_list:hover {
+    text-decoration: underline;
+}
+.person_nav .right_nav .songList li {
+    height: 280px;
+    margin-bottom: -5px;
+}
+.person_nav .right_nav .songList li>span {
+    color: #610c5a;
 }

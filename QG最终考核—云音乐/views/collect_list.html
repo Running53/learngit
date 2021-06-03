@@ -1,5 +1,6 @@
 <%- include('header.html')  -%>
 <script src="/js/public.js"></script>
+<script src="/js/delete_list.js"></script>
 
 <div class="person_nav w">
 <%- include('navs.html')  -%>
@@ -23,6 +24,9 @@
                         </div>
                     </a>           
                     <a href="/songlist/<%= collectlist.ids %>" class="text"><%= collectlist.content %></a>
+                    <p class="collect_time">收藏时间:</p>
+                    <span><%= collectlist.time.toLocaleString() %></span>
+                    <a href="javascript:;" class="delete_list" id='<%= collectlist.ids %>'>删除此歌单</a>
                 </li>
                 <% }) %>   
 

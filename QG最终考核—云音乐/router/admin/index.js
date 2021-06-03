@@ -9,6 +9,7 @@ const AddSongToList = require('../../middleware/addsongtolist')
 const UploadMusic = require('../../middleware/UploadMusic')
 const SavetoList = require('../../middleware/savetolist')
 const AddClassify = require('../../middleware/addClassify')
+const List_Operation = require('../../middleware/list_operation')
 
 indexApp.get('/person',[PlayList.PlayList,PlayList.getcollectlist,PlayList.getcollectsonglist,PlayList.gethistorylist,GetLoginTime.getlogintime,Modify.getmodify_information,UploadMusic.getnumofmyload],(req,res)=>{
     let {playlists,user,modify_informations,collectlists,counts,history_songs,lastlogintime,collectsongs} = req
@@ -50,7 +51,12 @@ indexApp.get('/classify',[PlayList.PlayList,Modify.getmodify_information],(req,r
 indexApp.get('/classify_species',AddClassify.addclassify,(req,res)=>{
     res.send(req.query.classifyName)
 })
-
+indexApp.get('/delete_collect_song',List_Operation.deletesongfromcollect,(req,res)=>{
+    res.send(req.query.id)
+})
+indexApp.get('/delete_songlist',List_Operation.deletesongfromcollectlist,(req,res)=>{
+    res.send(req.query.id)
+})
 indexApp.post('/upload_music',[PlayList.PlayList,PlayList.gethistorylist,Modify.getmodify_information,SongSpecies.getSongSpecies,AddSongToList.addsongtolist],(req,res)=>{
 })
 indexApp.post('/uploadlist',SavetoList.addsongstolist,(req,res)=>{
