@@ -2,6 +2,7 @@
 const ChangeSong = require('../model/changesong')
 const playershowlist = require('../model/playershowlist')
 const GetNowTime = require('../model/getnowtime')
+const PlayerShowList = require('../model/playershowlist')
 
 module.exports = {
     // 
@@ -12,6 +13,7 @@ module.exports = {
                 res.send(result)
                 if(result) {
                     let time = GetNowTime.getnowtime()
+                    PlayerShowList.updatelastplay(result.id,result.song,result.singer,time)
                     playershowlist.addsongtohistorylist(result.id,result.song,result.singer,time)
                 }
                 next()
@@ -31,6 +33,7 @@ module.exports = {
             res.send(result)
                 if(result) {
                     let time = GetNowTime.getnowtime()
+                    PlayerShowList.updatelastplay(result.id,result.song,result.singer,time)
                     playershowlist.addsongtohistorylist(result.id,result.song,result.singer,time)
                 }
                 next()

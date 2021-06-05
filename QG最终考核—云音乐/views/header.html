@@ -86,15 +86,13 @@
             </div>
             <script>
                   var person = document.querySelector('.person')
-                    var user = document.querySelector('.user')
-                    var flag=0;
-                    user.addEventListener('click',function() {
-                        flag++;
-                        if(flag%2==1) {
+                  var user = document.querySelector('.user')
+                    user.addEventListener('click',function(e) {
+                        e.stopPropagation()
                         person.style.display = 'block';           
-                        }else {
-                        person.style.display = 'none';           
-                        }
+                        document.addEventListener('click',function() {
+                            person.style.display = 'none';           
+                        })
                     })
             </script>
         <% } %>    

@@ -1,6 +1,7 @@
 // 将收藏歌曲添加至收藏目录子应用
 const Collection = require('../model/collection')
 const PlayerShowList = require('../model/playershowlist')
+const Delete = require('../model/delete')
 
 module.exports = {
     // 将收藏歌曲添加至收藏目录
@@ -21,8 +22,8 @@ module.exports = {
             second=second < 10 ? ('0' + second) : second;
             let time = y + '-' + m + '-' + d+' '+h+':'+minute+':'+second  //获取到当前时间  
             if(result) {
-                Collection.addcollectionsong(result.id,result.song,result.singer,time).then(results =>{
-            
+                Delete.deletesongfromcollect(result.id).then(results =>{
+                    Collection.addcollectionsong(result.id,result.song,result.singer,time)
                     next()
                 }).catch(function(err) {
                     next(err)

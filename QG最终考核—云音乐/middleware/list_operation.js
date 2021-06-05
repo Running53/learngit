@@ -20,5 +20,13 @@ module.exports = {
        }).catch(function(err) {
            next(err)
        })
+    },
+    // 清空历史记录
+    empty_history: (req,res,next) => {
+        Delete.empty_history().then(results =>{           
+            next()
+       }).catch(function(err) {
+           next(err)
+       })
     }
 }

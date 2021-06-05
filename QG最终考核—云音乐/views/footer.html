@@ -2,7 +2,7 @@
      <audio></audio> 
      <div class="player">
         <div class="m">     
-            <% if (!playlists[0]) { %>
+            <% if (lastplay.song === '') { %>
                 <div class="play_button">
                     <a href="javascript:;" class="lastsong" title="上一首"></a>
                     <a href="javascript:;" class="to_play" title="播放/暂停"></a>
@@ -17,27 +17,27 @@
             <%} else { %> 
                 <script>
                     var audio=document.querySelector('audio')
-                    audio.setAttribute('src',"/mp3/<%= playlists[0].singer %> - <%= playlists[0].song %>.mp3")
+                    audio.setAttribute('src',"/mp3/<%= lastplay.singer %> - <%= lastplay.song %>.mp3")
                     audio.load()
                 </script>
                  <div class="play_button">
-                    <a href="javascript:;" class="lastsong" title="上一首" id='<%= playlists[0].id %>'></a>
+                    <a href="javascript:;" class="lastsong" title="上一首" id='<%= lastplay.id %>'></a>
                     <a href="javascript:;" class="to_play" title="播放/暂停"></a>
-                    <a href="javascript:;" class="nextsong" title="下一首" id='<%= playlists[0].id %>'></a>
+                    <a href="javascript:;" class="nextsong" title="下一首" id='<%= lastplay.id %>'></a>
                 </div>    
-                <% if (playlists[0].id > 10) { %>
-                     <% if (playlists[0].id % 10 == 0) { %>
-                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id/10 %>.jpg" alt=""></a>
+                <% if (lastplay.id > 10) { %>
+                     <% if (lastplay.id % 10 == 0) { %>
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id/10 %>.jpg" alt=""></a>
                      <% } else { %> 
-                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id%10 %>.jpg" alt=""></a>
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id%10 %>.jpg" alt=""></a>
                     <% } %>
                 <% } else { %> 
-                <a href="javascript:;" class="play_img"><img src="/images/img<%= playlists[0].id %>.jpg" alt=""></a>
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id %>.jpg" alt=""></a>
                 <% } %>
             <div class="sing_information">
                 <div class="singer_word">
-                    <a href="javascript:;"><%= playlists[0].singer %></a>
-                    <a href="javascript:;"><%= playlists[0].song %></a>
+                    <a href="javascript:;"><%= lastplay.singer %></a>
+                    <a href="javascript:;"><%= lastplay.song %></a>
                 </div>                                       
                 <% } %>
                 <div class="progress">
@@ -51,9 +51,9 @@
             <div class="icons">
                 <div class="add">
                 <% if(playlists[0]) { %>
-                    <a href="javascript:;" title="收藏" class="collection" id="<%= playlists[0].id%>"></a>
+                    <a href="javascript:;" title="收藏" class="collection_now" id="<%= playlists[0].id%>"></a>
                     <% } else { %> 
-                    <a href="javascript:;" title="收藏" class="collection"></a>
+                    <a href="javascript:;" title="收藏" class="collection_now"></a>
                     <% } %>
                     <a href="javascript:;" title="转发"></a>
                 </div>

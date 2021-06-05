@@ -3,14 +3,15 @@ const express = require('express')
 const User = require('../model/login')
 const PlayList = require('../middleware/playlist')
 const Modify = require('../middleware/modify')
+const GetLastPlay = require('../middleware/GetLastPlay')
 
 // 登录子应用
 const loginApp = express()
 
 // 登录页面加载
-loginApp.get('/',[PlayList.PlayList,Modify.getmodify_information],(req,res)=> {
-    let {playlists,modify_informations} = req
-    res.render('login',{msg:'',user:0,playlists:playlists,modify_informations:modify_informations})
+loginApp.get('/',[GetLastPlay.getlastplay,PlayList.PlayList,Modify.getmodify_information],(req,res)=> {
+    let {lastplay,playlists,modify_informations} = req
+    res.render('login',{msg:'',user:0,lastplay:lastplay,playlists:playlists,modify_informations:modify_informations})
 }) 
 
 loginApp.post('/',[PlayList.PlayList],(req,res,next) => {

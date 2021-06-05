@@ -6,7 +6,7 @@
 <%- include('navs.html')  -%>
  
     <div class="right_nav">
-        <h1 class="title">我的收藏歌单列表</h1>
+        <h1 class="title">我的收藏歌单列表(<span><%= collectlists.length %></span>)</h1>
         <ul class="songList">
             <% collectlists.forEach(collectlist => { %>                 
                 <li>

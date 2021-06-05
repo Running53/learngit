@@ -319,3 +319,23 @@ label{
 .person_nav .right_nav .songList li>span {
     color: #610c5a;
 }
+.person_nav .right_nav .empty_history {
+    position: relative;
+    font-size: 14px;
+    color: rgb(184, 165, 119);
+    padding-left: 25px;
+}
+.person_nav .right_nav .empty_history:hover {
+    color: rgb(247, 179, 8);
+    text-decoration: underline;
+}
+.person_nav .right_nav .empty_history::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 13px;
+    background: url(/images/collection.png) no-repeat -51px 0px;
+
+}   

@@ -37,7 +37,11 @@ module.exports = class PlayerShowList extends require('./model') {
    static deletesong(id) {
     return new Promise((resolve,reject)=>{
         let sql = 'delete from playlist where id = ? limit 1'
-         this.query(sql,id)
+         this.query(sql,id).then(results=> {
+            resolve(results)
+        }).catch(err => {
+            reject(err) 
+        })
      })
     }
       // 点击轮播图查找歌曲模型
@@ -56,7 +60,7 @@ module.exports = class PlayerShowList extends require('./model') {
          })
      })
     }
-      // 点击轮播图查找歌曲模型
+    // 点击轮播图查找歌曲模型
    /**
    * @param {integer} id 轮播图歌曲对应的歌曲
    */
@@ -70,4 +74,21 @@ module.exports = class PlayerShowList extends require('./model') {
          })
      })
     }
+    // 在lastplay列表中更行数据
+   /**
+   * @param {integer} id  歌曲编号
+   * @param {string} song  歌曲名称
+   * @param {string} singer  歌手名称
+   * @param {string} time  播放时的时间
+   */
+   static updatelastplay(id,song,singer,time) {
+    return new Promise((resolve,reject)=>{
+        let sql = 'update lastplay set id = ?,song = ?,singer = ?,time = ?'
+         this.query(sql,[id,song,singer,time]).then(results=> {            
+         }).catch(err => {
+             reject(err) 
+         })
+     })
+    }
+    
 }

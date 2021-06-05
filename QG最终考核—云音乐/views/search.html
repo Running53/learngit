@@ -4,14 +4,14 @@
    <audio></audio>
    <div class="catagory_box m">
        <div class="catagory_name">
-            <span>搜索结果：(搜索词：<%= keyword %>)</span>
+            <span>搜索结果(<%= songs.length %>)：(搜索词：<%= keyword %>)</span>
        </div>
         <ol class="catagory_songs">
         <% songs.forEach((song,index) => { %>
             <li>
                 <span><%= index+1 %></span>
                 <div href="javascript:;" class="catagory_list">
-                    <a class="catagory_song"><%= song.song.substring(0,15) %></songs.song></a>
+                    <a class="catagory_song"><%= song.song.substring(0,16) %></songs.song></a>
                     <span class="catagory_songer"><%= song.album.substring(0,15) %></span>
                     <span class="catagory_songer"><%= song.singer.substring(0,20) %></span>
                     <div class="oper">

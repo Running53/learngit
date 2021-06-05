@@ -41,7 +41,8 @@ window.addEventListener('load', function () {
     let num=0;
     var cnt=0;
     var flag=true;
-    next.addEventListener('click',function() {
+    next.addEventListener('click',function(event) {
+        event.stopPropagation();
         if(flag===true){
         if(num===ul.children.length-1){
            ul.style.left=0+'px'; 
@@ -63,6 +64,7 @@ window.addEventListener('load', function () {
         }       
     })
     pre.addEventListener('click',function(e) {
+        e.stopPropagation();
         if(flag===true){
             if(num===0){
                 num=ul.children.length-1;

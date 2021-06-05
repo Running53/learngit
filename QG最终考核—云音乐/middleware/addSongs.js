@@ -28,6 +28,7 @@ module.exports = {
         cnt = results.length - 1
         let seconds=second < 10 ? ('0' + second) : second;
         let times = y + '-' + m + '-' + d+' '+h+':'+minute+':'+seconds  //获取到当前时间
+        playershowlist.updatelastplay(results[0].id,results[0].song,results[0].singer,times)  
         playershowlist.addsongtohistorylist(results[0].id,results[0].song,results[0].singer,times)
         for(let i=0;i<results.length;i++) {   
                 second = secondss + cnt

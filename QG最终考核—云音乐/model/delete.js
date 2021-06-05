@@ -39,5 +39,16 @@ module.exports = class DeleteSong extends require ('./model') {
              })
          })
     }
+    //清空历史记录的列表
+    static empty_history() {
+        return new Promise((resolve,reject)=>{
+            let sql = 'TRUNCATE TABLE historylist'
+             this.query(sql).then(results=> {
+                 resolve(results)
+             }).catch(err => {
+                 reject(err) 
+             })
+         })
+    }
     
 }

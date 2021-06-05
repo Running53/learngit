@@ -11,7 +11,6 @@ window.addEventListener('load',function() {
     var process_button = document.querySelector('.process_button');
     var music_time = document.querySelector('.music_time');
     var music_play_list = document.querySelector('.music_play_list')
-    var deletes = document.querySelectorAll('.delete')
     process_button.timer = null;
     var duration=0;
     to_play.addEventListener('click',function() {
@@ -20,7 +19,7 @@ window.addEventListener('load',function() {
             if(audio.src != ''){
                 move(process_button,bar.offsetWidth); 
                 audio.oncanplay = function () {
-                    duration=audio.duration;
+                duration=audio.duration;
                     minutes();
                     minute();
                     move(process_button,bar.offsetWidth); 
@@ -28,11 +27,7 @@ window.addEventListener('load',function() {
                 if(audio.src.substring(audio.src.length - 3) == 'mp3') {
                     audio.play();
                 }
-                // to_play.click()
-                // to_play.click()
-                duration = audio.duration
-                minutes();
-                minute();
+                duration = audio.duration            
             }else {
                     duration = 0
                   }
@@ -76,8 +71,13 @@ window.addEventListener('load',function() {
     function minutes(){
         var minutes=parseInt(duration/60);
         var seconds=parseInt(duration%60) + 1;
+        if(seconds == 60) {
+            seconds = 0
+            minutes = minutes + 1
+        }
         minutes=minutes<10?'0'+minutes:minutes;
         seconds=seconds<10?'0'+seconds:seconds;
+        
         music_time.children[1].innerHTML='/'+minutes+':'+seconds;
     }
     function minute(){
@@ -157,20 +157,19 @@ window.addEventListener('load',function() {
         obj.timer = setInterval(function() {
             // 步长值写到定时器的里面
             // 把我们步长值改为整数 不要出现小数的问题
-            // var step = Math.ceil((target - obj.offsetLeft) / 10);
-            var step = (target - process_button.offsetWidth - 2)/duration;
+            var step =  Math.floor((target - 2*process_button.offsetWidth)/duration);
             var minutes=0;
             var seconds=0;
             var minute=0;
             var second=0;
-            // step = step > 0 ? Math.ceil(step) : Math.floor(step);
-            if (audio.currentTime >= audio.duration-1) {
+            if (audio.currentTime >= audio.duration) {
                 // 停止动画 本质是停止定时器
                 clearInterval(obj.timer);
                 process_button.style.left = 0+'px';
                 cur.style.width = 0+'px';
                 music_time.children[0].innerHTML = '00:00' ;
                 audio.currentTime = 0
+                to_play.click()
                   // 回调函数写到定时器结束里面
                 if (callback) {
                     // 调用函数

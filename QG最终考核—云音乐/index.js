@@ -7,6 +7,8 @@ const multer = require('multer')
 const PlayList = require('./middleware/playlist')
 const Modify = require('./middleware/modify')
 const getnumofrecommend = require('./middleware/getnumofrecommend')
+const playershowlist = require('./middleware/playershowlist')
+const GetLastPlay = require('./middleware/GetLastPlay')
 const path = require('path')
 const fs = require('fs')
 
@@ -119,12 +121,15 @@ app.use('/delete',require('./router/delete'))
 app.use('/collectplaylist',require('./router/collectplaylist'))
 // 调用个人中心首页
 app.use('/admin',require('./router/admin/index'))
-
+// 清空上次播放歌曲表的子应用
+app.get('/empty_lastplay',playershowlist.empty_lastplay,(req,res) => {
+    res.send()
+})
 // 退出功能实现
-app.get('/user/logout',[PlayList.PlayList,Modify.getmodify_information],(req,res) => {
+app.get('/user/logout',[GetLastPlay.getlastplay,PlayList.PlayList,Modify.getmodify_information],(req,res) => {
     req.session.user = null 
-    let {playlists,modify_informations} = req
-    res.render('login',{msg:'退出成功',user:0,playlists:playlists,modify_informations:modify_informations})
+    let {lastplay,playlists,modify_informations} = req
+    res.render('login',{msg:'退出成功',user:0,lastplay:lastplay,playlists:playlists,modify_informations:modify_informations})
 })
 
 // 监听服务器端口

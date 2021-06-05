@@ -17,14 +17,9 @@ module.exports = {
     },
     addsongstolist: (req,res,next) =>{
         UploadMusic.getnumberfromlist().then(results =>{
-            console.log(req.uploadUrl);
-
             let singer = req.uploadUrl.split(' - ')[0].split('/mp3/')[1]
             let song = req.uploadUrl.split(' - ')[1].split('.')[0]
             let id = results + 1
-            console.log(singer);
-            console.log(song);
-            console.log(id);
             AddList.getnumofrecommend().then(result =>{
                 let songlistid = result
             AddList.addsongtolist(id,song,singer,songlistid)

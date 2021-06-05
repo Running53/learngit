@@ -4,25 +4,26 @@ const Users = require('../model/login')
 const GetNowTime = require('../model/getnowtime')
 const PlayList = require('../middleware/playlist')
 const Modify = require('../middleware/modify')
+const GetLastPlay = require('../middleware/GetLastPlay')
 
 const registerApp = express()
 
 // 注册页面加载
-registerApp.get('/',[PlayList.PlayList,Modify.getmodify_information],(req,res)=> {
-    let {playlists,modify_informations} = req
-    res.render('register',{msg:'',user:0,playlists:playlists,modify_informations:modify_informations})
+registerApp.get('/',[GetLastPlay.getlastplay,PlayList.PlayList,Modify.getmodify_information],(req,res)=> {
+    let {lastplay,playlists,modify_informations} = req
+    res.render('register',{msg:'',user:0,lastplay:lastplay,playlists:playlists,modify_informations:modify_informations})
 }) 
 
-registerApp.post('/',[PlayList.PlayList,Modify.getmodify_information],(req,res,next) => {
-    let {username,password1} = req.body
+registerApp.post('/',[GetLastPlay.getlastplay,PlayList.PlayList,Modify.getmodify_information],(req,res,next) => {
+    let {lastplay,username,password1} = req.body
     Users.register(username,password1).then(result => {
         if(result) {
             let lastmodifytime = GetNowTime.getnowtime()
             Users.saveusername(lastmodifytime,username)
-            res.render('login',{msg:'注册成功！可以使用此账号登录!',user:0,playlists:req.playlists,modify_informations:req.modify_informations})//说明注册成功
+            res.render('login',{msg:'注册成功！可以使用此账号登录!',user:0,lastplay:req.lastplay,playlists:req.playlists,modify_informations:req.modify_informations})//说明注册成功
         }
         else {
-            res.render('register',{msg:'注册失败！账号或密码输入错误!',user:0,playlists:req.playlists,modify_informations:req.modify_informations})
+            res.render('register',{msg:'注册失败！账号或密码输入错误!',user:0,lastplay:req.lastplay,playlists:req.playlists,modify_informations:req.modify_informations})
         }
     }).catch(err => {
         next(err)

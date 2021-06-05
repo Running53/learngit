@@ -12,9 +12,7 @@ window.addEventListener('load',function() {
     var play_img = document.querySelector('.play_img')
     var nextsong = document.querySelector('.nextsong')
     var lastsong = document.querySelector('.lastsong')
-    var collection = document.querySelectorAll('.collection')
-    var play_list_number = document.querySelector('.play_list_number')
-    var clicktime = 0;
+    var collection_now = document.querySelector('.collection_now')
     var duration = 0;
     header_a[0].style.backgroundColor='#000';
     triangle[0].style.display='block';
@@ -108,7 +106,7 @@ window.addEventListener('load',function() {
                 play_img.children[0].src = src;
                 nextsong.setAttribute('id',result.playshowsong.id)
                 lastsong.setAttribute('id',result.playshowsong.id)
-                collection[0].setAttribute('id',result.playshowsong.id)
+                collection_now.setAttribute('id',result.playshowsong.id)
             }
         })
       })

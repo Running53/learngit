@@ -13,13 +13,26 @@ module.exports = {
        })
     },
     getplayshowsong: (req,res,next) => {      
-           let id = req.query.id
+            let id = req.query.id
             let time = GetNowTime.getnowtime()  //获取到当前时间     
-            playershowlist.getplayshowsong(id).then(results =>{
-            playershowlist.deletesong(results.id)
-            playershowlist.addsongtohistorylist(results.id,results.song,results.singer,time)
+        playershowlist.getplayshowsong(id).then(results =>{
             req.playshowsong = results
+            playershowlist.deletesong(results.id).then(result =>{
+            playershowlist.updatelastplay(results.id,results.song,results.singer,time)
             playershowlist.addsongtoplaylist(results.id,results.song,results.singer,time)
+            playershowlist.addsongtohistorylist(results.id,results.song,results.singer,time)
+            next()
+            }).catch(function(err) {
+                next(err)
+            })
+        next()
+       }).catch(function(err) {
+           next(err)
+       })
+    },
+    empty_lastplay: (req,res,next) => {
+        let time = GetNowTime.getnowtime()  //获取到当前时间     
+        playershowlist.updatelastplay(999,'','',time).then(results =>{
             next()
        }).catch(function(err) {
            next(err)

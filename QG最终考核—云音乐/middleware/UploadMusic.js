@@ -9,7 +9,6 @@ module.exports = {
              let id = result
              UploadMusic.getcategoryidbytags(songSpecies).then(results =>{
                 let categoryid = results.id
-                let tags = result.songSpecies
                 UploadMusic.adddatatolist(id,categoryid,songSpecies)
                 next()
             }).catch(function(err) {
