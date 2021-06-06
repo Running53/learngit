@@ -1,0 +1,30 @@
+<%- include('header.html')  -%>
+<script src="/js/personal_play.js"></script>
+<script src="/js/public.js"></script>
+<script src="/js/collect_song.js"></script>
+
+<div class="person_nav w">
+    <%- include('navs.html')  -%>
+
+    <div class="right_nav">
+            <div class="mycollectmusic">
+                <h1>我的收藏歌曲列表(<span class="collect_num"><%= collectsongs.length %></span>)</h1>
+                <h4 class="song_head"><div>歌手</div><div>歌曲</div><div>收藏时间</div></h4>
+                <ul class="collect_list">
+                <% collectsongs.forEach(collectsong => { %>                 
+                    <li class="show_music">
+                        <div class="song_name"><%= collectsong.song %></div>
+                        <div class="singer_name"><%= collectsong.singer %></div>
+                        <div class="time_name"><%= collectsong.time.toLocaleString() %></div>
+                        <h4 class="oper">
+                            <a href="javascript:;" title="播放歌曲" class="play" id="<%= collectsong.id %>"></a>
+                            <a href="javascript:;" title="添加至播放列表" class="addtolist" id="<%= collectsong.id %>"></a>
+                            <a href="javascript:;" title="在收藏歌曲列表中删除该歌曲" class="delete_collect_song" id="<%= collectsong.id %>"></a>
+                        </h4>  
+                    </li>
+                <% }) %>              
+                </ul>
+            </div>
+    </div>
+</div>
+<%- include('footer.html')  -%>

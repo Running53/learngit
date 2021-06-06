@@ -1,0 +1,37 @@
+<%- include('header.html')  -%>
+<script src="/js/public.js"></script>
+<script src="/js/delete_list.js"></script>
+
+<div class="person_nav w">
+<%- include('navs.html')  -%>
+ 
+    <div class="right_nav">
+        <h1 class="title">我的收藏歌单列表(<span><%= collectlists.length %></span>)</h1>
+        <ul class="songList">
+            <% collectlists.forEach(collectlist => { %>                 
+                <li>
+                    <a href="/songlist/<%= collectlist.ids %>">
+                        <img src='/images/song<%= collectlist.ids %>.jpg' alt="">
+                        <div class="mask"></div>
+                        <div class="mask_bottom">
+                            <span class="listen_icon"></span>
+                            <% if (collectlist.playnumber >= 100000) { %>
+                            <span class="play_numbers"><%=  parseInt(collectlist.playnumber/10000) %>万</span>
+                            <%} else { %> 
+                            <span class="play_numbers"><%= collectlist.playnumber %></span>
+                            <% } %>
+                            <a class="play_icon"></a>
+                        </div>
+                    </a>           
+                    <a href="/songlist/<%= collectlist.ids %>" class="text"><%= collectlist.content %></a>
+                    <p class="collect_time">收藏时间:</p>
+                    <span><%= collectlist.time.toLocaleString() %></span>
+                    <a href="javascript:;" class="delete_list" id='<%= collectlist.ids %>'>删除此歌单</a>
+                </li>
+                <% }) %>   
+
+               
+        </ul>
+    </div>
+</div>
+<%- include('footer.html')  -%>

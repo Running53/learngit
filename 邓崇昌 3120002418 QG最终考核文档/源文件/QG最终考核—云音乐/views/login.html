@@ -1,0 +1,18 @@
+<%- include('header.html')  -%>
+<script src="/js/login.js"></script>
+<audio></audio>
+    <div class="login">
+        <div class="login_box m">
+                <h2>欢迎来到登陆页面</h2>
+                <form action="/login" method="POST">
+                <input type="text" placeholder="请输入账号" name="username" class="username">
+                <p class="username_err">您的账号格式不正确，请重新输入！</p>
+                <input type="password" placeholder="请输入密码" name="password" class="password">
+                <p class="password_err">您的密码格式不正确，请重新输入！</p>               
+                <button type="submit">登陆</button>
+            </form>
+                <p class="submit_err"><%= msg %></p>
+        <div class="to-region">没有账号？立即<a href="/register" class="region-way">注册</a></div>
+        </div>
+    </div>
+<%- include('footer.html')  -%>

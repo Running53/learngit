@@ -1,0 +1,31 @@
+<%- include('header.html')  -%>
+<script src="/js/personal_play.js"></script>
+<script src="/js/public.js"></script>
+<script src="/js/play_history.js"></script>
+
+<div class="person_nav w">
+    <%- include('navs.html')  -%>
+
+    <div class="right_nav">
+            <div class="mycollectmusic">
+                <h1>我的播放历史列表(<span class="play_num"><%= history_songs.length %></span>)<a class="empty_history" href="javascript:;">(清空历史记录)</a></h1>
+                <h4 class="song_head"><div>歌手</div><div>歌曲</div><div>上次播放时间</div></h4>
+                <ul class="history_music">
+                <% history_songs.forEach(history_song => { %>                 
+                    <li class="show_music">
+                        <div class="song_name"><%= history_song.song %></div>
+                        <div class="singer_name"><%= history_song.singer %></div>
+                        <div class="time_name"><%= history_song.time.toLocaleString() %></div>
+                        <h4 class="oper">
+                            <a href="javascript:;" title="播放歌曲" class="play" id="<%= history_song.id %>"></a>
+                            <a href="javascript:;" title="添加至播放列表" class="addtolist" id="<%= history_song.id %>"></a>
+                            <a href="javascript:;" title="添加至我的收藏列表" class="collection" id="<%= history_song.id %>"></a>
+                        </h4>  
+                    </li>
+                <% }) %>   
+            
+                </ul>
+            </div>
+    </div>
+</div>
+<%- include('footer.html')  -%>

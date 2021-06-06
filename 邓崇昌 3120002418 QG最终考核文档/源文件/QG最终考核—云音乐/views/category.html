@@ -1,0 +1,26 @@
+<%- include('header.html')  -%>
+<script src="/js/catagory.js"></script>
+
+   <div class="catagory_box m">
+       <div class="catagory_name">
+            <span>当前歌曲类型:<%= Name.songSpecies %>(<%= song.length %>)</span>
+       </div>
+        <ol class="catagory_songs">
+        <% song.forEach((songs,index) => { %>
+            <li>
+                <span><%= index+1 %></span>
+                <div class="catagory_list">
+                    <a class="catagory_song"><%= songs.song.substring(0,22) %></songs.song></a>
+                    <span class="catagory_songer"><%= songs.singer %></span>
+                    <div class="oper">
+                        <a href="javascript:;" title="播放歌曲" class="play" id='<%= songs.id %>'></a>
+                        <a href="javascript:;" title="添加至播放列表" class="addtolist" id='<%= songs.id %>'></a>
+                        <a href="javascript:;" title="收藏" class="collection" id="<%= songs.id %>"></a>
+                    </div>  
+                </div>
+            </li>
+       <% }) %>      
+        </ol>
+   </div>
+
+   <%- include('footer.html')  -%>

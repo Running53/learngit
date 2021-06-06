@@ -1,0 +1,62 @@
+.login .m,.register .m {
+    width: 600px;
+    height: 600px;
+    background-color: rgb(245, 215, 206);
+}
+.login .login_box h2,.register .register_box h2 {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    background-color: rgb(212, 100, 100);
+}
+.login .login_box input,.login .login_box button,.register .register_box input,.register .register_box button {
+    display: block;
+    width: 400px;
+    height: 50px;
+    margin: 40px auto;
+    border-radius: 15px;
+    text-indent: 1em;
+}
+.login .login_box button,.register .register_box button {
+    background-color: rgb(248, 85, 44);
+}
+.outline {
+    border: 1px solid #f95d5d;
+    box-shadow: 0px 0px 10px 0px #f95d5d;
+}
+.login .login_box button,.register .register_box button {
+    font-size: 20px;
+    color: #999;
+    width: 200px;
+    height: 40px;
+    text-indent: 0em;
+}
+.login .login_box button:hover,.register .register_box button:hover {
+    color: #fff;
+    background-color: rgb(236, 95, 95);
+}
+.login .login_box p,.register .register_box p {
+    display: none;
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    color: red;
+    margin: -30px auto;
+}
+.login .login_box .submit_err,.register .register_box .submit_err {
+    display: block;
+}
+.to-region,.to-login {
+    font-size: 14px;
+}
+.to-region .region-way,.to-login .login-way  {
+    font-size: 16px;
+    color: brown;
+}
+.to-region .region-way:hover,.to-login .login-way:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,23 @@
+<%- include('header.html')  -%>
+<script src="/js/login.js"></script>
+<script src="/js/register.js"></script>
+
+<audio></audio>
+    <div class="register">
+        <div class="register_box m">
+                <h2>欢迎来到注册页面</h2>
+                <form action="/register" method="POST">
+                <input type="text" placeholder="请输入您想创建的账号" name="username" class="username" id="username">
+                <p class="username_err">您输入的账号格式不正确，请重新输入！</p>
+                <p class="username_false">您输入的账号已被注册过，请重新输入！</p>
+                <input type="password" placeholder="请输入密码" name="password1" class="password">
+                <p class="password_err">您输入的密码格式不正确，请重新输入！</p>    
+                <input type="password" placeholder="请再次输入密码" name="password2" class="password">
+                <p class="password_false">您输入的密码与第一次输入的不符，请重新输入！</p>    
+                <button type="submit" id="submit">注册</button>
+            </form>
+                <p class="submit_err"><%= msg %></p>
+        <div class="to-login">没有账号？立即<a href="/login" class="login-way">登录</a></div>
+        </div>
+    </div>
+<%- include('footer.html')  -%>

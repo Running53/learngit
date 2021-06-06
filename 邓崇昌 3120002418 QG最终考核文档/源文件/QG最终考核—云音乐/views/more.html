@@ -1,0 +1,10 @@
+<%- include('header.html')  -%>
+<div class="more_main">
+    <h1>所有歌曲分类(<%= allsongSpecies.length %>):</h1>
+    <ul class="species">
+        <% allsongSpecies.forEach(allsongSpecie => { %>
+        <li><a href="category/list/<%= allsongSpecie.id %>"><%= allsongSpecie.songSpecies %></a></li>
+        <% }) %>         
+    </ul>
+</div>
+<%- include('footer.html')  -%>

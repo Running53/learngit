@@ -1,0 +1,130 @@
+     <!-- 固定播放器窗口begin -->
+     <audio></audio> 
+     <div class="player">
+        <div class="m">     
+            <% if (lastplay.song === '') { %>
+                <div class="play_button">
+                    <a href="javascript:;" class="lastsong" title="上一首"></a>
+                    <a href="javascript:;" class="to_play" title="播放/暂停"></a>
+                    <a href="javascript:;" class="nextsong" title="下一首"></a>
+                </div>  
+                <a href="javascript:;" class="play_img"><img alt=""></a>
+                <div class="sing_information">
+                    <div class="singer_word">
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                    </div>                             
+            <%} else { %> 
+                <script>
+                    var audio=document.querySelector('audio')
+                    audio.setAttribute('src',"/mp3/<%= lastplay.singer %> - <%= lastplay.song %>.mp3")
+                    audio.load()
+                </script>
+                 <div class="play_button">
+                    <a href="javascript:;" class="lastsong" title="上一首" id='<%= lastplay.id %>'></a>
+                    <a href="javascript:;" class="to_play" title="播放/暂停"></a>
+                    <a href="javascript:;" class="nextsong" title="下一首" id='<%= lastplay.id %>'></a>
+                </div>    
+                <% if (lastplay.id > 10) { %>
+                     <% if (lastplay.id % 10 == 0) { %>
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id/10 %>.jpg" alt=""></a>
+                     <% } else { %> 
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id%10 %>.jpg" alt=""></a>
+                    <% } %>
+                <% } else { %> 
+                <a href="javascript:;" class="play_img"><img src="/images/img<%= lastplay.id %>.jpg" alt=""></a>
+                <% } %>
+            <div class="sing_information">
+                <div class="singer_word">
+                    <a href="javascript:;"><%= lastplay.singer %></a>
+                    <a href="javascript:;"><%= lastplay.song %></a>
+                </div>                                       
+                <% } %>
+                <div class="progress">
+                    <div>
+                    <div class="cur"></div>
+                    <span class="process_button"></span>
+                    </div>
+                </div>
+                    <span class="music_time" ><em>00:00</em><em>/00:00</em></span>
+            </div>
+            <div class="icons">
+                <div class="add">
+                <% if(playlists[0]) { %>
+                    <a href="javascript:;" title="收藏" class="collection_now" id="<%= playlists[0].id%>"></a>
+                    <% } else { %> 
+                    <a href="javascript:;" title="收藏" class="collection_now"></a>
+                    <% } %>
+                    <a href="javascript:;" title="转发"></a>
+                </div>
+                <div class="music_list">
+                    <a class="voice" href="javascript:;" title="音量"></a>
+                    <a class="play_way" href="javascript:;" title="单曲循环"></a>
+                    <a class="list" href="javascript:;" title="播放列表"></a>
+                    <div class="play_list">
+                        <div class="play_list_top">
+                            <h4>播放列表<span class="play_list_number"></span></h4>
+                            <span class="close"></span>
+                            <a href="javascript:;" class="clear"><span class="clear_btn"></span>清除</a>
+                            <a href="javascript:;" class="collection_all"><span></span>收藏全部</a>                           
+                        </div>
+                        <div class="play_list_main">
+                            <div class="song_title"><span>歌曲</span><span>歌手</span></div>
+                            <ul class="music_play_list">  
+                            <% playlists.forEach(playlist => { %>
+                                <li><a href="javascript:;"><%= playlist.song %></a><a href="javascript:;"><%= playlist.singer %></a><a href="javascript:;" title="播放" class="play" id="<%= playlist.id %>"></a><span title="收藏单曲" class="collection" id="<%= playlist.id %>"></span><span title="删除" class="delete" id="<%= playlist.id %>"></span></li>
+                            <% }) %>   
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 固定播放器窗口end -->
+    <!-- 底部begin -->
+    <div class="footer">
+        <div class="m">
+            <div class="footer_left">
+            <p>
+            <a href="javascript:;">服务条款</a><span>|</span>
+            <a href="javascript:;">隐私政策</a><span>|</span>
+            <a href="javascript:;">儿童隐私政策</a><span>|</span>
+            <a href="javascript:;">版权投诉指引</a><span>|</span>
+            <a href="javascript:;">意见反馈</a><span>|</span>
+            </p> 
+            <p>
+                网易公司版权所有©1997-2021 &nbsp;&nbsp; 杭州乐读科技有限公司运营：
+                <a href="javascript:;">浙网文[2021] 1186-054号</a>
+            </p>  
+            <p>
+                违法和不良信息举报电话：0571-89853516 举报邮箱：
+                <a href="javascript:;">ncm5990@163.com</a>
+            </p>
+            <p>
+                <a href="javascript:;">粤B2-20090191-18&nbsp;工业和信息化部备案管理系统网站 </a>
+                <a href="javascript:;">浙公网安备 33010902002564号</a>
+            </p>
+            </div>
+            <ul class="footer_right">
+                <li>
+                    <div class="footer_img"><span>Amped Studio</span></div>
+                </li>
+                <li>
+                    <div class="footer_img1"><span>用户认证</span></div>
+                </li>
+                <li>
+                    <div class="footer_img2"><span>独立音乐人</span></div>
+                </li>
+                <li>
+                    <div class="footer_img3"><span>赞赏</span></div>
+                </li>
+                <li>
+                    <div class="footer_img4"><span>视频奖励</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+    <!-- 底部end -->

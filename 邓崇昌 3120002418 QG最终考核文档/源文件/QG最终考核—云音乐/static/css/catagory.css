@@ -1,0 +1,88 @@
+.catagory_box {
+    height: 500px;
+    background-color: rgb(184, 105, 105);
+    overflow: auto;
+}
+.catagory_name {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: rgb(218, 85, 85);
+    margin: 0 auto;
+}
+.catagory_name span {
+    font-size: 30px;
+}
+.catagory_songs {
+    width: 50%;
+    height: 450px;
+    margin: 0 auto; 
+}
+.catagory_songs li {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin: 2px auto;
+}
+.catagory_songs li .catagory_list:hover {
+    background-color: rgb(248, 217, 217);
+}
+.catagory_songs li:nth-child(-n+3) span:nth-child(1) {
+    color: #d46e6e;
+}
+.catagory_songs li >span{
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 4px;
+    background-color: rgb(231, 154, 144);
+}
+.catagory_songs li .catagory_list {
+    float: left;
+    width: 435px;
+    display: block;
+    height: 40px;
+    background-color: rgb(250, 246, 246);
+}
+.catagory_songs li .catagory_list .catagory_song{
+    float: left;
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+    overflow-x: auto;
+}
+.catagory_songs li .catagory_list .catagory_song:hover {
+    text-decoration: underline;
+}
+.catagory_songs li .catagory_list .catagory_songer {
+    float: right;
+    font-size: 12px;
+    margin-right: 20px;
+}
+.catagory_songs li .oper {
+    position: absolute;
+    display: none;
+    width: 80px;
+    height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.catagory_songs li .oper a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 10px 2px 0px 2px;
+}
+.catagory_songs li .oper a:nth-child(1) {
+    background: url(../images/play_button.png) no-repeat -267px -268px;
+}
+.catagory_songs li .oper a:nth-child(2) {
+    background: url(../images/add.png) no-repeat 1px -698px;
+}
+.catagory_songs li .oper a:nth-child(3) {
+    background: url(../images/play_button.png) no-repeat -297px -268px ;
+}

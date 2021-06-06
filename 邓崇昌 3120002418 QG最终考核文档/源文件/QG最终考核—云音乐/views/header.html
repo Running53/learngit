@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QG_music</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/catagory.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/songlist.css">
+    <link rel="stylesheet" href="/css/person.css">
+    <link rel="stylesheet" href="/css/more.css">
+    <script src="/js/ajax.js"></script>
+    <script src="/js/music_operation.js"></script>
+    <script src="/js/playershow.js"></script>
+    <script src="/js/music_list.js"></script>
+    <script src="/js/search.js"></script>
+
+    <!-- <script src="/js/index.js"></script>
+    <script src="/js/animate.js"></script>
+    <script src="/js/playershow.js"></script>
+    <script src="/js/music_list.js"></script>
+    <script src="/js/ajax.js"></script>
+    <script src="/js/catagory.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/register.js"></script>
+    <script src="/js/songlist.js"></script> -->
+</head>
+<body>
+    <!-- 头部begin -->
+<div class="header">
+    <div class="header_m w">
+       <a href="/index" class="log"><div class="QG"></div><span class="log_text">QG云音乐</span></a>
+        <ul class="header_nav">
+            <li>
+                <a href="javascript:;">发现音乐</a>
+                <div class="triangle"></div>
+            </li>
+            <li>
+                <a href="/admin/person">我的音乐</a>
+                <div class="triangle"></div>
+            </li>
+            <li>
+                <a href="javascript:;">朋友</a>
+                <div class="triangle"></div>
+            </li>
+            <li>
+                <a href="javascript:;">商城</a>
+                <div class="triangle"></div>
+            </li>
+            <li>
+                <a href="javascript:;">音乐人</a>
+                <div class="triangle"></div>
+            </li>
+            <li>
+                <a href="javascript:;">下载客户端</a>
+                <div class="triangle"></div>
+                <div class="hot"></div>
+            </li>
+        </ul>
+        <div class="find">
+            <input type="text" placeholder="音乐/视频/电台/用户" class="search">
+            <div class="search_btn"></div>
+            <ul class="list_group" id='list_box'>             
+            </ul>
+        </div>
+        <div class="creater"><a href="/admin/person">创作者中心</a></div> 
+        <% if (!user) { %>
+            <div class="region"><a href="/login">登录</a></div>
+        <% } else { %>
+            <div class="user">
+                <% if (modify_informations&&modify_informations.uname) { %>
+                 <a href="javascript:;"><%= modify_informations.uname %></a>   
+                 <% } else { %>
+                 <a href="javascript:;"><%= user.username %></a>
+                 <% } %>    
+                <ul class="person">
+                    <li><a href="/admin/person" class="personal">个人中心</a></li>
+                    <li><a href="/user/logout" class="exit">退出</a></li>
+                </ul>
+            </div>
+            <script>
+                  var person = document.querySelector('.person')
+                  var user = document.querySelector('.user')
+                    user.addEventListener('click',function(e) {
+                        e.stopPropagation()
+                        person.style.display = 'block';           
+                        document.addEventListener('click',function() {
+                            person.style.display = 'none';           
+                        })
+                    })
+            </script>
+        <% } %>    
+    </div>
+</div>
+    <!-- 头部end -->

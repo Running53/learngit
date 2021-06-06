@@ -1,0 +1,341 @@
+.person_nav {
+    height: 800px;
+    background-color: rgb(240, 234, 234) ;
+}
+.left_nav {
+    float: left;
+    width: 200px;
+    height: 800px;
+    background-color: rgb(240, 165, 143);
+}
+.left_nav .personal_door {
+    width: 100%;
+    background-color: rgb(139, 134, 130);
+}
+.left_nav .personal_door a {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    background-color: rgb(240, 151, 78);
+    border-bottom: 2px solid #666;
+}
+.left_nav .personal_door a:hover {
+    background-color: rgb(238, 119, 8);
+}
+.right_nav {
+    float: right;
+    width: 880px;
+    height: 800px;
+    background-color: rgb(209, 214, 204);
+    overflow: hidden;
+}
+.right_nav .last_time {
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    background-color: rgb(87, 90, 87);   
+}
+.right_nav .last_time .login_time {
+    color: rgb(248, 192, 9);
+}
+.right_nav .number {
+    height: 100px;
+    /* background-color: darkgoldenrod; */
+}
+.right_nav .number li {
+    float: left;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    /* background-color: darkseagreen; */
+    margin: 0 10px;
+}
+.right_nav .number li .number_source {
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 20px;
+    background-color: darkturquoise;
+}
+.right_nav .number li .the_number {
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    color: floralwhite;
+    background-color: rgb(136, 131, 138);
+}
+.right_nav .mycollectmusic {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    background-color: rgb(250, 248, 236);
+}
+.right_nav .mycollectmusic h1 {
+    height: 60px;
+    text-align: center; 
+    line-height: 60px;
+    color: #fff;
+    background-color: rgba(68, 241, 213, 0.966);   
+}
+.right_nav .mycollectmusic ul {
+    height: 580px;
+    overflow: auto;
+    background-color: rgb(194, 189, 191);
+}
+.right_nav .mycollectmusic ul li,.right_nav .mycollectmusic .song_head {
+    width: 704px;
+    height: 40px;
+    /* background-color: khaki; */
+}
+.right_nav .mycollectmusic ul li div,.right_nav .mycollectmusic .song_head div {
+    float: left;
+    width: 33.33%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.right_nav .mycollectmusic .show_music:hover {
+    background-color: rgb(207, 205, 205);
+}
+.right_nav .mycollectmusic ul li {
+    position: relative;
+}
+.right_nav .mycollectmusic ul li .oper {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    display: none;
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    
+    transform: translateX(-50%);
+}
+.right_nav .mycollectmusic ul li .oper a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 10px 2px 0px 2px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(1) {
+    background: url(/images/play_button.png) no-repeat -267px -268px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(2) {
+    background: url(/images/add.png) no-repeat 1px -698px;
+}
+.right_nav .mycollectmusic ul li .oper a:nth-child(3) {
+    background: url(/images/play_button.png) no-repeat -297px -268px ;
+}
+.right_nav .mycollectmusic ul li .oper .delete_collect_song {
+    background: url(/images/collection.png) no-repeat -51px 1px !important;
+}
+.right_nav .songList {
+    width: 880px;
+    height: 800px;
+    padding-left: 90px;
+}
+.right_nav .songList li {
+    margin-bottom: -30px; 
+}
+.right_nav .title {
+    width: 880px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: turquoise;
+}
+.right_nav .personal_information {
+    height: 620px;
+    background-color: cadetblue;
+    margin-top: 20px;
+}
+.right_nav .personal_information h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    background-color: chartreuse;
+}
+.right_nav .personal_information form {
+    width: 560px;
+    height: 600px;
+    font-size: 20px;
+    float: right;
+    margin: 60px auto;
+}
+.right_nav .personal_information form div span {
+    margin-left: 17px;
+}
+.right_nav .personal_information form label {
+    margin-bottom: 20px;
+}
+.right_nav .personal_information form input {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+}
+.right_nav .personal_information form textarea {
+    font-size: 16px;
+    border-radius: 10px;
+}
+label{
+    display: inline-block;
+    min-width: 85px;/*或者 width: 100px;*/
+}
+.right_nav .personal_information form .subscription_label {
+    position: relative;
+    top: -24px;
+}
+.right_nav .personal_information select {
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.right_nav .personal_information .save {
+    width: 100px;
+    height: 50px;
+    background-color: #00a1d6;
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 75px;
+    border-radius: 40px;
+}
+.right_nav .personal_information .save:hover {
+    background-color: rgb(0, 255, 255);
+    cursor: pointer;
+}
+.right_nav .select_species{
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    display: inline-block;
+    margin: 100px 0px 20px 0px;
+}
+.right_nav  #file-input {
+    margin-left: 353px;
+    width: 400px;
+    font-size: 20px;
+    display: block;
+}
+.right_nav .classify {
+    color: #fff;
+    font-size: 16px;
+    margin-left: 273px;
+}
+.person_nav .right_nav form button {
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    color: #fff;
+    margin: 30px 0px 0px 385px;
+    background-color: rgb(253, 142, 68);
+}
+.person_nav .right_nav form button:hover {
+    background-color: rgb(245, 101, 6);
+}
+.person_nav .right_nav .tip {
+    font-size: 14px;
+    text-align: center;
+    color:rgb(112, 110, 110);
+    margin-top: 4px;
+}
+.person_nav .right_nav .headtitle {
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    background-color: rgb(26, 230, 219);
+}
+.person_nav .right_nav .songlist_main {
+    height: 600px;
+    background-color: burlywood;
+}
+.person_nav .right_nav .songlist_main span:nth-child(1) {
+    position: relative;
+    top: -47px;
+    left: 165px;
+    color: rgb(44, 174, 179);
+    font-size: 24px;
+}
+.person_nav .right_nav .songlist_main textarea {
+    width: 500px;
+    height: 100px;
+    margin-left: 160px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 15px;
+}
+.person_nav .right_nav .uploadlist_tip {
+    font-size: 18px;
+    color: chocolate;
+    text-align: center;
+    margin-top: 5px;
+}
+.upload_img_tips {
+    font-size: 16px;
+    color: chocolate;
+    margin-left: 332px;
+    margin-top: 25px;
+    margin-bottom: -40px;
+ } 
+ #upload_img {
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 354px;
+}  
+#list_tips {
+    margin-left: 352px;
+}
+#list_button {
+    margin-right: 300px;
+}
+.person_nav .right_nav .collect_time {
+    font-size: 14px;
+    color: brown;
+}
+.person_nav .right_nav .delete_list {
+    display: block;
+    font-size: 16px;
+    color: rgb(231, 116, 7);
+}
+.person_nav .right_nav .delete_list:hover {
+    text-decoration: underline;
+}
+.person_nav .right_nav .songList li {
+    height: 280px;
+    margin-bottom: -5px;
+}
+.person_nav .right_nav .songList li>span {
+    color: #610c5a;
+}
+.person_nav .right_nav .empty_history {
+    position: relative;
+    font-size: 14px;
+    color: rgb(184, 165, 119);
+    padding-left: 25px;
+}
+.person_nav .right_nav .empty_history:hover {
+    color: rgb(247, 179, 8);
+    text-decoration: underline;
+}
+.person_nav .right_nav .empty_history::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 13px;
+    background: url(/images/collection.png) no-repeat -51px 0px;
+
+}   

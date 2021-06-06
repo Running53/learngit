@@ -1,0 +1,214 @@
+<%- include('header.html')  -%>
+<script src="/js/index.js"></script>
+<script src="/js/animate.js"></script>
+<!-- nav区域begin -->
+    <div class="nav">
+        <ul class="w">
+            <li>
+                <a href="javascript:;"><span >推荐</span></a>
+            </li>
+            <li>
+                <a href="javascript:;"><span>排行榜</span></a>
+            </li>
+            <li>
+                <a href="javascript:;"><span>歌单</span></a>
+            </li>
+            <li>
+                <a href="javascript:;"><span>主播电台</span></a>
+            </li>
+            <li>
+                <a href="javascript:;"><span>歌手</span></a>
+            </li>
+            <li>
+                <a href="javascript:;"><span>新碟上架</span></a>
+            </li>
+        </ul>
+    </div>
+    <!-- nav区域end -->
+    <!-- banner区域begin -->
+    <div class="banner">
+        <div class="banner_main m">
+            <div class="banner_img">
+                <ul>
+                    <% playershowlist.forEach(playershowlists => { %>
+                    <li>
+                        <a id='<%= playershowlists.id %>' href="javascript:;" class="<%=playershowlists.singer%> - <%=playershowlists.song%>"><img src="/images/pic<%= playershowlists.id %>.jpg" alt="" ></a>
+                    </li>
+           <% }) %>
+                </ul>      
+                <audio></audio> 
+            </div>
+            <a class="banner_download" href="javascript:;">
+               <img src="images/download.png" alt="">
+            </a>
+            <div class="pre"></div>
+            <div class="next"></div>
+            <ol class="circle">
+            </ol>
+        </div>
+    </div>
+    <!-- banner区域end -->
+    <!-- 热门推荐begin -->
+    <div class="recommend m">
+        <ul class="recommend_nav">
+            <li><a href="javascript:;">热门推荐</a></li>
+            <% songSpecies.forEach(species => { %>
+                <li><a href="/category/list/<%= species.id %>"><%= species.songSpecies %></a></li>
+                <% }) %>  
+            <li><a href="/more">更多</a></li>
+        </ul>
+        <ul class="songList">
+            <% hots.forEach(hot => { %>
+                <li>
+                    <a href="/songlist/<%= hot.ids %>">
+                        <img src='images/song<%= hot.ids %>.jpg' alt="">
+                        <div class="mask"></div>
+                        <div class="mask_bottom">
+                            <span class="listen_icon"></span>
+                            <% if (hot.playnumber >=100000) { %>
+                            <span class="play_numbers"><%= parseInt(hot.playnumber/10000) %>万</span>
+                            <% } else { %>
+                            <span class="play_numbers"><%= hot.playnumber %></span>
+                            <% } %>    
+                            <a class="play_icon"></a>
+                        </div>
+                    </a>           
+                    <a href="/songlist/<%= hot.ids %>" class="text"><%= hot.content %></a>
+                </li>
+           <% }) %>
+            
+        </ul>
+        <div class="singer">
+            <h3>入驻歌手<a href="javascript:;">查看全部</a></h3>
+            <ul class="singer_nav">
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/singer1.png" alt="">
+                        </div>
+                            <h4>张惠妹aMEI</h4>
+                            <p>台湾歌手张惠妹</p>  
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/singer2.jpg" alt="">
+                        </div>
+                            <h4>Fine乐团</h4>
+                            <p>台湾歌手张惠妹</p>  
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/singer3.png" alt="">
+                        </div>
+                            <h4>萬曉利</h4>
+                            <p>民谣歌手、中国现代民谣的代表人物之一</p>  
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/singer4.png" alt="">
+                        </div>
+                            <h4>音乐人赵雷</h4>
+                            <p>民谣歌手</p>  
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/singer5.png" alt="">
+                        </div>
+                            <h4>王三溥</h4>
+                            <p>音乐人</p>  
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<!-- 热门推荐end -->
+  <!-- 热门推荐begin -->
+  <div class="recommend m">
+    <ul class="recommend_nav">
+        <li><a href="javascript:;">最新歌单</a></li>
+        <% newSongSpecies.forEach(news => { %>
+        <li><a href="/category/list/<%= news.id %>"><%= news.songSpecies %></a></li>
+        <% }) %>   
+        <li><a href="/more">更多</a></li>
+    </ul>
+    <ul class="songList">
+        <% news.forEach(hot => { %>
+            <li>
+                <a href="/songlist/<%= hot.ids %>">
+                    <img src='images/song<%= hot.ids %>.jpg' alt="">
+                    <div class="mask"></div>
+                    <div class="mask_bottom">
+                        <span class="listen_icon"></span>
+                        <% if (hot.playnumber >=100000) { %>
+                            <span class="play_numbers"><%= parseInt(hot.playnumber/10000) %>万</span>
+                            <% } else { %>
+                            <span class="play_numbers"><%= hot.playnumber %></span>
+                            <% } %>  
+                        <a class="play_icon"></a>
+                    </div>
+                </a>           
+                <a href="/songlist/<%= hot.ids %>" class="text"><%= hot.content %></a>
+            </li>
+       <% }) %>      
+    </ul>
+    <div class="singer">
+        <h3>热门主播<a href="javascript:;">查看全部</a></h3>
+        <ul class="singer_nav">
+            <li>
+                <a href="javascript:;">
+                    <div class="pic">
+                        <img src="images/singer4.png" alt="">
+                    </div>
+                        <h4>王三溥</h4>
+                        <p>音乐人</p>  
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="pic">
+                        <img src="images/singer2.jpg" alt="">
+                    </div>
+                        <h4>Fine乐团</h4>
+                        <p>台湾歌手张惠妹</p>  
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="pic">
+                        <img src="images/singer3.png" alt="">
+                    </div>
+                        <h4>音乐人赵雷</h4>
+                        <p>民谣歌手、中国现代民谣的代表人物之一</p>  
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="pic">
+                        <img src="images/singer1.png" alt="">
+                    </div>
+                        <h4>萬曉利</h4>
+                        <p>民谣歌手</p>  
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <div class="pic">
+                        <img src="images/singer5.png" alt="">
+                    </div>
+                        <h4>张惠妹aMEI</h4>
+                        <p>台湾歌手张惠妹</p>  
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    <%- include('footer.html')  -%>
