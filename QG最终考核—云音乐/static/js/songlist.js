@@ -18,6 +18,7 @@ window.addEventListener('load',function(){
     var process_button = document.querySelector('.process_button')
     var cur = document.querySelector('.cur')
     var play_list = document.querySelector('.play_list')
+    var person = document.querySelector('.person')
     for(let i=1;i<lis.length;i++) {
         lis[i].addEventListener('mousemove',function() {
            oper[i-1].style.display='block';
@@ -89,15 +90,19 @@ window.addEventListener('load',function(){
     })
     collections.addEventListener('click',function() {
         let id = window.location.pathname.split('/')[window.location.pathname.split('/').length-1]
-        ajax({
-            url: '/collectall',
-            data: {
-                id: id
-            },
-            success: function() {
-                alert('该歌单已成功添加至收藏歌单当中!')
-            }          
-        })
+        if(person) {
+            ajax({
+                url: '/collectall',
+                data: {
+                    id: id
+                },
+                success: function() {
+                    alert('该歌单已成功添加至收藏歌单当中!')
+                }          
+            })
+        }else {
+            window.location.pathname = '/login'
+        }
     })
     songlist_songs.addEventListener('click',function(e) {
         if(e.target.className == 'play') {
@@ -137,15 +142,19 @@ window.addEventListener('load',function(){
             })
         }else if (e.target.className == 'collection') {
             let id = e.target.getAttribute('id');
-            ajax({
-                url: '/collection',
-                data: {
-                    id: id
-                },
-                success: function() {
-                    alert('歌曲已成功添加至您的收藏歌曲中！')
-                }
-            })
+            if(person) {
+                ajax({
+                    url: '/collection',
+                    data: {
+                        id: id
+                    },
+                    success: function() {
+                        alert('歌曲已成功添加至您的收藏歌曲中！')
+                    }
+                })
+            }else {
+                window.location.pathname = '/login'
+            }
         }else if(e.target.className == 'addtolist') {
             let id = e.target.getAttribute('id')
             ajax({

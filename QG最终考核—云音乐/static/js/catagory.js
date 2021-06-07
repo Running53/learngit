@@ -13,6 +13,7 @@ window.addEventListener('load',function(){
     var lastsong = document.querySelector('.lastsong')
     var add = document.querySelector('.add')
     var play_list = document.querySelector('.play_list')
+    var person = document.querySelector('.person')
     for(let i=0;i<lis.length;i++) {
         lis[i].addEventListener('mousemove',function() {
            oper[i].style.display='block';
@@ -82,15 +83,19 @@ window.addEventListener('load',function(){
         })
     }else if (e.target.className == 'collection') {
         let id = e.target.getAttribute('id');
-        ajax({
-            url: '/collection',
-            data: {
-                id: id
-            },
-            success: function() {
-                alert('歌曲已成功添加至您的收藏歌曲中！')
-            }
-        })
+        if(person) {
+            ajax({
+                url: '/collection',
+                data: {
+                    id: id
+                },
+                success: function() {
+                    alert('歌曲已成功添加至您的收藏歌曲中！')
+                }
+            })
+        }else {
+            window.location.pathname = '/login'
+        }
     }else if(e.target.className == 'addtolist') {
         let id = e.target.getAttribute('id')
         ajax({

@@ -50,8 +50,8 @@
             </div>
             <div class="icons">
                 <div class="add">
-                <% if(playlists[0]) { %>
-                    <a href="javascript:;" title="收藏" class="collection_now" id="<%= playlists[0].id%>"></a>
+                <% if(lastplay.song !== '') { %>
+                    <a href="javascript:;" title="收藏" class="collection_now" id="<%= lastplay.id%>"></a>
                     <% } else { %> 
                     <a href="javascript:;" title="收藏" class="collection_now"></a>
                     <% } %>

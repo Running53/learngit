@@ -26,8 +26,10 @@ window.addEventListener('load',function() {
                 }
                 if(audio.src.substring(audio.src.length - 3) == 'mp3') {
                     audio.play();
+                    console.log(1);
                 }
-                duration = audio.duration            
+                duration = audio.duration 
+                minutes()           
             }else {
                     duration = 0
                   }

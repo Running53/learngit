@@ -14,6 +14,7 @@ window.addEventListener('load',function() {
     var add = document.querySelector('.add')
     var collection_all = document.querySelector('.collection_all')  
     var collection_now = document.querySelector('.collection_now')
+    var person = document.querySelector('.person')
     clear.addEventListener('click',function() {
         ajax({
             url:'/clearplaymusic',
@@ -143,15 +144,20 @@ window.addEventListener('load',function() {
             })
         }else if (e.target.className == 'collection') {
             let id = e.target.getAttribute('id');
-            ajax({
-                url: '/collection',
-                data: {
-                    id: id
-                },
-                success: function() {
-                    alert('歌曲已成功添加至您的收藏歌曲中！')
-                }
-            })
+            console.log(6);
+            if(person) {
+                ajax({
+                    url: '/collection',
+                    data: {
+                        id: id
+                    },
+                    success: function() {
+                        alert('歌曲已成功添加至您的收藏歌曲中！')
+                    }
+                })
+            }else {
+                window.location.pathname = '/login'
+            }
         }else if(e.target.className == 'delete') {
             let id = e.target.getAttribute('id')
             ajax({
@@ -198,14 +204,18 @@ window.addEventListener('load',function() {
     })
     collection_now.addEventListener('click',function() {
         let id = this.getAttribute('id');
-        ajax({
-            url: '/collection',
-            data: {
-                id: id
-            },
-            success: function() {
-                alert('歌曲已成功添加至您的收藏歌曲中！')
-            }
-        })
+        if(person) {
+            ajax({
+                url: '/collection',
+                data: {
+                    id: id
+                },
+                success: function() {
+                    alert('歌曲已成功添加至您的收藏歌曲中！')
+                }
+            })
+        }else {
+            window.location.pathname = '/login'
+        }    
     })
 })

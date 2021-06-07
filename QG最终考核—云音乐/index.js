@@ -52,7 +52,7 @@ app.use(session({
 
 // session延期,防止用户操作过程中需要重新登录
 app.use((req,res,next)=> {
-    req.session.nowInMinutes = Math.floor(Date.now() /60e3)
+    req.session.nowInMinutes =  Math.floor(Date.now() /60e3)
     next()
 })
 
