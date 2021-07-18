@@ -1,0 +1,223 @@
+body {
+    background-color: #f8f9fa;
+}
+/* 版心盒子 */
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+/* 页面头部开始 */
+.header {
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 6%);
+}
+.header .head-content {
+    max-width: 1200px;
+    height: 70px;
+    margin: 0 auto;
+}
+.header .head-left-content {
+    float: left;
+    width: 350px;
+    height: 40px;
+    margin-top: 15px;
+}
+.logo {
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: url(../images/logo.png) no-repeat;
+    background-size: cover;
+}
+.title {
+    float: left;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    line-height: 40px;
+    margin-left: 10px;
+}
+.title-description {
+    position: relative;
+    font-size: 18px;
+    color: #999;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.title-description::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 1px;
+    height: 16px;
+    background-color: #e6e6e6;
+}
+.header .head-right-content {
+    float: right;
+    width: 450px;
+    height: 70px;
+}
+.head-nav {
+    float: left;
+    width: 249px;
+    height: 70px;
+    line-height: 70px;
+}
+.nav-title {
+    float: left;
+    position: relative;
+    font-size: 16px;
+    color: #333;
+    margin: 0 20px;
+}
+.nav-title em {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #fbc546;
+}
+.head-nav .nav-title:first-child {
+    font-weight: 700;
+}
+.not-login {
+    float: right;
+    width: 142px;
+    height: 70px;
+    line-height: 70px;
+}
+.not-login a {
+    float: left;
+    font-size: 14px;
+    color: #999;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+.not-login a:hover {
+    color: #fbc546;
+}
+.register {
+    position: relative;
+    padding-left: 10px;
+}
+.register::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    right: 48px;
+    width: 1px;
+    height: 14px;
+    background-color: #d8d8d8;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+/* 页面头部结束 */
+
+/* 页面尾部开始 */
+.footer {
+    height: 230px;    
+    background-color: #2d2d3a;
+}
+.footer-top {
+    height: 190px;
+    padding-top: 44px;
+}
+.footer-top-left {
+    float: left;
+    width: 272px;
+    height: 92px;
+}
+.footer-title {
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+}
+.footer-title::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 1px;
+    width: 13px;
+    height: 3px;
+    background: #fbc546;
+}
+.footer-title-description {
+    position: relative;
+    float: left;
+    font-size: 16px;
+    color: hsla(0,0%,100%,.8);
+    margin-top: 35px;
+    font-weight: 400;
+}
+.footer-title-description::after {
+    content: "";
+    position: absolute;
+    top: -63px;
+    right: -140px;
+    width: 1px;
+    height: 96px;
+    background: hsla(0,0%,100%,.1);
+}
+.footer-top-right {
+    float: right;
+    width: 650px;
+    height: 96px;
+    margin-top: 2px;
+}
+.download,.concern {
+    float: right;
+    width: 300px;
+    height: 96px;
+}
+.download-QR-code,.concern-QR-code {
+    float: left;
+    width: 96px;
+    height: 96px;  
+} 
+.download-QR-code {
+    background: url(../images/download.png) no-repeat;
+    background-size: cover;
+}
+.concern-QR-code {
+    background: url(../images/concern.jpeg) no-repeat;
+    background-size: cover;
+}
+.download-description,.concern-description {
+    float: left;
+    padding-left: 12px;
+}
+.download-description > div,.concern-description > div {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin: 20px 0 8px 0;
+}
+.download-description > span,.concern-description > span {
+    font-size: 14px;
+    color: hsla(0,0%,100%,.6);
+}
+.footer-bottom {
+    height: 40px;
+    font-size: 14px;
+    color: hsla(0,0%,100%,.3);
+    background-color: #24242f;
+}
+.footer-bottom-description {
+    line-height: 40px;
+    text-align: center;
+}
+.footer-bottom-description a {
+    display: inline-block;
+}
+/* 页面尾部结束 */

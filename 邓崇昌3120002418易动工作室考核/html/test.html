@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: aqua;
+        }
+        .first {
+            width: 341px;
+            height: 268px;
+            margin-right: 16px;
+            float: left;
+            position: relative;
+            cursor: pointer;
+            -webkit-transition: all .8s ease;
+            transition: all .8s ease;
+        }
+        .second {
+            transform: scale(.9);
+            /* transform-origin: left; */
+            opacity: .16;
+        }
+    </style>
+</head>
+<body>
+    <div class="first"></div>
+    <!-- <div class="second"></div> -->
+</body>
+<script>
+    var div = document.querySelector('div')
+    div.addEventListener('click',function() {
+       this.className = 'first second'
+    })
+</script>
+</html>

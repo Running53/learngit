@@ -1,0 +1,222 @@
+/* 页面主体开始 */
+.banner {
+    position: relative;
+    width: 100%;
+    margin-top: 32px;
+}
+.banner .banner-content {
+    height: 300px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+.banner-list {
+    position: absolute;
+    top:16px;
+    left:16px;
+    width: 6000px;
+    height: 268px;
+}
+.first-Slideshow {
+    float: left;
+    width: 754px;
+    height: 268px;
+    margin-right: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-size: 100%;
+    background-color: tomato;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+}
+.first-Slideshow-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 37px;
+    margin: 36px 0 8px 32px;
+}
+.first-Slideshow-brief {
+    font-size: 18px;
+    color: hsla(0,0%,100%,.8);
+    line-height: 25px;
+    margin-left: 32px;
+}
+.first-Slideshow-desc {
+    width: 463px;
+    height: 110px;
+    margin-top: 37px;
+    margin-left: 20px;
+    padding: 11px 0 0 17px;
+    box-sizing: border-box;
+    background: linear-gradient(270deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.09));
+    box-shadow: 0 -0.08rem 0.16rem 0 rgb(0 0 0 / 4%);
+    border-radius: 7px;
+}
+.first-Slideshow-desc >div {
+    float: left;
+    width: 220px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 20px;
+    margin-top: 16px;
+}
+.Slideshow {
+    position: relative;
+    float: left;
+    width: 341px;
+    height: 268px;
+    margin-right: 16px;
+    cursor: pointer;
+    transition: all .8s ease;
+}
+.occlusion-Slideshow {
+    transform: scale(.9);
+    transform-origin: left;
+    opacity: .16;
+}
+.small-Slideshow {
+    width: 341px;
+    height: 126px;
+    border-radius: 8px;
+    background-size: 100%;
+    padding-top: 23px;
+    box-sizing: border-box;
+    background-color: tomato;
+    background: url("https://s0.lgstatic.com/i/image2/M01/04/DE/Cip5yF_28-CAUyDYAASY6r3fc5k042.png") no-repeat;
+    background-size: cover;
+}
+.small-Slideshow:nth-child(2n-1) {
+    margin-bottom: 16px;
+}
+.small-Slideshow-title {
+    margin: 0 0 11px 21px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 25px;
+}
+.small-Slideshow-brief {
+    font-size: 14px;
+    color: hsla(0,0%,100%,.8);
+    line-height: 20px;
+    width: 194px;
+    margin-left: 21px;
+}
+.left-btn,.right-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 72px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 72px;
+    background: rgba(26,45,63,.2);
+    cursor: pointer; 
+    color: #fff;
+}
+.left-btn {
+    left: 0;
+    border-radius: 0 8px 8px 0;
+}
+.right-btn {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+}
+.left-btn:hover,.right-btn:hover {
+    background: rgba(26,45,63,.4);      
+}
+.left-btn::before {
+    content: '';
+    font-family: 'icomoon';
+}
+.right-btn::before {
+    content: '';
+    font-family: 'icomoon';
+}
+.public-course {
+    height: 208px;
+    margin: 40px 0;
+}
+.public-course-bar {
+    margin-bottom: 20px;
+    background-color: chartreuse;
+    overflow: hidden;
+}
+.public-course-title {
+    float: left;
+    height: 37px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #333;
+    line-height: 37px;
+    background-color: chocolate;
+}
+.more-public-course {
+    float: right;
+    width: 85px;
+    height: 37px;
+    background-color: crimson;
+}
+.course-list {
+    height: 151px;
+    background-color: darkblue;
+}
+.seconds-course {
+    height: 148px;
+    background-color: darkcyan;
+}
+.clock-course {
+    height: 333px;
+    background-color: #b8860b;
+    margin-top: 40px;
+}
+.clock-course-bar {
+    height: 42px;
+    background-color: darkkhaki;
+}
+.clock-course-title {
+    float: left;
+    height: 42px;
+    font-size: 26px;
+    color: #333;
+    font-weight: 500;
+    line-height: 42px;
+}
+.clock-course-btn {
+    float: right;
+    width: 85px;
+    height: 32px;
+    background-color: darkmagenta;
+}
+.clock-course-list {
+    height: 287px;
+    margin-top: 4px;
+    background-color: darksalmon ;
+}
+.special-course .special-course-title {
+    height: 42px;
+    font-size: 26px;
+    color: #333;
+    line-height: 42px;
+    margin-top: 24px;
+    background-color: deeppink;
+}
+.special-course-tabs {
+    height: 36px;
+}
+.special-course-tabs .special-course-tab{
+    float: left;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 16px 24px 0 0;
+}
+.special-course-list {
+    height: 6220px;
+    padding: 10px 0 48px 0;
+    background-color: dodgerblue;
+}
+/* 页面主体结束 */

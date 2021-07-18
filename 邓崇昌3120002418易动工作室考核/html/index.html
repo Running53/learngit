@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        content="拉勾教育,拉钩教育,课程,技术课程,技术培训,IT培训,IT技术思维,视频课程,Java,web前端,架构师,大数据,IT在线教育,开悟,测试开发工程师,python,微服务,数据结构与算法,谷歌算法，腾讯产品启示录"
+        name="keywords">
+    <meta
+        content="拉勾教育是拉勾旗下的互联网人职场专业能力提升平台。拉勾教育邀请到国内外互联网名企资深工作者提纲挈领分享宝贵经验。按照专业技术能力全盘图谱、面试难点、实战案例分析等维度，拉勾教育的课程覆盖互联网技术方向，如Java,web前端,架构师,大数据,测试开发工程师,python,微服务,数据结构与算法等。拉勾教育致力于帮助互联网技术人在短周期内对技术深度进行突破，成为更专业的工作者，是一所真正的互联网人实战大学。"
+        name="description">
+    <title>拉勾教育 - 拉勾旗下教育平台</title>
+    <link href="../favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+
+<body>
+    <!-- 头部开始 -->
+     <div class="header">
+        <div class="head-content">
+            <div class="head-left-content">
+                <a class="logo" href="./index.html"></a>
+                <span class="title">拉勾教育</span>
+                <span class="title-description">互联网人实战大学</span>
+            </div>
+            <div class="head-right-content">
+                <div class="head-nav">
+                    <a class="nav-title" href="./index.html">选课<em></em></a>
+                    <a class="nav-title" href="./index.html">学习<em></em></a>
+                    <a class="nav-title" href="./index.html">企业培训<em></em></a>
+                </div>
+                <div class="not-login">
+                    <a href="javascript:;" class="login">登录</a>
+                    <a href="javascript:;" class="register">注册</a>
+                    <img src="../images/avatar.png" alt=""class="avatar">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 头部结束 -->
+    <div class="main w">
+        <div class="banner">
+            <div class="banner-content">
+                <div class="banner-list">
+                    <!-- <div class="first-Slideshow">
+                        <div class="first-Slideshow-title">Java工程师 高薪学习路径</div>
+                        <div class="first-Slideshow-brief">直击大厂用人要求，构建 Java 核心技术能力</div>
+                        <div class="first-Slideshow-desc">
+                            <div>高并发/高可用场景解决方案</div>
+                            <div>亿级数据存储行业最佳实践</div>
+                            <div>分布式/微服务架构设计</div>
+                            <div>性能分析及调优实战经验</div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>      
+                    <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>   
+                    <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>   
+                    <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>   
+                    <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>   
+                    <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>  
+                     <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>  
+                     <div class="Slideshow">
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                        <div class="small-Slideshow">
+                            <div class="small-Slideshow-title">产品经理 高薪成长路径</div>
+                            <div class="small-Slideshow-brief">对标腾讯10+职级能力，成为能打能“赢”产品人</div>
+                        </div>
+                    </div>                 -->
+                </div>
+            </div>
+            <div class="left-btn"></div>
+            <div class="right-btn"></div>
+        </div>
+        <div class="public-course">
+            <div class="public-course-bar">
+                <div class="public-course-title">公开课</div>
+                <div class="more-public-course"></div>
+            </div>
+            <div class="course-list">    
+
+            </div>
+        </div>
+        <div class="seconds-course">
+
+        </div>
+        <div class="clock-course">
+            <div class="clock-course-bar">
+                <div class="clock-course-title">8点一课</div>
+                <div class="clock-course-btn"></div>
+            </div>
+            <div class="clock-course-list">
+
+            </div>
+        </div>
+            <div class="special-course">
+                <div class="special-course-title">专栏</div>
+                <ul class="special-course-tabs">
+                    <li class="special-course-tab">全部</li>
+                    <li class="special-course-tab">后端&架构</li>
+                    <li class="special-course-tab">前端&移动</li>
+                    <li class="special-course-tab">数据分析</li>
+                    <li class="special-course-tab">产品&设计</li>
+                    <li class="special-course-tab">市场&营销</li>
+                    <li class="special-course-tab">大数据&AI</li>
+                    <li class="special-course-tab">测试&运维</li>
+                    <li class="special-course-tab">职场&管理</li>
+                    <li class="special-course-tab">学生&入门</li>
+                    <li class="special-course-tab">预约好课</li>
+                </ul>
+                <div class="special-course-list">
+
+                </div>
+            </div> 
+            
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-top w">
+            <div class="footer-top-left">
+                <div class="footer-title">拉勾教育</div>
+                <h4 class="footer-title-description">拉勾旗下专为互联网人打造的实战大学</h4>
+            </div>
+            <div class="footer-top-right">
+                <div class="download">
+                    <div class="download-QR-code"></div>
+                    <div class="download-description">
+                        <div>下载APP</div>
+                        <span>随时随地学习</span>
+                    </div>                   
+                </div>
+                <div class="concern">
+                    <div class="concern-QR-code"></div>
+                    <div class="concern-description">
+                        <div>关注公众号</div>
+                        <span>接收第一手优惠信息</span>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-description">
+                 ©2021 拉勾网 
+                 <a href="https://beian.miit.gov.cn" target="_black">京ICP备14023790号-2</a>
+                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024043" target="_black">京公网安备 11010802024043</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
