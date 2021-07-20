@@ -16,14 +16,25 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/loading.css">
     <script src="../js/index.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
     <script src="../js/Slideshow.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/animate.js"></script>
 </head>
 
 <body>
+    <div class="loading">
+        <div class="bgc_left"></div>
+        <div class="bgc_right"></div>
+        <div class="square1"></div>
+        <div class="square2"></div>
+        <div class="text">Loading...</div>
+    </div>
+    <div class="go-top"></div>
     <!-- 头部开始 -->
-     <div class="header">
+    <div class="header">
         <div class="head-content">
             <div class="head-left-content">
                 <a class="logo" href="./index.html"></a>
@@ -39,17 +50,18 @@
                 <div class="not-login">
                     <a href="javascript:;" class="login">登录</a>
                     <a href="javascript:;" class="register">注册</a>
-                    <img src="../images/avatar.png" alt=""class="avatar">
+                    <img src="../images/avatar.png" alt="" class="avatar">
                 </div>
             </div>
         </div>
     </div>
     <!-- 头部结束 -->
     <div class="main w">
+        <!-- 轮播图部分开始 -->
         <div class="banner">
             <div class="banner-content">
                 <div class="banner-list">
-                 
+
                 </div>
             </div>
             <div class="left-btn"></div>
@@ -57,49 +69,466 @@
             <ul class="circles">
             </ul>
         </div>
+        <!-- 轮播图部分结束 -->
+        <!-- 公共课程部分开始 -->
         <div class="public-course">
             <div class="public-course-bar">
                 <div class="public-course-title">公开课</div>
-                <div class="more-public-course"></div>
+                <div class="more-public-course">
+                    <span>更多</span>
+                </div>
             </div>
-            <div class="course-list">    
-
+            <ul class="course-list">
+                <li>
+                    <div class="public-top">
+                        <public-top class="public-top-img">
+                            <div class="course-img1"></div>
+                            <div class="course-reserve">
+                                <div class="play-btn">
+                                    <img src="../images/play-btn.png" alt="">
+                                </div>
+                                <span class="reserve-num">1981人已预约</span>
+                            </div>
+                        </public-top>
+                        <public-top class="public-top-brief">
+                            <p class="big-brief">2年Java挑战30k Offer,面渣还是面霸</p>
+                            <p class="small-brief">2年Java挑战30k Offer,面渣还是面霸</p>
+                        </public-top>
+                    </div>
+                    <div class="public-bottom">
+                        <div class="course-time">
+                            <img class="clock-img" src="../images/clock-img.png"></img>
+                            <span>今日20:00 开播</span>
+                        </div>
+                        <span class="reserve-remind">
+                            预约提醒
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="public-top">
+                        <public-top class="public-top-img">
+                            <div class="course-img2"></div>
+                            <div class="course-reserve">
+                                <div class="play-btn">
+                                    <img src="../images/play-btn.png" alt="">
+                                </div>
+                                <span class="reserve-num">805人已预约</span>
+                            </div>
+                        </public-top>
+                        <public-top class="public-top-brief">
+                            <p class="big-brief">0基础转行数据分析怎么面——看他怎么表现</p>
+                            <p class="small-brief">0基础转行数据分析怎么面——看他怎么表现</p>
+                        </public-top>
+                    </div>
+                    <div class="public-bottom">
+                        <div class="course-time">
+                            <img class="clock-img" src="../images/clock-img.png"></img>
+                            <span>周三20:00 开播</span>
+                        </div>
+                        <span class="reserve-remind">
+                            预约提醒
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="public-top">
+                        <public-top class="public-top-img">
+                            <div class="course-img3"></div>
+                            <div class="course-reserve">
+                                <div class="play-btn">
+                                    <img src="../images/play-btn.png" alt="">
+                                </div>
+                                <span class="reserve-num">963人已预约</span>
+                            </div>
+                        </public-top>
+                        <public-top class="public-top-brief">
+                            <p class="big-brief">1年大数据想要薪资翻倍, Offer到手了吗</p>
+                            <p class="small-brief">1年大数据想要薪资翻倍, Offer到手了吗</p>
+                        </public-top>
+                    </div>
+                    <div class="public-bottom">
+                        <div class="course-time">
+                            <img class="clock-img" src="../images/clock-img.png"></img>
+                            <span>周四20:00 开播</span>
+                        </div>
+                        <span class="reserve-remind">
+                            预约提醒
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- 公共部分课程结束 -->
+        <!-- 限时秒杀部分开始 -->
+        <div class="seconds-course clearfix">
+            <img data-src="../images/seconds-title-img.png" src="" alt="" class="seconds-title-img">
+            <img data-src="../images/seconds-img.png" src="" alt="" class="seconds-img">
+            <div class="seconds-content">
+                <div class="seconds-class">
+                    <img data-src="../images/class-img.png" src="" alt="" class="class-img">
+                    <div class="class-information">
+                        <h2 class="class-title">经常出现OOM，还不重视JVM内存调优？</h2>
+                        <p class="class-teacher">胡书敏 著名外企和互联网公司技术面试官</p>
+                        <p class="application-num">857人已抢</p>
+                        <div class="information-footer">
+                            <div class="information-footer-l">
+                                <span class="money">￥</span>
+                                <span class="now-price">1</span>
+                                <span class="origin-price">￥</span>
+                            </div>
+                            <div class="information-footer-r">
+                                <span class="left-time"></span>
+                                <span class="rob">立即抢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="seconds-class">
+                    <img data-src="../images/class-img1.png" src="" alt="" class="class-img">
+                    <div class="class-information">
+                        <h2 class="class-title">深入浅出搞定 React</h2>
+                        <p class="class-teacher">修言 高级前端工程师</p>
+                        <p class="application-num">1.35w人已抢</p>
+                        <div class="information-footer">
+                            <div class="information-footer-l">
+                                <span class="money">￥</span>
+                                <span class="now-price">8</span>
+                                <span class="origin-price">￥98</span>
+                            </div>
+                            <div class="information-footer-r">
+                                <span class="left-time"></span>
+                                <span class="rob">立即抢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="seconds-class">
+                    <img data-src="../images/class-img2.png" src="" alt="" class="class-img">
+                    <div class="class-information">
+                        <h2 class="class-title">前端性能优化方法与实战</h2>
+                        <p class="class-teacher">溪风 前58集团技术副总监</p>
+                        <p class="application-num">1.02w人已抢</p>
+                        <div class="information-footer">
+                            <div class="information-footer-l">
+                                <span class="money">￥</span>
+                                <span class="now-price">8</span>
+                                <span class="origin-price">￥98</span>
+                            </div>
+                            <div class="information-footer-r">
+                                <span class="left-time"></span>
+                                <span class="rob">立即抢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="seconds-class">
+                    <img data-src="../images/class-img3.png" src="" alt="" class="class-img">
+                    <div class="class-information">
+                        <h2 class="class-title">Flutter快学快用24讲</h2>
+                        <p class="class-teacher">清弦 高级前端开发工程师，跨端平台研发团队负责人</p>
+                        <p class="application-num">1.8w人已抢</p>
+                        <div class="information-footer">
+                            <div class="information-footer-l">
+                                <span class="money">￥</span>
+                                <span class="now-price">8</span>
+                                <span class="origin-price">￥98</span>
+                            </div>
+                            <div class="information-footer-r">
+                                <span class="left-time"></span>
+                                <span class="rob">立即抢</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="seconds-course">
-
-        </div>
+        <!-- 限时秒杀部分结束 -->
+        <!-- 八点一课部分开始 -->
         <div class="clock-course">
             <div class="clock-course-bar">
                 <div class="clock-course-title">8点一课</div>
-                <div class="clock-course-btn"></div>
-            </div>
-            <div class="clock-course-list">
-
-            </div>
-        </div>
-            <div class="special-course">
-                <div class="special-course-title">专栏</div>
-                <ul class="special-course-tabs">
-                    <li class="special-course-tab">全部</li>
-                    <li class="special-course-tab">后端&架构</li>
-                    <li class="special-course-tab">前端&移动</li>
-                    <li class="special-course-tab">数据分析</li>
-                    <li class="special-course-tab">产品&设计</li>
-                    <li class="special-course-tab">市场&营销</li>
-                    <li class="special-course-tab">大数据&AI</li>
-                    <li class="special-course-tab">测试&运维</li>
-                    <li class="special-course-tab">职场&管理</li>
-                    <li class="special-course-tab">学生&入门</li>
-                    <li class="special-course-tab">预约好课</li>
-                </ul>
-                <div class="special-course-list">
-
+                <div class="clock-course-btn">
+                    <span>展开</span>
+                    <span></span>
                 </div>
-            </div> 
-            
+            </div>
+            <ul class="clock-course-list">
+                <li>
+                    <div>
+                        <img data-src="../images/clock-class1.png" src="" alt="" class="clock-class">
+                        <div class="clock-class-information">
+                            <p class="clock-class-title">抓包利器 Charles 实操指南</p>
+                            <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                            <div class="clock-class-footer">
+                                <div class="clock-class-price">
+                                    <span>￥</span><span>1</span>
+                                </div>
+                                <span class="buy-num">2470人购买</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-class2.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">从“弹窗乱象”看如何打造纯净的用户体验？</p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="course-tag">拉勾上新</div>
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">877人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-class3.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">如何定位 Java 的 CPU 性能问题</p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">2759人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                   <div>
+                    <img data-src="../images/clock-class4.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">Kafka 是如何做到消息不丢失或不重复的？</p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">3300人购买</span>
+                        </div>
+                    </div>
+                   </div>
+                </li>               
+                <li>
+                    <div>
+                        <img data-src="../images/clock-img6.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            尝鲜：鸿蒙 OS 应用开发
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">2354人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-img7.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            ROI 最大化：保姆级投放实操指南
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">2018人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                   <div>
+                    <img data-src="../images/clock-img8.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            如何扛住亿级流量之布隆过滤器
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">3601人购买</span>
+                        </div>
+                    </div>
+                   </div>
+                   <li>
+                    <div>
+                        <img src='' data-src="../images/clock-class1.png" alt="" class="clock-class">
+                        <div class="clock-class-information">
+                            <p class="clock-class-title">抓包利器 Charles 实操指南</p>
+                            <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                            <div class="clock-class-footer">
+                                <div class="clock-class-price">
+                                    <span>￥</span><span>1</span>
+                                </div>
+                                <span class="buy-num">2470人购买</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-img9.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            可复制的低成本获客策略
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">2247人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                <li>
+                   <div>
+                    <img data-src="../images/clock-img10.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            如何使用模块联邦落地微前端
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="clock-class-price">
+                                <span>￥</span><span>1</span>
+                            </div>
+                            <span class="buy-num">3300人购买</span>
+                        </div>
+                    </div>
+                   </div>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-img11.png" src="" alt="" class="clock-class">
+                        <div class="clock-class-information">
+                            <p class="clock-class-title">
+                                3A3R 模型：用户增长与留存利器
+                            </p>
+                            <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                            <div class="clock-class-footer">
+                                <div class="clock-class-price">
+                                    <span>￥</span><span>1</span>
+                                </div>
+                                <span class="buy-num">2470人购买</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img data-src="../images/clock-img12.png" src="" alt="" class="clock-class">
+                    <div class="clock-class-information">
+                        <p class="clock-class-title">
+                            大厂面试直通卡
+                        </p>
+                        <p class="clock-class-brief">8点一课 | 每天进步一点点</p>
+                        <div class="clock-class-footer">
+                            <div class="course-tag">限时优惠</div>
+                            <div class="clock-class-price">
+                                <span>￥</span><span>98</span>
+                            </div>
+                            <span class="buy-num">946人购买</span>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <div class="special-course">
+            <div class="special-course-title">专栏</div>
+            <ul class="special-course-tabs">
+                <li class="special-course-tab">全部<span></span></li>
+                <li class="special-course-tab">后端&架构<span></span></li>
+                <li class="special-course-tab">前端&移动<span></span></li>
+                <li class="special-course-tab">数据分析<span></span></li>
+                <li class="special-course-tab">产品&设计<span></span></li>
+                <li class="special-course-tab">市场&营销<span></span></li>
+                <li class="special-course-tab">大数据&AI<span></span></li>
+                <li class="special-course-tab">测试&运维<span></span></li>
+                <li class="special-course-tab">职场&管理<span></span></li>
+                <li class="special-course-tab">学生&入门<span></span></li>
+                <li class="special-course-tab">预约好课<span></span></li>
+            </ul>
+            <ul class="special-course-list">
+                <li class="special-courses">
+                    <div class="hover-active special-bgc">
+                        <img data-src="../images/all1.png" src="" alt="" class="special-class-img">
+                        <div class="special-class-information">
+                            <p class="specical-title single-line">
+                                面试率 90% 的JS事件循环，看这篇就够了
+                            </p>
+                            <p class="class-slogan single-line">
+                                8点一课 | 每天进步一点点
+                            </p>
+                            <p class="special-class-teacher single-line">
+                                曾勇 一线互联网前端架构师
+                            </p>
+                            <div class="Appointment-reminder">
+                                <div class="rob">
+                                    预约 1元 抢新课
+                                </div>
+                                <div class="shelves-time">
+                                    07.21日上架
+                                </div>
+                                <div class="remind">
+                                    预约提醒
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="special-courses">
+                    <div class="hover-active special-bgc">
+                        <img data-src="../images/all2.png" src="" alt="" class="special-class-img">
+                        <div class="special-class-information">
+                            <p class="specical-title single-line">
+                                初探如何在团队中进行微前端改造？
+                            </p>
+                            <p class="class-slogan single-line">
+                                8点一课 | 每天进步一点点
+                            </p>
+                            <p class="special-class-teacher single-line">
+                                伯约 某一线大厂资深前端工程师
+                            </p>
+                            <div class="Appointment-reminder">
+                                <div class="rob">
+                                    预约 1元 抢新课
+                                </div>
+                                <div class="shelves-time">
+                                    07.22日上架
+                                </div>
+                                <div class="remind">
+                                    预约提醒
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+
     </div>
+    </div>
+    <!-- 页面底部部分开始 -->
     <div class="footer">
         <div class="footer-top w">
             <div class="footer-top-left">
@@ -112,25 +541,27 @@
                     <div class="download-description">
                         <div>下载APP</div>
                         <span>随时随地学习</span>
-                    </div>                   
+                    </div>
                 </div>
                 <div class="concern">
                     <div class="concern-QR-code"></div>
                     <div class="concern-description">
                         <div>关注公众号</div>
                         <span>接收第一手优惠信息</span>
-                    </div>                   
+                    </div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-bottom-description">
-                 ©2021 拉勾网 
-                 <a href="https://beian.miit.gov.cn" target="_black">京ICP备14023790号-2</a>
-                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024043" target="_black">京公网安备 11010802024043</a>
+                ©2021 拉勾网
+                <a href="https://beian.miit.gov.cn" target="_black">京ICP备14023790号-2</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024043"
+                    target="_black">京公网安备 11010802024043</a>
             </div>
         </div>
     </div>
+    <!-- 页面底部部分结束 -->
 </body>
 
 </html>

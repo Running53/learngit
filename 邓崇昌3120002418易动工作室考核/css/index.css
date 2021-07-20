@@ -88,7 +88,6 @@
     background-size: 100%;
     padding-top: 23px;
     box-sizing: border-box;
-    background-color: tomato;
     background: url("https://s0.lgstatic.com/i/image2/M01/04/DE/Cip5yF_28-CAUyDYAASY6r3fc5k042.png") no-repeat;
     background-size: cover;
 }
@@ -166,7 +165,6 @@
 }
 .public-course-bar {
     margin-bottom: 20px;
-    background-color: chartreuse;
     overflow: hidden;
 }
 .public-course-title {
@@ -176,30 +174,284 @@
     font-weight: 500;
     color: #333;
     line-height: 37px;
-    background-color: chocolate;
 }
 .more-public-course {
     float: right;
     width: 85px;
     height: 37px;
-    background-color: crimson;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ededed;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    line-height: 37px;
+    padding-left: 19px;
+}
+.more-public-course > span {
+    position: relative;
+}
+.more-public-course > span::before {
+    content: '\ea80';
+    font-family: 'icomoon';
+    position: absolute;
+    top: -9px;
+    right:-10px;
+    width: 10px;
+    height: 10px;
+    font-size: 16px;
 }
 .course-list {
-    height: 151px;
+    align-items: center;
     background-color: darkblue;
 }
+.course-list li {
+    float: left;
+    width: 389px;
+    height: 151px;
+    padding: 14px 14px 10px;
+    background: #fff;
+    border-radius: 4px;
+    cursor: default;
+}
+.course-list li:nth-child(n+2) {
+    margin-left: 16px;
+}
+.public-top {
+    height: 92px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8e9eb;
+}
+.public-top-img {
+    position: relative;
+    float: left;
+    height: 80px;
+    width: 142px;
+    height: 80px;
+}
+div[class^='course-img'] {
+    height: 100%;
+    border-radius: 4px;
+}
+.course-img1 {
+    background: url(../images/course1.jpeg) no-repeat;
+    background-size: cover;
+}
+.course-img2 {
+    background: url(../images/course2.jpeg) no-repeat;
+    background-size: cover;
+}
+.course-img3  {
+    background: url(../images/course3.jpeg) no-repeat;
+    background-size: cover;
+}
+.course-reserve {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 20px;
+    padding: 0 5px 0 28px;
+    background: rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+.play-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 24px;
+    height: 20px;
+    background: linear-gradient(90deg,#ff8258,#ff2d6a);
+    border-radius: 10px;
+    text-align: center;
+}
+.play-btn img {
+    width: 10px;
+    height: 10px;
+}
+.public-top-brief {
+    float: right;
+    width: 209px;
+    height: 80px;
+}
+.big-brief {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    line-height: 22px;
+}
+.small-brief {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+    line-height: 17px;
+    margin-top: 8px;
+}
+.public-bottom {
+    margin-top: 10px;
+}
+.clock-img {
+    width: 14px;
+    height: 14px;
+    margin: -2px 6px 0 0;
+}
+.course-time {
+    float: left;
+    height: 24px;
+    font-size: 12px;
+    color: #666;
+    line-height: 24px;
+}
+.reserve-remind {
+    float: right;
+    width: 68px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    line-height: 24px;
+    text-align: center;
+    background: #fcd766;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.reserve-remind:hover {
+    opacity: .5;
+}
 .seconds-course {
-    height: 148px;
-    background-color: darkcyan;
+    position: relative;
+    background: #fff linear-gradient(#ffeee8,#fff);
+    margin-top: 32px;
+    padding-top: 39px;
+    padding-bottom: 12px;
+    border-radius: 8px;
+}
+.seconds-course img:nth-of-type(1) {
+    position: absolute;
+    top: 16px;
+    left: 21px;
+    width: 117px;
+}
+.seconds-course img:nth-of-type(2) {
+    position: absolute;
+    right: 22px;
+    width: 90px;
+    top: 0;
+}
+.seconds-course .seconds-content .seconds-class {
+    float: left;
+    position: relative;
+    width: 592px;
+    height: 155px;
+    padding: 16px 0 0 16px;
+    margin-top: 16px;
+    border-radius: 8px;
+    background: #fff;
+    z-index: 1;
+}
+.seconds-course .seconds-content .seconds-class:nth-of-type(2n) {
+    margin-left: 16px;
+}
+.seconds-course .seconds-content .class-img {
+    float: left;
+    width: 94px;
+    height: 123px;
+    border-radius: 3px;
+}
+.seconds-course .seconds-content .class-information {
+    float: left;
+    height: 123px;
+    padding-left: 123px;
+}
+.seconds-course .seconds-content .class-information .class-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    line-height: 25px;
+}
+.seconds-course .seconds-content .class-information .class-teacher {
+    color: #999;
+    line-height: 17px;
+    margin-top: 6px;
+}
+.seconds-course .seconds-content .class-information .application-num {
+    color: #999;
+    line-height: 17px;
+    margin-top: 6px;
+}
+.seconds-course .seconds-content .class-information .information-footer {
+    position: relative;
+    margin-top: 20px;
+    height: 32px;
+    line-height: 32px;
+}
+.seconds-content .class-information .information-footer .information-footer-l {
+    float: left;
+    height: 32px;
+}
+.seconds-content .class-information .information-footer .information-footer-r {
+    float: left;
+    width: 177px;
+    height: 32px;
+}
+.class-information .information-footer .information-footer-l .money {
+    float: left;
+    font-size: 14px;
+    color: #ea5e3c;
+    font-weight: 500;
+    padding-top: 3px;
+}
+.class-information .information-footer .information-footer-l .now-price {
+    float: left;
+    font-size: 24px;
+    font-weight: 500;
+    color: #ea5e3c;
+}
+.class-information .information-footer .information-footer-l .origin-price {
+    float: left;
+    color: #999;
+    font-size: 14px;
+    text-decoration: line-through;
+    margin-left: 3px;
+    padding-top: 3px;
+}
+.class-information .information-footer .left-time {
+    float: left;
+    height: 32px;  
+    font-size: 16px;
+    line-height: 32px;
+    color: #ea5e3c;
+    background: #fff0ed;
+    border-radius: 16px 0 0 16px;
+    padding-left: 13px;
+    padding-right: 21px;
+    margin-left: 14px;
+}
+.class-information .information-footer .rob {
+    float: left;
+    width: 80px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    font-size: 16px;
+    color: #333;
+    margin-left: -15px;
+    background: linear-gradient(90deg,#fde47c,#fbc546);
+    border-radius: 16px;
+    cursor: pointer;
+}
+.class-information .information-footer .rob:hover {
+    opacity: 0.7;
 }
 .clock-course {
-    height: 333px;
-    background-color: #b8860b;
     margin-top: 40px;
 }
 .clock-course-bar {
     height: 42px;
-    background-color: darkkhaki;
 }
 .clock-course-title {
     float: left;
@@ -209,16 +461,111 @@
     font-weight: 500;
     line-height: 42px;
 }
-.clock-course-btn {
+.clock-course .clock-course-bar .clock-course-btn {
     float: right;
     width: 85px;
     height: 32px;
-    background-color: darkmagenta;
+    font-size: 14px;
+    color: #666;
+    line-height: 27px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #ededed;
+    cursor: pointer;
 }
-.clock-course-list {
-    height: 287px;
+.clock-course .clock-course-bar .clock-course-btn span:nth-of-type(2) {
+    display: inline-block;
+    transform: rotate(90deg);
+    transition: transform .3s linear;
+}
+.clock-course .clock-course-bar .clock-course-btn span:nth-of-type(2):after {
+    content: '\ea80';
+    font-family: 'icomoon';
+    font-size: 17px;
+}
+.clock-course .clock-course-list {
     margin-top: 4px;
-    background-color: darksalmon ;
+    height: 288px;
+    overflow-y: hidden;
+    transition: height .3s ease;
+}
+.clock-course .clock-course-list li {
+    float: left;
+    width: 287px;
+    height: 255px;
+    border-radius: 8px;
+    margin-left: 17px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+.clock-course .clock-course-list li > div {
+    height: 255px;
+    border-radius: 8px;
+    margin-top: 0;
+    transition: all .3s ease;
+    box-shadow: .0 .027rem .107rem 0 rgba(0, 0, 0, .04);
+    overflow: hidden;
+    background-color: #fff;
+}
+.clock-course .clock-course-list li >div:hover {
+    margin-top: -6px;  
+    box-shadow: 0 0.027rem 0.107rem 0 rgb(0 0 0 / 4%)
+}
+.clock-course .clock-course-list li:nth-of-type(4n+1) {
+    margin-left: 0;
+}
+.clock-course .clock-course-list li .clock-class {
+    height: 137px;
+}
+.clock-course .clock-course-list li .clock-class-information {
+    height: 118px;
+    padding: 12px 16px 16px;
+}
+.clock-course .clock-course-list li .clock-class-title {
+    color: #333;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.clock-course .clock-course-list li .clock-class-brief {
+    color: #999;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 4px;
+}
+.clock-course .clock-course-list .clock-class-information .clock-class-footer {
+    height: 28px;
+    margin-top: 16px;
+}
+.clock-course .clock-class-footer .clock-class-price {
+    float: left;
+    font-size: 14px;
+    color: #ff7452;
+    font-weight: 600;
+    line-height: 14px;
+    margin: 5px 0 0 4px;
+}
+.clock-course .clock-class-footer .clock-class-price>span:nth-of-type(2) {
+    font-size: 24px;
+    line-height: 24px;
+}
+.clock-course .clock-class-footer .buy-num {
+    float: right;
+    margin-top: 12px;
+}
+.clock-course .clock-class-footer .course-tag {
+    float: left;
+    width: 62px;
+    height: 19px;
+    font-size: 12px;
+    color: #ff7452;
+    padding: 0 6px;
+    margin-top: 9px;
+    border: 1px solid rgba(255,116,82,.5);
+    border-radius: 4px;
 }
 .special-course .special-course-title {
     height: 42px;
@@ -226,22 +573,190 @@
     color: #333;
     line-height: 42px;
     margin-top: 24px;
-    background-color: deeppink;
 }
 .special-course-tabs {
     height: 36px;
 }
-.special-course-tabs .special-course-tab{
+.special-course-tabs .special-course-tab {
     float: left;
+    position: relative;
     font-size: 16px;
     color: #666;
     font-weight: 500;
     line-height: 20px;
     margin: 16px 24px 0 0;
+    cursor: pointer;
 }
-.special-course-list {
-    height: 6220px;
+.special-course-tabs .special-course-tab span {
+    position: absolute;
+    display: none;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 3px;
+    background: #e5a817;
+}
+.special-course .special-course-list {
     padding: 10px 0 48px 0;
-    background-color: dodgerblue;
+    overflow: hidden;
+}
+.special-course .special-course-list .special-courses {
+    position: relative;
+    float: left;
+    width: 389px;
+    height: 163px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-left: 16px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.special-course .special-course-list .special-courses:nth-of-type(3n+1) {
+    margin-left: 0;
+}
+.special-course .special-course-list li .hover-active {
+    position: relative;
+    width: 389px;
+    padding: 20px;
+    margin-top: 0;
+    background: #fff;
+    border-radius: 8px;
+    transition: all .3s ease;
+}
+.special-course .special-course-list li .hover-active:hover {
+    box-shadow: 0 0.053rem 0.213rem 0 rgb(0 0 0 / 4%);
+    margin-top: -5px;
+}
+.special-course .special-course-list li .special-class-img {
+    float: left;
+    width: 94px;
+    height: 123px;
+    border-radius: 4px;
+}
+.special-course .special-course-list li .special-class-information {
+    height: 123px;
+    padding-left: 106px;
+}
+.special-course .special-course-list .special-class-information .specical-title {
+    color: #333;
+    font-size: 18px;
+    line-height: 25px;
+}
+.special-course .special-course-list .special-class-information .class-slogan {
+    color: #999;
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 4px;
+}
+.special-course .special-course-list .special-class-information .special-class-teacher {
+    color: #999;
+    font-size: 12px;
+    margin-top: 4px;
+    line-height: 17px;
+}
+.single-line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.special-course .special-course-list .Appointment-reminder {
+    width: 243px;
+    height: 28px;
+    margin-top: 28px;
+}
+.special-course .Appointment-reminder .rob {
+    float: left;
+    height: 18px;
+    color: #ff7452;
+    line-height: 18px;
+    transform: scale(.8);
+    transform-origin: top left;
+    border-radius: 2px;
+    border: 1px solid rgba(255,116,82,.5);
+    padding: 0 4px;
+    margin-top: 7px;
+}
+.special-course .Appointment-reminder .shelves-time {
+    float: left;
+    color: #666;
+    margin: 2px 0 0 -8px;
+    line-height: 28px;
+}
+.special-course .Appointment-reminder .remind {
+    float: left;
+    width: 80px;
+    height: 28px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;;
+    line-height: 28px;
+    background: linear-gradient(90deg,#fde47c,#fbc546); 
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 7px;
+}
+.special-course .Appointment-reminder .remind:hover {
+    opacity: 0.7;
+}
+.special-course .special-course-list li .btm {
+    width: 243px;
+    height: 28px;
+    margin-top: 28px;
+}
+.special-course .special-course-list li .btm .tag {
+    float: left;
+    color: #ff7452;
+    height: 18px;
+    padding: 0 4px;
+    line-height: 18px;
+    border: 1px solid rgba(255,116,82,.5);
+    font-size: 12px;
+    transform: scale(.8);
+    border-radius: 2px;
+    margin-top: 7px;
+}
+.special-course .special-course-list li .btm .now-price {
+    float: left;
+}
+.special-course .special-course-list li .now-price span:nth-of-type(1) {
+    color: #ff7452;
+}
+.special-course .special-course-list li .now-price span:nth-of-type(2) {
+    font-size: 20px;
+    color: #ff7452;
+    display: inline-block;
+    margin-right: 5px;
+}
+.special-course .special-course-list li .origin-price {
+    float: left;
+    color: #999;
+    text-decoration: line-through;
+    margin:9px 10px 0 0; 
+}
+.special-course .special-course-list li .buy-num {
+    float: left;
+    color: #999;
+    margin:9px 10px 0 0; 
+}
+.go-top {
+    position: fixed;
+    display: none;
+    right: 40px;
+    bottom: 96px;
+    width: 30px;
+    height: 48px;
+    background: url(../images/go-top.png) no-repeat;
+    background-size: cover;  
+    z-index: 10;
+    cursor: pointer;
+}
+.go-top:hover {
+    background: url(../images/go-to-Top.png) no-repeat;
+    background-size: cover;  
+}
+.special-bgc {
+    background: url(../images/special-bgc.png) no-repeat !important;
+    background-size: cover;
 }
 /* 页面主体结束 */
