@@ -55,7 +55,6 @@ body {
 }
 .header .head-right-content {
     float: right;
-    width: 450px;
     height: 70px;
 }
 .head-nav {
@@ -90,6 +89,7 @@ body {
     width: 142px;
     height: 70px;
     line-height: 70px;
+    margin-left: 59px;
 }
 .not-login a {
     float: left;

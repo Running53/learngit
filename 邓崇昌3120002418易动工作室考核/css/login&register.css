@@ -1,0 +1,266 @@
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    z-index: 7;
+}
+.mask .mask-main {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 436px;
+    /* height: 521px; */
+    padding: 40px 0 34px;
+    border-radius: 8px;
+    background: #fff url(https://s2.lgstatic.com/kw-web-fed/img/bg.90b577a.png) no-repeat 100% top;
+}
+.mask .mask-main .close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    border: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAA9ElEQVRIS8XWOw7CMAwAUFtiTE6THCBXYOgAA4djKAMDV8idmhEpKAhQafOxIUk7RqlfHLmuUSk1IOJeCHGy1t6hwWOM2Tnnzt77G2qtR+/9AQCuUspjbTRg0zSNABASu+B8oTYai43hBlugqZhPsDaaS+AD1kJLt/UF/ouWsBB/Bf6KUrAkyEWpWBakohysCJZQLkYCU2hYf3cQTsOIFk2snS6zee0ZOBg5w0RzCMvs/kvOMHK1bcGuVxqrxmZFkyv96p8FJSBlz7zqk0XDCcTZu33z5px22SAo7273A6acjjpBFkeMmlhpRuo/JnYfhHuP+g87OrYUa0BZ2AAAAABJRU5ErkJggg==) no-repeat;
+    background-size: cover;
+}
+.mask .mask-main .edu-title-content {
+    text-align: center;
+}
+.mask .mask-main .edu-title-content .edu-title {
+    height: 47px;
+    line-height: 47px;
+    font-size: 40px;
+    font-weight: 400;
+    color: #333;
+}
+.mask .mask-main .edu-title-content .edu-brief {
+    margin-top: 4px;
+    letter-spacing: 6px; /*设置字符间距*/
+    height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6f5742;
+    line-height: 20px;
+}
+.mask .mask-main .edu-content {
+    width: 376px;
+    /* height: 356px; */
+    margin: 20px 30px 0;
+    padding: 30px 30px 0;
+    background: #fff;
+    border-radius: 4px;
+}
+.mask .mask-main .change-status {
+    height: 25px;
+    cursor: pointer;
+}
+.mask .mask-main .change-status .login-title,.mask .mask-main .change-status .register-title {
+    position: relative;
+    float: left;
+    font-size: 14px;
+    color: #666;
+    width: 50%;
+    text-align: center;
+}
+.active {
+    height: 25px;
+    line-height: 25px;
+    color: #333 !important;
+    font-size: 18px !important;
+    font-weight: 500;
+    z-index: 1;
+}
+.mask {
+    display: none;
+}
+.mask .mask-main .change-status .login-title >span,.register-title > span {
+    position: absolute;
+    background: #fcd766;
+    width: 110px;
+    height: 6px;
+    left: 23px;
+    right: 0;
+    bottom: 6px;
+    z-index: -1;
+}
+.mask .mask-main form {
+    margin-top: 25px;
+}
+.mask .mask-main form .input-part{
+    position: relative;
+    width: 316px;
+    border-radius: 4px;
+}
+.mask .mask-main form .input-part:nth-of-type(2),.mask .mask-main form .input-part:nth-of-type(3) {
+    margin-top: 15px;
+}
+.mask .mask-main form .input-part:nth-of-type(3) {
+    display: none;
+}
+.mask .mask-main form .username,.mask .mask-main form .pwd,.pwd2 {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    padding: 0 14px;
+    border-radius: 4px;
+    background: #f4f4f4;
+}
+.mask .mask-main form .err-tips {
+    font-size: 12px;
+    color: #ff7452;
+    margin-top: 10px;
+}
+.mask .mask-main .check-box{
+    cursor: pointer;
+}
+.mask .mask-main .check-box > span:nth-of-type(1),.select-box div> span {
+    float: left;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    margin: 2px 8px 0px 0;
+    /* background: url(../images/check1.png) no-repeat 50%/cover; */
+    border: 0;
+    border: 1px solid #d5dadf;
+    outline: 0;
+    vertical-align: middle;
+}
+.mask .mask-main .check-box:hover span:nth-of-type(1){
+    border: 1px solid #f7b500 !important;
+}
+.mask .mask-main .check-box > span:nth-of-type(2) {
+    float: left;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+}
+.mask .mask-main .select-box {
+    display: none;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+}
+.mask .mask-main .select-box div {
+    float: left;
+    margin-left: 72px;
+    cursor: pointer;
+}
+.mask .mask-main .select-box div:hover span {
+    border: 1px solid #f7b500 !important;
+}
+.mask .mask-main .select-box div span {
+    margin-top: 5px;
+}
+/* .mask .mask-main .select-box span {
+    margin-top: 5px;
+} */
+/* .mask .mask-main .select-box div {
+    float: left;
+    width: 80px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 24px; 
+    background-color: coral;
+}  */
+.mask .mask-main .submit-btn {
+    width: 316px;
+    height: 48px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 48px;
+    color: #333;
+    margin-top: 25px;
+    border: none;
+    background: url(../images/login-btn.png) no-repeat;
+    background-size: cover;
+}
+.mask .mask-main .wechat-login {
+    height: 27px;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 27px;
+    cursor: pointer;
+}
+.mask .mask-main .wechat-login img {
+    width: 27px;
+    height: 27px;
+    vertical-align: middle;
+}
+.mask .mask-main .wechat-login span {
+    vertical-align: middle;
+    font-size: 14px;
+    color: #999;
+    font-weight: 400;
+    line-height: 27px;
+}
+.header .head-content .already-login {
+    position: relative;
+    float: right;
+    font-size: 16px;
+    color: #333;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.header .head-content .already-login .user-name {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 59px;
+}
+.header .head-content .already-login .user-name:hover span::after{
+    transform: rotate(180deg);
+}
+.header .head-content .already-login .avatar {
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 15px 0 0 31px;
+}
+.header .head-content .already-login span::after {
+    position: absolute;
+    content: "";
+    right: 56px;
+    top: 31px;
+    width: 0;
+    height: 0;
+    border-color: #666 transparent transparent;
+    border-style: solid dashed;
+    border-width: 6px 5px 0;
+    transition: all .4s ease 0s;
+}   
+.header .head-content .already-login .user-tool {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    padding: 8px 0;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 4%), 0 1px 0 0 #ededed;
+    border-radius: 0 0 2px 2px;
+    text-align: center;
+    line-height: 36px;
+    z-index: 2;
+    border-top: 1px solid #ededed;
+}
+.header .head-content .already-login .user-tool li {
+    height: 36px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+.header .head-content .already-login .user-tool li:hover {
+    background-color: #f0f0f0;
+}
+
+
+
