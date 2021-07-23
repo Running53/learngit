@@ -214,7 +214,7 @@
     line-height: 70px;
     margin-left: 59px;
 }
-.header .head-content .already-login .user-name:hover span::after{
+.header .head-content .already-login .user-name:hover span:nth-of-type(2)::after{
     transform: rotate(180deg);
 }
 .header .head-content .already-login .avatar {
@@ -224,7 +224,7 @@
     border-radius: 50%;
     margin: 15px 0 0 31px;
 }
-.header .head-content .already-login span::after {
+.header .head-content .already-login span:nth-of-type(2)::after {
     position: absolute;
     content: "";
     right: 56px;

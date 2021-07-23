@@ -1,0 +1,327 @@
+.setting-main {
+    width: 984px;
+    height: 532px;
+    padding: 66px 0;
+    margin: 0 auto;
+}
+.setting-main .left-part {
+    float: left;
+    width: 224px;
+    height: 100%;
+}
+.setting-main .left-part .personal-select {
+    height: 39px;
+    padding-right: 62px;
+    font-size: 14px;
+    color: #555;
+    line-height: 39px;
+    text-align: right;
+    cursor: pointer;
+}
+.setting-main .left-part .personal-active {
+    border-right: 2px solid #e5a817;
+    color: #e5a817;
+    transform: translateX(1.5px);
+}
+.setting-main .right-part {
+    float: left;
+    width: 580px;
+    height: 100%;
+    margin-left: 67px;
+}
+.setting-main .right-part >div:nth-child(n+2) {
+    display: none;
+}
+.setting-main .right-part .person-one h4 {
+    height: 39px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 400;
+    line-height: 39px;
+}
+.setting-main .right-part .person-one .avatar-pic img {
+    width: 80px;
+    height: 80px;  
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    line-height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 8px 8px 20px;
+}
+.setting-main .right-part .person-one .change-avatar {
+    position: relative;
+    width: 98px;
+    height: 32px;
+    text-align: right;
+    padding: 0 9px;
+    line-height: 30px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+.setting-main .right-part .personal-avatar {
+    position: relative;
+}
+.setting-main .right-part .person-one .upload-avatar{
+    position: relative;
+    opacity: 0;
+    left: -10px;
+    top: -4px;
+    width: 98px;
+    height: 32px;
+    z-index: 10;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+}
+.setting-main .right-part .person-one .input-text {
+    position: absolute;
+    top: 3px;
+    left: 26px;
+    font-size: 16px;
+    z-index: 1;
+    cursor: pointer;
+}
+.setting-main .right-part .person-one .input-text::before{
+    content: '\ea50';
+    font-family: 'icomoon';
+    position: absolute;
+    top: 0px;
+    left: -17px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.setting-main .right-part .person-one .username {
+    height: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+    line-height: 14px;
+    margin: 60px 0 20px;
+}
+.setting-main .right-part .person-one .username-input {
+    width: 292px;
+    height: 40px;
+    background: #fff !important;
+    border-radius: 3px;
+    border: 1px solid #d5dadf;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+.setting-main .right-part .person-one .username-part {
+    position: relative;
+}
+.setting-main .right-part .person-one .clear-text {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 47px;
+    left: 268px;
+    background: url(../images/clear.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.setting-main .right-part .person-one .updata-btn {
+    width: 104px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    color: #333;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 40px;
+    background: #fcd766;
+}    
+.setting-main .right-part .change-err-tips,.charge-tips {
+    font-size: 12px;
+    color: #fd5f39;
+}
+.setting-main .right-part .person-two .charge-num {
+    width: 200px;
+    height: 50px;
+    border: 1px solid #e5a817;
+    font-size: 16px;
+    color: darkorange;
+    border-radius: 10px;
+    margin-bottom: 5px
+}
+.setting-main .right-part .person-two .charge-num:focus {
+    outline:none;
+    border-color: 1px solid #e5a817;
+    box-shadow:0 0 8px #e5a817;
+}
+.setting-main .right-part .person-two .charge-submit {
+    display: block;
+    margin-top: 25px;
+    width: 104px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #fcd766;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+.setting-main .right-part .person-two .left-money {
+    height: 30px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.setting-main .right-part .person-two .left-money .left-money-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: darkorange;
+}
+.setting-main .right-part .person-three .change-pwd {
+    width: 412px;
+    text-align: center;
+}
+.setting-main .right-part .person-three .change-pwd .change-pwd-title h2{
+    float: left;
+    width: 72px;
+    height: 30px;
+}
+.setting-main .right-part .person-three .change-pwd .change-pwd-title h6{
+    float: right;
+    width: 56px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #5580c8;
+    cursor: pointer;
+}
+.setting-main .right-part .person-three .change-pwd .fake-pwd {
+    float: left;
+    height: 26px;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #555;
+}
+.modify {
+    width: 100%;
+    background-color: #fff;
+}
+.modify-mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 168px auto 50px;
+    width: 500px;
+    height: 400px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+    z-index: 11;
+}
+.modify-mask .modify-header {
+    height: 30px;
+}
+.modify-mask .modify-main {
+    text-align: initial;
+    padding: 25px 25px 30px;
+    height: 370px;
+    font-size: 14px;
+    color: #606266;
+}
+.modify-mask .modify-main .modify-titlename {
+    margin: 0 0 30px 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+}
+.modify-mask .modify-main .modify-content {
+    margin: 16px 20px 0;
+    height: 40px;
+    line-height: 40px;
+}
+.modify-mask .modify-main .modify-title {
+    float: left;
+    width: 63px;
+    height: 40px;
+    font-size: 14px;
+    color: #555;
+}
+.modify-mask .modify-main .password-input {
+    float: right;
+    width: 334px;
+    height: 40px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #d5dadf;
+}
+.modify-mask .modify-main .password-input::placeholder {
+    color: #aab2bd;
+}
+.modify-mask .modify-main .modify-submit {
+    height: 40px;
+    margin: 40px 20px 25px;
+}
+.modify-mask .modify-main .confirm-new-pwd {
+    width: 76px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-right: 30px;
+    background: #fcd766;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.modify-mask .modify-main .cancel {
+    font-size: 16px;
+    line-height: 40px;
+    color: #999;
+    cursor: pointer;
+    background-color: #fff;
+}
+.modify-mask .modify-close {
+    position: absolute;
+    opacity: .5;
+    top:0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.modify-mask .modify-close:hover {
+    background-color: rgb(255, 217, 4);
+}
+.after-modify-tips {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    color: rgb(250, 249, 246);
+    padding-left: 20px;
+    /* background-color: chartreuse; */
+    border-radius: 20px;
+    transition: top .8s,opacity .8s ;
+    opacity: .2;
+    z-index: 12;
+}
+.after-modify-tips >span:nth-child(2) {
+    float: left;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 1px 5px 0 0;
+}

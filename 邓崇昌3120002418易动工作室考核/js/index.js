@@ -1,23 +1,4 @@
 window.addEventListener('load', function () {
-    //    此模块负责给黄色下标添加动态效果 
-    var head_element = (function () {
-        var nav_titles = document.querySelectorAll('.nav-title')
-        var len = nav_titles.length
-        nav_titles[0].querySelector('em').style.display = 'block'
-        for (var i = 1; i < len; i++) {
-            nav_titles[i].addEventListener('mouseover', function () {
-                this.querySelector('em').style.display = 'block'
-            })
-            nav_titles[i].addEventListener('mouseout', function () {
-                this.querySelector('em').style.display = 'none'
-            })
-        }
-        return {
-            nav_titles: nav_titles,
-            len: len
-        }
-    }())
-
     //  此模块负责给秒杀商品添加计时器
     // var stopwatch = (function() {
     //     var left_time = document.querySelectorAll('.left-time')
@@ -48,6 +29,8 @@ window.addEventListener('load', function () {
     //     }
     // }())
 
+    
+
     //      此模块负责8点一课模块的展开与收起
     var show = (function () {
         var clock_course_btn = document.querySelector('.clock-course-btn')
@@ -70,8 +53,8 @@ window.addEventListener('load', function () {
     }())
 
     //点击按钮回到页面顶部模块
-    //考虑到浏览器兼容性问题，封装一个页面被卷去距离的兼容性函数
     var goback = (function () {
+    //考虑到浏览器兼容性问题，封装一个页面被卷去距离的兼容性函数
         function getScroll() {
             return {
                 left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,

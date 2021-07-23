@@ -1,5 +1,13 @@
+html {
+    height: 100%;
+}
 body {
+    height: 100%;
     background-color: #f8f9fa;
+}
+.page-container {
+    position: relative;
+    min-height: 100%;
 }
 /* 版心盒子 */
 .w {
@@ -81,7 +89,7 @@ body {
     border-radius: 2px;
     background-color: #fbc546;
 }
-.head-nav .nav-title:first-child {
+.boldface-type {
     font-weight: 700;
 }
 .not-login {
@@ -128,6 +136,7 @@ body {
 .footer {
     height: 230px;    
     background-color: #2d2d3a;
+    margin-bottom: -17px;
 }
 .footer-top {
     height: 190px;

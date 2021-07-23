@@ -5,102 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-    .father {
-        width: 500px;
-        height: 500px;
-        background-color: aquamarine;
-    }
-    .father .son{
-        width: 100px;
-        height: 100px;
-    }
-    .son:nth-of-type(1) {
-        background-color: rgb(20, 6, 155);
-    }
-    .son:nth-of-type(2) {
-        background-color: rgb(163, 157, 212);
-    }
-    .son:nth-of-type(3) {
-        background-color: rgb(127, 117, 221);
-    }
-    </style>
 </head>
 <body>
-    <!-- 有tag、有优惠（有originprice）
-    <li class="special-courses">
-        <div class="hover-active">
-            <img src="../images/class-img1.png" alt="" class="special-class-img">
-            <div class="special-class-information">
-                <p class="specical-title single-line">解读你身边的经济学</p>
-                <p class="class-slogan single-line">跟清华教授学经济，用经济学增值个人财富</p>
-                <p class="special-class-teacher single-line">韩秀云 清华大学经济管理学院教授、清华大学中国经济研究</p>
-                <div class="btm">
-                    <span class="tag">拉勾补贴</span>
-                    <div class="now-price">
-                        <span>￥</span><span>68</span>
-                    </div>
-                    <div class="origin-price">￥98</div>
-                    <span class="buy-num">1234人购买</span>
-                </div>
-            </div>
-        </div>
-    </li> 
-    <!-- 有tag、无优惠（无originprice） -->
-    <li class="special-courses">
-        <div class="hover-active">
-            <img src="../images/class-img1.png" alt="" class="special-class-img">
-            <div class="special-class-information">
-                <p class="specical-title single-line">解读你身边的经济学</p>
-                <p class="class-slogan single-line">跟清华教授学经济，用经济学增值个人财富</p>
-                <p class="special-class-teacher single-line">韩秀云 清华大学经济管理学院教授、清华大学中国经济研究</p>
-                <div class="btm">
-                    <span class="tag">拉勾补贴</span>
-                    <div class="now-price">
-                        <span>￥</span><span>68</span>
-                    </div>
-                    <span class="buy-num">1234人购买</span>
-                </div>
-            </div>
-        </div>
-    </li> 
-    <!-- 无tag、无优惠（无originprice） -->
-    <li class="special-courses">
-        <div class="hover-active">
-            <img src="../images/class-img1.png" alt="" class="special-class-img">
-            <div class="special-class-information">
-                <p class="specical-title single-line">解读你身边的经济学</p>
-                <p class="class-slogan single-line">跟清华教授学经济，用经济学增值个人财富</p>
-                <p class="special-class-teacher single-line">韩秀云 清华大学经济管理学院教授、清华大学中国经济研究</p>
-                <div class="btm">
-                    <div class="now-price">
-                        <span>￥</span><span>68</span>
-                    </div>
-                    <span class="buy-num">1234人购买</span>
-                </div>
-            </div>
-        </div>
-    </li> 
-    <!-- 无tag、有优惠（有originprice） -->
-    <li class="special-courses">
-        <div class="hover-active">
-            <img src="../images/class-img1.png" alt="" class="special-class-img">
-            <div class="special-class-information">
-                <p class="specical-title single-line">解读你身边的经济学</p>
-                <p class="class-slogan single-line">跟清华教授学经济，用经济学增值个人财富</p>
-                <p class="special-class-teacher single-line">韩秀云 清华大学经济管理学院教授、清华大学中国经济研究</p>
-                <div class="btm">
-                    <div class="now-price">
-                        <span>￥</span><span>68</span>
-                    </div>
-                    <div class="origin-price">￥98</div>
-                    <span class="buy-num">1234人购买</span>
-                </div>
-            </div>
-        </div>
-    </li>  -->
 </body>
 <script>
-    
+        // async function refreshed() {
+        //     const data = new Promise((resolve,reject) => {
+        //         setTimeout(() => {
+        //             resolve(100)
+        //         }, 1000);
+        //     })
+        //     return await data
+        // }
+        // console.log(refreshed());
+            // const a =  new Promise((resolve,reject) => {
+            //         setTimeout(() => {
+            //             resolve('sadasd')
+            //         }, 1000);
+            //     })
+            
+            // const c = new Promise((resolve,reject) => {
+            //         setTimeout(() => {
+            //             resolve('56456')
+            //         }, 3000);
+            //     })
+            
+            // async function b() {
+            //     console.log(1);
+            //     const value = await a
+            //     // console.log(2);
+            //     console.log(value);
+            //     console.log(3);
+            //     console.log(3);
+            //     const values = await c
+            //     console.log(4);
+            //     console.log(values);
+            //     console.log(5);
+            // }
+            // console.log(6);
+            // b()
+            // console.log(7);           
+            async function a() {
+               return new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve('sad');
+                }, 2000);
+               })
+            }
+            async function b() {
+                const c = await a()
+                console.log(c);
+            }
+            b()
+            // console.log(a());
 </script>
+
 </html>

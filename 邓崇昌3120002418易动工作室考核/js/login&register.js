@@ -1,9 +1,38 @@
 window.addEventListener('load',function() {
-    //设置请求默认样式
-    axios.defaults.method = 'GET' //设置默认的请求类型为GET
-    axios.defaults.baseURL = 'http://120.24.80.83:3000' //设置基础URL
-    axios.defaults.timeout = 1000 //设置请求时间上限
+    
+     //    此模块负责给黄色下标添加动态效果 
+     var head_element = (function () {
+        var nav_titles = document.querySelectorAll('.nav-title')
+        var len = nav_titles.length
+        if(now_href =='index.html') {
+            nav_titles[0].querySelector('em').style.display = 'block'
+            nav_titles[0].className = 'nav-title boldface-type'
+            for (var i = 1; i < len; i++) {
+                nav_titles[i].addEventListener('mouseover', function () {
+                    this.querySelector('em').style.display = 'block'
+                })
+                nav_titles[i].addEventListener('mouseout', function () {
+                    this.querySelector('em').style.display = 'none'
+                })
+            }
+        }else {
+            for (var i = 0; i < len; i++) {
+                nav_titles[i].addEventListener('mouseover', function () {
+                    this.querySelector('em').style.display = 'block'
+                })
+                nav_titles[i].addEventListener('mouseout', function () {
+                    this.querySelector('em').style.display = 'none'
+                })
+            }
+        }      
+        return {
+            nav_titles: nav_titles,
+            len: len
+        }
+    }())
 
+    
+    //切换登录和注册样式
     var login_title = document.querySelector('.login-title')
     var register_title = document.querySelector('.register-title')
     var submit_btn = document.querySelector('.submit-btn')
@@ -39,6 +68,8 @@ window.addEventListener('load',function() {
         select_box.style.display = 'block'
         submit_btn.innerHTML = '注册'
     })
+
+    //为选择框绑定事件
     check_box.addEventListener('click',function() {
         if(!this.children[0].style.background) {
             this.children[0].style.background = 'url(../images/check1.png) no-repeat 50%/cover'
@@ -48,6 +79,8 @@ window.addEventListener('load',function() {
             this.children[0].style.border = '1px solid #d5dadf'
         }
     }) 
+
+
     //为选择注册身份添加动态效果
     for(var i = 0;i<2;i++) {
         select_box.children[i].addEventListener('click',function() {
@@ -61,10 +94,12 @@ window.addEventListener('load',function() {
             }
         }) 
     }  
+
+    //给输入框增加动态特效
     var username = document.querySelector('.username')
     var pwd = document.querySelector('.pwd')
     var pwd2 = document.querySelector('.pwd2')
-    var inputs = document.querySelectorAll('input')
+    var inputs = mask.querySelectorAll('input')
     for(var i = 0;i<inputs.length;i++) {
        inputs[i].addEventListener('focus',function() {
         this.style.background = '#fff'
@@ -77,6 +112,8 @@ window.addEventListener('load',function() {
         this.style.border = '0' 
        })
     }      
+
+    //给账号、密码等搜索框绑定事件，判断格式
     var flag1 = 1;
     var flag2 = 1;
     var flag3 = 1;
@@ -87,8 +124,9 @@ window.addEventListener('load',function() {
         }else {
             var reg1 = /^1[0-9]{10}$/
             var reg2 = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-            if (reg1.test(this.value) == false && reg2.test(this.value) == false) {
-                this.nextElementSibling.innerHTML = '请输入有效的手机号码/邮箱'
+            var reg3 = /^[\u4e00-\u9fa5a-zA-Z0-9]{6,12}$/
+            if (reg1.test(this.value) == false && reg2.test(this.value) == false && reg3.test(this.value)) {
+                this.nextElementSibling.innerHTML = '请输入有效的手机号码/邮箱/用户名'
                 flag1 = 0
             }else if(submit_btn.innerHTML == '登录'){
                 console.log(1);
@@ -143,6 +181,9 @@ window.addEventListener('load',function() {
             flag3 = 0
        }
     })
+
+
+    //登录和注册功能
     submit_btn.addEventListener('click',function() {
         if(submit_btn.innerHTML == '登录') {
             if(flag1 + flag2 != 2) {
@@ -157,21 +198,26 @@ window.addEventListener('load',function() {
                     }
                 }).then(response => {
                     if(response.data.msg == '登录成功') {
+                        localStorage.username = escape(username.value)
+                        localStorage.pwd = window.btoa(pwd.value)
                         var data = response.data.data
                         localStorage.token = data.token
                         localStorage.avatar = data.avatar || ('../images/login-avatar.png')
                         localStorage.username = data.username
-                        console.log(response.data.data);
+                        localStorage.create_time = +new Date(data.create_time.split('T')[0] + ' ' + data.create_time.split('T')[1].split('.')[0])
                         mask.style.display = 'none'
+                        if(now_href != 'index.html') {
+                            window.location.href = window.location.href
+                        }
                         var not_login = document.querySelector('.not-login')
                     var str1 =
-                       `<div class="user-name">` + localStorage.username  + `<span></span>
+                       `<div class="user-name"><span>` + data.username  + `</span><span></span>
                             <ul class="user-tool">
                                 <li>帮助与反馈</li>
                                 <li class="user-management">账号设置</li>
-                                <li class="quit">退出登录</li>
+                                <li class="quit">退出</li>
                             </ul>`                          
-                       var str2 = '<img src='+localStorage.avatar+' alt="" class="avatar"></div>'
+                       var str2 = '<img src='+data.avatar+' alt="" class="avatar"></div>'
                         not_login.innerHTML = str1 + str2
                        not_login.className = 'already-login'
                        var login_username = document.querySelector('.user-name')
@@ -229,6 +275,8 @@ window.addEventListener('load',function() {
         }
     })
 
+
+    //给关闭按钮绑定点击事件
     var close_btn = document.querySelector('.close')
     close_btn.addEventListener('click',function() {
         login_name = username.value  
@@ -236,37 +284,12 @@ window.addEventListener('load',function() {
         mask.style.display = 'none'
     })
 
-    var not_login = document.querySelector('.not-login')
-    if(localStorage.token) {
-    var str1 =
-       `<div class="user-name">` + localStorage.username  + `<span></span>
-            <ul class="user-tool">
-                <li>帮助与反馈</li>
-                <li class="user-management">账号设置</li>
-                <li class="quit">退出登录</li>
-            </ul>`                          
-            var str2 = '<img src=' + localStorage.avatar + ' alt="" class="avatar"></div>'
-        not_login.innerHTML = str1 + str2
-       not_login.className = 'already-login'
-       var login_username = document.querySelector('.user-name')
-       var user_tool = document.querySelector('.user-tool')
-       console.log(user_tool);
-       login_username.addEventListener('mouseover',function() {
-           user_tool.style.display = 'block'
-       })
-       login_username.addEventListener('mouseout',function() {
-           user_tool.style.display = 'none'
-       })    
-    }else {
-        not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
-                                <a href="javascript:;" class="register">注册</a>
-                                <img src="../images/avatar.png" alt="" class="avatar">`
-    }
-
-
+   
+    //给注册和登录按钮绑定点击事件
     var head_right_content = document.querySelector('.head-right-content')
     console.log(head_right_content);
     var is_login = head_right_content.children[1]
+    var not_login = document.querySelector('.not-login')
     console.log(is_login);
     is_login.addEventListener('click',function(e) {
      if(e.target.className == 'quit') {
@@ -278,9 +301,14 @@ window.addEventListener('load',function() {
          already_login.innerHTML = str
          already_login.className = 'not-login'
          mask.style.display = 'block'
+         mask.children[0].style.display = 'block'
+         username.value = unescape(localStorage.username)
+         pwd.value = window.atob(localStorage.pwd)
      }else if(e.target.className == 'login') {
             login_title.click()   
             mask.style.display = 'block'
+            username.value = unescape(localStorage.username)
+            pwd.value = window.atob(localStorage.pwd)
      }else if(e.target.className == 'register') {
             register_name = ''
             register_pwd = ''
@@ -293,22 +321,54 @@ window.addEventListener('load',function() {
             select_box.children[1].children[0].style.background = ''
             register_title.click()   
             mask.style.display = 'block'
+     }else if(e.target.className == 'user-management') {
+         window.location.href = 'setting.html'
      }
     })
+
+    //给提交按钮添加‘按下回车触发效果
     window.addEventListener('keydown',function(e) {
-        if(e.keyCode == 13 && mask.style.display == 'block') {
+        if(e.keyCode == 13 && mask.style.display == 'block' && (username.value != '' || pwd.value != '') ) {
             submit_btn.click()
         }
     })
-    // axios({
-    //     method: 'POST',
-    //     url:'/refresh',
-    //     headers: {
-    //         'Authorization': localStorage.token
-    //     }
-    // }).then(response => {
-    //     console.log(response);
-    // }).catch(err => {
-    //     console.log(err);
-    // })
+
+
+    //负责用户进入到各个页面时头部模块的状态
+    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60%24/24
+    var now_href = window.location.href.split('/html/')[1]
+    //说明用户需要重新登录才能获取访问权限
+        if(!localStorage.token || (gaptime > 7)) {
+            not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
+                <a href="javascript:;" class="register">注册</a>
+                <img src="../images/avatar.png" alt="" class="avatar">`
+        }else {
+            axios({
+                url: '/user/getUserInfo'
+            }).then(response => {
+                var data = response.data.data
+                var str1 =
+                `<div class="user-name"><span>` +data.username  + `</span><span></span>
+                     <ul class="user-tool">
+                         <li>帮助与反馈</li>
+                         <li class="user-management">账号设置</li>
+                         <li class="quit">退出登录</li>
+                     </ul>`                          
+                     var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
+                 not_login.innerHTML = str1 + str2
+                not_login.className = 'already-login'
+                var login_username = document.querySelector('.user-name')
+                var user_tool = document.querySelector('.user-tool')
+                console.log(user_tool);
+                login_username.addEventListener('mouseover',function() {
+                    user_tool.style.display = 'block'
+                })
+                login_username.addEventListener('mouseout',function() {
+                    user_tool.style.display = 'none'
+                })   
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+
 })
