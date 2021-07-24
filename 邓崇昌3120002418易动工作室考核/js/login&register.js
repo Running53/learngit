@@ -1,10 +1,11 @@
 window.addEventListener('load',function() {
-    
+    var now_href = window.location.href.split('/html/')[1]
      //    此模块负责给黄色下标添加动态效果 
      var head_element = (function () {
         var nav_titles = document.querySelectorAll('.nav-title')
         var len = nav_titles.length
-        if(now_href =='index.html') {
+        if(now_href == 'index.html') {
+            console.log(7);
             nav_titles[0].querySelector('em').style.display = 'block'
             nav_titles[0].className = 'nav-title boldface-type'
             for (var i = 1; i < len; i++) {
@@ -15,14 +16,27 @@ window.addEventListener('load',function() {
                     this.querySelector('em').style.display = 'none'
                 })
             }
+        }else if(now_href == 'learn.html'){
+            nav_titles[1].querySelector('em').style.display = 'block'
+            nav_titles[1].className = 'nav-title boldface-type'
+            for (var i = 0; i < len; i++) {
+                if(i!=1) {
+                    nav_titles[i].addEventListener('mouseover', function () {
+                        this.querySelector('em').style.display = 'block'
+                    })
+                    nav_titles[i].addEventListener('mouseout', function () {
+                        this.querySelector('em').style.display = 'none'
+                    })
+                }
+            }
         }else {
             for (var i = 0; i < len; i++) {
-                nav_titles[i].addEventListener('mouseover', function () {
-                    this.querySelector('em').style.display = 'block'
-                })
-                nav_titles[i].addEventListener('mouseout', function () {
-                    this.querySelector('em').style.display = 'none'
-                })
+                    nav_titles[i].addEventListener('mouseover', function () {
+                        this.querySelector('em').style.display = 'block'
+                    })
+                    nav_titles[i].addEventListener('mouseout', function () {
+                        this.querySelector('em').style.display = 'none'
+                    })
             }
         }      
         return {
@@ -40,11 +54,15 @@ window.addEventListener('load',function() {
     var select_box = document.querySelector('.select-box')
     var check_box = document.querySelector('.check-box')
     var mask = document.querySelector('.mask')
+    var err_tips = document.querySelectorAll('.err-tips')
     var login_name = ''
     var login_pwd = ''
     var register_name = ''
     var register_pwd = ''
     login_title.addEventListener('click',function() {
+        for(var i = 0;i<err_tips.length;i++) {
+            err_tips[i].innerHTML = ''
+        }
         register_name = input_part[0].children[0].value 
         register_pwd = input_part[1].children[0].value 
         register_title.className = 'register-title'
@@ -57,6 +75,9 @@ window.addEventListener('load',function() {
         check_box.style.display = 'block'
     })
     register_title.addEventListener('click',function() {
+        for(var i = 0;i<err_tips.length;i++) {
+            err_tips[i].innerHTML = ''
+        }
         login_name = input_part[0].children[0].value 
         login_pwd = input_part[1].children[0].value 
         login_title.className = 'login-title'
@@ -202,9 +223,10 @@ window.addEventListener('load',function() {
                         localStorage.pwd = window.btoa(pwd.value)
                         var data = response.data.data
                         localStorage.token = data.token
-                        localStorage.avatar = data.avatar || ('../images/login-avatar.png')
-                        localStorage.username = data.username
+                        // localStorage.avatar = data.avatar || ('../images/login-avatar.png')
+                        // localStorage.username = data.username
                         localStorage.create_time = +new Date(data.create_time.split('T')[0] + ' ' + data.create_time.split('T')[1].split('.')[0])
+                        localStorage.userId = data.id
                         mask.style.display = 'none'
                         if(now_href != 'index.html') {
                             window.location.href = window.location.href
@@ -307,8 +329,10 @@ window.addEventListener('load',function() {
      }else if(e.target.className == 'login') {
             login_title.click()   
             mask.style.display = 'block'
-            username.value = unescape(localStorage.username)
-            pwd.value = window.atob(localStorage.pwd)
+            if(localStorage.username && localStorage.pwd) {
+                username.value = unescape(localStorage.username)
+                pwd.value = window.atob(localStorage.pwd)
+            }     
      }else if(e.target.className == 'register') {
             register_name = ''
             register_pwd = ''
@@ -335,7 +359,7 @@ window.addEventListener('load',function() {
 
 
     //负责用户进入到各个页面时头部模块的状态
-    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60%24/24
+    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
     var now_href = window.location.href.split('/html/')[1]
     //说明用户需要重新登录才能获取访问权限
         if(!localStorage.token || (gaptime > 7)) {
@@ -343,9 +367,11 @@ window.addEventListener('load',function() {
                 <a href="javascript:;" class="register">注册</a>
                 <img src="../images/avatar.png" alt="" class="avatar">`
         }else {
+            console.log(2);
             axios({
                 url: '/user/getUserInfo'
             }).then(response => {
+                console.log(response);
                 var data = response.data.data
                 var str1 =
                 `<div class="user-name"><span>` +data.username  + `</span><span></span>

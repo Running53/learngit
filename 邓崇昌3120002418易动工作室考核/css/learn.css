@@ -1,0 +1,203 @@
+.learn-main {
+    padding-top: 28px;
+    padding-bottom: 50px;
+}
+.learn-main .left-learn {
+    float: left;
+    width: 850px;
+    /* height: 887px; */
+    background-color: #fff;
+    padding: 0 30px;
+}
+.learn-main .left-learn .not-login-learn {
+    padding-top: 22%;
+    text-align: center;
+    height: 887px;
+    width: 100%;
+}
+.learn-main .left-learn .not-login-learn img {
+    width: 220px;
+    height: 220px;
+}
+.learn-main .left-learn .not-login-learn h1{
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+.learn-main .left-learn .not-login-learn h2 {
+    font-size: 16px;
+    color: #999;
+    font-weight: 400;
+    padding: 10px 0 30px;
+}
+.learn-main .left-learn .learn-login {
+    width: 94px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #333;
+    background: #fcd766;
+    margin: 10px auto;
+    border: none;
+    cursor: pointer;
+}
+.learn-main .right-learn {
+    float: left;
+    width: 330px;
+    height: 800px;
+    margin-left: 20px;
+    padding-bottom: 40px;
+}
+.learn-main .right-learn .carefully-article {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+.learn-main .right-learn .careful-articles-list {
+    font-size: 14px;
+    background-color: #fff;
+    margin-bottom: 48px;
+    padding-right: 20px;
+}
+.learn-main .right-learn .careful-articles-list li {
+    color: #666;
+}
+.learn-main .right-learn .careful-articles-list li .article-ordinal {
+    float: left;
+    width: 54px;
+    height: 57px;
+    color: #ccc;
+    text-align: center;
+    line-height: 57px;
+}
+.learn-main .right-learn .careful-articles-list li .article-title {
+    float: left;
+    width: 256px;
+    height: 57px;
+    /* background-color: cyan; */
+    border-bottom: 1px solid #ededed;
+    line-height: 57px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.learn-main .right-learn .careful-articles-list li .article-title:hover {
+    color: #fcd766;
+}
+.learn-main .right-learn .contact-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+.learn-main .right-learn .ways-list {
+    margin-top: 20px;
+    padding: 28px 0;
+    background-color: #fff;
+    text-align: center;
+}
+.learn-main .right-learn .ways-list .way {
+    display: inline-block;
+    width: 80px;
+    height: 62px;
+}
+.learn-main .right-learn .ways-list li img {
+    width: 32px;
+    height: 32px;
+}
+.learn-main .right-learn .ways-list li .img-title {
+    color: #999;
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.containner-pc {
+    min-height: calc(100vh - 230px);
+    background: #f8f9fa;
+}
+.learn-main .left-learn .bought-cousrses .bought-cousrses-title { 
+    padding: 40px 30px 0px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+}
+.learn-main .left-learn .bought-cousrses .bought-cousrses-title span {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: url(../images/bought-course.png) no-repeat;
+    background-size: cover;
+    /* background-color: darkcyan; */
+    vertical-align: text-bottom;
+    margin-right: 5px;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list {
+    background-color: #fff;
+    padding: 0 30px;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list li {
+    padding: 30px 0;
+    height: 190px;
+    cursor: pointer;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-pic {
+    float: left;
+    width: 99px;
+    height: 129px;
+    border-radius: 4px;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-information {
+    float: left;
+    width: 610px;
+    height: 130px;
+    margin-left: 21px;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-brief {
+    font-size: 20px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-process {
+    position: relative;
+    width: 100%;
+    height: 61px;
+    font-size: 14px;
+    padding-top: 16px;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .continue-learn {
+    position: absolute;
+    top: 17px;
+    right: 0;
+    width: 94px;
+    height: 34px;
+    color: #333;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #fcd766;
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .continue-learn:hover {
+    background-color: hsla(45,96%,69%,.8)
+}
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-tips {
+    width: 100%;
+    height: 18px;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.learn-main .left-learn .bought-cousrses .bought-class-list .course-tips img{
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    
+}

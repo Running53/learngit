@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>已购课程</title>
+    <link href="../favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/login&register.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/learn.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="../js/login&register.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/learn.js"></script>
+</head>
+<body>
+    <!-- <div class="loading"> 
+        <div class="bgc_left"></div>
+        <div class="bgc_right"></div>
+        <div class="square1"></div>
+        <div class="square2"></div>
+        <div class="text">Loading...</div>
+    </div> -->
+    <div class="mask">
+        <div class="mask-main">
+            <button class="close"></button>
+            <div class="edu-title-content">
+                <h1 class="edu-title">拉勾教育</h1>
+                <h4 class="edu-brief">互联网实战大学</h4>
+            </div>
+            <div class="edu-content">
+                <div class="change-status">
+                    <div class="login-title active">账号密码登录<span></span></div>
+                    <div class="register-title">注册账号密码<span></span></div>
+                </div>
+                <form action="">
+                    <div class="input-part">
+                        <input type="text" placeholder="请输入您的手机号/邮箱" class="username"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请输入密码" class="pwd"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请确认密码" class="pwd2"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="check-box clearfix">
+                        <span></span><span>我们将通过您的注册手机号码联系您（非必填)</span>
+                    </div>
+                    <div class="select-box">
+                        <div><span></span>学生</div>
+                        <div><span></span>老师</div>
+                    </div>
+                    <p class="err-tips"></p>
+                    <button class="submit-btn" type="button">登录</button>
+                </form>         
+                <div class="wechat-login">
+                    <img src="../images/wechat.png" alt="">
+                    <span>微信扫码登录</span>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <div class="containner-pc">
+     <!-- 头部开始 -->
+     <div class="header">
+        <div class="head-content">
+            <div class="head-left-content">
+                <a class="logo" href="./index.html"></a>
+                <span class="title">拉勾教育</span>
+                <span class="title-description">互联网人实战大学</span>
+            </div>
+            <div class="head-right-content">
+                <div class="head-nav">
+                    <a class="nav-title" href="./index.html">选课<em></em></a>
+                    <a class="nav-title" href="./learn.html">学习<em></em></a>
+                    <a class="nav-title" href="./index.html">企业培训<em></em></a>
+                </div>
+                <div class="not-login">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="learn-main w clearfix">
+        <div class="left-learn">
+            <!-- <div class="not-login-learn">
+                <img src="../images/not_login_pic.png" alt="">
+                <h1>您还没有登录</h1>
+                <h2>登录后即可查看已购课程</h2>
+                <button class="learn-login">立即登录</button>
+            </div> -->
+            <div class="bought-cousrses">
+                <h2 class="bought-cousrses-title"><span></span>专栏课程</h2>
+                <ul class="bought-class-list">
+                    <!-- <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li>
+                     <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/class-img1.png" alt="" class="course-pic">
+                        <div class="course-information">
+                            <h2 class="course-brief">深入浅出搞定react</h2>
+                            <div class="course-process clearfix">
+                                共<span>22</span>讲/已全部更新
+                                <button class="continue-learn">继续学习</button>
+                            </div>
+                            <div class="course-tips">
+                                <img src="../images/clock.png" alt=""><span>加餐 | 模块三思考题解答</span>
+                            </div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="right-learn">
+            <h4 class="carefully-article">精选文章</h4>
+            <ul class="careful-articles-list">
+                <li class="clearfix">
+                    <div class="article-ordinal">01</div>
+                    <div class="article-title">2021年轻松涨薪的5个步骤，还有互联网人不知道吗？</div>
+                </li>
+                <li class="clearfix">
+                    <div class="article-ordinal">02</div>
+                    <div class="article-title">不想做工具人，造轮子太难，前端人该何去何从？</div>
+                </li>
+                <li class="clearfix">
+                    <div class="article-ordinal">03</div>
+                    <div class="article-title">数据分析真的有万能法则吗？</div>
+                </li>
+                <li class="clearfix">
+                    <div class="article-ordinal">04</div>
+                    <div class="article-title">干货 | 中科院博士：程序员用得上的数学都有哪些？</div>
+                </li>
+                <li class="clearfix">
+                    <div class="article-ordinal">05</div>
+                    <div class="article-title">没有一个程序员躲得过被 Spring 全家桶支配的噩梦</div>
+                </li>
+            </ul>
+            <div class="contact-us">
+                <h2 class="contact-title">联系我们</h2>
+                <ul class="ways-list">
+                    <li class="way">
+                        <img src="../images/wechat-pic.png" alt="">
+                        <h4 class="img-title">微信</h4>
+                    </li>
+                    <li class="way">
+                        <img src="../images/zhihu.png" alt="">
+                        <h4 class="img-title">知乎</h4>
+                    </li>
+                    <li class="way">
+                        <img src="../images/weibo.png" alt="">
+                        <h4 class="img-title">微博</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 头部结束 -->
+    </div>
+      <!-- 页面底部部分开始 -->
+      <div class="footer"> 
+        <div class="footer-top w">
+            <div class="footer-top-left">
+                <div class="footer-title">拉勾教育</div>
+                <h4 class="footer-title-description">拉勾旗下专为互联网人打造的实战大学</h4>
+            </div>
+            <div class="footer-top-right">
+                <div class="download">
+                    <div class="download-QR-code"></div>
+                    <div class="download-description">
+                        <div>下载APP</div>
+                        <span>随时随地学习</span>
+                    </div>
+                </div>
+                <div class="concern">
+                    <div class="concern-QR-code"></div>
+                    <div class="concern-description">
+                        <div>关注公众号</div>
+                        <span>接收第一手优惠信息</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-description">
+                ©2021 拉勾网
+                <a href="https://beian.miit.gov.cn" target="_black">京ICP备14023790号-2</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024043"
+                    target="_black">京公网安备 11010802024043</a>
+            </div>
+        </div>
+    </div>
+    <!-- 页面底部部分结束 -->
+    
+</body>
+</html>

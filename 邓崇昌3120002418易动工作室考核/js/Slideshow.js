@@ -4,7 +4,7 @@ window.addEventListener('load', function () {
         //设置请求默认样式
         axios.defaults.method = 'GET' //设置默认的请求类型为GET
         axios.defaults.baseURL = 'http://120.24.80.83:3000' //设置基础URL
-        axios.defaults.timeout = 1000 //设置请求时间上限
+        axios.defaults.timeout = 10000 //设置请求时间上限
 
         //轮播图制作
         // 通过axios发送请求获取轮播图信息并渲染到页面中去

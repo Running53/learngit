@@ -1,35 +1,73 @@
 window.addEventListener('load', function () {
     //  此模块负责给秒杀商品添加计时器
-    // var stopwatch = (function() {
-    //     var left_time = document.querySelectorAll('.left-time')
-    //     var inputTime1 = +new Date('2021-7-22 00:00:00') //返回输入时间的总毫秒数
-    //     var inputTime2 = +new Date('2021-7-22 00:00:24') //返回输入时间的总毫秒数
-    //     var inputTime3 = +new Date('2021-7-22 00:00:42') //返回输入时间的总毫秒数
-    //     var inputTime4 = +new Date('2021-7-22 00:00:57') //返回输入时间的总毫秒数
-    //     watch ()
-    //     function watch() {
-    //         left_time[0].innerHTML = countDown(inputTime1)
-    //         left_time[1].innerHTML = countDown(inputTime2)
-    //         left_time[2].innerHTML = countDown(inputTime3)
-    //         left_time[3].innerHTML = countDown(inputTime4)
-    //     }
+    var stopwatch = (function() {
+        var left_time = document.querySelectorAll('.left-time')
+        var inputTime1 = +new Date('2021-7-25 00:00:00') //返回输入时间的总毫秒数
+        var inputTime2 = +new Date('2021-7-25 00:00:24') //返回输入时间的总毫秒数
+        var inputTime3 = +new Date('2021-7-25 00:00:42') //返回输入时间的总毫秒数
+        var inputTime4 = +new Date('2021-7-25 00:00:57') //返回输入时间的总毫秒数
+        watch ()
+        function watch() {
+            left_time[0].innerHTML = countDown(inputTime1)
+            left_time[1].innerHTML = countDown(inputTime2)
+            left_time[2].innerHTML = countDown(inputTime3)
+            left_time[3].innerHTML = countDown(inputTime4)
+        }
 
-    //     setInterval(watch, 1000);
+        setInterval(watch, 1000);
 
-    //     function countDown(inputTime) {
-    //         var nowTime = +new Date();//返回的是当前时间的毫秒数
-    //         var times = (inputTime - nowTime) / 1000; //times是剩余时间总的秒数
-    //         var h = parseInt(times / 60 / 60 % 24);//时
-    //         h = h < 10 ? '0' + h : h;
-    //         var m = parseInt(times / 60 % 60);//分
-    //         m = m < 10 ?  '0' + m : m;
-    //         var s = parseInt(times % 60);// 当前的秒
-    //         s = s < 10 ? '0' + s : s;
-    //         return (h + ':' + m + ':' + s)
-    //     }
-    // }())
+        function countDown(inputTime) {
+            var nowTime = +new Date();//返回的是当前时间的毫秒数
+            var times = (inputTime - nowTime) / 1000; //times是剩余时间总的秒数
+            var h = parseInt(times / 60 / 60 % 24);//时
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(times / 60 % 60);//分
+            m = m < 10 ?  '0' + m : m;
+            var s = parseInt(times % 60);// 当前的秒
+            s = s < 10 ? '0' + s : s;
+            return (h + ':' + m + ':' + s)
+        }
+    }())
 
-    
+    // var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
+    // var not_login = document.querySelector('.not-login')
+    // //说明用户需要重新登录才能获取访问权限
+    // if(!localStorage.token || (gaptime > 7)) {
+    //     console.log(1);
+    //     not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
+    //         <a href="javascript:;" class="register">注册</a>
+    //         <img src="../images/avatar.png" alt="" class="avatar">`
+    // }else {
+    //     console.log(2);
+    //     axios({
+    //         url: '/user/getUserInfo'
+    //     }).then(response => {
+    //         console.log(response);
+    //         var data = response.data.data
+    //         var str1 =
+    //         `<div class="user-name"><span>` +data.username  + `</span><span></span>
+    //              <ul class="user-tool">
+    //                  <li>帮助与反馈</li>
+    //                  <li class="user-management">账号设置</li>
+    //                  <li class="quit">退出登录</li>
+    //              </ul>`                          
+    //              var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
+    //          not_login.innerHTML = str1 + str2
+    //         not_login.className = 'already-login'
+    //         var login_username = document.querySelector('.user-name')
+    //         var user_tool = document.querySelector('.user-tool')
+    //         console.log(user_tool);
+    //         login_username.addEventListener('mouseover',function() {
+    //             user_tool.style.display = 'block'
+    //         })
+    //         login_username.addEventListener('mouseout',function() {
+    //             user_tool.style.display = 'none'
+    //         })   
+    //     }).catch(err => {
+    //         console.log(err);
+    //     })
+    // }
+
 
     //      此模块负责8点一课模块的展开与收起
     var show = (function () {
@@ -259,4 +297,14 @@ window.addEventListener('load', function () {
         }
     }())
 
+    // axios({
+    //     url:'/course/getBuyCourse',
+    //     params: {
+    //         userId: '73'
+    //     }
+    // }).then(response => {
+    //     console.log(response);
+    // }).catch(err => {
+    //     console.log(err);
+    // })
 })
