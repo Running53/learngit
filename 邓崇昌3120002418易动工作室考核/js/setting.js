@@ -142,6 +142,7 @@ window.addEventListener('load',function() {
                         localStorage.removeItem('token')
                         localStorage.removeItem('pwd')
                         localStorage.removeItem('username')
+                        localStorage.removeItem('create_time')
                         var already_login = document.querySelector('.already-login')
                         already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
                             <a href="javascript:;" class="register">注册</a>
@@ -157,6 +158,7 @@ window.addEventListener('load',function() {
                     localStorage.removeItem('token')
                     localStorage.removeItem('pwd')
                     localStorage.removeItem('username')
+                    localStorage.removeItem('create_time')
                     console.log(not_login);
                     not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
                         <a href="javascript:;" class="register">注册</a>
@@ -229,6 +231,7 @@ window.addEventListener('load',function() {
                             localStorage.removeItem('token')
                             localStorage.removeItem('pwd')
                             localStorage.removeItem('username')
+                            localStorage.removeItem('create_time')
                             var already_login = document.querySelector('.already-login')
                             already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
                                 <a href="javascript:;" class="register">注册</a>
@@ -366,6 +369,7 @@ window.addEventListener('load',function() {
                     localStorage.removeItem('token')
                     localStorage.removeItem('pwd')
                     localStorage.removeItem('username')
+                    localStorage.removeItem('create_time')
                     var already_login = document.querySelector('.already-login')
                     already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
                         <a href="javascript:;" class="register">注册</a>

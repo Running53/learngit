@@ -194,10 +194,27 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 .learn-main .left-learn .bought-cousrses .bought-class-list .course-tips img{
     width: 18px;
     height: 18px;
     vertical-align: top;
     
+}
+.course-information .course-process .delete-course {
+    display: none;
+    position: absolute;
+    top: 69px;
+    right: 0;
+    width: 94px;
+    height: 34px;
+    color: #fee;
+    text-align: center;
+    line-height: 34px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #f71522;
+}
+.course-information .course-process .delete-course:hover{
+    opacity: .7;
 }

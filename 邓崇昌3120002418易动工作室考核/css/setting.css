@@ -299,7 +299,7 @@
     background-color: rgb(255, 217, 4);
 }
 .after-modify-tips {
-    position: absolute;
+    position: fixed;
     top: -40px;
     left: 0;
     right: 0;

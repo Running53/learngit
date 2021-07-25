@@ -1,0 +1,436 @@
+.m {
+    width: 1000px;
+    margin: 0 auto;
+}
+.fly {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+.fly-select-tab{
+    position: fixed;
+    left: 0;
+    top: 70px;
+    right: 0;
+    height: 50px;
+    border: 1px solid #ededed;
+    width: 100% !important;
+    background: #fff !important;
+    cursor: pointer;
+}
+.fly-select-left,.fly-select-right {
+    width: 50%;
+    height: 50px;
+    font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+}
+.active-color{
+    font-weight: bolder;
+}
+.fly-select-left {
+    float: left;
+}
+.fly-select-left span,.fly-select-right span {
+    position: relative;
+    height: 50px;
+    width: 366px;
+}
+.fly-select-left em,.fly-select-right em {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 3px;
+    background: #fcd766;
+    border-radius: 1px;
+    z-index: 2;
+}
+.fly-select-right em {
+    display: none;
+}
+ .fly-select-left span {
+    float: right;
+}
+.fly-select-right {
+    float: right;
+}
+ .fly-select-right span{
+    float: left;
+}
+.not-seen {
+    height: 70px;
+    background: #fff;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 6%);
+}
+.Listing {
+    width: 100%;
+    height: 56px;
+}
+.Listing .Listing-title {
+    font-size: 14px;
+    padding: 17px 0;
+    vertical-align: top;
+}
+.Listing .Listing-title a {
+    color: #666;
+}
+.Listing .Listing-title a:hover {
+    color: #e5a817;
+}
+.Listing .Listing-title span {
+    color: #999;
+}
+.top-card {
+    padding-bottom: 40px;
+}
+.top-card .bg-pic {
+    width: 480px;
+    height: 358px;
+}
+.top-card .card-information {
+    position: relative;
+    display: inline-block;
+    width: 480px;
+    height: 358px;
+    vertical-align: top;
+    padding-left: 40px;
+    /* background-color: chartreuse; */
+}
+.top-card .card-information .card-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    line-height: 33px;
+    margin-bottom: 12px;
+}
+.top-card .card-information .card-brief {
+    font-size: 16px;
+    color: #999;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+.top-card .card-information .purchase-information {
+    height: 36px;
+}
+.top-card .card-information .purchase-information > div {
+    display: inline-block;
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 11px 16px;
+    font-size: 14px;
+    color: #666;
+    line-height: 14px;
+    margin-right: 16px;
+}
+.top-card .card-information .buy-price {
+    color: #ff7452;
+    font-size: 32px;
+    font-weight: bolder;
+    padding-top: 17px;
+}
+.top-card .card-information .buy-price .symbol {
+    font-size: 20px;
+}
+.top-card .card-information .buy-price .price-num {
+    display: inline-block;
+}
+.top-card .card-information .card-bottom {
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    height: 54px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+.top-card .card-information .card-bottom .join-learn {
+    float: left;
+    width: 200px;
+    height: 52px;
+    color: #000;
+    background: #fcd766;
+    margin-top: 2px;
+    border-radius: 4px;
+    font-size: 20px;
+    line-height: 52px;
+    text-align: center;
+    cursor: pointer;
+}
+.top-card .card-information .card-bottom .join-learn:hover {
+    opacity: .6;
+}
+.top-card .card-information .card-bottom .to-share {
+    float: left;
+    width: 125px;
+    height: 52px;
+    font-size: 20px;
+    color: #fcd766;
+    margin-top:2px;
+    margin-left: 10px;
+    border: 1px solid #fcd766;
+    background: #fffcf3;
+}
+.top-card .card-information .card-bottom .to-share em {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%,-50%);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #fff;
+    padding: 4px 6px;
+    background: #ff7452;
+    border-radius: 12px 12px 12px 0;
+}
+.top-card .card-information .card-bottom .to-share:hover {
+    background: hsla(45,96%,69%,.24);
+}
+.top-card .card-information .card-bottom .to-share span {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    height: 20px;
+    background: url(../images/share.png) no-repeat;
+    background-size: cover;
+    margin-right: 7px;
+    margin-bottom: 2px;
+}
+.select-tab {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    cursor: pointer;
+}
+.interpret-text {
+    padding-top: 30px;
+}
+.interpret-text p {
+    font-size: 16px;
+    color: #404952;
+    text-align: justify;
+    line-height: 1.88em;
+    margin-block-start: .5em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+.interpret-text h1 {
+    color: #333;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.interpret-text p img {
+    width: 100%;
+    height: 100%;
+}
+.interpret-text p a {
+    color: rgb(165, 165, 245);
+}
+.interpret-text p a:hover {
+    color: rgb(85, 85, 238);
+}
+.main-content {
+    padding-top: 80px;
+}
+.catalog-title {
+    font-size: .267rem;
+    color: #999;
+    align-items: baseline;
+}
+.catalog-title >span:nth-child(1) {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-right: 8px;
+    line-height: .533rem;
+}
+.main-content .open-text {
+    padding: 40px 0 31px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    max-width: 900px;
+}
+.main-content .try-course,.main-content .lock-course {
+    cursor: pointer;
+}
+.main-content .try-course .course-title,.main-content .lock-course .course-title {
+    float: left;
+    max-width: 900px;
+    font-size: 16px;
+    color: #666;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.main-content .try-course .course-title span,.main-content .lock-course .course-title span{
+    display: inline-block;
+    font-weight: 700;
+    line-height: 20px;
+    color: #e5a817;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: #fff8df;
+    margin-right: 5px;
+}
+.main-content .try-course .lesson-pause,.main-content .lock-course .lesson-lock {
+    float: right;
+    width: 20px;
+    height: 20px;   
+    margin-top: 2px;
+}
+.main-content .try-course .lesson-pause,.main-content .model .lock-course .lesson-pause{
+    display: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAhFBMVEUAAAD//wD//wBtbW3/xkf/yEP/zEdiYmL/ykZfX1//xUllZWX7x0VlZWVkZGT7w0f8w0X8xET6xEZmZmb9xUb9xkb7xUZlZWX8xkVmZmZlZWVlZWX7xUZmZmZlZWX8xUVlZWX8xUZmZmZlZWVmZmZlZWVmZmb7xUX7xUb7xkZmZmb7xUYsgLu5AAAAKnRSTlMAAQIOEhcZGh0jIyY7REVIUVJjaWl5g4mXnqG4vsXP4eXp7O31+fv7/f27mJZsAAAAq0lEQVQY032RyRKCQAxEn6KOiOCCigwyjmwq+f//8yCbBWWOL9VJpwMAqDBOkjhU9KV0Vds0tXWlOxzkReQBeFGR+Q0rjdv2XVMGACo3Tj/JMbkCdOEOxuMWGlQVAXC5Lr40qhRh7QGsRe5bALw6JLYAbETkeZ4B2Jgk7aDICSBNfuBr38CB/LGjkTeLlm+5rbpFraXDcd5bmjQ/OjNTE4H44+hy/1/Io3d8APM3Ei3BzJ0rAAAAAElFTkSuQmCC) no-repeat;
+    background-size: cover;
+}
+.main-content .try-course .lesson-pause {
+    display: block;
+}
+.main-content .try-course .lesson-play,.main-content .model .lock-course .lesson-play {
+    display: none;
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAFiCAMAAAD1IslLAAAAbFBMVEUAAAAAAACAgACqVQC/gADMmQDVgADbkgDfnwDjjgDMmQDfnxDjnA7fpxDjoxXjpBflpxbjphTjpxTjphXiphbjpxbjpxfjpxXkphflqBblqBbjpxbkpxflpxfkphXkpxblpxbkqBblpxflqBfpUN+9AAAAI3RSTlMAAQIDBAUGBwgJChASICQtOj9ASFBRWmNwdX6AhoiQoLDQ4NRvx88AAAEgSURBVFjD1djbEoIgFAVQuqOWXSzTLLr4///YQ3U8FAqGR4Gn9kwzutwoKGOfMV4t4TeLSqEJvEiqEJVCEe45CvCPFqGPMd3FGimczjW19AwixT4mHQoOvsi2HXuG7VQas/2aZVs0Yf2U/jQnBV4kX51KgReJp52qJ6xhCK+pX7NXU6NpuB1RwISFM1L1AmPHvuc1bClM6KVQo9lSasl+nEzYIYnUAEfFrpXOSaSBODjXKY10FAUu3Kc/Dy7iAQUTPXvdkJYCFdwah9fTf3DE0uY9kq5gvEeyxkmB03a6ifUF4x1+t7g+pTXjvcN/FUyHG0aqen8bRbwKcG7wfuqPFH9z0Ny+jLFAJJh9UVwD+ObgmlSLayq4wOGsYEvBTPoEoB6O97NBhyEAAAAASUVORK5CYII=) no-repeat;
+    background-size: cover;
+    margin-top: 10px;
+}
+.main-content .model h2 {
+    padding: 40px 0 31px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    max-width: 900px;
+}
+.main-content .model:nth-child(1) >h2 {
+    padding: 13px 0 31px;
+}
+.main-content .model .try-course,.main-content .model .lock-course {
+    margin-bottom: 27px;
+}   
+.main-content .model .lesson-lock {
+    background: url(../images/lock.png) no-repeat;
+    background-size: cover;
+}
+.main-content .model:first-child {
+    display: block !important;
+}
+.main-content .show-more {
+    width: 100%;
+    height: 50px;
+    background: #f8f9fa;
+    text-align: center;
+    line-height: 50px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.main-content .show-more span {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 12px !important;
+    transform: rotate(180deg);
+    transition: transform .5s;
+}
+.main-content .show-more span::after {
+    position: absolute;
+    top: -17px;
+    left: 3px;
+    content: '\ea50';
+    font-family: 'icomoon';
+    font-size: 16px;
+    font-weight: 700;
+}
+.main-content .model .lock-course:last-of-type {
+    margin-bottom: 0px ;
+}
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ededed;
+    background: #fff;
+}
+.footer-container .footer-content {
+    height: 60px;
+    background: #fff;
+    line-height: 60px;
+}
+.footer-container .footer-content .discounts-price {
+    float: left;
+}
+.footer-container .footer-content .discounts-price > span {
+    color: #ff7452;
+}
+.footer-container .footer-content .discounts-price > span:nth-child(1) {
+    font-size: 16px;
+}
+.footer-container .footer-content .discounts-price > span:nth-child(2) {
+    display: inline-block;
+    height: 60px;
+    font-size: 28px;
+    font-weight: bolder;
+    vertical-align: top;
+}
+.footer-container .footer-content .handle-button {
+    float: right;
+    height: 40px;
+    width: 160px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    line-height: 40px;
+    border-radius: 4px;
+    background: #fcd766;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.footer-container .footer-content .handle-button:hover {
+    opacity: .7;
+}
+.footer-container .footer-content .test-button {
+    float: right;
+    width: 70px;
+    height: 60px;
+    line-height: 60px;
+    color: #666;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.footer-container .footer-content .test-button:hover {
+    opacity: .7;
+}
+.footer-container .footer-content .earphone {
+    width: 30px;
+    height: 30px;
+}
+.footer-container .footer-content .test-text {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #666;
+}
+.blank {
+    height: 110px;
+}
+.container {
+    min-height: calc(100vh,-36px);
+    background-color: #fff;
+}

@@ -2,10 +2,10 @@ window.addEventListener('load', function () {
     //  此模块负责给秒杀商品添加计时器
     var stopwatch = (function() {
         var left_time = document.querySelectorAll('.left-time')
-        var inputTime1 = +new Date('2021-7-25 00:00:00') //返回输入时间的总毫秒数
-        var inputTime2 = +new Date('2021-7-25 00:00:24') //返回输入时间的总毫秒数
-        var inputTime3 = +new Date('2021-7-25 00:00:42') //返回输入时间的总毫秒数
-        var inputTime4 = +new Date('2021-7-25 00:00:57') //返回输入时间的总毫秒数
+        var inputTime1 = +new Date('2021-7-27 00:00:00') //返回输入时间的总毫秒数
+        var inputTime2 = +new Date('2021-7-27 00:00:24') //返回输入时间的总毫秒数
+        var inputTime3 = +new Date('2021-7-27 00:00:42') //返回输入时间的总毫秒数
+        var inputTime4 = +new Date('2021-7-27 00:00:57') //返回输入时间的总毫秒数
         watch ()
         function watch() {
             left_time[0].innerHTML = countDown(inputTime1)
@@ -28,46 +28,6 @@ window.addEventListener('load', function () {
             return (h + ':' + m + ':' + s)
         }
     }())
-
-    // var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
-    // var not_login = document.querySelector('.not-login')
-    // //说明用户需要重新登录才能获取访问权限
-    // if(!localStorage.token || (gaptime > 7)) {
-    //     console.log(1);
-    //     not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
-    //         <a href="javascript:;" class="register">注册</a>
-    //         <img src="../images/avatar.png" alt="" class="avatar">`
-    // }else {
-    //     console.log(2);
-    //     axios({
-    //         url: '/user/getUserInfo'
-    //     }).then(response => {
-    //         console.log(response);
-    //         var data = response.data.data
-    //         var str1 =
-    //         `<div class="user-name"><span>` +data.username  + `</span><span></span>
-    //              <ul class="user-tool">
-    //                  <li>帮助与反馈</li>
-    //                  <li class="user-management">账号设置</li>
-    //                  <li class="quit">退出登录</li>
-    //              </ul>`                          
-    //              var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
-    //          not_login.innerHTML = str1 + str2
-    //         not_login.className = 'already-login'
-    //         var login_username = document.querySelector('.user-name')
-    //         var user_tool = document.querySelector('.user-tool')
-    //         console.log(user_tool);
-    //         login_username.addEventListener('mouseover',function() {
-    //             user_tool.style.display = 'block'
-    //         })
-    //         login_username.addEventListener('mouseout',function() {
-    //             user_tool.style.display = 'none'
-    //         })   
-    //     }).catch(err => {
-    //         console.log(err);
-    //     })
-    // }
-
 
     //      此模块负责8点一课模块的展开与收起
     var show = (function () {
@@ -104,7 +64,7 @@ window.addEventListener('load', function () {
             if (getScroll().top >= 800) {
                 go_top.style.display = 'block'
             } else {
-                go_top.style.display = 'none'
+                go_top.style.fontweight = 'none'
             }
         })
         go_top.addEventListener('click', function () {
@@ -135,12 +95,7 @@ window.addEventListener('load', function () {
 
 
     //此模块负责专栏数据信息的获取以及懒加载
-    var lazyload_specialModel = (function () {
-        //设置请求默认样式
-        axios.defaults.method = 'GET' //设置默认的请求类型为GET
-        axios.defaults.baseURL = 'http://120.24.80.83:3000' //设置基础URL
-        axios.defaults.timeout = 1000 //设置请求时间上限
-
+    // var lazyload_specialModel = (function () {
         var special_course_tabs = document.querySelector('.special-course-tabs')
         var special_course_tab = document.querySelectorAll('.special-course-tab')
         var spans = special_course_tabs.querySelectorAll('span')
@@ -169,7 +124,7 @@ window.addEventListener('load', function () {
                     for (var k in data) {
                         if (data[k].tag != null && data[k].originalPrice == null) {
                             str += `<li class="special-courses">
-                        <div class="hover-active">
+                        <div class="hover-active" courseId="` + data[k].id + `">
                             <img src='' data-src="` + data[k].image + `" alt="" class="special-class-img">
                             <div class="special-class-information">
                                 <p class="specical-title single-line">` + data[k].title + `</p>
@@ -187,7 +142,7 @@ window.addEventListener('load', function () {
                     </li> `
                         } else if (data[k].tag != null && data[k].originalPrice != null) {
                             str += `<li class="special-courses">
-                        <div class="hover-active">
+                        <div class="hover-active" courseId="` + data[k].id + `">
                             <img src='' data-src="` + data[k].image + `" alt="" class="special-class-img">
                             <div class="special-class-information">
                                 <p class="specical-title single-line">` + data[k].title + `</p>
@@ -206,7 +161,7 @@ window.addEventListener('load', function () {
                     </li> `
                         } else if (data[k].tag == null && data[k].originalPrice == null) {
                             str += ` <li class="special-courses">
-                        <div class="hover-active">
+                        <div class="hover-active" courseId="` + data[k].id + `">
                             <img src='' data-src="` + data[k].image + `" alt="" class="special-class-img">
                             <div class="special-class-information">
                                 <p class="specical-title single-line">` + data[k].title + `</p>
@@ -223,7 +178,7 @@ window.addEventListener('load', function () {
                     </li> `
                         } else {
                             str += `<li class="special-courses">
-                        <div class="hover-active">
+                        <div class="hover-active" courseId="` + data[k].id + `">
                             <img src='' data-src="` + data[k].image + `" alt="" class="special-class-img">
                             <div class="special-class-information">
                                 <p class="specical-title single-line">` + data[k].title + `</p>
@@ -252,6 +207,45 @@ window.addEventListener('load', function () {
                     }
                     lazyload()
                     window.onscroll = throttle(lazyload, 200);
+
+                    var hover_actives = document.querySelectorAll('.hover-active')
+                    var active_len = hover_actives.length
+                    for(var j = 0;j<active_len;j++) {
+                        hover_actives[j].addEventListener('click',function() {
+                            localStorage.courseId = this.getAttribute('courseid')
+                            if(localStorage.courseId && localStorage.courseId != 'null') {
+                                if(localStorage.create_time) {
+                                    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
+                                }
+                                if(!localStorage.token || gaptime > 7) {
+                                    window.location.href = '../html/course-detail.html'
+                                }else {
+                                    axios({
+                                        method: 'POST',
+                                        url: '/course/hasBuyCourse',
+                                        data: {
+                                            userId: localStorage.userId,
+                                            courseId: localStorage.courseId
+                                        }
+                                    }).then(response => {
+                                        if(response.data.msg == '登录失效') {
+                                            localStorage.removeItem('token')
+                                            localStorage.removeItem('pwd')
+                                            localStorage.removeItem('username')
+                                            localStorage.removeItem('create_time')
+                                            window.location.href = '../html/course-detail.html'
+                                        }else if(response.data.msg == '还没购买该课程') {
+                                            window.location.href = '../html/course-detail.html'
+                                        }else {
+                                            alert(response.data.msg)
+                                        }
+                                    }).catch(err => {
+                                        console.log(err);
+                                    })
+                                }
+                            }
+                        })
+                    }
                 }).catch(err => {
                     console.log(err);
                 })
@@ -295,16 +289,5 @@ window.addEventListener('load', function () {
                 }, delay)
             }
         }
-    }())
-
-    // axios({
-    //     url:'/course/getBuyCourse',
-    //     params: {
-    //         userId: '73'
-    //     }
-    // }).then(response => {
-    //     console.log(response);
-    // }).catch(err => {
-    //     console.log(err);
-    // })
+    // }())        
 })

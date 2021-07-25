@@ -324,8 +324,8 @@ window.addEventListener('load',function() {
          already_login.className = 'not-login'
          mask.style.display = 'block'
          mask.children[0].style.display = 'block'
-         username.value = unescape(localStorage.username)
-         pwd.value = window.atob(localStorage.pwd)
+         username.value = ''
+         pwd.value =''
      }else if(e.target.className == 'login') {
             login_title.click()   
             mask.style.display = 'block'
