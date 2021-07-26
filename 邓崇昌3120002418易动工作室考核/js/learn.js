@@ -66,38 +66,19 @@ window.addEventListener('load',function() {
                 var bought_class_list = document.querySelector('.bought-class-list')
                 console.log(bought_class_list);
                 var len = bought_class_list.children.length
-                var delete_courses = document.querySelectorAll('.delete-course')
-                console.log(len);
+                bought_class_list.addEventListener('click',function(e) {
+                    if(e.target.className == 'delete-course') {
+                        var target = e.target.parentNode.parentNode.parentNode
+                        var courseId = target.getAttribute('courseid')
+                        var str1 = `<li courseid="` + courseId + `">`
+                        var str2 = `</li>`
+                        var str = str1 + target.innerHTML + str2
+                        var temp = this.innerHTML
+                        bought_class_list.innerHTML = temp.replace(str,'')
+                        delete_class(courseId)
+                    }                        
+                })
                 for(let i = 0;i<len;i++) {
-                    bought_class_list.addEventListener('mouseover',function(e) {
-                        // if(e.target.className == 'delete-course') {
-                        //     e.target.style.display ='block'
-                        // }else {
-                            e.target.querySelector('.delete-course').style.display = 'block'
-                        // }
-                    })
-                    bought_class_list.addEventListener('mouseout',function(e) {
-                        if(e.target.className == 'delete-course') {
-                            e.target.style.display ='none'
-                        }else {
-                            e.target.querySelector('.delete-course').style.display = 'none'
-                        }
-                    })
-                    // bought_class_list.children[i].addEventListener('mouseout',function() {
-                    //     delete_courses[i].style.display = 'none'
-                    // })
-                    bought_class_list.addEventListener('click',function(e) {
-                        if(e.target.className == 'delete-course') {
-                            var target = e.target.parentNode.parentNode.parentNode
-                            var courseId = target.getAttribute('courseid')
-                            var str1 = `<li courseid="` + courseId + `">`
-                            var str2 = `</li>`
-                            var str = str1 + target.innerHTML + str2
-                            var temp = this.innerHTML
-                            bought_class_list.innerHTML = temp.replace(str,'')
-                            delete_class(courseId)
-                        }                        
-                    })
                     axios({
                         url: '/course/detail',
                         params: {

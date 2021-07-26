@@ -1,0 +1,449 @@
+.detail-containner {
+    min-height: calc(100vh - 50px);
+    background-color: #fff;
+}
+.brief-introduction {
+    position: relative;
+    height: 212px;
+    background: rgb(255, 233, 199);
+}
+.brief-introduction .model {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.12);
+}
+.brief-introduction .model > img:nth-child(1), .brief-introduction .model > img:nth-child(2){
+    position: absolute;
+    width: 473px;
+    height: 100%;
+    right: 0;
+    top: 0;
+}
+.brief-introduction .model > img:nth-child(2) {
+    width: 454px;
+    left: 68px;
+}
+.brief-introduction .model .introduction-main {
+    position: relative;
+    padding: 30px 0 49px;
+    min-height: 212px;
+    z-index: 1;
+}
+.brief-introduction .model .introduction-main .detail-pic {
+    float: left;
+    width: 102px;
+    max-height: 133px;
+    overflow: hidden;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 2px;
+    margin-right: 20px;
+}
+.brief-introduction .model .introduction-main .content-wrap {
+    float: left;
+    max-width: 450px;
+    color: #fff;
+}
+.brief-introduction .model .introduction-main .content-wrap .detail-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.brief-introduction .model .introduction-main .content-wrap .detail-brief >span:first-child {
+    font-size: 14px;
+}
+.brief-introduction .model .introduction-main .content-wrap .barrier {
+    display: inline-block;
+    margin: 0 8px;
+}
+.brief-introduction .model .introduction-main .content-wrap .update {
+    display: inline-block;
+    font-size: 14px;
+    color: #f4f0f0;
+}
+.brief-introduction .model .introduction-main .remind-me {
+    position: absolute;
+    top: 0;
+    right: 112px;
+    width: 125px;
+    height: 32px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: hsla(0,0%,88%,.12);
+    cursor: pointer;
+}
+.brief-introduction .model .introduction-main .remind-me img {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    margin-top: 9px;
+    vertical-align: text-bottom;
+}
+.brief-introduction .model .introduction-main .get-money {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 102px;
+    height: 32px;
+    color: #785541;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: 700;    
+    text-align: center;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    cursor: pointer;
+    background: -webkit-linear-gradient(left,#ffe9b8,#f9d29f);
+}
+.brief-introduction .model .introduction-main .get-money >img:nth-child(1) {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 9px;
+    vertical-align: text-bottom;
+}
+.brief-introduction .model .introduction-main .get-money >img:last-child {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    width: 7px;
+    height: 4px;
+    margin-left: -3.5px;
+}
+.brief-introduction .model .introduction-main .share-box1 {
+    display: none;
+    position: absolute;
+    right: -101px;
+    top: 40px;
+    right: 57px;
+    z-index: 1;
+    border-radius: 3px;
+}
+.brief-introduction .model .introduction-main .share-box1>img,.share-box2>img {
+    position: relative;
+    display: block;
+    left: 50%;
+    top: 0px;
+    width: 18px;
+    height: 8px;
+    margin-left: -9px;
+}
+.share-box2 >img {
+    position: absolute;
+    top: -6px;
+    left: 145px;
+    width: 18px;
+    height: 8px;
+    margin-left: -9px;
+    display: block;
+}
+.brief-introduction .model .introduction-main .share-content {
+    position: relative;
+    width: 232px;
+    height: 250px;
+    padding: 24px 0;
+    background: #fff;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);
+    text-align: center;
+    /* z-index: 2; */
+}
+.brief-introduction .model .introduction-main .share-content h4,.brief-introduction .model  .share-info {
+    width: 100%;
+    /* text-align: center; */
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+}
+.brief-introduction .model .introduction-main .share-content p:nth-of-type(1),.share-info p:nth-of-type(1){
+    /* text-align: center; */
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+}
+.brief-introduction .model .introduction-main .share-content p >span {
+    color: #e5a717;
+}
+.brief-introduction .model .introduction-main .share-content img {
+    width: 116px;
+    height: 116px;
+    display: block;
+    margin: 16px auto 4px;
+}
+.brief-introduction .model .introduction-main .share-content p:nth-child(4),.share-info p:last-child {
+    font-size: 12px;
+    color: #999;
+}
+.brief-introduction .model .introduction-main .share-box2 {
+    display: none;
+    position: absolute;
+    right: -101px;
+    top: 51px;
+    border-radius: 3px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);
+    width: 296px;
+    padding: 24px 0;
+    background: #fff;
+    z-index: 1;
+}
+.brief-introduction .model .introduction-main .share-box2 .share-info .QR {
+    position: relative;
+    margin: 16px auto 4px;
+    width: 116px;
+    height: 116px;
+    display: block;
+}
+.brief-introduction .model .introduction-main .share-box2 .share-info {
+    width: 100%;
+}
+.share-info span {
+    color: #ff7251;
+}
+.history-section {
+    position: relative;
+    height: 88px;
+    border-radius: 4px;
+    background: #fff;
+    margin: -32px auto 0;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 4%);
+}
+.history-section .have-learn,.history-section .study-time{
+    float: left;
+    width: 70px;
+    text-align: center;
+    color: rgba(0,0,0,.6);
+    margin-left: 38px;
+}
+.history-section .have-learn .have-learn-chapter,.history-section .study-time-num{
+    color: #000;
+    font-size: 24px;
+    margin-top: 18px;
+    height: 28px;
+    line-height: 28px;
+}
+.history-section .study-time {
+    float: left;
+    width: 120px;
+    text-align: center;
+    color: rgba(0,0,0,.6);
+    margin-left: 38px;
+}
+.history-section .last-study {
+    float: left;
+    width: 750px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 22px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    margin-left: 35px;
+    padding-left: 10px;
+    color: #666;
+    overflow: hidden;
+}
+.history-section .last-study >span:nth-of-type(1) {
+    color: #999;
+    margin-right: 7px;
+}
+.history-section .to-study {
+    float: right;
+    width: 120px;
+    height: 40px;
+    color: #000;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 4px;
+    margin-right: 23px;
+    cursor: pointer;
+    margin-top: 22px;
+    background: -webkit-linear-gradient(left,#fde47c,#fbc546);
+}
+.to-study:hover {
+    opacity: .7;
+}
+.detail-containner .blank {
+    width: 100%;
+    height: 24px;
+}
+.detail-containner .select {
+    position: relative;
+    height: 49px;
+}
+.detail-containner .change {
+    float: left;
+    width: 795px;
+    height: 49px;
+    background-color: #fff;
+}
+.detail-containner .change-fly {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.detail-containner .change {    
+    position: relative;
+    float: left;
+    height: 49px;
+    border-bottom: 1px solid #ededed;;
+}
+.detail-containner .change >div {
+    display: inline-block;
+    width: 115px;
+    height: 49px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.title-active {
+    color: #333;
+    font-weight: 700;
+}
+.detail-containner .change .yellow-line {
+    position: absolute;
+    bottom: 1px;
+    left: 45px;
+    width: 25px;
+    height: 2px;
+    background-color: #fcd766;
+    transition: left .3s cubic-bezier(.35,0,.25,1);
+}
+/* .detail-containner .course-main .change .yellow-line:hover {
+    left: 163px;
+} */
+.detail-containner .supplement {
+    width: 100%;
+}
+.detail-containner .add-teacher {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 287px;
+    height: 382px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 4%);
+    padding: 17px 26px 30px 23px;
+}
+.detail-containner .add-teacher {
+    color: #000;
+    font-size: 16px;
+}
+
+.detail-containner .add-teacher .QR-title h4 {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 21px;
+}
+.detail-containner .add-teacher .process {
+    float: left;
+    width: 20px;
+    height: 188px;
+}
+.detail-containner .add-teacher .teacher-info {
+    float: left;
+    width: 217px;
+    height: 289px;
+}
+.detail-containner .add-teacher .process .prossess-round {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid #5fe085;
+    box-sizing: border-box;
+}
+.detail-containner .add-teacher .process .prossess-round:nth-of-type(1) {
+    margin-top: 7px;
+}
+.detail-containner .add-teacher .process .prossess-line {
+    width: 1px;
+    height: 159px;
+    background: #e8e8ee;
+    margin: 2px 4px;
+}  
+.detail-containner .add-teacher .first-step,.detail-containner .add-teacher .second-step{
+    font-size: 14px;
+}
+.detail-containner .add-teacher .first-step img {
+    width: 98px;
+    height: 98px;
+    margin: 15px 0px 19px 51px;
+}
+.detail-containner .add-teacher .second-step p {
+    font-size: 12px;
+    color: #999;
+}
+.detail-containner .add-teacher button {
+    width: 217px;
+    height: 41px;line-height: 37px;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 16px;
+    border: 2px dashed #e5e5ed;
+}
+.course-container {
+    width: 795px;
+    padding: 0 20px 50px 30px;
+}
+.course-container .model-title {
+    position: relative;
+    font-size: 18px;
+    color: #333;
+    padding: 25px 0;
+    max-width: 540px;
+    font-weight: 400;
+}
+.course-container .model-title span {
+    position: absolute;
+    top: 32px;
+    right: -193px;
+    width: 24px;
+    height: 24px;
+}
+.course-container .model-title span::after {
+    content: '\ea80';
+    font-family: 'icomoon';
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    color: #ccc;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    transition: transform .3s linear;
+    transform: rotate(-90deg);
+    cursor: pointer;
+}
+.course-container .model-content {
+    font-size: 14px;
+    min-height: auto;
+    background: #fbfbfb;
+    transition: all .3s linear;
+}
+.course-container .model-content li {
+    padding: 15px 30px 15px 20px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.course-container .model-content li:hover {
+    background-color: #dedede;
+}
+.footer-blank {
+    height: 50px;
+    background-color: #fff;
+}

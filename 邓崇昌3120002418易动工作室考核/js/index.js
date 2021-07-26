@@ -52,19 +52,12 @@ window.addEventListener('load', function () {
 
     //点击按钮回到页面顶部模块
     var goback = (function () {
-    //考虑到浏览器兼容性问题，封装一个页面被卷去距离的兼容性函数
-        function getScroll() {
-            return {
-                left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-                top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-            }
-        }
         var go_top = document.querySelector('.go-top')
         document.addEventListener('scroll', function () {
             if (getScroll().top >= 800) {
                 go_top.style.display = 'block'
             } else {
-                go_top.style.fontweight = 'none'
+                go_top.style.display = 'none'
             }
         })
         go_top.addEventListener('click', function () {
@@ -88,7 +81,7 @@ window.addEventListener('load', function () {
                     callback && callback();
                 }
                 // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
-                window.scroll(0, window.pageYOffset + step)
+                setScrollTop(window.pageYOffset + step)
             }, 15);
         }
     }())
@@ -259,7 +252,7 @@ window.addEventListener('load', function () {
             let num = imgs.length
             all_img = num
             let seeHeight = window.innerHeight;
-            let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            let scrollTop = getScroll().top 
             for (let i = n; i < num; i++) {
                 if (imgs[i].offsetTop < seeHeight + scrollTop) {
                     if (imgs[i].getAttribute('data-src')) {

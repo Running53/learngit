@@ -14,6 +14,8 @@ window.addEventListener('load',function() {
         var Listing_title = document.querySelector('.Listing-title')
         Listing_title.querySelector('span').innerHTML = data.title
         var top_card = document.querySelector('.top-card')
+        var title = document.querySelector('title')
+        title.innerHTML = data.title    
         var str1 = 
         `<img class="bg-pic" src="` + data.image + `" alt="">
         <div class="card-information">
@@ -181,7 +183,7 @@ window.addEventListener('load',function() {
     var fly_select_right = document.querySelector('.fly-select-right')
     var main_content = document.querySelector('.main-content')
     document.addEventListener('scroll', function () {
-        if (window.pageYOffset >= 484) {
+        if (getScroll().top >= 484) {
         select_tab.className = 'select-tab fly-select-tab'
         } else {
         select_tab.className = 'select-tab'
@@ -193,9 +195,9 @@ window.addEventListener('load',function() {
         this.querySelector('em').style.display = 'block'
         this.children[0].style.fontWeight = 'bolder'
         if(this.parentNode.className == 'select-tab fly-select-tab') {
-            window.scroll(0, this.offsetTop + 460)
+            setScrollTop(this.offsetTop + 460)
         }else {
-            window.scroll(0, this.offsetTop)
+            setScrollTop(this.offsetTop)
         }
     })
     fly_select_right.addEventListener('click',function() {
@@ -203,21 +205,15 @@ window.addEventListener('load',function() {
         fly_select_left.children[0].style.fontWeight = '400'
         this.querySelector('em').style.display = 'block'
         this.children[0].style.fontWeight = 'bolder'
-        window.scroll(0, this.offsetTop)
+        setScrollTop(this.offsetTop)
         if(this.parentNode.className == 'select-tab fly-select-tab') {
-            window.scroll(0, main_content.offsetTop - 100)
+            setScrollTop(main_content.offsetTop - 100)
         }else {
-            window.scroll(0, main_content.offsetTop - 100)
+            setScrollTop(main_content.offsetTop - 100)
         }
     })
     
-        //考虑到浏览器兼容性问题，封装一个页面被卷去距离的兼容性函数
-            function getScroll() {
-                return {
-                    left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-                    top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-                }
-            }
+        
             var go_top = document.querySelector('.go-top')
             document.addEventListener('scroll', function () {
                 if (getScroll().top >= 800) {
@@ -247,7 +243,7 @@ window.addEventListener('load',function() {
                         callback && callback();
                     }
                     // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
-                    window.scroll(0, window.pageYOffset + step)
+                    setScrollTop(window.pageYOffset + step)
                 }, 15);
             }
 
@@ -314,4 +310,74 @@ window.addEventListener('load',function() {
                     after_modify_tips.style.top = '-40px' 
                 },1200)
            }
+
+        var more_content = document.querySelector('.more-content')
+        console.log(more_content);
+        var comment_section = document.querySelector('.comment-section')
+           more_content.addEventListener('click',function() {
+                if(this.querySelector('em').innerHTML == '更多') {
+                    this.children[1].style.transform = 'rotate(270deg)'
+                    this.querySelector('em').innerHTML = '收起'
+                    console.log(comment_section.lastChild.offsetTop);
+                    console.log(comment_section.offsetTop);
+                    comment_section.style.height = comment_section.children[1].lastChild.offsetTop - comment_section.offsetTop + 60 + 'px'
+                }else {
+                    this.children[1].style.transform = 'rotate(90deg)'
+                    this.querySelector('em').innerHTML = '更多'
+                    comment_section.style.height = '150px'
+                }
+           }) 
+        var course_comment = document.querySelector('.course-comment')
+           axios({
+               url: '/course/getComment',
+               params: {
+                courseId: localStorage.courseId
+               }
+           }).then(response => {
+            console.log(response);
+            var data = response.data.data
+            var comment_title = document.querySelector('.comment-title')
+            comment_title.children[0].innerHTML = data.length
+            if(response.data.msg == '获取成功' && data.length != 0) {
+                var str = ''
+                for(var k in data) {
+                   var name_len = data[k].from_name.length
+                   if(name_len == 1) {
+                       var from_name = '*'
+                   }else if(name_len == 2) {
+                       var from_name = '*' + data[k].from_name.substring(1)
+                   }else {
+                    var from_name = '**' + data[k].from_name.substring(2)
+                   }
+                str += 
+                `<li class="user-comment">
+                    <img src=` + data[k].from_avatar + ` alt="" class="user-avatar"> 
+                    <div class="comment-info">
+                        <h3 class="comment-username">` + from_name + `</h3> 
+                        <p class="commment-content">` + data[k].content + `</p>
+                    </div>
+                </li>`
+                }
+                course_comment.innerHTML = str
+            }else if(response.data.msg == '获取成功' && data.length == 0){
+                course_comment.innerHTML = ''
+            }else {
+                console.log(response);
+            }
+           }).catch(err => {
+               console.log(err);
+           })
+        // axios({
+        //     method: 'POST',
+        //     url: '/course/commentCourse',
+        //     data: {
+        //      courseId: localStorage.courseId,
+        //      from_id: localStorage.userId,
+        //      content: '生活就像海洋，只有意志坚定的人才能到达彼岸！'
+        //     }
+        // }).then(response => {
+        //  console.log(response);
+        // }).catch(err => {
+        //     console.log(err);
+        // })  
 })

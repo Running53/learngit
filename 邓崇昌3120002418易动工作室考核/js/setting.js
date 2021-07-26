@@ -36,8 +36,8 @@ window.addEventListener('load',function() {
                      <li>帮助与反馈</li>
                      <li class="user-management">账号设置</li>
                      <li class="quit">退出登录</li>
-                 </ul>`                          
-                 var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
+                 </ul>`   
+            var str2 = '<img src="../images/login-avatar.png" alt="" class="avatar"></div>'
              not_login.innerHTML = str1 + str2
             not_login.className = 'already-login'
             var user_name = document.querySelector('.user-name')
@@ -46,7 +46,7 @@ window.addEventListener('load',function() {
                 avatar_pic.children[0].src = data.avatar
                 user_name.lastChild.src = data.avatar
             }else {
-                avatar_pic.children[0].src = '../images/login-avatar'
+                avatar_pic.children[0].src = '../images/login-avatar.png'
             }
             username_input.value = data.username
             left_money_num.innerHTML = data.money
@@ -414,4 +414,16 @@ window.addEventListener('load',function() {
                 after_modify_tips.style.top = '-40px' 
             },1200)
        }
+
+    //    axios({
+    //        method: 'POST',
+    //        url: '/course/commentCourse',
+    //        data: {
+    //         courseId: localStorage.courseId,
+    //         from_id: localStorage.userId,
+    //         content: '买它！买它！买它！'
+    //        }
+    //    }).then (response => {
+    //        console.log(response);
+    //    })
 })

@@ -223,8 +223,6 @@ window.addEventListener('load',function() {
                         localStorage.pwd = window.btoa(pwd.value)
                         var data = response.data.data
                         localStorage.token = data.token
-                        // localStorage.avatar = data.avatar || ('../images/login-avatar.png')
-                        // localStorage.username = data.username
                         localStorage.create_time = +new Date(data.create_time.split('T')[0] + ' ' + data.create_time.split('T')[1].split('.')[0])
                         localStorage.userId = data.id
                         mask.style.display = 'none'
@@ -238,8 +236,13 @@ window.addEventListener('load',function() {
                                 <li>帮助与反馈</li>
                                 <li class="user-management">账号设置</li>
                                 <li class="quit">退出</li>
-                            </ul>`                          
-                       var str2 = '<img src='+data.avatar+' alt="" class="avatar"></div>'
+                            </ul>`             
+                        if(data.avatar) {
+                            var str2 = '<img src='+ data.avatar+' alt="" class="avatar"></div>'
+                        }else {
+                            console.log(1);
+                            var str2 = '<img src="../images/login-avatar.png" alt="" class="avatar"></div>'
+                        }             
                         not_login.innerHTML = str1 + str2
                        not_login.className = 'already-login'
                        var login_username = document.querySelector('.user-name')
@@ -379,8 +382,12 @@ window.addEventListener('load',function() {
                          <li>帮助与反馈</li>
                          <li class="user-management">账号设置</li>
                          <li class="quit">退出登录</li>
-                     </ul>`                          
-                     var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
+                     </ul>`          
+                if(data.avatar) {
+                var str2 = '<img src=' + data.avatar + ' alt="" class="avatar"></div>'
+                }else {
+                var str2 = '<img src="../images/login-avatar.png" alt="" class="avatar"></div>'
+                }                
                  not_login.innerHTML = str1 + str2
                 not_login.className = 'already-login'
                 var login_username = document.querySelector('.user-name')

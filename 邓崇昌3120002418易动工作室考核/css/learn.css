@@ -143,6 +143,9 @@
     height: 190px;
     cursor: pointer;
 }
+.learn-main .left-learn .bought-cousrses .bought-class-list li:hover .delete-course {
+    display: block;
+}
 .learn-main .left-learn .bought-cousrses .bought-class-list .course-pic {
     float: left;
     width: 99px;

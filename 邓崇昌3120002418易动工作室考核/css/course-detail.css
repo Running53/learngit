@@ -7,7 +7,7 @@
     left: 0;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: 4;
 }
 .fly-select-tab{
     position: fixed;
@@ -210,6 +210,7 @@
     background-color: #f8f9fa;
     overflow: hidden;
     cursor: pointer;
+    z-index: 1;
 }
 .interpret-text {
     padding-top: 30px;
@@ -433,4 +434,81 @@
 .container {
     min-height: calc(100vh,-36px);
     background-color: #fff;
+}
+.comment-section {
+    height: 130px;
+    overflow: hidden;
+    padding-top: 40px;
+    transition: height .8s ;
+}
+.comment-section .comment-title {
+    position: relative;
+    font-size: 19px;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.comment-section .user-comment {
+    margin-bottom: 20px;
+}
+.comment-section .user-comment .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: top;
+    margin-top: 8px;
+}
+.comment-section .user-comment .comment-info {
+    display: inline-block;
+    width: 930px;
+    padding-left: 8px;
+    height: 72px;
+}
+.comment-section .user-comment .comment-info .comment-username {
+    font-size: .373rem;
+    margin-right: .133rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.comment-section .user-comment .comment-info .commment-content {
+    width: 952px;
+    font-size: 14px;
+    white-space: wrap;
+}
+.comment-section .comment-title .more-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    background-color: khaki;
+    text-align: center;
+    cursor: pointer;
+}
+.comment-section .comment-title .more-content:hover {
+    opacity: .7;
+}
+.comment-section .comment-title .more-content span {
+    position: relative;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    transform: rotate(90deg);
+    border-radius: 7px;
+    transition: transform .3s linear;
+    cursor: pointer;
+}
+/* .comment-section .comment-title .more-content:hover span {
+    transform: rotate( 270deg);
+} */
+.comment-section .comment-title .more-content span::before {
+    content: '\ea80';
+    position: absolute;
+    top: -6px;
+    right: 0;
+    font-family: 'icomoon';
+    font-size: 17px;
 }

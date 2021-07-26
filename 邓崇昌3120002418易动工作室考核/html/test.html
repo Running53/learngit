@@ -5,48 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../js/my-function.js"></script>
 </head>
 <style>
-    .grandpa {
+    /* .grandpa {
         width: 1000px;
         height: 500px;    
         background-color: aquamarine;
+    } */
+    #father {
+        width: 600px;
+        height: 100px;
     }
-    .father {
-        width: 800px;
+   
+    .son{
+        width: 500px;
         height: 400px;
-        background-color: blue;
+        /* background-color: brown; */
     }
-    .son {
-        width: 500px;
-        height: 20px;
-        margin-bottom: 10px;
-        background-color: brown;
-    }
-    .grandpa .father .son:last-child {
-        width: 100px;
-    }
-    .daught {
-        width: 500px;
-        height: 20px;
-        margin-bottom: 10px;
-        background-color: rgb(39, 228, 228);
-    }
+
+    /* .wtf {
+      background-color: aquamarine;
+    } */
 </style>
 <body>
-    <div class="grandpa">
-        <div class="father">
+        <div id="father">
             <div class="son"></div>
             <div class="son"></div>
             <div class="son"></div>
             <div class="son"></div>
-            <div class="daught"></div>
-            <div class="daught"></div>
-            <div class="daught"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
+            <div class="son"></div>
         </div>
-    </div>
+        
+         
+        <div name="wtf" style="width: 500px;height: 400px;"></div>
+        <div name="wtfu"></div>
+        <span></span>
 </body>
 <script>
+    function setScrollTop(value) {
+    window.scrollTo(0, value);
+    return value;
+}
+for(var i = 0;i<$('.son').length;i++) {
+    $('.son')[i].style.backgroundColor = 'yellow'
+}
+    $('#father').style.backgroundColor = 'green'
+    console.log($('span'));
+    $('span').innerHTML = 'sadasdasd'
         // async function refreshed() {
         //     const data = new Promise((resolve,reject) => {
         //         setTimeout(() => {
@@ -182,69 +199,69 @@
 /**
  * 第一个任务
  */
- function task1 () {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('1', '我是第一个任务，必须第一个执行');
-      resolve('done');
-    }, 3000);
-  });
-}
+//  function task1 () {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       console.log('1', '我是第一个任务，必须第一个执行');
+//       resolve('done');
+//     }, 3000);
+//   });
+// }
  
 // /**
 //  * 第二个任务
 //  */
-function task2 () {
+// function task2 () {
  
-  return new Promise(resolve => {
-     setTimeout(() => {
-       console.log('2', '第二个任务');
-    //   resolve('done');
-    }, 1000)
-  });
- }
+//   return new Promise(resolve => {
+//      setTimeout(() => {
+//        console.log('2', '第二个任务');
+//     //   resolve('done');
+//     }, 1000)
+//   });
+//  }
  
 // /**
 //  * 第三个任务
 //  */
-function task3 () {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('3', '第三个任务');
-      resolve('error');
-    }, 1000);
-  });
-}
+// function task3 () {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('3', '第三个任务');
+//       resolve('error');
+//     }, 1000);
+//   });
+// }
  
 // /**
 //  * 第四个任务
 //  */
-function task4 () {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('4', '第四个任务');
-      resolve('done');
-    }, 2000);
-  })
-}
+// function task4 () {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       console.log('4', '第四个任务');
+//       resolve('done');
+//     }, 2000);
+//   })
+// }
  
 // /**
 //  * 所有任务
-//  */
- function c() {
-    async function allTasks() {
-        await task1();
-        console.log(5);
-        await task2();
-        console.log(6);
-        await task3();
-        await task4();
-        console.log(1);
-    // return 'sadas'
-    }
-     allTasks()
-}
-   c()
+// //  */
+//  function c() {
+//     async function allTasks() {
+//         await task1();
+//         console.log(5);
+//         await task2();
+//         console.log(6);
+//         await task3();
+//         await task4();
+//         console.log(1);
+//     // return 'sadas'
+//     }
+//      allTasks()
+// }
+//    c()
 // 执行任务
 
 // console.log(c());

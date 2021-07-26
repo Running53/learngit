@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深入浅出搞定React</title> 
+    <link href="../favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/login&register.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/purchased-course.css">
+    <link rel="stylesheet" href="../css/course-detail.css">
+    <script src="../js/loading.js"></script>
+    <script src="../js/login&register.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../js/my-function.js"></script>
+    <script src="../js/purchased-course.js"></script>
+</head>
+<body>
+    <!-- <div class="loading">
+        <div class="bgc_left"></div>
+        <div class="bgc_right"></div>
+        <div class="square1"></div>
+        <div class="square2"></div>
+        <div class="text">Loading...</div>
+    </div> -->
+    <div class="mask">
+        <div class="mask-main">
+            <button class="close"></button>
+            <div class="edu-title-content">
+                <h1 class="edu-title">拉勾教育</h1>
+                <h4 class="edu-brief">互联网实战大学</h4>
+            </div>
+            <div class="edu-content">
+                <div class="change-status">
+                    <div class="login-title active">账号密码登录<span></span></div>
+                    <div class="register-title">注册账号密码<span></span></div>
+                </div>
+                <form action="">
+                    <div class="input-part">
+                        <input type="text" placeholder="请输入您的手机号/邮箱" class="username"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请输入密码" class="pwd"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请确认密码" class="pwd2"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="check-box clearfix">
+                        <span></span><span>我们将通过您的注册手机号码联系您（非必填)</span>
+                    </div>
+                    <div class="select-box">
+                        <div><span></span>学生</div>
+                        <div><span></span>老师</div>
+                    </div>
+                    <p class="err-tips"></p>
+                    <button class="submit-btn" type="button">登录</button>
+                </form>         
+                <div class="wechat-login">
+                    <img src="../images/wechat.png" alt="">
+                    <span>微信扫码登录</span>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <div class="detail-containner">
+        <div class="after-modify-tips"><span></span><span></span></div>
+        <div class="header fly">
+            <div class="head-content">
+                <div class="head-left-content">
+                    <a class="logo" href="./index.html"></a>
+                    <span class="title">拉勾教育</span>
+                    <span class="title-description">互联网人实战大学</span>
+                </div>
+                <div class="head-right-content">
+                    <div class="head-nav">
+                        <a class="nav-title" href="./index.html">选课<em></em></a>
+                        <a class="nav-title" href="./learn.html">学习<em></em></a>
+                        <a class="nav-title" href="./index.html">企业培训<em></em></a>
+                    </div>
+                    <div class="not-login">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="not-seen"></div>
+        <div class="Listing">
+            <p class="Listing-title w">
+                <a href="../html/index.html">课程列表 ></a><span></span>
+            </p>
+        </div>
+        <div class="brief-introduction">
+            <div class="model">
+                <img src="../images/detail-pic-l.png" alt="">
+                <img src="../images/detail-pic-r.png" alt="">
+                <div class="introduction-main w">
+                    <img src="https://s0.lgstatic.com/i/image/M00/5D/09/Ciqc1F-D0-OAZTxlAABYS9gye8s357.png" alt="" class="detail-pic">
+                    <div class="content-wrap">
+                        <h2 class="detail-title">深入浅出搞定 React</h2>
+                        <div class="detail-brief">
+                            <span>修言</span><div class="barrier">|</div><div class="update">
+                                <span>共22讲</span>/<span>已全部更新</span>
+                            </div>
+                        </div>
+                        <div class="remind-me">
+                            <img src="../images/detail-clock.png" alt="">
+                            <span>订阅学习提醒</span>
+                        </div>
+                        <div class="get-money">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAMAAACTisy7AAAB+1BMVEUAAACJbFiTbFiTbGKdf2yniXaJZFKJZFuSbVubf22kiXaGaVWJaViJbFidgGygg2+DZFGDZFOPcF2PcF+Zd2aZemaig3Cig3KJaFaJaFiegG2ggG+FZlSMbVqZe2mhgnCEY1GEY1OPcF6QcF+Wd2WXd2ahgnCjgnGEZFGEZFKRcl+UdGOUdGSignGignKGZlSHZlSKalmKa1qcfGqff26DZFKDZFOScmGTc2KUdGOignCjgnGGZVSNbVuZeWehgm+HaFaHaVeIalicfmydfmydf22egG6EZVOFZVOFZlSGZlSHZ1WHaFaIaFaIaVeJaVeJaliKaliKa1mLa1mLbFqMbFqMbVuNbVuNblyOblyOb12Pb12PcF6QcV6QcV+Qcl+RcV+RcmCScmGSc2CSc2GTc2GTc2KTdGCTdGKTdWGUdGCUdGOUdWOVdmSWdmSWdmWWd2WXd2WXd2aXeGaYeGeYeWeZemeZemiaemiae2iae2mbe2mbe2qbfGebfGmbfGqbfWmcfWudfWudfmyefm2ef22ff22fgG6ggWuggW+hgW+ig26jhG6khG6niHOoiHO0lnq1lnq2l328nH6+noC+n4HAoYPBo4LCo4LDpYTHqYbHqYfRs47Rs4/TtZDZu5Xpy6Dtz6Pt0KPy1af01qj016j116n73a394K8+gYIMAAAAR3RSTlMAGhoaGhocHBwcHE5OTk5Oa2tra2tra2tubm5um5ubm7a2tra2tra22dnZ2dnZ2fLy8vLy8vPz8/Pz8/P8/Pz8/f39/f39/QpS+/8AAAGwSURBVBgZjcG/T1NxFMbhz3vOae+FlkITQQWMjTHGhIVR44+4+8e6OTGY4KYJRAdNdKgxNkQKpZTCbbH9eltgNT4P/yJuZAvNvK7Toj8cc01c0UarJmbSsP0rMSfmag/XuaakzrchM2Lm7uMaSQklkZQYfj2g5JTq23WTyQxDhlm+3B0DDvjWWiCTmcudQJb57wQBrD8AW36h03eIV42020960P0JBnnLSoNx1lx0qzezyzMvtXIwWNz08Ij9aTyzeBLTj5LLN2tgsOIul/rHLDUbDXrDCAuzFQjIg6lNYf9ldRsf7xnY1MggoCGqkyoTju8sQW8SCRyWIEAVUiWx+kjJSPXn33vMGAScVpnJjGKBQlQcJTGAgFEw8Qkne9zf5PgHOEpiBAF9w5OzuoHg9hoHHZREDxyS7mHIVFwucHJe9CdW+tD+Q8BF+6mSGHfsFhTdiRul9gUY0NmJPEIhUcrJSzsdwIHpMLXCPXx0dDQOhaTdzxeAUxoVRUuOG45MZu+/dCk5M4Ojwy2TyWQm15tPh8yIK5X11uvE3Nt255I5cWOxvpI10tnoZHDO//gLiy6OW6bC5uQAAAAASUVORK5CYII=" alt="">
+                            <span>赚￥19.60</span>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAIBAMAAAA7P9P/AAAAJFBMVEUAAACZZmaAVVWSbUmOVVWLXUaAXUZ4VUB8V0R5V0F6V0N4VUElfoELAAAADHRSTlMABQYHCQsWJClSWGZ/joeiAAAAQUlEQVQIHQXBsRFAMAAAwCecNXTatNlCbRt3JpAyNU0GcGE5/7oDw256V7ZHXy5jPUnvurVIKHfNkL4WIZQMLDM/61sODuoc800AAAAASUVORK5CYII=" alt="">
+                        </div>
+                        <div class="share-box1">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAQCAMAAABJNS0RAAAAP1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////9Du/pqAAAAFHRSTlMAAQcPHCw/TVdxjqi3wNPj7/D4/rxAAa4AAABsSURBVBgZncGLDkAgAAXQS+9Q1P3/b2Vm5lHZnINfjPcGbWLkZhRokIG7IFGlIg9RoULPPM0aRTbxIlkUuMyb7PDUeb74Djf9wIKhx4WYWDQJnGRgRZA4qMiqqLDTCxsWjY1NbEoWcJkfslsB0mEWM32LCXUAAAAASUVORK5CYII=" alt="">
+                            <div class="share-content">
+                                <h4>扫码关注拉勾教育</h4>
+                                <p>新课上新时<span>及时提醒</span></p>
+                                <img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFW8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAybTQxdkVhT1djajQxMlNPNnh4Y2MAAgQ2_PxgAwSAOgkA" alt="">
+                                <p>微信扫一扫</p>
+                            </div>
+                        </div>
+                        <div class="share-box2">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAQCAMAAABJNS0RAAAAP1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////9Du/pqAAAAFHRSTlMAAQcPHCw/TVdxjqi3wNPj7/D4/rxAAa4AAABsSURBVBgZncGLDkAgAAXQS+9Q1P3/b2Vm5lHZnINfjPcGbWLkZhRokIG7IFGlIg9RoULPPM0aRTbxIlkUuMyb7PDUeb74Djf9wIKhx4WYWDQJnGRgRZA4qMiqqLDTCxsWjY1NbEoWcJkfslsB0mEWM32LCXUAAAAASUVORK5CYII=" alt="">
+                            <div class="share-info">
+                                <h4>邀请好友购买成功，即赚<span>￥19.60</span></h4>
+                                <p>扫码生成专属海报</p>
+                                <img class="QR" src="data:image/png;base64,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" alt="">
+                                <p>微信扫一扫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="history-section w">
+            <div class="have-learn">
+                <div class="have-learn-chapter">16</div>
+                <span class="have-learn-chapter-text">已学章节(讲)</span>
+            </div>
+            <div class="study-time">
+                <div class="study-time-num">2m</div>
+                <span class="study-time-num-text">学习时长</span>
+            </div>
+            <div class="last-study">
+                <span>上次学到：</span><span>结束语 | 聊聊 React 17，谈谈学习前端框架的心法</span>
+            </div>
+            <button class="to-study">继续学习</button>
+        </div>
+        <div class="blank"></div>
+        <div class="select w">
+            <div class="change">
+                <div class="course title-active">课程</div>
+                <div class="interaction">互动</div>
+                <span class="yellow-line"></span>
+            </div>
+            <div class="add-teacher">
+                <div class="QR-title">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAYCAYAAAB0kZQKAAAERElEQVRIx61WTWhcVRT+zp2ZNHFSmzYmlmyKGzEBdWMEEYpoCUVoIWs33YhkIRK0LcTNCGKDjQwNpg1IF134g0XRoKChUqFQiAFbhWqlwVpLapvfNpP5eW/ePZ+L997MezNvDFofHGbm3OGc797zfd99gn94ppx8Px0OU7BfgceU3KmKKgWLlpz3lDPpnfr1UTlawH08kpScLkwM0KSOkThgSVESSvgBwhJgmAPWLTmO7tJkTnKV/wXEqWJ+BMAJq8wogDoAQgGQgK0DqK8DVzzNHBx/ePT3+wIxXcofV+Ub0V3XAUgcUGw9BIQVSGpovPf1S/8JxKlifoTkyVrRYOeatOvYeuN/cFNS8vTx3iO3/xWI6cLEgErqspKZ5Kb1nCX9kTQCiIICvr/5165JhfQIdd1QFz57auQyBGwJ4mQx/6UqD1oSBGCDov78EeQammmsaROYpZUsHDcD1tsuipHpUqaQn33ycDEGYsrJ99PFFUuVlicQnX/SWKL5AFi5ksLqajboIoiguUFjhmcGR2q8MdbhsC9DNDcOiyPyWxN4EQFmlVAS6TYPgIIkqMGnH3ug3oUDP0wN1kAQ2N/MdrYknq2NJr5uQ55Extm2rQpSawHQ/67MwtovXph7vxsAjO+E9UIa8MAGxWzYgKyRUhPWa8AjoCVlQRKg31zVBoAIkn1Z1TEAkIl771WVTIckTPSApFNp8hE08aRUTKN0ry2mBMZlUXwA7EkrWVRiR2NxYQpdZru/c9TVEp0/CVToYt1uxpr7YyHUMhiDJBsEkS0T+9JKLCm5o3F3WWnH6K6XtzSaH0tXMb3yeZKNw1r/jkGyPQD+6fUbS87XeRDshMSGllBRZ0sQd7w139LRrBbPFV8ZQYAENYwgB/YYFZyzEVKF5PSo+MVZ2BLEpdK1BlIGJLeAVwluPATkVAUYRpATbJp7Dj5VyF1tZLgSs5sX4bLaEsDPpQUsOIu15jbirE7R1OWpGpNqLNT+aiZ2Hy4qmU9ywSVvDWfWZhKBLLrLOL36FeLyDg0LcDYQNaiYVEOZgnRNUc8LALx6bXJb54Pl3yyxh2HBiES7U114rnMQj7T1QUn8VF7ANxtzKKvbJGMAKK8JnEJcE0y6ukU++vb5N19KA0BHtvy4An1xYtWL3/HW8fH6bIKrRhQVNHI3CWcjwROaABECcwIAzKHruXZJyRmrzCReSjGTSgAQegYAt0CUltl6/rEgqHoEANK97R1vW9WBVleyRl7nGH2fiOQAbJTX1K3c1Yf8hETOvWkQJRC3ICRgnhj6Lrc3jTQ+MCKnPTc4KqNSBWCqeJQiryl1LwmTNAoKbkPlE3aad8p/lNSgbYzgKySzTRgELgzOAhg7N/TWn1u+bUefQ9ff3U1xn4WafgW7LNVTI7esZ+bPfujOIZfT6P+fuTja0VHYvk/IfhH0kCgIcNVR7/yFF48tJ/X4G8nO/Fkn7TcPAAAAAElFTkSuQmCC" alt="">
+                    <h4>专属班主任</h4>
+                </div>
+                <div class="process">
+                    <div class="prossess-round"></div>
+                    <div class="prossess-line"></div>
+                    <div class="prossess-round"></div>
+                </div>
+                <div class="teacher-info">
+                    <div class="first-step">
+                        <div>第1步，添加班主任微信</div>
+                        <img src="https://s0.lgstatic.com/i/image6/M00/0A/81/CioPOWA3W7yAP3NKAAE_LLrvs6w235.png" alt="">
+                    </div>
+                    <div class="second-step">
+                        <div>第2步：发送验证消息</div>
+                        <p>添加班主任好友及时输入信息，进入专属学习班级</p>
+                    </div>
+                    <button>
+                        “ react ”
+                    </button>
+                </div>
+            </div> 
+        </div>
+        <section class="main-container w">
+            <div class="course-container">
+                <div class="model-part">
+                    <h4 class="model-title">开篇词<span></span></h4>
+                    <ul class="model-content">
+                        <li>开篇词 | 这一次，真正吃透 React 知识链路与底层逻辑</li>
+                    </ul>
+                </div>
+                <div class="model-part">
+                    <h4 class="model-title">
+                        模块一：系统深入学习“基础知识”<span></span>
+                    </h4>
+                    <ul class="model-content">
+                        <li>
+                            01 | JSX 代码是如何“摇身一变”成为 DOM 的？
+                        </li>
+                        <li>
+                            02 | 为什么 React 16 要更改组件的生命周期？（上）
+                        </li>
+                        <li>
+                            03 | 为什么 React 16 要更改组件的生命周期？（下）
+                        </li>
+                        <li>
+                            04 | 数据是如何在 React 组件之间流动的？（上）
+                        </li>
+                        <li>
+                            05 | 数据是如何在 React 组件之间流动的？（下）
+                        </li>
+                        <li>
+                            06 | React-Hooks 设计动机与工作模式（上）
+                        </li>
+                        <li>
+                             07 | React-Hooks 设计动机与工作模式（下）
+                        </li>
+                    </ul>
+                </div>
+                <div class="model-part">
+                    <h4 class="model-title">
+                        模块一：系统深入学习“基础知识”<span></span>
+                    </h4>
+                    <ul class="model-content">
+                        <li>
+                            01 | JSX 代码是如何“摇身一变”成为 DOM 的？
+                        </li>
+                        <li>
+                            02 | 为什么 React 16 要更改组件的生命周期？（上）
+                        </li>
+                        <li>
+                            03 | 为什么 React 16 要更改组件的生命周期？（下）
+                        </li>
+                        <li>
+                            04 | 数据是如何在 React 组件之间流动的？（上）
+                        </li>
+                        <li>
+                            05 | 数据是如何在 React 组件之间流动的？（下）
+                        </li>
+                        <li>
+                            06 | React-Hooks 设计动机与工作模式（上）
+                        </li>
+                        <li>
+                             07 | React-Hooks 设计动机与工作模式（下）
+                        </li>
+                    </ul>
+                </div>
+                <div class="model-part">
+                    <h4 class="model-title">
+                        模块一：系统深入学习“基础知识”<span></span>
+                    </h4>
+                    <ul class="model-content">
+                        <li>
+                            01 | JSX 代码是如何“摇身一变”成为 DOM 的？
+                        </li>
+                        <li>
+                            02 | 为什么 React 16 要更改组件的生命周期？（上）
+                        </li>
+                        <li>
+                            03 | 为什么 React 16 要更改组件的生命周期？（下）
+                        </li>
+                        <li>
+                            04 | 数据是如何在 React 组件之间流动的？（上）
+                        </li>
+                        <li>
+                            05 | 数据是如何在 React 组件之间流动的？（下）
+                        </li>
+                        <li>
+                            06 | React-Hooks 设计动机与工作模式（上）
+                        </li>
+                        <li>
+                             07 | React-Hooks 设计动机与工作模式（下）
+                        </li>
+                    </ul>
+                </div>
+                <div class="model-part">
+                    <h4 class="model-title">
+                        模块一：系统深入学习“基础知识”<span></span>
+                    </h4>
+                    <ul class="model-content">
+                        <li>
+                            01 | JSX 代码是如何“摇身一变”成为 DOM 的？
+                        </li>
+                        <li>
+                            02 | 为什么 React 16 要更改组件的生命周期？（上）
+                        </li>
+                        <li>
+                            03 | 为什么 React 16 要更改组件的生命周期？（下）
+                        </li>
+                        <li>
+                            04 | 数据是如何在 React 组件之间流动的？（上）
+                        </li>
+                        <li>
+                            05 | 数据是如何在 React 组件之间流动的？（下）
+                        </li>
+                        <li>
+                            06 | React-Hooks 设计动机与工作模式（上）
+                        </li>
+                        <li>
+                             07 | React-Hooks 设计动机与工作模式（下）
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="footer-blank"></div>
+</body>
+</html>
