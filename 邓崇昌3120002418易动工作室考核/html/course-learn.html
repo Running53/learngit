@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深入浅出搞定 React</title>
+    <link href="../favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/login&register.css">
+    <link rel="stylesheet" href="../css/learn.css">
+    <link rel="stylesheet" href="../css/course-detail.css">
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="../css/course-learn.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/login&register.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../js/my-function.js"></script>
+    <script src="../js/course-learn.js"></script>
+</head>
+<body>
+    <div class="after-modify-tips"><span></span><span></span></div>
+    <!-- <div class="loading">
+        <div class="bgc_left"></div>
+        <div class="bgc_right"></div>
+        <div class="square1"></div>
+        <div class="square2"></div>
+        <div class="text">Loading...</div>
+    </div> -->
+    <div class="mask">
+        <div class="mask-main">
+            <button class="close"></button>
+            <div class="edu-title-content">
+                <h1 class="edu-title">拉勾教育</h1>
+                <h4 class="edu-brief">互联网实战大学</h4>
+            </div>
+            <div class="edu-content">
+                <div class="change-status">
+                    <div class="login-title active">账号密码登录<span></span></div>
+                    <div class="register-title">注册账号密码<span></span></div>
+                </div>
+                <form action="">
+                    <div class="input-part">
+                        <input type="text" placeholder="请输入您的手机号/邮箱" class="username"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请输入密码" class="pwd"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="input-part">
+                        <input type="password" placeholder="请确认密码" class="pwd2"> 
+                        <p class="err-tips"></p>
+                    </div>
+                    <div class="check-box clearfix">
+                        <span></span><span>我们将通过您的注册手机号码联系您（非必填)</span>
+                    </div>
+                    <div class="select-box">
+                        <div><span></span>学生</div>
+                        <div><span></span>老师</div>
+                    </div>
+                    <p class="err-tips"></p>
+                    <button class="submit-btn" type="button">登录</button>
+                </form>         
+                <div class="wechat-login">
+                    <img src="../images/wechat.png" alt="">
+                    <span>微信扫码登录</span>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <div class="learn-container">
+        <!-- 头部开始 -->
+        <div class="header fly">
+            <div class="head-content">
+                <div class="head-left-content">
+                    <a class="logo" href="./index.html"></a>
+                    <span class="title">拉勾教育</span>
+                    <span class="title-description">互联网人实战大学</span>
+                </div>
+                <div class="head-right-content">
+                    <div class="head-nav">
+                        <a class="nav-title" href="./index.html">选课<em></em></a>
+                        <a class="nav-title" href="./learn.html">学习<em></em></a>
+                        <a class="nav-title" href="./index.html">企业培训<em></em></a>
+                    </div>
+                    <div class="not-login">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 头部结束 -->
+        <div class="not-seen"></div>
+        <div class="learn-selection">
+            <div class="selection-control">
+                <div class="differ-btn could">
+                    <div></div><div>收起目录</div>
+                </div>
+                <div class="gap"></div><div class="differ-btn disabled-btn">
+                    <div class="disabled-img"></div><div>上一讲</div>
+                </div><div class="gap"></div>
+                <div class="differ-btn could">
+                    <div></div><div>下一讲</div>
+                </div><div class="gap"></div>
+                <div class="differ-btn could">
+                    <div></div><div>课程目录</div>
+                </div><div class="gap"></div>
+                <div class="differ-btn could">
+                    <div></div><div>全部课程</div>
+                </div>
+            </div>
+        </div>
+        <div class="learn-region">
+            <div class="left-region">
+                <div class="course-info">
+                    <img class="course-pic" src="" alt="">
+                    <div>
+                        <h4 class="course-title"></h4>
+                        <div class="course-teacher">
+                            <span></span><div class="splice"></div><span></span>
+                        </div>
+                        <button>立即购买</button>
+                    </div>
+                </div>
+                <div class="learn-catalog">
+                    
+                </div>
+            </div>
+            <div class="right-region scroll">
+                <div class="content-main">
+                    <h2 class="content-title">开篇词 | 这一次，真正吃透 React 知识链路与底层逻辑</h2>
+                    <div class="class-info">
+                        <span class="create-tiem">2020/10/12</span> <span class="teacher-name">修言</span>
+                    </div>
+                    <div class="music-player">
+                        <div class="player-btn">
+                            <div></div>
+                        </div>
+                        <div class="process">
+                            <div class="process-bar">
+                                <div class="line"></div>
+                                <div class="circle"></div>
+                            </div>
+                            <div class="play-time"> 
+                               <span>11.47M</span><span>00:00/12:28</span>
+                            </div>
+                            <div class="gap"></div>
+                        </div>
+                        <div class="look-ridio">
+                            <div class="ridio-pic"></div>
+                            <span>看视频</span>
+                        </div>
+                    </div>
+                    <div class="buy-tips">
+                        <div class="buy-text">
+                            本节为免费试看，购买后解锁全部章节
+                        </div>
+                        <button class="to-buy-btn">立即购买 ￥98</button>
+                    </div>
+                    <div class="text-wrap">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

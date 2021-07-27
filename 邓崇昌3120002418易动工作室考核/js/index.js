@@ -230,7 +230,7 @@ window.addEventListener('load', function () {
                                         }else if(response.data.msg == '还没购买该课程') {
                                             window.location.href = '../html/course-detail.html'
                                         }else {
-                                            alert(response.data.msg)
+                                            window.location.href = '../html/purchased-course.html'
                                         }
                                     }).catch(err => {
                                         console.log(err);

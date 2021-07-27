@@ -41,7 +41,7 @@ window.addEventListener('load',function() {
                     `<li courseid="` + data[k].courseId + `">
                         <img src=` + data[k].image + ' ' +`alt="" class="course-pic">
                         <div class="course-information">
-                            <h2 class="course-brief">` + data[k].title + `react</h2>
+                            <h2 class="course-brief">` + data[k].title + `</h2>
                             <div class="course-process clearfix">
                                 共<span>22</span>讲/<span>已全部更新</span>
                                 <button class="continue-learn">继续学习</button>
@@ -76,6 +76,14 @@ window.addEventListener('load',function() {
                         var temp = this.innerHTML
                         bought_class_list.innerHTML = temp.replace(str,'')
                         delete_class(courseId)
+                    }else{
+                        var target = e.target
+                        while(target.tagName != 'LI') {
+                            target = get_father(target)
+                        }
+                        var courseId = target.getAttribute('courseid')
+                        localStorage.courseId = courseId
+                        window.location.href = '../html/purchased-course.html'
                     }                        
                 })
                 for(let i = 0;i<len;i++) {

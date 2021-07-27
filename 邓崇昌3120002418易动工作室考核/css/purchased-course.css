@@ -288,7 +288,7 @@
     top: 70px;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 2;
 }
 .detail-containner .change {    
     position: relative;
@@ -408,6 +408,7 @@
     right: -193px;
     width: 24px;
     height: 24px;
+    transition: transform .3s linear;
 }
 .course-container .model-title span::after {
     content: '\ea80';
@@ -422,15 +423,14 @@
     text-align: center;
     line-height: 24px;
     z-index: 1;
-    transition: transform .3s linear;
     transform: rotate(-90deg);
     cursor: pointer;
 }
 .course-container .model-content {
     font-size: 14px;
-    min-height: auto;
     background: #fbfbfb;
     transition: all .3s linear;
+    overflow: hidden;
 }
 .course-container .model-content li {
     padding: 15px 30px 15px 20px;

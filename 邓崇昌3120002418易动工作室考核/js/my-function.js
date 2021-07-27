@@ -101,3 +101,52 @@ function none(dom) {
  function block(dom) {
     dom.style.display = 'block'
 }
+
+
+//  dom.parentNode
+/**
+ * @desc 获取元素的父元素
+ */
+function get_father(dom) {
+    return dom.parentNode
+}
+
+//  dom.parentNode
+/**
+ * @desc 获取元素的父元素的父元素
+ */
+ function get_grand(dom) {
+    return dom.parentNode.parentNode
+}
+
+//  dom.children[0]
+/**
+ * @desc 获取元素的第一个子元素
+ */
+ function first_son(dom) {
+    return dom.children[0]
+ }
+
+//  dom.previousElementSibling
+/**
+ * @desc 获取元素的上一个元素
+ */
+ function pre(dom) {
+    return dom.previousElementSibling
+ }
+
+//  dom.nextElementSibling
+/**
+ * @desc 获取元素的下一个元素
+ */
+ function next(dom) {
+    return dom.nextElementSibling
+ }
+
+//  dom.children
+/**
+ * @desc 获取元素的所有子元素
+ */
+ function allchild(dom) {
+    return dom.children
+ }

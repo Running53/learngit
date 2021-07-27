@@ -109,6 +109,14 @@ axios.interceptors.response.use(response => {
     //         // console.log(1);
     //         // var temp1 = refreshed(); //等待async执行完之后再往下走
     //         // console.log(temp1);
+    }else if(response.data.msg == '登录失效'){
+        localStorage.removeItem('token')
+        localStorage.removeItem('courseId')
+        localStorage.removeItem('pwd')
+        localStorage.removeItem('userId')
+        localStorage.removeItem('create_time')
+        localStorage.removeItem('username')     
+        return response  
     }else {
         console.log(response);
         return response;
