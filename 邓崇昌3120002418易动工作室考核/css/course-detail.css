@@ -263,6 +263,15 @@
     color: #333;
     max-width: 900px;
 }
+.main-content section > h2 {
+    padding: 13px 0 31px !important;
+}
+.main-content .try-course {
+    margin-bottom: 27px;
+}
+.main-content  > div:last-child {
+    margin-bottom: 0;
+}
 .main-content .try-course,.main-content .lock-course {
     cursor: pointer;
 }
@@ -501,9 +510,6 @@
     transition: transform .3s linear;
     cursor: pointer;
 }
-/* .comment-section .comment-title .more-content:hover span {
-    transform: rotate( 270deg);
-} */
 .comment-section .comment-title .more-content span::before {
     content: '\ea80';
     position: absolute;

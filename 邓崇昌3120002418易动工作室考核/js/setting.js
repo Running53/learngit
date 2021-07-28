@@ -396,24 +396,24 @@ window.addEventListener('load',function() {
             modify_close.click()
         })
     
-        function change_success() {
-            after_modify_tips.style.backgroundColor = 'chartreuse'
-            after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
-            after_modify_tips.children[1].style.backgroundSize = 'cover'
-            setTimeout(function() {
-                after_modify_tips.style.opacity = '.2'
-                after_modify_tips.style.top = '-40px' 
-            },1200)
-        }
-       function change_err() {
-            after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
-            after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
-            after_modify_tips.children[1].style.backgroundSize = 'cover'
-            setTimeout(function() {
-                after_modify_tips.style.opacity = '.2'
-                after_modify_tips.style.top = '-40px' 
-            },1200)
-       }
+    //     function change_success() {
+    //         after_modify_tips.style.backgroundColor = 'chartreuse'
+    //         after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
+    //         after_modify_tips.children[1].style.backgroundSize = 'cover'
+    //         setTimeout(function() {
+    //             after_modify_tips.style.opacity = '.2'
+    //             after_modify_tips.style.top = '-40px' 
+    //         },1200)
+    //     }
+    //    function change_err() {
+    //         after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
+    //         after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
+    //         after_modify_tips.children[1].style.backgroundSize = 'cover'
+    //         setTimeout(function() {
+    //             after_modify_tips.style.opacity = '.2'
+    //             after_modify_tips.style.top = '-40px' 
+    //         },1200)
+    //    }
 
     //    axios({
     //        method: 'POST',

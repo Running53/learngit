@@ -81,13 +81,17 @@ window.addEventListener('load',function() {
        var category_info2 = ''
        for(var k in data.courseSectionList) {
            if(k == 0) {
-            category_info1 += `<div class="try-course clearfix" lesson_id="` + data.courseSectionList[0].lessonList[0].lesson_id  + `">
+            category_info1 += 
+            `<div class="open-text">` + data.courseSectionList[0].section_name + `</div>` 
+            for(var key in data.courseSectionList[0].lessonList) {
+                category_info1 += `<div class="try-course clearfix" lesson_id="` + data.courseSectionList[0].lessonList[key].lesson_id  + `">
                 <div class="course-title">
-                    <span>试看</span>` + data.courseSectionList[0].lessonList[0].lesson_name + `
+                    <span>试看</span>` + data.courseSectionList[0].lessonList[key].lesson_name + `
                 </div> 
                 <div class="lesson-pause"></div> 
                 <div class="lesson-play"></div> 
             </div>`
+            }
            }else if(k == 1) {
             category_info1 += `<section class="model">
                <h2>` + data.courseSectionList[1].section_name + `</h2>`
@@ -173,6 +177,14 @@ window.addEventListener('load',function() {
             handle_button.addEventListener('click',function() {
                 buy_condition(num)
             })
+
+            var try_courses = all('.try-course')
+            for(var i = 0;i<try_courses.length;i++) {
+                try_courses[i].addEventListener('click',function() {
+                    localStorage.lesson_id = this.getAttribute('lesson_id')
+                    window.location.href = "../html/course-learn.html"
+                })
+            }
     }).catch(err => {
         console.log(err);
     })
@@ -247,38 +259,7 @@ window.addEventListener('load',function() {
                 }, 15);
             }
 
-            function buy_course() {
-                axios({
-                    method: 'POST',
-                    url: '/course/buyCourse',
-                    data: {
-                        userId: localStorage.userId,
-                        courseId: localStorage.courseId
-                    }
-                }).then(response => {
-                    if(response.data.msg == '登录失效') {
-                        localStorage.removeItem('token')
-                        localStorage.removeItem('pwd')
-                        localStorage.removeItem('username')
-                        localStorage.removeItem('userId')
-                        mask.style.display = 'block'
-                        mask.children[0].style.display = 'block'
-                    }else if(response.data.msg == '购买成功'){
-                        after_modify_tips.style.opacity = '1'
-                        after_modify_tips.style.top = '40px' 
-                        after_modify_tips.children[0].innerHTML = response.data.msg
-                        change_success()
-                        console.log(response);
-                    }else {
-                        after_modify_tips.style.opacity = '1'
-                        after_modify_tips.style.top = '40px' 
-                        after_modify_tips.children[0].innerHTML = response.data.msg
-                        change_err()
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
-            }
+            
             function change_success() {
                 after_modify_tips.style.backgroundColor = 'chartreuse'
                 after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'

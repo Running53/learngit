@@ -88,14 +88,7 @@ window.addEventListener('load',function() {
                 }
             }).then(response => {
                 resolve(response)
-                // if(response.data.msg == '获取成功') {
-                //     var study_time_num = $('.study-time-num')
-                //     study_time_num.innerHTML  = response.data.data.progress + 'm'
-                // }else if(response.data.msg == '登录失效'){
-                //     block(mask)
-                //     block(first_son(mask))
-                // }
-                // resolve(response)
+                
             }).catch(err => {
                 console.log(err);
             })
@@ -167,6 +160,13 @@ window.addEventListener('load',function() {
                     </div>`
                 }
                 course_container.innerHTML = str
+                var lis = all('li')
+                for(var i = 0;i<lis.length;i++) {
+                    lis[i].addEventListener('click',function() {
+                        localStorage.lesson_id = this.getAttribute('lesson_id')
+                        window.location.href = '../html/course-learn.html'
+                    })
+                }
             }
         }
   }).catch(err => {

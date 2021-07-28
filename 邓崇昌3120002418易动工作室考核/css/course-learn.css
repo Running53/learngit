@@ -39,6 +39,9 @@
 .learn-container .learn-selection .selection-control .disabled-img {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAh9JREFUWAndl71KA0EURp1FJBAbS32CwHbZgKQTsbPxAYIWanwErSxSaW0n2ojY6RNIsFMxSbe1nT6AFiFI1vOFHZkixY7ZXcGF8d69Mzvnm5txfsxc+iRJYgaDwR521xgTYhdtXR6WPj/pM8Ze1uv1C2yifo3+9Hq9ZQLXNFjXe9EPrC6sVqPReA9weC8PrsFpoCnTmH6/v0/gXBUER5Tj8Xh8JXWK5fUoy0EQbMPqUBbUL6y2oeIJf1UBGhzx+5zKL+phnh0ywJO0/+cAFaGFaeTWL8q6DLE1B35me95pnzYIlyF2MK1RmbH/ISCO4wUmV4OUzvtmb+YMAG4Oh8NXJtcL/l2pAlhD2oz6gbKSgjd9BXinTAClnFGfAW67QN69M+otQCsa8FtgTRf+W99LsSYaoH5ecInOLACooVzxzbI+zOvJLIBlE36ylBfY9pNZQPrBFjbXXdJLAOv4MwIisvFoRzCr9RIgmDaTSqWyhojJGaJ0AQKGYTiKougAESojR8SX42dyvTPg9oqIcwQoG29p/Matz+LPJEAATlCP1Wq1hhvx8+xkgbptvFdC92Pr12q1D/yBffexM2fABzat7d8LYAJ9WmXaaKxflHUZYutQGluYzu3WL8q6DLHnUXGJM7kXYDvseHM6Orun1zzEaOT2YmL7E1s7jC6l99h1W1GGBd7lX3hDFxPYSUuBMsBiiJUyk8ntWEECf3I9/wa3MgmNnO660gAAAABJRU5ErkJggg==') !important;
 }
+.learn-container .learn-selection .selection-control .disabled-pic{
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAhxJREFUWAnVl7tKA0EUhjNLkBQ2lvoCFttlA2InwcrKBxAt1HTWWlmk0kcwaCNi6wuI2KmYpNvaTl/AIohk/f5lJy4iuJfJBgcm5+xczv+fMydzMbWkRFFkhsPhHnLXGOMj522fC4nNd2yGyItms3mOjGTX6Kff7y/ScMWAtr6nXcC6A2ur1Wq9eSh8Vwcu5+RogmnMYDDYp6GnDho/qMfj8fhS7NTmqijKnudtg9WlzskuWB1DxyP6ihoYcMT6nEqfViHPDnHwJLH/5MHCt2Dy3OrTkmkMYSsHJtnuOuy/OZHGELb326Aq2/4fAcJWJ5FaYRjGmVw2WrkjAPgNifQ8Go1e0FcrJwDghkCJxBL1nn2kU4ZE7ggAOpmDPkc9g8RZ0SWZGCvjBSQ6LMm9dru8dpwQECgklA8DJWgeEs4IJKCLELmkxqdsFiKuCSgSC2yx8Vk/CwI6QTezANsxziKA1w8YDdjrn6zxLLKeZdBfYwDvNRqNA9/3P/4a+7O/CIFPjMTzABbgQRAE8YXmp/Es30WW4FqGAX+lrpUBl53cBFjjHeYFhHyZ25PWvVQpsgQ1SAxLoaYm545Aaq4TdfYESKR360qRw8TOzSrTGMLWpTS0k3Vvt/q0ZBpD2HVYXKDE7wJkl9Ospqtz+vbqgow8tw8Ta0/YBlA9Sm+RbdtRhQT8jr/xuh4mYEdbaqgCWBjCSjC/z20aZvI8/wInbwqTof2CFQAAAABJRU5ErkJggg==') !important;
+}
 .learn-container .learn-selection .selection-control .could:hover {
     color: #e5a817;
     background: #f8f8f8;
@@ -117,7 +120,7 @@
     opacity: 1;
     margin-left: -610px;
     transition: .3s;
-    z-index: 2;
+    z-index: 0;
 }
 .learn-container .learn-region .left-region .course-info {
     display: inline-block;
@@ -228,6 +231,7 @@
     right: 20px;
     width: 24px;
     height: 24px;
+    transition: transform .3s;
 }
 .left-region .learn-catalog .model .model-title span::after {
     content: '\ea80';
@@ -253,6 +257,7 @@
     font-size: 14px;
     border-right: 1px solid #ededed;
     cursor: pointer;
+    transition: height .3s;
 }
 .left-region .learn-catalog .model .active {
     background: #fff !important;
@@ -279,6 +284,7 @@
     position: absolute;
 }
 .left-region .learn-catalog .model .model-content li .try {
+    display: none;
     position: absolute;
     top:50%;
     transform: translateY(-50%);
@@ -294,6 +300,7 @@
     background: #f8f6e2;
 }
 .left-region .learn-catalog .model .model-content li .lock {
+    display: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -307,12 +314,13 @@
 .learn-container .learn-region .right-region {
     position: relative;
     width: 836px;
-    height: calc(100vh - 138px);
+    height: calc(100vh - 83px);
     margin-top: 80px;
     background-color: #fff;
     transition: .3s;
     margin-left: 384px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .learn-container .learn-region .right-region .content-main {
     max-width: 716px;
@@ -424,6 +432,7 @@
     background-size: cover;
 }
 .right-region .buy-tips {
+    display: none;
     position: fixed;
     bottom: 40px;
     left: 50%;
@@ -492,6 +501,7 @@
 }
 .right-region h2 {
     color: #000;
+    font-size: 20px;
     margin-top: 28px;
     margin-bottom: 16px;
 }
@@ -509,4 +519,190 @@
 .scroll::-webkit-scrollbar-track {
     border-radius:10px;
     background-color:white;
+}
+.content-main .comment-section {
+    overflow: visible;
+    height: auto;
+}
+.content-main .comment-section .comment-title .to_comment {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 91px;
+    height: 30px;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+    line-height: 30px;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 4px;
+    background: rgb(252, 215, 102);
+    cursor: pointer;
+}
+.content-main .comment-section .comment-title .to_comment img {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    margin-right: 4px;
+}
+.content-main .comment-section .comment-title .to_comment:hover {
+    opacity: .7;
+}
+.content-main .comment-section .user-comment .comment-info {
+    width: 672px;
+}
+.content-main .comment-section .comment-operation {
+    display: none;
+    width: 100%;
+}
+.content-main .comment-section .comment-operation .comment-edit{
+    position: relative;
+    font-size: 16px;
+    padding: 0 14px 34px;
+    height: 190px;
+    border-radius: 4px;
+    border: 1px solid #ebebeb;
+    margin-top: 10px;
+}
+.content-main .comment-section .comment-edit .edit {
+    position: relative;
+    width: 100%;
+    line-height: 30px;
+    height: 100%;
+    user-select: text;/*用户可以选中文本*/
+    word-break: break-all;
+    text-align: left;
+    color: #666;
+    border-bottom: 4px solid #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    outline: none;
+    margin-top: 6px;
+}
+.content-main .comment-section .comment-operation .comment-edit .edit:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: #ccc;
+}
+.content-main .comment-section .comment-operation .count-limit {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 14px;
+    text-align: right;
+    color: #ccc;
+}
+.content-main .comment-section .comment-operation .comment-footer {
+    position: relative;
+    height: 40px;
+    margin-top: 20px;
+}
+.content-main .comment-section .comment-operation .comment-footer .emoji {
+    float: left;
+    cursor: pointer;
+}
+.comment-operation .comment-footer .emoji img {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+}   
+.comment-operation .comment-footer .emoji span {
+    font-size: 14px;
+    color: #666;
+}
+.comment-operation .comment-footer .commit {
+    float: right;
+    width: 107px;
+    height: 40px;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 40px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.comment-operation .my_comment {
+    border-bottom: 2px dashed#ccc;
+    margin-bottom: 15px;
+}
+.comment-operation .my_comment .comment-username {
+    position: relative;
+}
+.comment-operation .my_comment .comment-username > span:nth-child(2) {
+    font-weight: 400;
+    color: gold;
+}
+.comment-operation .my_comment .comment-username .delete-comment {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #f14747;
+    cursor: pointer;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip {
+    display: none;
+    position: absolute;
+    top: -41px;
+    right: 244px;
+    width: 250px;
+    height: 116px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 0.027rem 0.04rem 0 rgb(0 0 0 / 8%);
+    border: 1px solid #e2ebe8;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip h4 {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip h4 {
+    height: 32px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #555;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip >div {
+    padding-left: 50px;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip >div .confirm,.delete-comment .del-tip >div .cancel {
+    display: inline-block;
+    width: 78px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #333;
+    border: none;
+    border-radius: 28px;
+    background: #fcd766;
+}
+.comment-operation .my_comment .comment-username .delete-comment .del-tip >div .cancel {
+    background: #fff;
+}
+.comment-section .comment-title {
+    font-weight: 700;
+}
+.comment-operation .my_comment .comment-username .delete-comment::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4BAMAAABaqCYtAAAAD1BMVEWZmZn4+fqysrPu7/DS09OEJUPlAAAAf0lEQVQ4y+3VwQ2AIAwF0C9hAAUHgDgBToD7L2UiUMDiwQMXpQfS9B3ohQ+WVDtibTRCarRJKBzDGVQTQ59RMjSwoVEQDIF4lQYa2Oi6IR6qJ5Yr1Et9ExvnwIGv8A9vxdWmCzRFdMdIF4Se54wkVBwtYQ7/+hMIe643Fcc1PgEbl0u1B0v+VgAAAABJRU5ErkJggg==) no-repeat;
+    background-size: cover;
+    margin: 0 5px 2px 0;
+    vertical-align: middle;
+}
+.comment-operation .my_comment .comment-username .delete-comment:hover {
+    color: red;
+    text-decoration: underline;
+}
+.commment-content {
+    width: 100% !important;
 }

@@ -150,3 +150,80 @@ function get_father(dom) {
  function allchild(dom) {
     return dom.children
  }
+
+ //  dom.querySelectorAll(dom)
+/**
+ * @desc 获取元素的所有子元素
+ */
+ function all(dom) {
+    return document.querySelectorAll(dom)
+ }
+ 
+//  购买课程
+/**
+ * @desc 购买响应的课程
+ */
+ function buy_course() {
+    axios({
+        method: 'POST',
+        url: '/course/buyCourse',
+        data: {
+            userId: localStorage.userId,
+            courseId: localStorage.courseId
+        }
+    }).then(response => {
+        var after_modify_tips = $('.after-modify-tips')
+        if(response.data.msg == '登录失效') {
+            localStorage.removeItem('token')
+            localStorage.removeItem('pwd')
+            localStorage.removeItem('username')
+            localStorage.removeItem('userId')
+            mask.style.display = 'block'
+            mask.children[0].style.display = 'block'
+        }else if(response.data.msg == '购买成功'){
+            after_modify_tips.style.opacity = '1'
+            after_modify_tips.style.top = '40px' 
+            after_modify_tips.children[0].innerHTML = response.data.msg
+            change_success()
+            console.log(response);
+        }else {
+            after_modify_tips.style.opacity = '1'
+            after_modify_tips.style.top = '40px' 
+            after_modify_tips.children[0].innerHTML = response.data.msg
+            change_err()
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+
+//  操作成功后的提示信息
+/**
+ * @desc 操作成功后的提示信息
+ */
+function change_success() {
+    var after_modify_tips = $('.after-modify-tips')
+    after_modify_tips.style.backgroundColor = 'chartreuse'
+    after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
+    after_modify_tips.children[1].style.backgroundSize = 'cover'
+    setTimeout(function() {
+        after_modify_tips.style.opacity = '.2'
+        after_modify_tips.style.top = '-40px' 
+    },1200)
+}
+
+//  操作成功后的提示信息
+/**
+ * @desc 操作成功后的提示信息
+ */
+function change_err() {
+    var after_modify_tips = $('.after-modify-tips')
+    after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
+    after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
+    after_modify_tips.children[1].style.backgroundSize = 'cover'
+    setTimeout(function() {
+        after_modify_tips.style.opacity = '.2'
+        after_modify_tips.style.top = '-40px' 
+    },1200)
+}
