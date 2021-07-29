@@ -198,7 +198,7 @@
     box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
 }
 .learn-container .learn-region .left-region .learn-catalog .model {
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
     transition: all .3s linear;
 }
@@ -250,7 +250,7 @@
     cursor: pointer;
 }
 .left-region .learn-catalog .model .model-content {    
-    position: relative;
+    /* position: relative; */
     min-height: auto;
     width: 100%;
     color: #666;

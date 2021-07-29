@@ -1,4 +1,34 @@
 window.addEventListener('load',function() {
+    var enter_time = +new Date() //返回用户打开该页面时的毫秒数
+    
+    window.onbeforeunload = setprogress
+
+    async function setprogress() {
+        await setCourseProgress()
+        return '您本次的学习时间已经记录到课程详情中';
+    }
+
+    function setCourseProgress() {
+        return new Promise((resolve,reject) => {
+            var leave_time = +new Date()
+            var minutes = (leave_time - enter_time) / 1000 / 60
+            axios({
+                method: 'POST',
+                url: '/course/setCourseProgress',
+                data: {
+                    userId: localStorage.userId,
+                    courseId: localStorage.courseId,
+                    progress: minutes
+                }
+            }).then(response => {
+                console.log(response);
+                resolve(response)
+            }).catch(err => {
+                console.log(err);
+            })
+        })
+    }
+    
     function getCourseInfo() {
         return new Promise((resolve,reject) => {
             axios({
@@ -258,6 +288,8 @@ window.addEventListener('load',function() {
                         for(let i = 0;i<lis.length;i++) {
                             lis[i].addEventListener('click',function() {
                                 var lesson_id = this.getAttribute('lesson_id')
+                                var right_region = $('.right-region')
+                                right_region.scrollTo(0,0);
                                 localStorage.lesson_id = lesson_id
                                 getLessonContent(lesson_id)
                             })
@@ -316,6 +348,7 @@ window.addEventListener('load',function() {
                                 lis[i].className = ''
                             }
                             this.className = 'active'
+                            trace()
                         })
                     }
                     var now = localStorage.lesson_id - lis[0].getAttribute('lesson_id')
@@ -324,7 +357,6 @@ window.addEventListener('load',function() {
                     var learn_catalog = $('.learn-catalog')
                     var lis = learn_catalog.querySelectorAll('li')
                     var initial_id = lis[0].getAttribute('lesson_id')
-                    console.log(initial_id);
                     var final_id = lis[lis.length - 1].getAttribute('lesson_id')
                     if(localStorage.lesson_id == initial_id) {
                         all('.differ-btn')[1].className = 'differ-btn disabled-btn'
@@ -351,6 +383,8 @@ window.addEventListener('load',function() {
                             lis[localStorage.lesson_id - initial_id].className = 'active'
                             console.log(localStorage.lesson_id);
                             getLessonContent(localStorage.lesson_id)
+                            right_region.scrollTo(0,0);
+                            trace()
                         }
                     })
 
@@ -378,8 +412,21 @@ window.addEventListener('load',function() {
                             lis[localStorage.lesson_id - initial_id].className = 'active'
                             console.log(localStorage.lesson_id);
                             getLessonContent(localStorage.lesson_id)
+                            right_region.scrollTo(0,0);
+                            trace()
                         }
                     })
+                    function trace() {
+                            var target_li = $('li[lesson_id="' + localStorage.lesson_id + '"]')
+                            var learn_catalog = $('.learn-catalog')
+                            var height = target_li.offsetHeight
+                        if(localStorage.lesson_id - initial_id >= 2) {
+                            learn_catalog.scrollTo(0,target_li.offsetTop - height * 2)
+                        }else {
+                            learn_catalog.scrollTo(0,0)
+                        }
+                    }
+                    trace()
                     console.log(response);
                 }).catch(err => {
                     console.log(err);

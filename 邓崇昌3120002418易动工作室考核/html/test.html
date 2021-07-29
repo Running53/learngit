@@ -29,7 +29,7 @@
     } */
 </style>
 <body>
-        <div id="father">
+        <div id="father" style="width: 500px;height: 500px;background-color: aqua;">
             <div class="son"></div>
             <div class="son"></div>
             <div class="son"></div>
@@ -54,16 +54,22 @@
         <span></span>
 </body>
 <script>
-    function setScrollTop(value) {
-    window.scrollTo(0, value);
-    return value;
-}
-for(var i = 0;i<$('.son').length;i++) {
-    $('.son')[i].style.backgroundColor = 'yellow'
-}
-    $('#father').style.backgroundColor = 'green'
-    console.log($('span'));
-    $('span').innerHTML = 'sadasdasd'
+
+    function a() {
+        console.log(1);
+    }
+    var father = $('#father')
+    father.onclick = a()
+//     function setScrollTop(value) {
+//     window.scrollTo(0, value);
+//     return value;
+// }
+// for(var i = 0;i<$('.son').length;i++) {
+//     $('.son')[i].style.backgroundColor = 'yellow'
+// }
+//     $('#father').style.backgroundColor = 'green'
+//     console.log($('span'));
+//     $('span').innerHTML = 'sadasdasd'
         // async function refreshed() {
         //     const data = new Promise((resolve,reject) => {
         //         setTimeout(() => {

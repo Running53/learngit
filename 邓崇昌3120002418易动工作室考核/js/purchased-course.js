@@ -88,9 +88,9 @@ window.addEventListener('load',function() {
                 }
             }).then(response => {
                 resolve(response)
-                
             }).catch(err => {
                 console.log(err);
+                reject(err)
             })
         })
     }
@@ -120,7 +120,14 @@ window.addEventListener('load',function() {
             if(k == 0) {
                 if(resArr[0].data.msg == '获取成功') {
                     var study_time_num = $('.study-time-num')
-                    study_time_num.innerHTML  = resArr[0].data.data.progress + 'm'
+                    var hour = parseInt(resArr[0].data.data.progress / 60)
+                    var minutes = parseInt(resArr[0].data.data.progress % 60)
+                    if(hour != 0) {
+                        var result = hour + 'h' + minutes + 'm'
+                    }else {
+                        var result = minutes + 'm'
+                    }
+                    study_time_num.innerHTML  = result
                 }else if(resArr[0].data.msg == '登录失效'){
                     block(mask)
                     block(first_son(mask))
