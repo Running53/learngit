@@ -6,13 +6,11 @@ $ = function(val) {
     switch(val.charAt(0)) {
         case '#':
             return document.getElementById(val.substring(1));
-            break;
         case '.':
             if(document.querySelectorAll(val).length > 1) 
             return document.querySelectorAll(val);
             else 
             return document.querySelector(val);
-            break;
         default:
             return document.querySelector(val); b
     }
@@ -179,10 +177,27 @@ function get_father(dom) {
  function all(dom) {
     return document.querySelectorAll(dom)
  }
+
+ //  dom.children[0].children[0]
+/**
+ * @desc 获取第一个父元素的第一个子元素
+ */
+ function first_grandson(dom) {
+    return dom.children[0].children[0]
+ }
+
+
+  //  dom.children[0].children
+/**
+ * @desc 获取第一个父元素的所有子元素
+ */
+ function all_grandson(dom) {
+    return dom.children[0].children
+ }
  
 //  购买课程
 /**
- * @desc 购买响应的课程
+ * @desc 购买相应的的课程
  */
  function buy_course() {
     axios({
@@ -197,20 +212,15 @@ function get_father(dom) {
         if(response.data.msg == '登录失效') {
             localStorage.removeItem('token')
             localStorage.removeItem('pwd')
-            localStorage.removeItem('username')
             localStorage.removeItem('userId')
             mask.style.display = 'block'
             mask.children[0].style.display = 'block'
         }else if(response.data.msg == '购买成功'){
-            after_modify_tips.style.opacity = '1'
-            after_modify_tips.style.top = '40px' 
-            after_modify_tips.children[0].innerHTML = response.data.msg
+            all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
             change_success()
             console.log(response);
         }else {
-            after_modify_tips.style.opacity = '1'
-            after_modify_tips.style.top = '40px' 
-            after_modify_tips.children[0].innerHTML = response.data.msg
+            all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
             change_err()
         }
     }).catch(err => {
@@ -225,26 +235,73 @@ function get_father(dom) {
  */
 function change_success() {
     var after_modify_tips = $('.after-modify-tips')
-    after_modify_tips.style.backgroundColor = 'chartreuse'
-    after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
-    after_modify_tips.children[1].style.backgroundSize = 'cover'
+    after_modify_tips.style.opacity = '1'
+    after_modify_tips.style.top = '40px' 
+    first_son(after_modify_tips).style.backgroundColor = 'chartreuse'
+    first_grandson(after_modify_tips).style.background = 'url(../images/success.png) no-repeat'
+    first_grandson(after_modify_tips).style.backgroundSize = 'cover'
     setTimeout(function() {
         after_modify_tips.style.opacity = '.2'
         after_modify_tips.style.top = '-40px' 
     },1200)
 }
 
-//  操作成功后的提示信息
+//  操作失败后的提示信息
 /**
- * @desc 操作成功后的提示信息
+ * @desc 操作失败后的提示信息
  */
 function change_err() {
     var after_modify_tips = $('.after-modify-tips')
-    after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
-    after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
-    after_modify_tips.children[1].style.backgroundSize = 'cover'
+    after_modify_tips.style.opacity = '1'
+    after_modify_tips.style.top = '40px' 
+    first_son(after_modify_tips).style.backgroundColor = 'rgb(240, 139, 8)'
+    first_grandson(after_modify_tips).style.background = 'url(../images/false.png) no-repeat'
+    first_grandson(after_modify_tips).style.backgroundSize = 'cover'
     setTimeout(function() {
         after_modify_tips.style.opacity = '.2'
         after_modify_tips.style.top = '-40px' 
     },1200)
+}
+
+//  得到浏览器滚动条宽度
+/**
+ * @desc 得到浏览器滚动条宽度
+ */
+function getScrollbarWidth() {
+    let scrollDiv = document.createElement('div');
+    scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;'
+    document.body.appendChild(scrollDiv)
+    let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+    document.body.removeChild(scrollDiv)
+    $('body').style.paddingRight = scrollbarWidth + 'px'
+    $('.after-modify-tips').style.paddingRight = scrollbarWidth + 'px'
+    if(window.location.href.split('/html/')[1] == 'course-detail.html') {
+        $('.header').style.paddingRight = scrollbarWidth + 'px'
+        $('.footer-container').style.paddingRight = scrollbarWidth + 'px'
+    }
+    if(window.location.href.split('/html/')[1] == 'purchased-course.html') {
+        $('.header').style.paddingRight = scrollbarWidth + 'px'
+    }
+    return scrollbarWidth;
+}
+setTimeout(getScrollbarWidth,0)
+
+
+function overdue() {
+    var not_login = $('.not-login') || $('.already-login')
+    not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
+        <a href="javascript:;" class="register">注册</a>
+        <img src="../images/avatar.png" alt="" class="avatar">`
+        if(not_login.className = 'already-login') {
+            not_login.className = 'not-login'
+        }
+        if(localStorage.token) {
+            var after_modify_tips = $('.after-modify-tips')
+            all_grandson(after_modify_tips)[1].innerHTML = '您的登录已到期，请重新登录'
+            change_err()
+        }
+        localStorage.removeItem('token')
+        localStorage.removeItem('pwd')
+        localStorage.removeItem('userId')
+        localStorage.removeItem('create_time')
 }

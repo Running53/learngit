@@ -120,22 +120,28 @@
 .mask .mask-main .check-box{
     cursor: pointer;
 }
-.mask .mask-main .check-box > span:nth-of-type(1),.select-box div> span {
+.mask .mask-main .check-box  span:nth-of-type(1),.select-box div> span,.mask .mask-main .check-box span:nth-of-type(3) {
     float: left;
     width: 14px;
     height: 14px;
     border-radius: 2px;
-    margin: 2px 8px 0px 0;
+    margin: 4px 8px 0px 0;
     /* background: url(../images/check1.png) no-repeat 50%/cover; */
     border: 0;
     border: 1px solid #d5dadf;
     outline: 0;
     vertical-align: middle;
 }
-.mask .mask-main .check-box:hover span:nth-of-type(1){
+.mask .mask-main .check-box >div {
+    display: inline-block;
+}
+.mask .mask-main .check-box .remeber-login {
+    margin-left: 114px;
+}
+.mask .mask-main .remeber-pwd:hover span:nth-of-type(1),.mask .mask-main .remeber-login:hover span:nth-of-type(1){
     border: 1px solid #f7b500 !important;
 }
-.mask .mask-main .check-box > span:nth-of-type(2) {
+.mask .mask-main .check-box span:nth-of-type(2),.mask .mask-main .check-box span:nth-of-type(4) {
     float: left;
     font-size: 14px;
     color: #999;
@@ -199,6 +205,9 @@
     color: #999;
     font-weight: 400;
     line-height: 27px;
+}
+.header {
+    background-color: #fff;
 }
 .header .head-content .already-login {
     position: relative;

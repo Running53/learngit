@@ -74,8 +74,18 @@ window.addEventListener('load',function() {
 
     var to_study = $('.to-study')
     to_study.addEventListener('click',function() {
-        localStorage.courseId = to_study.getAttribute('lesson_id')
-        window.location.href = '../html/course-learn.html'
+        localStorage.lesson_id = to_study.getAttribute('lesson_id')
+        var overhours = (+new Date() - parseInt(localStorage.create_time)) / 1000 /60 /60
+        var gaptime = overhours / 24
+        console.log(overhours);
+        console.log(gaptime);
+        if(localStorage.token && ((localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overhours > 2))) {
+            overdue()
+            var login = $('.login')
+            login.click()
+        }else {
+            window.location.href = '../html/course-learn.html'
+        }
     })
 
     function get_study_time() {
@@ -90,7 +100,7 @@ window.addEventListener('load',function() {
                 resolve(response)
             }).catch(err => {
                 console.log(err);
-                reject(err)
+                resolve('get_study_time_error')
             })
         })
     }
@@ -106,7 +116,7 @@ window.addEventListener('load',function() {
                 resolve(response)
             }).catch(err => {
                 console.log(err);
-                reject(err)
+                resolve('get_course_info_error')
             })
         })
     }
@@ -118,19 +128,31 @@ window.addEventListener('load',function() {
         console.log('请求结果为：', resArr)
         for(var k in resArr) {
             if(k == 0) {
-                if(resArr[0].data.msg == '获取成功') {
-                    var study_time_num = $('.study-time-num')
-                    var hour = parseInt(resArr[0].data.data.progress / 60)
-                    var minutes = parseInt(resArr[0].data.data.progress % 60)
-                    if(hour != 0) {
-                        var result = hour + 'h' + minutes + 'm'
+                var study_time_num = $('.study-time-num')
+                console.log(resArr[0]);
+                if(resArr[0] != 'get_study_time_error') {
+                    if(resArr[0].data.msg == '获取成功') {
+                        console.log(1);
+                        var hour = parseInt(resArr[0].data.data.progress/60)
+                        console.log(hour);
+                        var minutes = parseInt(resArr[0].data.data.progress%60)
+                        console.log(minutes);
+                        if(hour != 0) {
+                            var result = hour + 'h' + minutes + 'm'
+                        }else {
+                            var result = minutes + 'm'
+                        }
+                        study_time_num.innerHTML  = result
+                    }else if(resArr[0].data.msg == '登录失效'){
+                        console.log(1);
+                        block(mask)
+                        block(first_son(mask))
                     }else {
-                        var result = minutes + 'm'
+                        console.log(1);
+                        study_time_num.innerHTML = '0m'
                     }
-                    study_time_num.innerHTML  = result
-                }else if(resArr[0].data.msg == '登录失效'){
-                    block(mask)
-                    block(first_son(mask))
+                }else {
+                    study_time_num.innerHTML = '未知'
                 }
             }else{
                 var course_container = $('.course-container')
@@ -149,7 +171,7 @@ window.addEventListener('load',function() {
                 var get_money = $('.get-money')
                 allchild(get_money)[1].innerHTML = '赚￥' + data.price + '.00'
                 var to_study = $('.to-study')
-                to_study.setAttribute('lesson_id',data.id)
+                to_study.setAttribute('lesson_id',data.courseSectionList[0].lessonList[0].lesson_id)
                 var Listing_title = $('.Listing-title')
                 allchild(Listing_title)[1].innerHTML = data.title
                 var title = $('title')
@@ -167,16 +189,26 @@ window.addEventListener('load',function() {
                     </div>`
                 }
                 course_container.innerHTML = str
-                var lis = all('li')
+                var course_container = $('.course-container')
+                var lis = course_container.querySelectorAll('li')
                 for(var i = 0;i<lis.length;i++) {
                     lis[i].addEventListener('click',function() {
                         localStorage.lesson_id = this.getAttribute('lesson_id')
-                        window.location.href = '../html/course-learn.html'
+                        var overhours = (+new Date() - parseInt(localStorage.create_time)) / 1000 /60 /60
+                        var gaptime = overhours / 24
+                        if(localStorage.token && ((localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overhours > 2))) {
+                            overdue()
+                            var login = $('.overdue')
+                            login.click()
+                        }else {
+                            window.location.href = '../html/course-learn.html'
+                        }
                     })
                 }
             }
         }
   }).catch(err => {
+      console.log(err);
       alert('请求有误，请重新刷新页面！')
   })
 })

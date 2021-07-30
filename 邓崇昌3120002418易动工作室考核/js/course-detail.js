@@ -1,6 +1,7 @@
 window.addEventListener('load',function() {
+    var after_modify_tips = $('.after-modify-tips')
     var mask = document.querySelector('.mask')
-    var after_modify_tips = document.querySelector('.after-modify-tips')
+
     axios({
         url: '/course/detail',
         params: {
@@ -170,12 +171,28 @@ window.addEventListener('load',function() {
             var num = parseInt(document.querySelector('.price-num').innerHTML)
             var join_learn = document.querySelector('.join-learn')
             join_learn.addEventListener('click',function() {
-                buy_condition(num)
+                var overminutes = (+new Date() - parseInt(localStorage.create_time))/1000/60
+                var gaptime = overminutes/60/24
+                if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overminutes > 5)) {
+                    overdue()
+                    var login = $('.login')
+                    login.click()
+                }else {
+                    buy_condition(num)
+                }
             }) 
 
             var handle_button = document.querySelector('.handle-button')
             handle_button.addEventListener('click',function() {
-                buy_condition(num)
+                var overminutes = (+new Date() - parseInt(localStorage.create_time))/1000/60
+                var gaptime = overminutes/60/24
+                if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overminutes > 5)) {
+                    overdue()
+                    var login = $('.login')
+                    login.click()
+                }else {
+                    buy_condition(num)
+                }
             })
 
             var try_courses = all('.try-course')
@@ -185,11 +202,17 @@ window.addEventListener('load',function() {
                     window.location.href = "../html/course-learn.html"
                 })
             }
+            var lock_courses = all('.lock-course')
+            for(var i = 0;i<lock_courses.length;i++) {
+                lock_courses[i].addEventListener('click',function() {
+                    all_grandson(after_modify_tips)[1].innerHTML = '购买后即可观看全课程'
+                    change_err()
+                })
+            }
     }).catch(err => {
         console.log(err);
     })
 
-    var header = document.querySelector('.header')
     var select_tab = document.querySelector('.select-tab')
     var fly_select_left = document.querySelector('.fly-select-left')
     var fly_select_right = document.querySelector('.fly-select-right')
@@ -235,19 +258,17 @@ window.addEventListener('load',function() {
                 }
             })
             go_top.addEventListener('click', function () {
+                var last = getScroll().top
+                var cancel_timer = setInterval(function() {
+                if(getScroll().top > last) {
+                    clearInterval(window.timer)
+                    clearInterval(cancel_timer)
+                }
+                last = getScroll().top
+            },10)
                 //因为是窗口滚动，所以对象是window
                 scroll_animate(window, 0)
             })
-                        
-            function change_success() {
-                after_modify_tips.style.backgroundColor = 'chartreuse'
-                after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
-                after_modify_tips.children[1].style.backgroundSize = 'cover'
-                setTimeout(function() {
-                    after_modify_tips.style.opacity = '.2'
-                    after_modify_tips.style.top = '-40px' 
-                },1200)
-            }
 
             function buy_condition(num) {
                 if(localStorage.create_time) {
@@ -260,16 +281,6 @@ window.addEventListener('load',function() {
                         buy_course()
                 }
             }
-
-           function change_err() {
-                after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
-                after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
-                after_modify_tips.children[1].style.backgroundSize = 'cover'
-                setTimeout(function() {
-                    after_modify_tips.style.opacity = '.2'
-                    after_modify_tips.style.top = '-40px' 
-                },1200)
-           }
 
         var more_content = document.querySelector('.more-content')
         console.log(more_content);

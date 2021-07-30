@@ -305,23 +305,34 @@
     right: 0;
     bottom: 0;
     margin: 0 auto;
-    width: 250px;
     height: 30px;
     font-size: 18px;
     font-weight: 600;
-    line-height: 30px;
     color: rgb(250, 249, 246);
     padding-left: 20px;
-    /* background-color: chartreuse; */
-    border-radius: 20px;
+    text-align: center;
     transition: top .8s,opacity .8s ;
     opacity: .2;
     z-index: 12;
 }
-.after-modify-tips >span:nth-child(2) {
-    float: left;
+.after-modify-tips >div {
+    display: inline-block;
+    line-height: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+.after-modify-tips >div span:nth-child(1) {
+    display: inline-block;
     width: 28px;
     height: 28px;
     border-radius: 50%;
+    background-color: rgb(218, 81, 27);
     margin: 1px 5px 0 0;
+}
+.after-modify-tips > div span:nth-child(2) {
+    vertical-align: top;
+}
+.modify-main .modify_tip {
+    color: #fd5f39;
+    padding-left: 96px;
 }

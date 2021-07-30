@@ -125,13 +125,10 @@ window.addEventListener('load',function() {
                     }
                 }).then(response => {
                     if(response.data.msg != '登录失效') {
-                        after_modify_tips.style.opacity = '1'
-                        after_modify_tips.style.top = '40px' 
                         mask.children[0].style.display = 'block'
                         console.log(response);
                         // charge_tips.innerHTML = response.data.msg
-                        after_modify_tips.children[0].innerHTML = response.data.msg
-                        console.log(after_modify_tips.children[0]);
+                        all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
                         change_success()
                         // charge_tips.style.display = 'block'
                         console.log(charge_tips);
@@ -141,7 +138,6 @@ window.addEventListener('load',function() {
                     }else {
                         localStorage.removeItem('token')
                         localStorage.removeItem('pwd')
-                        localStorage.removeItem('username')
                         localStorage.removeItem('create_time')
                         var already_login = document.querySelector('.already-login')
                         already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
@@ -157,7 +153,6 @@ window.addEventListener('load',function() {
                     console.log(err);
                     localStorage.removeItem('token')
                     localStorage.removeItem('pwd')
-                    localStorage.removeItem('username')
                     localStorage.removeItem('create_time')
                     console.log(not_login);
                     not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
@@ -213,16 +208,14 @@ window.addEventListener('load',function() {
                         }
                     }).then(response => {
                         if(response.data.msg != '登录失效') {
-                            after_modify_tips.style.opacity = '1'
-                            after_modify_tips.style.top = '40px' 
                             console.log(response);
                             if(response.data.msg != '更改成功') {
                                 // change_er_tips.innerHTML = response.data.msg
-                                after_modify_tips.children[0].innerHTML = response.data.msg
+                                all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
                                 change_err()
                             }else {
                                 // change_er_tips.innerHTML = response.data.msg
-                                after_modify_tips.children[0].innerHTML = response.data.msg
+                                all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
                                 change_success()
                                 localStorage.username = escape(username_input.value)
                                 user_name.children[0].innerHTML = username_input.value
@@ -230,8 +223,9 @@ window.addEventListener('load',function() {
                         }else {
                             localStorage.removeItem('token')
                             localStorage.removeItem('pwd')
-                            localStorage.removeItem('username')
                             localStorage.removeItem('create_time')
+                            localStorage.removeItem('userId')
+                            localStorage.removeItem('lesson_id')
                             var already_login = document.querySelector('.already-login')
                             already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
                                 <a href="javascript:;" class="register">注册</a>
@@ -248,9 +242,9 @@ window.addEventListener('load',function() {
                         change_success()
                     })
                 }else {
-                        after_modify_tips.style.opacity = '1'
-                        after_modify_tips.style.top = '40px' 
-                }
+                        after_modify_tips.children[0].innerHTML = '更改的用户名不能和之前的一致'
+                        change_err()
+                    }
       
             }
         }else {
@@ -286,8 +280,7 @@ window.addEventListener('load',function() {
                             after_modify_tips.style.top = '40px' 
                             console.log(response);
                             if(response.data.msg == '上传头像成功') {
-                                localStorage.avatar = response.data.data.url
-                                after_modify_tips.children[0].innerHTML = response.data.msg
+                                all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
                                 change_success()
                                 var user_name = document.querySelector('.user-name')
                                 user_name.lastChild.src = response.data.data.url
@@ -318,6 +311,9 @@ window.addEventListener('load',function() {
                 mask.style.display = 'block'
                 modify_mask.style.display = 'block'
                 password_inputs[0].value = window.atob(localStorage.pwd)
+                for(var i = 0;i<modify_tips.length;i++) {
+                    none(modify_tips[i])
+                }
             }else {
                 username.value = ''
                 pwd.value = ''
@@ -332,57 +328,90 @@ window.addEventListener('load',function() {
                 password_inputs[2].value = ''
         }) 
 
+         var password_inputs = all('.password-input')
+         var modify_tips = all('.modify_tip')
+         console.log(password_inputs);
+         console.log(modify_tips);
+         for(let i = 0;i<password_inputs.length;i++) {
+            password_inputs[i].addEventListener('focus',function(){
+                console.log(i);
+                console.log(modify_tips[i]);
+                none(modify_tips[i])
+            })
+            password_inputs[i].addEventListener('blur',function(){
+                if(this.value != '') {
+                    var reg1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
+                    var reg2 = /^\d{6,16}$/
+                    var reg3 = /[A-Za-z]{6,16}$/
+                    if (reg1.test(this.value) == false && reg2.test(this.value) == false && reg3.test(this.value) == false) {
+                        modify_tips[i].innerHTML = '请输入6-16位密码，字母区分大小写'
+                        block(modify_tips[i])
+                    }
+                }
+            })
+         }
+         password_inputs[2].addEventListener('blur',function() {
+             if(this.value != '') {
+                if(this.value != password_inputs[1].value) {
+                    modify_tips[2].innerHTML = '您两次输入的密码不一致'
+                    block(modify_tips[2])
+                }
+             }
+         })
+
         var confirm_new_pwd = document.querySelector('.confirm-new-pwd')
         confirm_new_pwd.addEventListener('click',function() {
-            axios({
-                method: 'POST',
-                url: '/user/changePass',
-                data: {
-                    oldPassword: password_inputs[0].value,
-                    newPassword: password_inputs[1].value
-                }
-            }).then(response => {
-                if(response.data.msg != '登录失效') {
-                    after_modify_tips.style.opacity = '1'
-                    after_modify_tips.style.top = '40px' 
-                    if(response.data.msg == '修改密码成功') {
-                        after_modify_tips.children[0].innerHTML = response.data.msg
-                        after_modify_tips.style.backgroundColor = 'chartreuse'
-                        after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
-                        after_modify_tips.children[1].style.backgroundSize = 'cover'
-                        change_success()
-                        username.value = unescape(localStorage.username)
-                        pwd.value = window.atob(localStorage.pwd)
-                        setTimeout(function() {
-                            modify_mask.style.display = 'none'
-                            mask.children[0].style.display = 'block'
-                            after_modify_tips.style.opacity = '.2'
-                            after_modify_tips.style.top = '-40px' 
-                        },1200)
-                    }else {
-                        console.log(response);
-                        after_modify_tips.children[0].innerHTML = response.data.msg
-                        change_err()
+            if(modify_tips[0].style.display != 'block' && modify_tips[1].style.display != 'block' && modify_tips[2].style.display != 'block') {
+                axios({
+                    method: 'POST',
+                    url: '/user/changePass',
+                    data: {
+                        oldPassword: password_inputs[0].value,
+                        newPassword: password_inputs[1].value
                     }
-                }else {
-                    modify_mask.style.display = 'none'
-                    localStorage.removeItem('token')
-                    localStorage.removeItem('pwd')
-                    localStorage.removeItem('username')
-                    localStorage.removeItem('create_time')
-                    var already_login = document.querySelector('.already-login')
-                    already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
-                        <a href="javascript:;" class="register">注册</a>
-                        <img src="../images/avatar.png" alt="" class="avatar">`
-                    already_login.className = 'not-login'
-                        username.value = ''
-                        pwd.value = ''
-                        mask.style.display = 'block'
-                        mask.children[0].style.display = 'block'
-                }
-            }).catch(err => {
-                console.log(err);
-            })
+                }).then(response => {
+                    if(response.data.msg != '登录失效') {
+                        if(response.data.msg == '修改密码成功') {
+                            all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
+                            after_modify_tips.style.backgroundColor = 'chartreuse'
+                            after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
+                            after_modify_tips.children[1].style.backgroundSize = 'cover'
+                            change_success()
+                            username.value = unescape(localStorage.username)
+                            pwd.value = window.atob(localStorage.pwd)
+                            setTimeout(function() {
+                                modify_mask.style.display = 'none'
+                                after_modify_tips.style.opacity = '.2'
+                                after_modify_tips.style.top = '-40px' 
+                                var quit = $('.quit')
+                                quit.click() 
+                            },1200)
+                        }else {
+                            console.log(response);
+                            all_grandson(after_modify_tips)[1].innerHTML = response.data.msg
+                            change_err()
+                        }
+                    }else {
+                        modify_mask.style.display = 'none'
+                        localStorage.removeItem('token')
+                        localStorage.removeItem('pwd')
+                        localStorage.removeItem('create_time')
+                        localStorage.removeItem('lesson_id')
+                        localStorage.removeItem('userId')
+                        var already_login = document.querySelector('.already-login')
+                        already_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
+                            <a href="javascript:;" class="register">注册</a>
+                            <img src="../images/avatar.png" alt="" class="avatar">`
+                        already_login.className = 'not-login'
+                            username.value = ''
+                            pwd.value = ''
+                            mask.style.display = 'block'
+                            mask.children[0].style.display = 'block'
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
         })
 
         window.addEventListener('keydown',function(e) {
@@ -395,35 +424,4 @@ window.addEventListener('load',function() {
         cancel.addEventListener('click',function() {
             modify_close.click()
         })
-    
-    //     function change_success() {
-    //         after_modify_tips.style.backgroundColor = 'chartreuse'
-    //         after_modify_tips.children[1].style.background = 'url(../images/success.png) no-repeat'
-    //         after_modify_tips.children[1].style.backgroundSize = 'cover'
-    //         setTimeout(function() {
-    //             after_modify_tips.style.opacity = '.2'
-    //             after_modify_tips.style.top = '-40px' 
-    //         },1200)
-    //     }
-    //    function change_err() {
-    //         after_modify_tips.style.backgroundColor = 'rgb(240, 139, 8)'
-    //         after_modify_tips.children[1].style.background = 'url(../images/false.png) no-repeat'
-    //         after_modify_tips.children[1].style.backgroundSize = 'cover'
-    //         setTimeout(function() {
-    //             after_modify_tips.style.opacity = '.2'
-    //             after_modify_tips.style.top = '-40px' 
-    //         },1200)
-    //    }
-
-    //    axios({
-    //        method: 'POST',
-    //        url: '/course/commentCourse',
-    //        data: {
-    //         courseId: localStorage.courseId,
-    //         from_id: localStorage.userId,
-    //         content: '买它！买它！买它！'
-    //        }
-    //    }).then (response => {
-    //        console.log(response);
-    //    })
 })

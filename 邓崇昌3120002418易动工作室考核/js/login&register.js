@@ -90,17 +90,29 @@ window.addEventListener('load',function() {
         submit_btn.innerHTML = '注册'
     })
 
-    //为选择框绑定事件
-    check_box.addEventListener('click',function() {
-        if(!this.children[0].style.background) {
-            this.children[0].style.background = 'url(../images/check1.png) no-repeat 50%/cover'
-            this.children[0].style.border = '0'
+    //默认是记住密码以及七天免登陆
+    var remeber_pwd = $('.remeber-pwd')
+    first_son(remeber_pwd).style.background = 'url(../images/check1.png) no-repeat 50%/cover'
+    var remeber_login = $('.remeber-login')
+    first_son(remeber_login).style.background = 'url(../images/check1.png) no-repeat 50%/cover'
+    remeber_pwd.addEventListener('click',function() {
+        if(!first_son(this).style.background ) {
+            first_son(this).style.background = 'url(../images/check1.png) no-repeat 50%/cover'
+            first_son(this).style.border = '0'
         }else {
-            this.children[0].style.background = ''
-            this.children[0].style.border = '1px solid #d5dadf'
+            first_son(this).style.background = ''
+            first_son(this).style.border = '1px solid #d5dadf'
         }
-    }) 
-
+    })
+    remeber_login.addEventListener('click',function() {
+        if(!first_son(this).style.background ) {
+            first_son(this).style.background = 'url(../images/check1.png) no-repeat 50%/cover'
+            first_son(this).style.border = '0'
+        }else {
+            first_son(this).style.background = ''
+            first_son(this).style.border = '1px solid #d5dadf'
+        }
+    })
 
     //为选择注册身份添加动态效果
     for(var i = 0;i<2;i++) {
@@ -145,8 +157,8 @@ window.addEventListener('load',function() {
         }else {
             var reg1 = /^1[0-9]{10}$/
             var reg2 = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-            var reg3 = /^[\u4e00-\u9fa5a-zA-Z0-9]{6,12}$/
-            if (reg1.test(this.value) == false && reg2.test(this.value) == false && reg3.test(this.value)) {
+            var reg3 = /^[\u4E00-\u9FA5a-zA-Z0-9_]{1,10}$/
+            if (reg1.test(this.value) == false && reg2.test(this.value) == false && reg3.test(this.value) == false) {
                 this.nextElementSibling.innerHTML = '请输入有效的手机号码/邮箱/用户名'
                 flag1 = 0
             }else if(submit_btn.innerHTML == '登录'){
@@ -207,6 +219,18 @@ window.addEventListener('load',function() {
     //登录和注册功能
     submit_btn.addEventListener('click',function() {
         if(submit_btn.innerHTML == '登录') {
+            var remeber_pwd = $('.remeber-pwd')
+            var remeber_login = $('.remeber-login')
+            if(first_son(remeber_pwd).style.background) {
+                localStorage.remeber_pwd = 'true'
+            }else {
+                localStorage.remeber_pwd = 'false'
+            }
+            if(first_son(remeber_login).style.background) {
+                localStorage.remeber_login = 'true'
+            }else {
+                localStorage.remeber_login = 'false'
+            }
             if(flag1 + flag2 != 2) {
                 this.previousElementSibling.innerHTML = '您的账号或密码格式不正确'
             }else {
@@ -223,7 +247,7 @@ window.addEventListener('load',function() {
                         localStorage.pwd = window.btoa(pwd.value)
                         var data = response.data.data
                         localStorage.token = data.token
-                        localStorage.create_time = +new Date(data.create_time.split('T')[0] + ' ' + data.create_time.split('T')[1].split('.')[0])
+                        localStorage.create_time = +new Date()
                         localStorage.userId = data.id
                         mask.style.display = 'none'
                         if(now_href != 'index.html') {
@@ -243,7 +267,7 @@ window.addEventListener('load',function() {
                             console.log(1);
                             var str2 = '<img src="../images/login-avatar.png" alt="" class="avatar"></div>'
                         }             
-                        not_login.innerHTML = str1 + str2
+                       not_login.innerHTML = str1 + str2
                        not_login.className = 'already-login'
                        var login_username = document.querySelector('.user-name')
                        var user_tool = document.querySelector('.user-tool')
@@ -255,7 +279,7 @@ window.addEventListener('load',function() {
                            user_tool.style.display = 'none'
                        })
                     }else {
-                        this.previousElementSibling.innerHTML = response.data.msg
+                        pre(this).innerHTML = response.data.msg
                     }
                 }).catch(err => {
                     console.log(err);
@@ -312,30 +336,69 @@ window.addEventListener('load',function() {
    
     //给注册和登录按钮绑定点击事件
     var head_right_content = document.querySelector('.head-right-content')
-    console.log(head_right_content);
     var is_login = head_right_content.children[1]
     var not_login = document.querySelector('.not-login')
-    console.log(is_login);
     is_login.addEventListener('click',function(e) {
      if(e.target.className == 'quit') {
+         var remeber_pwd = $('.remeber-pwd')
+         var remeber_login = $('.remeber-login')
          localStorage.removeItem('token')
+         localStorage.removeItem('userId')
+         localStorage.removeItem('create_time')
+         localStorage.removeItem('lesson_id')
+         if(localStorage.remeber_pwd == 'false') {
+            localStorage.removeItem('pwd')
+            first_son(remeber_pwd).style.background = ''
+         }else {
+            first_son(remeber_pwd).style.background = 'url(../images/check1.png) no-repeat 50%/cover'
+         }
+         if(localStorage.remeber_login == 'false') {
+            first_son(remeber_login).style.background = ''
+         }
          var already_login = document.querySelector('.already-login')
          var str =  `<a href="javascript:;" class="login">登录</a>
                      <a href="javascript:;" class="register">注册</a>
                      <img src="../images/avatar.png" alt="" class="avatar">`
          already_login.innerHTML = str
          already_login.className = 'not-login'
-         mask.style.display = 'block'
-         mask.children[0].style.display = 'block'
-         username.value = ''
-         pwd.value =''
+         if(now_href != 'course-learn.html') {
+            mask.style.display = 'block'
+            mask.children[0].style.display = 'block'
+            var edu_content = $('.edu-content')
+            var err_tips = edu_content.querySelectorAll('.err-tips')
+            for(var i = 0;i<err_tips.length;i++) {
+                err_tips[i].innerHTML = ''
+            }
+         }
+        if(localStorage.username && localStorage.pwd && localStorage.remeber_pwd == 'true') {
+            username.value = unescape(localStorage.username)
+            pwd.value = window.atob(localStorage.pwd)
+        }else if(localStorage.username){
+            username.value = unescape(localStorage.username)
+            pwd.value =''
+        }else {
+            username.value = ''
+            pwd.value =''
+        } 
      }else if(e.target.className == 'login') {
             login_title.click()   
             mask.style.display = 'block'
-            if(localStorage.username && localStorage.pwd) {
+            var edu_content = $('.edu-content')
+            var err_tips = edu_content.querySelectorAll('.err-tips')
+            for(var i = 0;i<err_tips.length;i++) {
+                err_tips[i].innerHTML = ''
+            }
+            if(localStorage.username){
                 username.value = unescape(localStorage.username)
-                pwd.value = window.atob(localStorage.pwd)
-            }     
+            }
+            if(localStorage.remeber_pwd == 'false') {
+                var remeber_pwd = $('.remeber-pwd')
+                remeber_pwd.click()
+            }
+            if(localStorage.remeber_login == 'false') {
+                var remeber_login = $('.remeber-login')
+                remeber_login.click()
+            }
      }else if(e.target.className == 'register') {
             register_name = ''
             register_pwd = ''
@@ -361,14 +424,14 @@ window.addEventListener('load',function() {
     })
 
 
-    //负责用户进入到各个页面时头部模块的状态
-    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
     var now_href = window.location.href.split('/html/')[1]
+    //负责用户进入到各个页面时头部模块的状态
+    var overminutes = (+new Date() - parseInt(localStorage.create_time))/1000/60
+    var gaptime = overminutes/60/24
+    console.log(overminutes);
     //说明用户需要重新登录才能获取访问权限
-        if(!localStorage.token || (gaptime > 7)) {
-            not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
-                <a href="javascript:;" class="register">注册</a>
-                <img src="../images/avatar.png" alt="" class="avatar">`
+        if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overminutes > 5)) {
+            overdue()
         }else {
             console.log(2);
             axios({

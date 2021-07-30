@@ -1,28 +1,12 @@
 window.addEventListener('load',function() {
-    var input_text = document.querySelector('.input-text')
-    var change_avatar = document.querySelector('.change-avatar')
-    var username_input = document.querySelector('.username-input')
-    var clear_text = document.querySelector('.clear-text')
-    var updata_btn = document.querySelector('.updata-btn')
-    var change_er_tips = document.querySelector(".change-err-tips")
-    var user_name = document.querySelector('.user-name')
-    var change_err_tips = document.querySelector('.change-err-tips')
-    var left_money_num = document.querySelector('.left-money-num')
-    var mask = document.querySelector('.mask')
-    var username = document.querySelector('.username')
-    var pwd = document.querySelector('.pwd')
-    var after_modify_tips = document.querySelector('.after-modify-tips')
-    var not_login = document.querySelector('.not-login')
-    var now_href = window.location.href.split('/html/')[1]
     var left_learn = document.querySelector('.left-learn')
     var head_right_content = document.querySelector('.head-right-content')
     var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
 
     //说明用户需要重新登录才能获取访问权限
-    if(!localStorage.token || (gaptime > 7)) {
-        // not_login.innerHTML =  `<a href="javascript:;" class="login">登录</a>
-        //     <a href="javascript:;" class="register">注册</a>
-        //     <img src="../images/avatar.png" alt="" class="avatar">`
+    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
+    var overminutes = (+new Date() - parseInt(localStorage.create_time))/1000/60
+    if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overminutes > 5)) {
             have_no_login()
     }else {      
         var bought_class_list = document.querySelector('.bought-class-list')
@@ -67,24 +51,33 @@ window.addEventListener('load',function() {
                 console.log(bought_class_list);
                 var len = bought_class_list.children.length
                 bought_class_list.addEventListener('click',function(e) {
-                    if(e.target.className == 'delete-course') {
-                        var target = e.target.parentNode.parentNode.parentNode
-                        var courseId = target.getAttribute('courseid')
-                        var str1 = `<li courseid="` + courseId + `">`
-                        var str2 = `</li>`
-                        var str = str1 + target.innerHTML + str2
-                        var temp = this.innerHTML
-                        bought_class_list.innerHTML = temp.replace(str,'')
-                        delete_class(courseId)
-                    }else{
-                        var target = e.target
-                        while(target.tagName != 'LI') {
-                            target = get_father(target)
-                        }
-                        var courseId = target.getAttribute('courseid')
-                        localStorage.courseId = courseId
-                        window.location.href = '../html/purchased-course.html'
-                    }                        
+                    var overhours = (+new Date() - parseInt(localStorage.create_time))/1000/60/60
+                    var gaptime = overhours/24
+                    if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overhours > 2)) {
+                        overdue()
+                        var login = $('.login')
+                        login.click()
+                    }else {
+                        if(e.target.className == 'delete-course') {
+                            var target = e.target.parentNode.parentNode.parentNode
+                            var courseId = target.getAttribute('courseid')
+                            var str1 = `<li courseid="` + courseId + `">`
+                            var str2 = `</li>`
+                            var str = str1 + target.innerHTML + str2
+                            var temp = this.innerHTML
+                            bought_class_list.innerHTML = temp.replace(str,'')
+                            delete_class(courseId)
+                        }else{
+                            console.log(10);
+                            var target = e.target
+                            while(target.tagName != 'LI') {
+                                target = get_father(target)
+                            }
+                            var courseId = target.getAttribute('courseid')
+                            localStorage.courseId = courseId
+                            window.location.href = '../html/purchased-course.html'
+                        }                       
+                    }
                 })
                 for(let i = 0;i<len;i++) {
                     axios({
@@ -117,16 +110,22 @@ window.addEventListener('load',function() {
          execution()   
     }
    
+    var login = $('.login')
+    var learn_login = $('.learn-login')
+    if(login) {
+        learn_login.addEventListener('click',function() {
+            login.click()
+        })
+    }
+
     head_right_content.children[1].addEventListener('click',function(e) {
         if(e.target.className == 'quit') {
-            localStorage.removeItem('token')
-            console.log(8);
             have_no_login()
-            mask.style.display = 'block'
-            mask.children[0].style.display = 'block'
-            username.value = unescape(localStorage.username) 
-            pwd.value = window.atob(localStorage.pwd) 
-            console.log(left_learn);
+            var login = $('.login')
+            var learn_login = $('.learn-login')
+            learn_login.addEventListener('click',function() {
+                login.click()
+            })
         }
     })
 
@@ -138,19 +137,6 @@ window.addEventListener('load',function() {
                 <h2>登录后即可查看已购课程</h2>
                 <button class="learn-login">立即登录</button>
             </div>`
-            
-            var learn_login = document.querySelector('.learn-login')
-            learn_login.addEventListener('click',function() {
-                mask.style.display = 'block'
-                mask.children[0].style.display = 'block'
-                if(localStorage.username && localStorage.pwd) {
-                    username.value = unescape(localStorage.username) 
-                    pwd.value = window.atob(localStorage.pwd) 
-                }else {
-                    username.value = ''
-                    pwd.value = ''
-                }
-            })
     }
     function delete_class(courseId) {
         axios({

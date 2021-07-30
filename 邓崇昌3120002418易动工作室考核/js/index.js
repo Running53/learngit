@@ -2,10 +2,10 @@ window.addEventListener('load', function () {
     //  此模块负责给秒杀商品添加计时器
     var stopwatch = (function() {
         var left_time = document.querySelectorAll('.left-time')
-        var inputTime1 = +new Date('2021-7-27 00:00:00') //返回输入时间的总毫秒数
-        var inputTime2 = +new Date('2021-7-27 00:00:24') //返回输入时间的总毫秒数
-        var inputTime3 = +new Date('2021-7-27 00:00:42') //返回输入时间的总毫秒数
-        var inputTime4 = +new Date('2021-7-27 00:00:57') //返回输入时间的总毫秒数
+        var inputTime1 = +new Date('2021-8-01 00:00:00') //返回输入时间的总毫秒数
+        var inputTime2 = +new Date('2021-8-01 00:00:24') //返回输入时间的总毫秒数
+        var inputTime3 = +new Date('2021-8-01 00:00:42') //返回输入时间的总毫秒数
+        var inputTime4 = +new Date('2021-8-01 00:00:57') //返回输入时间的总毫秒数
         watch ()
         function watch() {
             left_time[0].innerHTML = countDown(inputTime1)
@@ -61,8 +61,16 @@ window.addEventListener('load', function () {
             }
         })
         go_top.addEventListener('click', function () {
+            var last = getScroll().top
+            var cancel_timer = setInterval(function() {
+                if(getScroll().top > last) {
+                    clearInterval(window.timer)
+                    clearInterval(cancel_timer)
+                }
+                last = getScroll().top
+            },10)
             //因为是窗口滚动，所以对象是window
-            scroll_animate(window, 0)
+            scroll_animate(window, 0,function(){clearInterval(cancel_timer)})
         })
     }())
 
@@ -176,7 +184,7 @@ window.addEventListener('load', function () {
                         special_course_list.innerHTML = str
                         len1 = document.querySelectorAll('img').length
                         len2 = special_course_list.children.length
-                        n = len1 - len2
+                        n = len1 - len2 
                     }
                     lazyload()
                     window.onscroll = throttle(lazyload, 200);
@@ -188,9 +196,10 @@ window.addEventListener('load', function () {
                             localStorage.courseId = this.getAttribute('courseid')
                             if(localStorage.courseId && localStorage.courseId != 'null') {
                                 if(localStorage.create_time) {
-                                    var gaptime = (+new Date() - parseInt(localStorage.create_time))/1000/60/60/24
+                                    var overminutes = (+new Date() - parseInt(localStorage.create_time))/1000/60
+                                    var gaptime = overminutes/60/24
                                 }
-                                if(!localStorage.token || gaptime > 7) {
+                                if(!localStorage.token || (localStorage.remeber_login == 'true' && gaptime > 7) || (localStorage.remeber_login == 'false' && overminutes > 5)) {
                                     window.location.href = '../html/course-detail.html'
                                 }else {
                                     axios({
@@ -202,10 +211,6 @@ window.addEventListener('load', function () {
                                         }
                                     }).then(response => {
                                         if(response.data.msg == '登录失效') {
-                                            localStorage.removeItem('token')
-                                            localStorage.removeItem('pwd')
-                                            localStorage.removeItem('username')
-                                            localStorage.removeItem('create_time')
                                             window.location.href = '../html/course-detail.html'
                                         }else if(response.data.msg == '还没购买该课程') {
                                             window.location.href = '../html/course-detail.html'
@@ -228,7 +233,7 @@ window.addEventListener('load', function () {
         let n = 0;  //从哪里开始加载图片的下标
         special_course_tab[0].click()
         var lazyload = function () {
-            var imgs = document.querySelectorAll('img')
+            var imgs = all('img')
             let num = imgs.length
             all_img = num
             let seeHeight = window.innerHeight;
@@ -239,7 +244,7 @@ window.addEventListener('load', function () {
                         imgs[i].src = imgs[i].getAttribute('data-src');
                     }
                     //这里是为了不要让每次都从第一张图片遍历
-                    n += 1;
+                   n++;
                 }
             }
         }
