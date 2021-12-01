@@ -10,7 +10,7 @@ const GetLastPlay = require('../middleware/GetLastPlay')
 const searchApp = express()
 
 searchApp.get('/',[category.getSongByKeyword],(req,res)=>{
-    res.send(req.songs)
+        res.send(req.songs)
 })
 searchApp.get('/!',[GetLastPlay.getlastplay,category.getSongByKeyword,auth.getUser,PlayList.PlayList,Modify.getmodify_information],(req,res)=>{
     let {lastplay,playlists,user,modify_informations,songs,} = req

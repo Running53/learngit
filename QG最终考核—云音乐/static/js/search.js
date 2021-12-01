@@ -67,6 +67,5 @@ window.addEventListener('load', function () {
                 }
             })
         }, 700)
-
     })
 })
